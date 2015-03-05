@@ -4,6 +4,7 @@ target 'discoverage' do
   pod 'AFNetworking'
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'Parse'
 end
 
 target 'discoverageTests' do
