@@ -10,3 +10,4 @@
 ####User
   - [(banana, timestamp)]
   - facebook id/info
+  - current location
