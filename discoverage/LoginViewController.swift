@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController
 //  discoverage
 //
 //  Created by William Falk-Wallace on 3/3/15.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Accounts
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
