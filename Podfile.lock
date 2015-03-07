@@ -21,16 +21,22 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Alamofire (1.1.4)
+  - Bolts (1.1.4)
+  - Parse (1.6.4):
+    - Bolts (~> 1.1)
   - SwiftyJSON (2.1.3)
 
 DEPENDENCIES:
   - AFNetworking
   - Alamofire
+  - Parse
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   Alamofire: 524225da382071ee3e6d0badd0ee4b4dc36740de
+  Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
+  Parse: c2610f7a12ad0defc974803b819c4efe7746e6db
   SwiftyJSON: 48be7490a3989a58a3f511cd54167f0a2b466e76
 
 COCOAPODS: 0.36.0.beta.2
