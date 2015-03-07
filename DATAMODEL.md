@@ -1,13 +1,16 @@
 #Data Model
-####BananaTree
+
+### BananaTree
   - location
   - no. of bananas
-####Animal
+
+### Animal
   - owner
   - health
   - name
   - sprite
-####User
+
+### User
   - [(banana, timestamp)]
   - facebook id/info
   - current location
