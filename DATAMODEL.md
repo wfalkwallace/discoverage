@@ -12,5 +12,6 @@
 
 ### User
   - [(banana, timestamp)]
+  - number of bananas
   - facebook id/info
   - current location
