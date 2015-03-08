@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Parse.setApplicationId(PARSE_APP_ID, clientKey: PARSE_CLIENT_KEY)
+        
+        var object = PFObject(className: "bestDataClass")
+        object.addObject("iOtBlog", forKey: "websiteUrl")
+        object.addObject("Five", forKey: "websiteRating")
+        object.save()
+        
+        let location = Location()
+        
         // Override point for customization after application launch.
         return true
     }
