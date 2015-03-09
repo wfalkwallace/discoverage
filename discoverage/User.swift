@@ -9,8 +9,20 @@
 import UIKit
 
 class User: NSObject {
-    var name
+    var email: String?
+    var username: String?
+    var accountID: String?
+    var currentLocation: Location?
+    var bananaCount: Int
+    var bananas: [(banana: Banana, timestamp: NSDate)]?
     
-    
+    init(email: String, username: String, accountID: String, currentLocation: Location?, bananaCount: Int, bananas: [(banana: Banana, timestamp: NSDate)]) {
+        self.email = email
+        self.username = username
+        self.accountID = accountID
+        self.currentLocation = currentLocation
+        self.bananaCount = bananaCount
+        self.bananas = bananas
+    }
     
 }

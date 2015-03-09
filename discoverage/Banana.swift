@@ -9,5 +9,11 @@
 import UIKit
 
 class Banana: NSObject {
-   
+    var location: Location?
+    
+    
+    init(location: Location) {
+        self.location = location
+    }
+    
 }
