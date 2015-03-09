@@ -19,6 +19,7 @@
 		E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B513CA1AA6662A00852C9F /* Images.xcassets */; };
 		E6B513CE1AA6662A00852C9F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B513CC1AA6662A00852C9F /* LaunchScreen.xib */; };
 		E6B513DA1AA6662A00852C9F /* discoverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513D91AA6662A00852C9F /* discoverageTests.swift */; };
+		E6BDBAF11AAD6FDC00AE4D2A /* BananaMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */; };
 		E6F418201AA9739A007E4FF3 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F4181F1AA9739A007E4FF3 /* Login.storyboard */; };
 		E6F418251AAA6F2D007E4FF3 /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418241AAA6F2D007E4FF3 /* Banana.swift */; };
 		E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418261AAA6F3A007E4FF3 /* User.swift */; };
@@ -55,6 +56,7 @@
 		E6B513D31AA6662A00852C9F /* discoverageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = discoverageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B513D81AA6662A00852C9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6B513D91AA6662A00852C9F /* discoverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discoverageTests.swift; sourceTree = "<group>"; };
+		E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BananaMap.storyboard; sourceTree = "<group>"; };
 		E6F4181F1AA9739A007E4FF3 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E6F418241AAA6F2D007E4FF3 /* Banana.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banana.swift; sourceTree = "<group>"; };
 		E6F418261AAA6F3A007E4FF3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		E6F418211AA9739D007E4FF3 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */,
 				E6F4181F1AA9739A007E4FF3 /* Login.storyboard */,
 				45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */,
 			);
@@ -181,6 +184,7 @@
 		E6F418231AAA6F03007E4FF3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				45B1A3F71AABCD0E00E6248C /* Location.swift */,
 				E6F418241AAA6F2D007E4FF3 /* Banana.swift */,
 				E6F418261AAA6F3A007E4FF3 /* User.swift */,
 				45B1A3F51AABC80500E6248C /* Animal.swift */,
@@ -191,7 +195,6 @@
 		E6F418281AAA8082007E4FF3 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				45B1A3F71AABCD0E00E6248C /* Location.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B513CE1AA6662A00852C9F /* LaunchScreen.xib in Resources */,
+				E6BDBAF11AAD6FDC00AE4D2A /* BananaMap.storyboard in Resources */,
 				E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */,
 				E6F418201AA9739A007E4FF3 /* Login.storyboard in Resources */,
 				45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */,
