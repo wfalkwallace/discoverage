@@ -8,44 +8,21 @@
 
 import UIKit
 
-class User: NSObject {
-    private let CLASS_NAME = "User"
+class User: PFObject, PFSubclassing {
+    @NSManaged var email: NSString
+    @NSManaged var currentLocation: PFGeoPoint?
+    @NSManaged var lastLocationUpdate: NSDate?
+    @NSManaged var bananaCount: NSInteger
+    @NSManaged var bananas: [BananaPick]
     
-    var attributes: [String: AnyObject]
-    var email: String? {
-        return attributes["email"] as? String
-    }
-    var currentLocation: CLLocation? {
-        var location = attributes["currentLocation"] as! PFGeoPoint
-        return CLLocation(latitude: location.latitude, longitude: location.latitude)
-    }
-    var bananaCount: Int? {
-        return attributes["bananaCount"] as? Int
-    }
-
-    init(email: String, currentLocation: CLLocation, bananaCount: Int) {
-        attributes = [String: AnyObject]()
-        attributes["email"] = email
-        attributes["currentLocation"] = PFGeoPoint(location: currentLocation)
-        attributes["bananaCount"] = bananaCount
+    override class func initialize() {
+        var onceToken : dispatch_once_t = 0;
+        dispatch_once(&onceToken) {
+            self.registerSubclass()
+        }
     }
     
-    init(object: PFObject) {
-        attributes = [String: AnyObject]()
-        attributes["email"] = object.objectForKey("email")
-        attributes["currentLocation"] = object.objectForKey("currentLocation")
-        attributes["bananaCount"] = object.objectForKey("bananaCount")
-    }
-    
-    func save(block: (success: Bool, error: NSError?) -> ()) {
-        ParseClient.sharedInstance.save(CLASS_NAME, attributes: attributes, block: block)
-    }
-    
-    func get(id: String, block: (object: PFObject?, error: NSError?) -> ()) {
-        ParseClient.sharedInstance.get(CLASS_NAME, id: id, block: block)
-    }
-    
-    func fetchWhere(params: [String:String], block: (objects: [AnyObject]?, error: NSError?) -> ()) {
-        ParseClient.sharedInstance.fetchWhere(CLASS_NAME, params: params, block: block)
+    static func parseClassName() -> String! {
+        return "User"
     }
 }

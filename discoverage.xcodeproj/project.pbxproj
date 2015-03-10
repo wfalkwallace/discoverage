@@ -13,6 +13,7 @@
 		45B1A3F21AABC3EA00E6248C /* RegRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RegRankingTableViewCell.swift */; };
 		45B1A3F41AABC3FA00E6248C /* TopRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F31AABC3FA00E6248C /* TopRankingTableViewCell.swift */; };
 		45B1A3F61AABC80500E6248C /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F51AABC80500E6248C /* Animal.swift */; };
+		E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */; };
 		E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C31AA6662A00852C9F /* AppDelegate.swift */; };
 		E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C51AA6662A00852C9F /* LoginViewController.swift */; };
 		E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B513CA1AA6662A00852C9F /* Images.xcassets */; };
@@ -21,7 +22,6 @@
 		E6BDBAF11AAD6FDC00AE4D2A /* BananaMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */; };
 		E6C01AC71AAEC53800F88401 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C01AC61AAEC53800F88401 /* CoreLocation.framework */; };
 		E6C01AC91AAEC54900F88401 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C01AC81AAEC54900F88401 /* MapKit.framework */; };
-		E6C01ACB1AAF83CB00F88401 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C01ACA1AAF83CB00F88401 /* ParseClient.swift */; };
 		E6F418201AA9739A007E4FF3 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F4181F1AA9739A007E4FF3 /* Login.storyboard */; };
 		E6F418251AAA6F2D007E4FF3 /* BananaTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */; };
 		E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418261AAA6F3A007E4FF3 /* User.swift */; };
@@ -48,6 +48,7 @@
 		B9FDA8B890FC1B5CA63AFC9C /* Pods-discoverage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.release.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.release.xcconfig"; sourceTree = "<group>"; };
 		E617BBBD1AA832F000342FBB /* Discoverage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Discoverage-Bridging-Header.h"; sourceTree = "<group>"; };
 		E617BBC01AA833B800342FBB /* discoverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = discoverage.xcconfig; sourceTree = "<group>"; };
+		E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaPick.swift; sourceTree = "<group>"; };
 		E6B513BE1AA6662A00852C9F /* discoverage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = discoverage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B513C21AA6662A00852C9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6B513C31AA6662A00852C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BananaMap.storyboard; sourceTree = "<group>"; };
 		E6C01AC61AAEC53800F88401 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E6C01AC81AAEC54900F88401 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		E6C01ACA1AAF83CB00F88401 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		E6F4181F1AA9739A007E4FF3 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaTree.swift; sourceTree = "<group>"; };
 		E6F418261AAA6F3A007E4FF3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -133,7 +133,6 @@
 				E6B513C31AA6662A00852C9F /* AppDelegate.swift */,
 				E617BBBD1AA832F000342FBB /* Discoverage-Bridging-Header.h */,
 				E6B513CC1AA6662A00852C9F /* LaunchScreen.xib */,
-				E6C01ACC1AAF83D300F88401 /* API */,
 				E6F418231AAA6F03007E4FF3 /* Models */,
 				E6F418221AA973AB007E4FF3 /* View Controllers */,
 				E6F418211AA9739D007E4FF3 /* Storyboards */,
@@ -168,14 +167,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E6C01ACC1AAF83D300F88401 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				E6C01ACA1AAF83CB00F88401 /* ParseClient.swift */,
-			);
-			name = API;
-			sourceTree = "<group>";
-		};
 		E6F418211AA9739D007E4FF3 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +193,7 @@
 			children = (
 				E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */,
 				E6F418261AAA6F3A007E4FF3 /* User.swift */,
+				E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */,
 				45B1A3F51AABC80500E6248C /* Animal.swift */,
 			);
 			name = Models;
@@ -344,7 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6C01ACB1AAF83CB00F88401 /* ParseClient.swift in Sources */,
+				E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */,
 				45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */,
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
 				45B1A3F21AABC3EA00E6248C /* RegRankingTableViewCell.swift in Sources */,
