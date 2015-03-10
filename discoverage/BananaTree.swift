@@ -9,36 +9,32 @@
 import UIKit
 
 class BananaTree: NSObject {
-    var location: CLLocation!
+    private let CLASS_NAME = "BananaTree"
 
+    var attributes: [String: AnyObject]
+    var location: CLLocation? {
+        return attributes["location"] as? CLLocation
+    }
+    
     init(location: CLLocation) {
-        self.location = location
+        attributes = [String: AnyObject]()
+        attributes["location"] = location
+    }
+    
+    init(object: PFObject) {
+        attributes = [String: AnyObject]()
+        attributes["location"] = object.objectForKey("location")
     }
     
     func save(block: (success: Bool, error: NSError?) -> ()) {
-        var bananaTree = PFObject(className: "BananaTree")
-        bananaTree.setObject(location, forKey: "location")
-        bananaTree.saveInBackgroundWithBlock(block)
+        ParseClient.sharedInstance.save(CLASS_NAME, attributes: attributes, block: block)
     }
     
-    func get(id: String, block: (bananaTree: PFObject?, error: NSError?) -> ()) {
-        var query = PFQuery(className: "BananaTree")
-        query.getObjectInBackgroundWithId(id, block: block)
+    func get(id: String, block: (object: PFObject?, error: NSError?) -> ()) {
+        ParseClient.sharedInstance.get(CLASS_NAME, id: id, block: block)
     }
     
-    func fetchWhere(params: [String:String], block: (bananaTrees: [AnyObject]?, error: NSError?) -> ()) {
-        
-        var query = PFQuery(className:"BananaTree")
-        for (key, value) in params {
-            query.whereKey(key, equalTo:value)
-        }
-
-        query.findObjectsInBackgroundWithBlock(block)
-    }
-    
-    func fetchAll(block: (success: Bool, error: NSError?) -> ()) {
-        var bananaTree = PFObject(className: "BananaTree")
-        bananaTree.setObject(location, forKey: "location")
-        bananaTree.saveInBackgroundWithBlock(block)
+    func fetchWhere(params: [String:String], block: (objects: [AnyObject]?, error: NSError?) -> ()) {
+        ParseClient.sharedInstance.fetchWhere(CLASS_NAME, params: params, block: block)
     }
 }
