@@ -8,8 +8,7 @@
 
 import UIKit
 
-class RegRankingTableViewCell: UITableViewCell {
-
+class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     

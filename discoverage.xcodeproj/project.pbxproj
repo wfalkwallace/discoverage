@@ -11,10 +11,10 @@
 		4546BA291AACF5630006C779 /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4546BA281AACF5630006C779 /* secrets.swift */; };
 		45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */; };
 		45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3EF1AABADD000E6248C /* RankingViewController.swift */; };
-		45B1A3F21AABC3EA00E6248C /* RegRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RegRankingTableViewCell.swift */; };
-		45B1A3F41AABC3FA00E6248C /* TopRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F31AABC3FA00E6248C /* TopRankingTableViewCell.swift */; };
+		45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */; };
 		45B1A3F61AABC80500E6248C /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F51AABC80500E6248C /* Animal.swift */; };
 		45B1A3F81AABCD0E00E6248C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F71AABCD0E00E6248C /* Location.swift */; };
+		45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */; };
 		E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C31AA6662A00852C9F /* AppDelegate.swift */; };
 		E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C51AA6662A00852C9F /* LoginViewController.swift */; };
 		E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B513CA1AA6662A00852C9F /* Images.xcassets */; };
@@ -39,10 +39,10 @@
 		4546BA281AACF5630006C779 /* secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
 		45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
-		45B1A3F11AABC3EA00E6248C /* RegRankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegRankingTableViewCell.swift; sourceTree = "<group>"; };
-		45B1A3F31AABC3FA00E6248C /* TopRankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRankingTableViewCell.swift; sourceTree = "<group>"; };
+		45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		45B1A3F51AABC80500E6248C /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		45B1A3F71AABCD0E00E6248C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		AB25EE746160ACF953C0E1F9 /* Pods-discoverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.debug.xcconfig"; sourceTree = "<group>"; };
 		B9FDA8B890FC1B5CA63AFC9C /* Pods-discoverage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.release.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.release.xcconfig"; sourceTree = "<group>"; };
 		BE0DB3A8FEBBEFEBDE3F0F05 /* Pods_discoverage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_discoverage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +88,16 @@
 				B9FDA8B890FC1B5CA63AFC9C /* Pods-discoverage.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		45EAB0501AAEDC1600945C7D /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				45B1A3EF1AABADD000E6248C /* RankingViewController.swift */,
+				45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */,
+				45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */,
+			);
+			name = Ranking;
 			sourceTree = "<group>";
 		};
 		B88E370A1176849254D828D6 /* Frameworks */ = {
@@ -173,10 +183,8 @@
 		E6F418221AA973AB007E4FF3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				45EAB0501AAEDC1600945C7D /* Ranking */,
 				E6B513C51AA6662A00852C9F /* LoginViewController.swift */,
-				45B1A3EF1AABADD000E6248C /* RankingViewController.swift */,
-				45B1A3F11AABC3EA00E6248C /* RegRankingTableViewCell.swift */,
-				45B1A3F31AABC3FA00E6248C /* TopRankingTableViewCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -352,9 +360,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */,
+				45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */,
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
-				45B1A3F21AABC3EA00E6248C /* RegRankingTableViewCell.swift in Sources */,
-				45B1A3F41AABC3FA00E6248C /* TopRankingTableViewCell.swift in Sources */,
+				45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */,
 				45B1A3F81AABCD0E00E6248C /* Location.swift in Sources */,
 				E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */,
 				E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 class User: NSObject {
     var numBananas: Int
+    var name: String
     
     override init () {
         self.numBananas = 3
