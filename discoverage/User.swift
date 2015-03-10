@@ -8,21 +8,61 @@
 
 import UIKit
 
-class User: NSObject {
-    var email: String?
-    var username: String?
-    var accountID: String?
-    var currentLocation: Location?
-    var bananaCount: Int
-    var bananas: [(banana: Banana, timestamp: NSDate)]?
+class User: PFObject, PFSubclassing {
     
-    init(email: String, username: String, accountID: String, currentLocation: Location?, bananaCount: Int, bananas: [(banana: Banana, timestamp: NSDate)]) {
-        self.email = email
-        self.username = username
-        self.accountID = accountID
-        self.currentLocation = currentLocation
-        self.bananaCount = bananaCount
-        self.bananas = bananas
+    var email: String {
+        get {
+            return objectForKey("email") as! String
+        }
+        set {
+            setObject(newValue, forKey: "email")
+        }
+    }
+    var username: String {
+        get {
+            return objectForKey("username") as! String
+        }
+        set {
+            setObject(newValue, forKey: "username")
+        }
+    }
+    var accountID: String {
+        get {
+            return objectForKey("accountID") as! String
+        }
+        set {
+            setObject(newValue, forKey: "accountID")
+        }
+    }
+    var currentLocation: PFGeoPoint {
+        get {
+            return objectForKey("currentLocation") as! PFGeoPoint
+        }
+        set {
+            setObject(newValue, forKey: "currentLocation")
+        }
+    }
+    var bananaCount: Int {
+        get {
+            return objectForKey("bananaCount") as! Int
+        }
+        set {
+            setObject(newValue, forKey: "bananaCount")
+        }
+    }
+    // refactor to capture class
+    // var bananas: [(bananaTree: BananaTree, timestamp: NSDate)]
+
+    
+    override class func initialize() {
+        var onceToken : dispatch_once_t = 0;
+        dispatch_once(&onceToken) {
+            self.registerSubclass()
+        }
+    }
+    
+    static func parseClassName() -> String! {
+        return "User"
     }
     
 }

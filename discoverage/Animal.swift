@@ -8,17 +8,22 @@
 
 import UIKit
 
-class Animal: NSObject {
-    var owner: User?
-    var health: Int
-    let name: String!
-    let sprite: UIImage!
-   
-    init (name, sprite) {
-        
+class Animal: PFObject, PFSubclassing {
+    
+    dynamic var owner: User?
+    dynamic var health: NSNumber?
+    dynamic let name: String?
+    dynamic let sprite: String?
+    
+    override class func initialize() {
+        var onceToken : dispatch_once_t = 0;
+        dispatch_once(&onceToken) {
+            self.registerSubclass()
+        }
     }
     
-    func adopt () {}
-    func runAway () {}
-    func feed () {}
+    static func parseClassName() -> String! {
+        return "Animal"
+    }
+
 }
