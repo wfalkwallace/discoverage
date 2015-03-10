@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		242F3144A9228E9AC4ED654B /* Pods_discoverage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0DB3A8FEBBEFEBDE3F0F05 /* Pods_discoverage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		4546BA291AACF5630006C779 /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4546BA281AACF5630006C779 /* secrets.swift */; };
 		45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */; };
 		45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3EF1AABADD000E6248C /* RankingViewController.swift */; };
 		45B1A3F21AABC3EA00E6248C /* RegRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RegRankingTableViewCell.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4546BA281AACF5630006C779 /* secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
 		45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		45B1A3F11AABC3EA00E6248C /* RegRankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegRankingTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				E6F418211AA9739D007E4FF3 /* Storyboards */,
 				E6B513CA1AA6662A00852C9F /* Images.xcassets */,
 				E6B513C11AA6662A00852C9F /* Supporting Files */,
+				4546BA281AACF5630006C779 /* secrets.swift */,
 			);
 			path = discoverage;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				45B1A3F81AABCD0E00E6248C /* Location.swift in Sources */,
 				E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */,
 				E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */,
+				4546BA291AACF5630006C779 /* secrets.swift in Sources */,
 				E6F418251AAA6F2D007E4FF3 /* Banana.swift in Sources */,
 				E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */,
 			);
@@ -426,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -465,7 +469,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

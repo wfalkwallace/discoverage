@@ -9,8 +9,9 @@
 import UIKit
 
 class User: NSObject {
-    var name
+    var numBananas: Int
     
-    
-    
+    override init () {
+        self.numBananas = 3
+    }
 }

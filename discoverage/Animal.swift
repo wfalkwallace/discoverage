@@ -11,14 +11,25 @@ import UIKit
 class Animal: NSObject {
     var owner: User?
     var health: Int
-    let name: String!
-    let sprite: UIImage!
+    let ID: String
+    let name: String
+//    let sprite: UIImage? TODO
    
-    init (name, sprite) {
-        
+    init (name: String, sprite: UIImage) {
+        // TODO load from parse
+        self.health = 10
+        self.ID = "xyz"
+        self.name = "Charizard"
     }
     
-    func adopt () {}
-    func runAway () {}
-    func feed () {}
+    func adopt (owner: User) {
+        self.owner = owner
+    }
+    
+    func feed () {
+        if (health <= 10 && owner?.numBananas > 0) {
+
+            self.health = self.health + 1
+        }
+    }
 }
