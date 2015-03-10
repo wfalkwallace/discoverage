@@ -16,7 +16,8 @@ class User: NSObject {
         return attributes["email"] as? String
     }
     var currentLocation: CLLocation? {
-        return attributes["currentLocation"] as? CLLocation
+        var location = attributes["currentLocation"] as! PFGeoPoint
+        return CLLocation(latitude: location.latitude, longitude: location.latitude)
     }
     var bananaCount: Int? {
         return attributes["bananaCount"] as? Int
@@ -25,7 +26,7 @@ class User: NSObject {
     init(email: String, currentLocation: CLLocation, bananaCount: Int) {
         attributes = [String: AnyObject]()
         attributes["email"] = email
-        attributes["currentLocation"] = currentLocation
+        attributes["currentLocation"] = PFGeoPoint(location: currentLocation)
         attributes["bananaCount"] = bananaCount
     }
     

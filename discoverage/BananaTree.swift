@@ -13,17 +13,18 @@ class BananaTree: NSObject {
 
     var attributes: [String: AnyObject]
     var location: CLLocation? {
-        return attributes["location"] as? CLLocation
+        var location = attributes["Location"] as! PFGeoPoint
+        return CLLocation(latitude: location.latitude, longitude: location.latitude)
     }
     
     init(location: CLLocation) {
         attributes = [String: AnyObject]()
-        attributes["location"] = location
+        attributes["Location"] = PFGeoPoint(location: location)
     }
     
     init(object: PFObject) {
         attributes = [String: AnyObject]()
-        attributes["location"] = object.objectForKey("location")
+        attributes["Location"] = object.objectForKey("location")
     }
     
     func save(block: (success: Bool, error: NSError?) -> ()) {
