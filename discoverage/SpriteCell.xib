@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpriteCell" id="gTV-IL-0wX" customClass="SpriteCell" customModule="discoverage" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="96" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="96" height="150"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ktS-lh-CRe">
+                        <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="96" id="08P-Dj-I34"/>
+                            <constraint firstAttribute="height" constant="96" id="cL7-bw-cVz"/>
+                            <constraint firstAttribute="width" constant="96" id="fKe-ja-b95"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="08P-Dj-I34"/>
+                                <exclude reference="fKe-ja-b95"/>
+                            </mask>
+                        </variation>
+                    </imageView>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="L5h-Ps-f2P">
+                        <rect key="frame" x="6" y="108" width="85" height="3"/>
+                        <color key="progressTintColor" red="0.22445618540000001" green="0.84812330160000005" blue="0.20522509750000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="trackTintColor" red="1" green="0.2052155601" blue="0.15941524600000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </progressView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2G-Hd-isj">
+                        <rect key="frame" x="8" y="123" width="80" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ktS-lh-CRe" secondAttribute="bottom" id="8ba-ol-QDW"/>
+                <constraint firstAttribute="trailing" secondItem="ktS-lh-CRe" secondAttribute="trailing" id="FML-3a-B1A"/>
+                <constraint firstItem="q2G-Hd-isj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Mq1-ue-wZt"/>
+                <constraint firstAttribute="trailing" secondItem="q2G-Hd-isj" secondAttribute="trailing" constant="8" id="My7-b4-SSC"/>
+                <constraint firstItem="L5h-Ps-f2P" firstAttribute="top" secondItem="ktS-lh-CRe" secondAttribute="bottom" constant="12" id="SDP-4Q-Fbd"/>
+                <constraint firstItem="ktS-lh-CRe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="g1M-Sp-jEv"/>
+                <constraint firstAttribute="trailing" secondItem="L5h-Ps-f2P" secondAttribute="trailing" constant="5" id="gsT-P5-LZb"/>
+                <constraint firstAttribute="trailing" secondItem="q2G-Hd-isj" secondAttribute="trailing" constant="8" id="hj2-x6-wQ3"/>
+                <constraint firstItem="L5h-Ps-f2P" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="j50-Vs-eAC"/>
+                <constraint firstItem="q2G-Hd-isj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="mGo-FV-TFl"/>
+                <constraint firstItem="q2G-Hd-isj" firstAttribute="top" secondItem="L5h-Ps-f2P" secondAttribute="bottom" constant="13" id="nMO-Rh-HB1"/>
+                <constraint firstItem="ktS-lh-CRe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qd5-DZ-Bwz"/>
+                <constraint firstItem="ktS-lh-CRe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="w2s-dE-hsi"/>
+            </constraints>
+            <size key="customSize" width="96" height="150"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="8ba-ol-QDW"/>
+                    <exclude reference="w2s-dE-hsi"/>
+                    <exclude reference="Mq1-ue-wZt"/>
+                    <exclude reference="hj2-x6-wQ3"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="healthMeter" destination="L5h-Ps-f2P" id="pMO-nH-Kb6"/>
+                <outlet property="monsterImageView" destination="ktS-lh-CRe" id="UhG-jU-7mo"/>
+                <outlet property="monsterName" destination="q2G-Hd-isj" id="JsP-A1-85d"/>
+            </connections>
+            <point key="canvasLocation" x="-81" y="190"/>
+        </collectionViewCell>
+    </objects>
+</document>

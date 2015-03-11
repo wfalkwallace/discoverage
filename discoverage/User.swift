@@ -9,11 +9,11 @@
 import UIKit
 
 class User: NSObject {
-    var numBananas: Int
-    var name: String
+    var bananaCount: Int = 14
+    var name: String = "User"
+    var menagerie : Menagerie = Menagerie()
     
     override init () {
-        self.name = "User"
-        self.numBananas = 3
+        super.init()
     }
 }
