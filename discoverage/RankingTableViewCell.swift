@@ -1,5 +1,5 @@
 //
-//  RegRankingTableViewCell.swift
+//  RankingTableViewCell.swift
 //  discoverage
 //
 //  Created by Jehan Tremback on 3/7/15.

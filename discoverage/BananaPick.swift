@@ -1,33 +1,29 @@
 //
-//  Animal.swift
+//  BananaPick.swift
 //  discoverage
 //
-//  Created by Jehan Tremback on 3/7/15.
+//  Created by William Falk-Wallace on 3/10/15.
 //  Copyright (c) 2015 Discoverage. All rights reserved.
 //
 
 import UIKit
 
-class Animal: PFObject, PFSubclassing {
-    @NSManaged var owner: User?
-    @NSManaged var health: NSInteger
-    @NSManaged var name: NSString
-    @NSManaged var sprite: NSString
-    @NSManaged var location: PFGeoPoint
-
+class BananaPick: PFObject, PFSubclassing {
+    @NSManaged var bananaTree: BananaTree
+    @NSManaged var timestamp: NSDate
+    
     override init() {
         super.init()
     }
-
+    
     override class func initialize() {
         var onceToken : dispatch_once_t = 0;
         dispatch_once(&onceToken) {
             self.registerSubclass()
         }
     }
-
+    
     static func parseClassName() -> String! {
-        return "Animal"
+        return "BananaPick"
     }
-
 }

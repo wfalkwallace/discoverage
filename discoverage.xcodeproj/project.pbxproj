@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4546BA291AACF5630006C779 /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4546BA281AACF5630006C779 /* secrets.swift */; };
+		0422A3E58E52F3C2E3A66402 /* libPods-discoverage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B33635509F86CC9A2FE26366 /* libPods-discoverage.a */; };
 		45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */; };
 		45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3EF1AABADD000E6248C /* RankingViewController.swift */; };
 		45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */; };
 		45B1A3F61AABC80500E6248C /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F51AABC80500E6248C /* Animal.swift */; };
-		45B1A3F81AABCD0E00E6248C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F71AABCD0E00E6248C /* Location.swift */; };
 		45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */; };
 		5DD3E0E2A3037AA60D76D239 /* libPods-discoverage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11744C3A3A8CD5465CF2CC37 /* libPods-discoverage.a */; };
 		BEBCED091AAFE1F00048D9E9 /* menagerie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBCED081AAFE1EF0048D9E9 /* menagerie.storyboard */; };
@@ -22,13 +21,18 @@
 		BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */; };
 		BEBCED131AAFE2A90048D9E9 /* SpriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */; };
 		BEF9D48C1AAFEDD9000EE85C /* Menagerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF9D48B1AAFEDD9000EE85C /* Menagerie.swift */; };
+		E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */; };
+		E69444D51AB0B61000003443 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69444D41AB0B61000003443 /* Location.swift */; };
 		E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C31AA6662A00852C9F /* AppDelegate.swift */; };
 		E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C51AA6662A00852C9F /* LoginViewController.swift */; };
 		E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B513CA1AA6662A00852C9F /* Images.xcassets */; };
 		E6B513CE1AA6662A00852C9F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B513CC1AA6662A00852C9F /* LaunchScreen.xib */; };
 		E6B513DA1AA6662A00852C9F /* discoverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513D91AA6662A00852C9F /* discoverageTests.swift */; };
+		E6BDBAF11AAD6FDC00AE4D2A /* BananaMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */; };
+		E6C01AC71AAEC53800F88401 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C01AC61AAEC53800F88401 /* CoreLocation.framework */; };
+		E6C01AC91AAEC54900F88401 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C01AC81AAEC54900F88401 /* MapKit.framework */; };
 		E6F418201AA9739A007E4FF3 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F4181F1AA9739A007E4FF3 /* Login.storyboard */; };
-		E6F418251AAA6F2D007E4FF3 /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418241AAA6F2D007E4FF3 /* Banana.swift */; };
+		E6F418251AAA6F2D007E4FF3 /* BananaTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */; };
 		E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418261AAA6F3A007E4FF3 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		11744C3A3A8CD5465CF2CC37 /* libPods-discoverage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-discoverage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4546BA281AACF5630006C779 /* secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
 		45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		45B1A3F71AABCD0E00E6248C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		AB25EE746160ACF953C0E1F9 /* Pods-discoverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.debug.xcconfig"; sourceTree = "<group>"; };
+		B33635509F86CC9A2FE26366 /* libPods-discoverage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-discoverage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9FDA8B890FC1B5CA63AFC9C /* Pods-discoverage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.release.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.release.xcconfig"; sourceTree = "<group>"; };
 		BEBCED081AAFE1EF0048D9E9 /* menagerie.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = menagerie.storyboard; sourceTree = "<group>"; };
 		BEBCED0A1AAFE1FA0048D9E9 /* details.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = details.storyboard; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 		BEF9D48B1AAFEDD9000EE85C /* Menagerie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menagerie.swift; sourceTree = "<group>"; };
 		E617BBBD1AA832F000342FBB /* Discoverage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Discoverage-Bridging-Header.h"; sourceTree = "<group>"; };
 		E617BBC01AA833B800342FBB /* discoverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = discoverage.xcconfig; sourceTree = "<group>"; };
+		E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaPick.swift; sourceTree = "<group>"; };
+		E69444D41AB0B61000003443 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		E6B513BE1AA6662A00852C9F /* discoverage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = discoverage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B513C21AA6662A00852C9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6B513C31AA6662A00852C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,8 +77,11 @@
 		E6B513D31AA6662A00852C9F /* discoverageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = discoverageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B513D81AA6662A00852C9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6B513D91AA6662A00852C9F /* discoverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discoverageTests.swift; sourceTree = "<group>"; };
+		E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BananaMap.storyboard; sourceTree = "<group>"; };
+		E6C01AC61AAEC53800F88401 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E6C01AC81AAEC54900F88401 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E6F4181F1AA9739A007E4FF3 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		E6F418241AAA6F2D007E4FF3 /* Banana.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banana.swift; sourceTree = "<group>"; };
+		E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaTree.swift; sourceTree = "<group>"; };
 		E6F418261AAA6F3A007E4FF3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +90,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6C01AC91AAEC54900F88401 /* MapKit.framework in Frameworks */,
+				E6C01AC71AAEC53800F88401 /* CoreLocation.framework in Frameworks */,
+				0422A3E58E52F3C2E3A66402 /* libPods-discoverage.a in Frameworks */,
 				5DD3E0E2A3037AA60D76D239 /* libPods-discoverage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +129,9 @@
 		B88E370A1176849254D828D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6C01AC81AAEC54900F88401 /* MapKit.framework */,
+				E6C01AC61AAEC53800F88401 /* CoreLocation.framework */,
+				B33635509F86CC9A2FE26366 /* libPods-discoverage.a */,
 				11744C3A3A8CD5465CF2CC37 /* libPods-discoverage.a */,
 			);
 			name = Frameworks;
@@ -169,13 +184,12 @@
 				E6B513C31AA6662A00852C9F /* AppDelegate.swift */,
 				E617BBBD1AA832F000342FBB /* Discoverage-Bridging-Header.h */,
 				E6B513CC1AA6662A00852C9F /* LaunchScreen.xib */,
-				E6F418281AAA8082007E4FF3 /* API */,
+				E69444D41AB0B61000003443 /* Location.swift */,
 				E6F418231AAA6F03007E4FF3 /* Models */,
 				E6F418221AA973AB007E4FF3 /* View Controllers */,
 				E6F418211AA9739D007E4FF3 /* Storyboards */,
 				E6B513CA1AA6662A00852C9F /* Images.xcassets */,
 				E6B513C11AA6662A00852C9F /* Supporting Files */,
-				4546BA281AACF5630006C779 /* secrets.swift */,
 			);
 			path = discoverage;
 			sourceTree = "<group>";
@@ -208,6 +222,7 @@
 		E6F418211AA9739D007E4FF3 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */,
 				BEBCED071AAFE1DF0048D9E9 /* menagerie */,
 				E6F4181F1AA9739A007E4FF3 /* Login.storyboard */,
 				45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */,
@@ -228,20 +243,13 @@
 		E6F418231AAA6F03007E4FF3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E6F418241AAA6F2D007E4FF3 /* Banana.swift */,
+				E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */,
 				E6F418261AAA6F3A007E4FF3 /* User.swift */,
+				E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */,
 				BEF9D48B1AAFEDD9000EE85C /* Menagerie.swift */,
 				45B1A3F51AABC80500E6248C /* Animal.swift */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		E6F418281AAA8082007E4FF3 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				45B1A3F71AABCD0E00E6248C /* Location.swift */,
-			);
-			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B513CE1AA6662A00852C9F /* LaunchScreen.xib in Resources */,
+				E6BDBAF11AAD6FDC00AE4D2A /* BananaMap.storyboard in Resources */,
 				BEBCED0B1AAFE1FA0048D9E9 /* details.storyboard in Resources */,
 				E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */,
 				BEBCED131AAFE2A90048D9E9 /* SpriteCell.xib in Resources */,
@@ -383,18 +392,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */,
 				45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */,
 				45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */,
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
 				45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */,
-				45B1A3F81AABCD0E00E6248C /* Location.swift in Sources */,
+				E69444D51AB0B61000003443 /* Location.swift in Sources */,
 				BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */,
 				E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */,
 				BEF9D48C1AAFEDD9000EE85C /* Menagerie.swift in Sources */,
 				BEBCED0D1AAFE2320048D9E9 /* MenagerieViewController.swift in Sources */,
 				E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */,
-				4546BA291AACF5630006C779 /* secrets.swift in Sources */,
-				E6F418251AAA6F2D007E4FF3 /* Banana.swift in Sources */,
+				E6F418251AAA6F2D007E4FF3 /* BananaTree.swift in Sources */,
 				E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */,
 				BEBCED0F1AAFE2750048D9E9 /* DetailsViewController.swift in Sources */,
 			);
@@ -432,6 +441,7 @@
 /* Begin XCBuildConfiguration section */
 		E6B513DB1AA6662A00852C9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E617BBC01AA833B800342FBB /* discoverage.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -477,6 +487,7 @@
 		};
 		E6B513DC1AA6662A00852C9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E617BBC01AA833B800342FBB /* discoverage.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
