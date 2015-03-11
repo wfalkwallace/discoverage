@@ -2,8 +2,8 @@ platform :ios, '8.0'
 
 target 'discoverage' do
   pod 'AFNetworking'
-  pod 'SwiftyJSON'
-  pod 'Alamofire'
+ # pod 'SwiftyJSON'
+ # pod 'Alamofire'
   pod 'Parse'
 end
 

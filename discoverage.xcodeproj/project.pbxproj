@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		242F3144A9228E9AC4ED654B /* Pods_discoverage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0DB3A8FEBBEFEBDE3F0F05 /* Pods_discoverage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4546BA291AACF5630006C779 /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4546BA281AACF5630006C779 /* secrets.swift */; };
 		45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */; };
 		45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3EF1AABADD000E6248C /* RankingViewController.swift */; };
@@ -15,6 +14,7 @@
 		45B1A3F61AABC80500E6248C /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F51AABC80500E6248C /* Animal.swift */; };
 		45B1A3F81AABCD0E00E6248C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F71AABCD0E00E6248C /* Location.swift */; };
 		45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */; };
+		5DD3E0E2A3037AA60D76D239 /* libPods-discoverage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11744C3A3A8CD5465CF2CC37 /* libPods-discoverage.a */; };
 		E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C31AA6662A00852C9F /* AppDelegate.swift */; };
 		E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C51AA6662A00852C9F /* LoginViewController.swift */; };
 		E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B513CA1AA6662A00852C9F /* Images.xcassets */; };
@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11744C3A3A8CD5465CF2CC37 /* libPods-discoverage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-discoverage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4546BA281AACF5630006C779 /* secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
 		45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
@@ -45,7 +46,6 @@
 		45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		AB25EE746160ACF953C0E1F9 /* Pods-discoverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.debug.xcconfig"; sourceTree = "<group>"; };
 		B9FDA8B890FC1B5CA63AFC9C /* Pods-discoverage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.release.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.release.xcconfig"; sourceTree = "<group>"; };
-		BE0DB3A8FEBBEFEBDE3F0F05 /* Pods_discoverage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_discoverage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E617BBBD1AA832F000342FBB /* Discoverage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Discoverage-Bridging-Header.h"; sourceTree = "<group>"; };
 		E617BBC01AA833B800342FBB /* discoverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = discoverage.xcconfig; sourceTree = "<group>"; };
 		E6B513BE1AA6662A00852C9F /* discoverage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = discoverage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				242F3144A9228E9AC4ED654B /* Pods_discoverage.framework in Frameworks */,
+				5DD3E0E2A3037AA60D76D239 /* libPods-discoverage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 		B88E370A1176849254D828D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BE0DB3A8FEBBEFEBDE3F0F05 /* Pods_discoverage.framework */,
+				11744C3A3A8CD5465CF2CC37 /* libPods-discoverage.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -218,7 +218,6 @@
 				E6B513BA1AA6662A00852C9F /* Sources */,
 				E6B513BB1AA6662A00852C9F /* Frameworks */,
 				E6B513BC1AA6662A00852C9F /* Resources */,
-				F3D3BC60019001B1654181F8 /* Embed Pods Frameworks */,
 				C23254BE8FEE6550612F3248 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -335,21 +334,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-discoverage/Pods-discoverage-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F3D3BC60019001B1654181F8 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-discoverage/Pods-discoverage-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

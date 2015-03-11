@@ -13,10 +13,11 @@ import CoreLocation
 class Location: NSObject {
    override init () {
         switch CLLocationManager.authorizationStatus() {
-            case .Authorized:
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
                 println("authorized!")
             case .NotDetermined:
-                CLLocationManager.requestAlwaysAuthorization()
+                var locManager = CLLocationManager()
+                locManager.requestAlwaysAuthorization()
             case .AuthorizedWhenInUse, .Restricted, .Denied:
                 let alertController = UIAlertController(
                     title: "Background Location Access Disabled",

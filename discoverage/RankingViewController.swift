@@ -35,7 +35,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(
             "HomeTableViewCell"
-        ) as RankingTableViewCell
+        ) as! RankingTableViewCell
         
         if let users = self.users {
             let user = users[indexPath.row + 3]
@@ -72,11 +72,11 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "tweetDetailSegue") {
-            let dest = segue.destinationViewController as UserProfileViewController
-            dest.user = sender as User
+            let dest = segue.destinationViewController as! UserProfileViewController
+            dest.user = sender as! User
         } else {
             let indexPath = self.tableView.indexPathForSelectedRow()!
-            let dest = segue.destinationViewController as UserProfileViewController
+            let dest = segue.destinationViewController as! UserProfileViewController
             dest.user = users?[indexPath.row + 3]
             
             tableView.deselectRowAtIndexPath(indexPath, animated: true)

@@ -13,6 +13,7 @@ class User: NSObject {
     var name: String
     
     override init () {
+        self.name = "User"
         self.numBananas = 3
     }
 }
