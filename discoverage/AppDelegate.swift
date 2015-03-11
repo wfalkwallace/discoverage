@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
 
+        let location = Location()
+
         return true
     }
 

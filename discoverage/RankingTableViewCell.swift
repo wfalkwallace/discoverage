@@ -1,5 +1,5 @@
 //
-//  RegRankingTableViewCell.swift
+//  RankingTableViewCell.swift
 //  discoverage
 //
 //  Created by Jehan Tremback on 3/7/15.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class RegRankingTableViewCell: UITableViewCell {
-
+class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
