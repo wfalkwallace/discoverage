@@ -24,8 +24,9 @@ class Animal: PFObject, PFSubclassing {
         dispatch_once(&onceToken) {
             self.registerSubclass()
         }
+    }
 
-    func parseClassName() -> String! {
+    static func parseClassName() -> String! {
         return "Animal"
     }
 
