@@ -29,5 +29,11 @@ class Animal: PFObject, PFSubclassing {
     static func parseClassName() -> String! {
         return "Animal"
     }
+    
+    func feed () {
+        if (health <= 10 && owner?.bananaCount > 0) {
+            self.health = self.health + 1
+        }
+    }
 
 }
