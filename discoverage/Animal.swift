@@ -15,6 +15,10 @@ class Animal: PFObject, PFSubclassing {
     @NSManaged var sprite: NSString
     @NSManaged var location: PFGeoPoint
     
+    override init() {
+        super.init()
+    }
+    
     override class func initialize() {
         var onceToken : dispatch_once_t = 0;
         dispatch_once(&onceToken) {

@@ -15,8 +15,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         var b = BananaTree()
+        b.location = PFGeoPoint(location: CLLocation(latitude: -37, longitude: 122))
         println(b)
         println(b.location)
+        b.save()
         println("WFW")
     }
 

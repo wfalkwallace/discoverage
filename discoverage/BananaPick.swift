@@ -12,6 +12,10 @@ class BananaPick: PFObject, PFSubclassing {
     @NSManaged var bananaTree: BananaTree
     @NSManaged var timestamp: NSDate
     
+    override init() {
+        super.init()
+    }
+    
     override class func initialize() {
         var onceToken : dispatch_once_t = 0;
         dispatch_once(&onceToken) {
