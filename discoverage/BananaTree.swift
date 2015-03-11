@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  Banana.swift
 //  discoverage
 //
 //  Created by William Falk-Wallace on 3/6/15.
@@ -8,14 +8,10 @@
 
 import UIKit
 
-class User: PFObject, PFSubclassing {
-    @NSManaged var email: NSString
-    @NSManaged var currentLocation: PFGeoPoint?
-    @NSManaged var lastLocationUpdate: NSDate?
-    @NSManaged var bananaCount: NSInteger
-    @NSManaged var bananas: [BananaPick]
+class BananaTree: PFObject, PFSubclassing {
+    @NSManaged var location: PFGeoPoint
 
-    override init () {
+    override init() {
         super.init()
     }
 
@@ -27,6 +23,6 @@ class User: PFObject, PFSubclassing {
     }
 
     static func parseClassName() -> String! {
-        return "User"
+        return "BananaTree"
     }
 }

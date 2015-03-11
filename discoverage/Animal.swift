@@ -8,23 +8,30 @@
 
 import UIKit
 
-class Animal: NSObject {
-    var name : String = "Charizard"
-    var owner: User?
-    var health : Float = 0.0
-    let sprite: String = "noimage"
-    var location : Location?
-    var totalBananasEaten : Int = 0
-    var mood : String = "Hungry"
-    //let ID: String?
-    
-    func adopt (owner: User) {
-        self.owner = owner
+class Animal: PFObject, PFSubclassing {
+    @NSManaged var owner: User?
+    @NSManaged var health: NSInteger
+    @NSManaged var name: NSString
+    @NSManaged var sprite: NSString
+    @NSManaged var location: PFGeoPoint
+
+    override init() {
+        super.init()
     }
-    
+
+    override class func initialize() {
+        var onceToken : dispatch_once_t = 0;
+        dispatch_once(&onceToken) {
+            self.registerSubclass()
+        }
+    }
+
+    static func parseClassName() -> String! {
+        return "Animal"
+    }
+
     func feed () {
         if (health <= 10 && owner?.bananaCount > 0) {
-
             self.health = self.health + 1
         }
     }
