@@ -12,7 +12,6 @@
 		45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3EF1AABADD000E6248C /* RankingViewController.swift */; };
 		45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */; };
 		45B1A3F61AABC80500E6248C /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F51AABC80500E6248C /* Animal.swift */; };
-		45B1A3F81AABCD0E00E6248C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F71AABCD0E00E6248C /* Location.swift */; };
 		45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */; };
 		5DD3E0E2A3037AA60D76D239 /* libPods-discoverage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11744C3A3A8CD5465CF2CC37 /* libPods-discoverage.a */; };
 		BEBCED091AAFE1F00048D9E9 /* menagerie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBCED081AAFE1EF0048D9E9 /* menagerie.storyboard */; };
@@ -398,7 +397,7 @@
 				45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */,
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
 				45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */,
-				45B1A3F81AABCD0E00E6248C /* Location.swift in Sources */,
+				E69444D51AB0B61000003443 /* Location.swift in Sources */,
 				BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */,
 				E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */,
 				BEF9D48C1AAFEDD9000EE85C /* Menagerie.swift in Sources */,
