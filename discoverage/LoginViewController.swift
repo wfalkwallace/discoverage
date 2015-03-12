@@ -13,13 +13,8 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        var b = BananaTree()
-        b.location = PFGeoPoint(location: CLLocation(latitude: -37, longitude: 122))
-        println(b)
-        println(b.location)
-        b.save()
-        println("WFW")
+        
+        let location = Location()
 
     }
 
@@ -28,6 +23,11 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func didTapLogin(sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "BananaMap", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! BananaMapViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
 
 }
 

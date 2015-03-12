@@ -23,6 +23,7 @@
 		BEF9D48C1AAFEDD9000EE85C /* Menagerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF9D48B1AAFEDD9000EE85C /* Menagerie.swift */; };
 		E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */; };
 		E69444D51AB0B61000003443 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69444D41AB0B61000003443 /* Location.swift */; };
+		E69444D71AB0BD8200003443 /* BananaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69444D61AB0BD8200003443 /* BananaMapViewController.swift */; };
 		E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C31AA6662A00852C9F /* AppDelegate.swift */; };
 		E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C51AA6662A00852C9F /* LoginViewController.swift */; };
 		E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B513CA1AA6662A00852C9F /* Images.xcassets */; };
@@ -52,7 +53,6 @@
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		45B1A3F51AABC80500E6248C /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
-		45B1A3F71AABCD0E00E6248C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		AB25EE746160ACF953C0E1F9 /* Pods-discoverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.debug.xcconfig"; sourceTree = "<group>"; };
 		B33635509F86CC9A2FE26366 /* libPods-discoverage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-discoverage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +68,7 @@
 		E617BBC01AA833B800342FBB /* discoverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = discoverage.xcconfig; sourceTree = "<group>"; };
 		E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaPick.swift; sourceTree = "<group>"; };
 		E69444D41AB0B61000003443 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E69444D61AB0BD8200003443 /* BananaMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaMapViewController.swift; sourceTree = "<group>"; };
 		E6B513BE1AA6662A00852C9F /* discoverage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = discoverage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B513C21AA6662A00852C9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6B513C31AA6662A00852C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,7 +185,6 @@
 				E6B513C31AA6662A00852C9F /* AppDelegate.swift */,
 				E617BBBD1AA832F000342FBB /* Discoverage-Bridging-Header.h */,
 				E6B513CC1AA6662A00852C9F /* LaunchScreen.xib */,
-				E69444D41AB0B61000003443 /* Location.swift */,
 				E6F418231AAA6F03007E4FF3 /* Models */,
 				E6F418221AA973AB007E4FF3 /* View Controllers */,
 				E6F418211AA9739D007E4FF3 /* Storyboards */,
@@ -236,6 +236,7 @@
 				BEBCED061AAFE03D0048D9E9 /* Menagerie */,
 				45EAB0501AAEDC1600945C7D /* Ranking */,
 				E6B513C51AA6662A00852C9F /* LoginViewController.swift */,
+				E69444D61AB0BD8200003443 /* BananaMapViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -243,6 +244,7 @@
 		E6F418231AAA6F03007E4FF3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E69444D41AB0B61000003443 /* Location.swift */,
 				E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */,
 				E6F418261AAA6F3A007E4FF3 /* User.swift */,
 				E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */,
@@ -398,6 +400,7 @@
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
 				45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */,
 				E69444D51AB0B61000003443 /* Location.swift in Sources */,
+				E69444D71AB0BD8200003443 /* BananaMapViewController.swift in Sources */,
 				BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */,
 				E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */,
 				BEF9D48C1AAFEDD9000EE85C /* Menagerie.swift in Sources */,
