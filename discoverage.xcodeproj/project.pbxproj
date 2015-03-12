@@ -52,7 +52,6 @@
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		45B1A3F51AABC80500E6248C /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
-		45B1A3F71AABCD0E00E6248C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		AB25EE746160ACF953C0E1F9 /* Pods-discoverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.debug.xcconfig"; sourceTree = "<group>"; };
 		B33635509F86CC9A2FE26366 /* libPods-discoverage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-discoverage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +139,6 @@
 		BEBCED061AAFE03D0048D9E9 /* Menagerie */ = {
 			isa = PBXGroup;
 			children = (
-				BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */,
 				BEBCED0E1AAFE2750048D9E9 /* DetailsViewController.swift */,
 				BEBCED0C1AAFE2320048D9E9 /* MenagerieViewController.swift */,
 			);
@@ -152,9 +150,25 @@
 			children = (
 				BEBCED081AAFE1EF0048D9E9 /* menagerie.storyboard */,
 				BEBCED0A1AAFE1FA0048D9E9 /* details.storyboard */,
-				BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */,
 			);
 			name = menagerie;
+			sourceTree = "<group>";
+		};
+		E60DB2F21AB13DE400494F2A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */,
+				BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E60DB2F31AB13DFE00494F2A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E6B513C51AA6662A00852C9F /* LoginViewController.swift */,
+			);
+			name = App;
 			sourceTree = "<group>";
 		};
 		E6B513B51AA6662A00852C9F = {
@@ -186,6 +200,7 @@
 				E6B513CC1AA6662A00852C9F /* LaunchScreen.xib */,
 				E69444D41AB0B61000003443 /* Location.swift */,
 				E6F418231AAA6F03007E4FF3 /* Models */,
+				E60DB2F21AB13DE400494F2A /* Views */,
 				E6F418221AA973AB007E4FF3 /* View Controllers */,
 				E6F418211AA9739D007E4FF3 /* Storyboards */,
 				E6B513CA1AA6662A00852C9F /* Images.xcassets */,
@@ -235,7 +250,7 @@
 			children = (
 				BEBCED061AAFE03D0048D9E9 /* Menagerie */,
 				45EAB0501AAEDC1600945C7D /* Ranking */,
-				E6B513C51AA6662A00852C9F /* LoginViewController.swift */,
+				E60DB2F31AB13DFE00494F2A /* App */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
