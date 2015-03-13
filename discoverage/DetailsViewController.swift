@@ -44,7 +44,7 @@ class DetailsViewController: UIViewController {
     func initView() {
         let animal = user?.animals[animalIndexRow!]
 
-        animalImageView.image =  UIImage(named: animal?.sprite as! String)
+        animalImageView.image =  UIImage(named: animal!.sprite as String)
         animalName.text = animal!.name as String
 
         UIProgressView.animateWithDuration(2.0, animations: {

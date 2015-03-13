@@ -18,12 +18,12 @@ class SpriteCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func initFromDictionary(dictionary: NSDictionary) {
-        monsterImageView.image = UIImage(named: dictionary["sprite"] as! String)
-        monsterName.text = dictionary["name"] as? String
+    func populate(animal: Animal) {
+        monsterImageView.image = UIImage(named: animal.sprite as String)
+        monsterName.text = animal.name as String
     
-        UIProgressView.animateWithDuration(2.0, animations: {
-            self.healthMeter.setProgress(dictionary["health"] as! Float, animated: true)
-        })
+//        UIProgressView.animateWithDuration(5, animations: {
+//            self.healthMeter.setProgress(animal.health, animated: true)
+//        })
     }
 }

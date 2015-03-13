@@ -18,12 +18,14 @@ class User {
     var bananaPicks: [BananaPick]
 
     init (dictionary: NSDictionary) {
-        name = "jehan"
+        name = dictionary["name"] as! String
         animals.append(Animal(dictionary: ["name" : "bulbasaur", "sprite" : "1_bulbasaur", "health" : 0.1, "lat": 37, "long": 122 ]))
-        email = "jehan.tremback@gmail.com"
-        currentLocation = PFGeoPoint(latitude: 37.7833, longitude: 122.4167)
-        lastLocationUpdate = NSDate(timeIntervalSince1970: 1426209264)
-        bananaCount = 12
-        bananaPicks = []
+        email = dictionary["email"] as! String
+        bananaCount = dictionary["bananaCount"] as! Int
+        let picks = dictionary["bananaPicks"] as! [NSDictionary]
+        bananaPicks = picks.map {
+            (var pick) -> NSDictionary in
+            return BananaPick() // <- Not finished
+        }
     }
 }

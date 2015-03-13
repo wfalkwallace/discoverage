@@ -11,6 +11,11 @@ import Accounts
 
 class LoginViewController: UIViewController {
 
+    @IBAction func loginButton(sender: AnyObject) {
+        let vc = RankingViewController()
+        self.presentViewController(vc, animated: false, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,8 +25,12 @@ class LoginViewController: UIViewController {
         println(b.location)
         b.save()
         println("WFW")
-
     }
+    
+//    override func viewDidAppear(animated: Bool) {
+//        let vc = RankingViewController()
+//        self.presentViewController(vc, animated: false, completion: nil)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

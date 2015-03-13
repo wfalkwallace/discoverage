@@ -29,7 +29,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidAppear(animated: Bool) {
         
         bananaCount.text = String(user.bananaCount)
-        monstersLabel.text = String(user.menagerie.animals.count)
+        monstersLabel.text = String(user.animals.count)
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.borderColor = UIColor.blackColor().CGColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
@@ -44,13 +44,13 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return user.menagerie.animals.count
+        return user.animals.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpriteCell", forIndexPath: indexPath) as! SpriteCell
         
-        cell.initFromDictionary(user.menagerie.animals[indexPath.row])
+        cell.populate(user.animals[indexPath.row])
         return cell
     }
     
@@ -68,7 +68,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         let detailsViewController = storyboard.instantiateViewControllerWithIdentifier("DetailsViewController") as! DetailsViewController
         
         detailsViewController.user = self.user
-        detailsViewController.monsterIndexRow = indexPath.row
+        detailsViewController.animalIndexRow = indexPath.row
         detailsViewController.delegate = self
 
         let nav = self.navigationController
@@ -86,8 +86,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         
         //monster health is not already 100
-        let monster = user.menagerie.animals[row]
-        let health = monster["health"] as? Float
+        let animal = user.animals[row]
+        let health = animal.health
         
         if (health == 1.0) {
             return false
@@ -101,10 +101,10 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         user.bananaCount -= 1
         
         //increate monster health
-        var monster = user.menagerie.animals[row]
-        var health = monster["health"] as! Float
+        var animal = user.animals[row]
+        var health = animal.health
         health += 0.1
-        monster["health"] = health
+        animal.health = health
         
         var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
         self.collectionView!.reloadItemsAtIndexPaths([indexPath])
