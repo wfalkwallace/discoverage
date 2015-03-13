@@ -20,7 +20,6 @@
 		BEBCED0F1AAFE2750048D9E9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBCED0E1AAFE2750048D9E9 /* DetailsViewController.swift */; };
 		BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */; };
 		BEBCED131AAFE2A90048D9E9 /* SpriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */; };
-		BEF9D48C1AAFEDD9000EE85C /* Menagerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF9D48B1AAFEDD9000EE85C /* Menagerie.swift */; };
 		E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */; };
 		E69444D51AB0B61000003443 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69444D41AB0B61000003443 /* Location.swift */; };
 		E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C31AA6662A00852C9F /* AppDelegate.swift */; };
@@ -62,7 +61,6 @@
 		BEBCED0E1AAFE2750048D9E9 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteCell.swift; sourceTree = "<group>"; };
 		BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpriteCell.xib; sourceTree = "<group>"; };
-		BEF9D48B1AAFEDD9000EE85C /* Menagerie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menagerie.swift; sourceTree = "<group>"; };
 		E617BBBD1AA832F000342FBB /* Discoverage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Discoverage-Bridging-Header.h"; sourceTree = "<group>"; };
 		E617BBC01AA833B800342FBB /* discoverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = discoverage.xcconfig; sourceTree = "<group>"; };
 		E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaPick.swift; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 				E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */,
 				E6F418261AAA6F3A007E4FF3 /* User.swift */,
 				E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */,
-				BEF9D48B1AAFEDD9000EE85C /* Menagerie.swift */,
 				45B1A3F51AABC80500E6248C /* Animal.swift */,
 			);
 			name = Models;
@@ -415,7 +412,6 @@
 				E69444D51AB0B61000003443 /* Location.swift in Sources */,
 				BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */,
 				E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */,
-				BEF9D48C1AAFEDD9000EE85C /* Menagerie.swift in Sources */,
 				BEBCED0D1AAFE2320048D9E9 /* MenagerieViewController.swift in Sources */,
 				E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */,
 				E6F418251AAA6F2D007E4FF3 /* BananaTree.swift in Sources */,
