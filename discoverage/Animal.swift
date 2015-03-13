@@ -8,32 +8,26 @@
 
 import UIKit
 
-class Animal: PFObject, PFSubclassing {
-    @NSManaged var owner: User?
-    @NSManaged var health: NSInteger
-    @NSManaged var name: NSString
-    @NSManaged var sprite: NSString
-    @NSManaged var location: PFGeoPoint
+class Animal: NSObject {
+    var owner: User?
+    var health: Float
+    var name: String
+    var sprite: String
+    var location: PFGeoPoint
 
-    override init() {
-        super.init()
+    init(dictionary: NSDictionary) {
+        println(dictionary)
+        
+        health = dictionary["health"] as! Float
+        name = dictionary["name"] as! String
+        sprite = dictionary["sprite"] as! String
+        let loc = dictionary["location"] as! NSDictionary
+        location = PFGeoPoint(latitude: loc["latitude"], longitude: loc["longitude"])
     }
 
-    override class func initialize() {
-        var onceToken : dispatch_once_t = 0;
-        dispatch_once(&onceToken) {
-            self.registerSubclass()
-        }
-    }
-
-    static func parseClassName() -> String! {
-        return "Animal"
-    }
-    
     func feed () {
         if (health <= 10 && owner?.bananaCount > 0) {
             self.health = self.health + 1
         }
     }
-
 }
