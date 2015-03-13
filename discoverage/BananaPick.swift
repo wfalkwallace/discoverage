@@ -8,22 +8,12 @@
 
 import UIKit
 
-class BananaPick: PFObject, PFSubclassing {
-    @NSManaged var bananaTree: BananaTree
-    @NSManaged var timestamp: NSDate
+class BananaPick {
+    var bananaTree: BananaTree
+    var timestamp: NSDate
     
-    override init() {
-        super.init()
-    }
-    
-    override class func initialize() {
-        var onceToken : dispatch_once_t = 0;
-        dispatch_once(&onceToken) {
-            self.registerSubclass()
-        }
-    }
-    
-    static func parseClassName() -> String! {
-        return "BananaPick"
+    init(bananaTree: BananaTree, timestamp: NSDate) {
+        self.bananaTree = bananaTree
+        self.timestamp = timestamp
     }
 }

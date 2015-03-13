@@ -8,27 +8,22 @@
 
 import UIKit
 
-class User: PFObject, PFSubclassing {
-    @NSManaged var name: String
-    @NSManaged var menagerie: Menagerie
-    @NSManaged var email: NSString
-    @NSManaged var currentLocation: PFGeoPoint?
-    @NSManaged var lastLocationUpdate: NSDate?
-    @NSManaged var bananaCount: NSInteger
-    @NSManaged var bananas: [BananaPick]
+class User {
+    var name: String
+    var animals: [Animal] = []
+    var email: String
+    var currentLocation: PFGeoPoint?
+    var lastLocationUpdate: NSDate?
+    var bananaCount: Int
+    var bananaPicks: [BananaPick]
 
-    override init () {
-        super.init()
-    }
-
-    override class func initialize() {
-        var onceToken : dispatch_once_t = 0;
-        dispatch_once(&onceToken) {
-            self.registerSubclass()
-        }
-    }
-
-    static func parseClassName() -> String! {
-        return "User"
+    init (dictionary: NSDictionary) {
+        name = "jehan"
+        animals.append(Animal(dictionary: ["name" : "bulbasaur", "sprite" : "1_bulbasaur", "health" : 0.1, "lat": 37, "long": 122 ]))
+        email = "jehan.tremback@gmail.com"
+        currentLocation = PFGeoPoint(latitude: 37.7833, longitude: 122.4167)
+        lastLocationUpdate = NSDate(timeIntervalSince1970: 1426209264)
+        bananaCount = 12
+        bananaPicks = []
     }
 }

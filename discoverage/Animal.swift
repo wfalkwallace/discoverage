@@ -21,8 +21,7 @@ class Animal: NSObject {
         health = dictionary["health"] as! Float
         name = dictionary["name"] as! String
         sprite = dictionary["sprite"] as! String
-        let loc = dictionary["location"] as! NSDictionary
-        location = PFGeoPoint(latitude: loc["latitude"], longitude: loc["longitude"])
+        location = PFGeoPoint(latitude: dictionary["lat"] as! Double, longitude: dictionary["long"] as! Double)
     }
 
     func feed () {
