@@ -11,26 +11,12 @@ import Accounts
 
 class LoginViewController: UIViewController {
 
-    @IBAction func loginButton(sender: AnyObject) {
-        let vc = RankingViewController()
-        self.presentViewController(vc, animated: false, completion: nil)
-    }
+    @IBOutlet weak var usernameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var b = BananaTree()
-        b.location = PFGeoPoint(location: CLLocation(latitude: -37, longitude: 122))
-        println(b)
-        println(b.location)
-        b.save()
-        println("WFW")
     }
-    
-//    override func viewDidAppear(animated: Bool) {
-//        let vc = RankingViewController()
-//        self.presentViewController(vc, animated: false, completion: nil)
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
