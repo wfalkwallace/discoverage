@@ -9,8 +9,8 @@
 import UIKit
 
 class BananaTree {
-    var location: PFGeoPoint
-    var object: PFObject
+    let location: PFGeoPoint
+    private let object: PFObject
     var id: Int {
         return object.objectForKey("id") as! Int
     }
@@ -19,11 +19,12 @@ class BananaTree {
         self.location = object.objectForKey("location") as! PFGeoPoint
         self.object = object
     }
-    
-    init(location: PFGeoPoint) {
-        self.object = PFObject(className: "BananaTree")
-        self.location = location
-    }
+
+// Probably don't need this
+//    init(location: PFGeoPoint) {
+//        self.object = PFObject(className: "BananaTree")
+//        self.location = location
+//    }
     
     func save(block: (success: Bool, error: NSError?) -> ()) {
         object.setObject(location, forKey: "location")
