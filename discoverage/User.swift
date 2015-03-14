@@ -26,7 +26,8 @@ class User {
         self.name = name
         self.email = email
         self.bananaCount = bananaCount
-        self.object = createObject()
+        self.object = PFObject(className:"User")
+        self.sync()
     }
     
     init(object: PFObject) {
@@ -36,12 +37,10 @@ class User {
         self.object = object
     }
     
-    func createObject () -> PFObject {
-        var object = PFObject(className:"User")
+    func sync () {
         object.setObject(self.name, forKey: "name")
         object.setObject(self.email, forKey: "email")
         object.setObject(self.bananaCount, forKey: "bananaCount")
-        return object
     }
 
     class func queryWithName(name : String, completion: (user: User?, error: NSError?) -> ()) {
@@ -64,23 +63,18 @@ class User {
         }
     }
 
-    
-    //this method should have a completion block
-    class func queryWithId(userId: String) -> User {
+    class func queryWithId(id: String, completion: (user: User?, error: NSError?) -> ()) -> User {
         var query = PFQuery(className:"User")
-        var user:User?
-
-        query.getObjectInBackgroundWithId(userId) {
-            (PFObjectResultBlock) -> Void in
+        query.getObjectInBackgroundWithId(id) {
+            (object: PFObject?, error: NSError?) -> Void in
             
-            if PFObjectResultBlock.0 != nil {
-                user = User(object: PFObjectResultBlock.0!)
+            if let object = object {
+                completion(user: User(object: object), error: nil)
             } else {
-                println("couldnt get user")
+                println("couldn't get user")
+                completion(user: nil, error: error)
             }
         }
-        //seems dangerous, user could be nil if getObjectInBackgroundWithId fails
-        return user!
     }
     
     func logout() {
