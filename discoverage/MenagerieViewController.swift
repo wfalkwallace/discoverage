@@ -15,31 +15,43 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var monstersLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
+    var user: User?
+    var animals: [Animal]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var user = User.currentUser
+        
+        Animal.animalsForUserAndCompletion(user!.name) {
+            (animals: [Animal]?, error: NSError?) in
+            if error == nil {
+                self.animals = animals
+                self.loadViews()
+                self.collectionView.reloadData()
+                
+            } else {
+                //handle getting user failure
+            }
+        }
+
+       
+    
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
-        var users = User.initWithObject(User.queryWithName("aditya"))
-        
-        
-        
-        
-        var animals = Animal.animalsForUser(Animal.initWithArray(Animal.query()), userName: "aditya")
-        
-        
-        
-        bananaCount.text = String(user.bananaCount)
-        monstersLabel.text = String(user.animals.count)
+    func loadViews() {
+        bananaCount.text = String(user!.bananaCount)
+        monstersLabel.text = String(animals!.count)
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.borderColor = UIColor.blackColor().CGColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
     }
     
     /*override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -50,13 +62,17 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return user.animals.count
+        
+        if animals != nil {
+            return animals!.count
+        }
+        return 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpriteCell", forIndexPath: indexPath) as! SpriteCell
         
-        cell.populate(user.animals[indexPath.row])
+        cell.populate(animals![indexPath.row])
         return cell
     }
     
@@ -87,15 +103,15 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
  
     func healthShouldChange(row: Int) -> Bool {
         //user has bananas
-        if (user.bananaCount == 0) {
+        if (user!.bananaCount == 0) {
             return false
         }
         
         //monster health is not already 100
-        let animal = user.animals[row]
+        let animal = animals![row]
         let health = animal.health
         
-        if (health == 1.0) {
+        if (health == 1) {
             return false
         }
         return true
@@ -104,12 +120,12 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func healthDidChange(row: Int) {
         //decrement user banana count
-        user.bananaCount -= 1
+        user!.bananaCount -= 1
         
         //increate monster health
-        var animal = user.animals[row]
+        var animal = animals![row]
         var health = animal.health
-        health += 0.1
+        health = health + 10
         animal.health = health
         
         var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)

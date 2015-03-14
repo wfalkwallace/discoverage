@@ -9,12 +9,13 @@
 import UIKit
 
 class User {
+    var userId: String?
     var name: String
     var email: String
-    var location: PFGeoPoint?
-    var lastLocationUpdate: NSDate?
     var bananaCount: Int
-    var bananaPicks: [BananaPick]
+    //var location: PFGeoPoint
+    //var lastLocationUpdate: NSDate?
+    //var bananaPicks: [BananaPick]
 
     /*init (dictionary: NSDictionary) {
         name = dictionary["name"] as! String
@@ -27,45 +28,57 @@ class User {
         //}
     }*/
     
-    init(object: PFObject) {
-        
-        self.name = object.objectForKey("userName") as! String
-        self.email = object.objectForKey("email") as! String
-        self.location = object.objectForKey("location") as! PFGeoPoint
-        self.bananaCount = object.objectForKey("bananaCount") as! Int
-        
+    init(name: String, email: String, bananaCount: Int) {
+        self.name = name
+        self.email = email
+        //self.location = location
+        self.bananaCount = bananaCount
+        //save
     }
     
-    class func initWithObject(results: [PFObject]) -> User {
+    init(object: PFObject) {
+        self.userId = object.objectId
+        self.name = object.objectForKey("userName") as! String
+        self.email = object.objectForKey("email") as! String
+        //self.location = object.objectForKey("location") as! PFGeoPoint
+        self.bananaCount = object.objectForKey("bananaCount") as! Int
+    }
+    
+    class func initWithObjects(results: [PFObject]) -> User {
         var result = results[0]
         var user = User(object: result)
         return user
     }
 
+    //hack
+    class var currentUser : User? {
+        get {
+            var user = User(name: "aditya", email: "aditya@email.com", bananaCount: 10)
+            user.userId = "Dt3mVAh05F"
+            return user
+        }
+    }
     
-    //this method should have a completion block
-    class func queryWithName(userName : String) -> [PFObject] {
-        
-        var user:User?
+    class func queryWithNameAndCompletion(userName : String, completion: (user: User?, error: NSError?) -> ()) {
         var query = PFQuery(className:"User")
-        var pfObjects = [PFObject]()
         
         query.whereKey("userName", equalTo: userName)
         query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
-            // The find succeeded.
-            println("Successfully retrieved \(results?.count) animals.")
-            if let objects = results as? [PFObject] {
-                for object in objects {
-                    pfObjects.append(object)
+            
+            if error == nil {
+                println("Successfully retrieved \(results?.count) users")
+                if let objects = results as? [PFObject] {
+                    var user = User.initWithObjects(objects)
+                    completion(user: user, error: nil)
                 }
             }
             else {
-                // Log details of the failure
                 println("failed")
+                completion(user: nil, error: error)
             }
         }
-        return pfObjects
     }
+
     
     //this method should have a completion block
     class func queryWithId(userId: String) -> User {
@@ -82,11 +95,7 @@ class User {
                 println("couldnt get user")
             }
         }
-        //seems dangerous
+        //seems dangerous, user could be nil if getObjectInBackgroundWithId fails
         return user!
-        bananaPicks = picks.map {
-            (var pick) -> NSDictionary in
-            return BananaPick() // <- Not finished
-        }
     }
 }
