@@ -16,8 +16,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var monstersLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
-    //temporary user object
-    var user : User = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +25,15 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        var users = User.initWithObject(User.queryWithName("aditya"))
+        
+        
+        
+        
+        var animals = Animal.animalsForUser(Animal.initWithArray(Animal.query()), userName: "aditya")
+        
+        
         
         bananaCount.text = String(user.bananaCount)
         monstersLabel.text = String(user.animals.count)
