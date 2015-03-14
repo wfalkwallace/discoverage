@@ -20,7 +20,7 @@ class AppViewController: UIViewController {
         let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! MenagerieViewController
         menagerieViewController.view.frame = containerView.frame
         containerView.addSubview(menagerieViewController.view)
-        tabBar.selectedItem = 0
+        tabBar.selectedItem = tabBar.items[0] as! UITabBarItem
     }
 
     override func didReceiveMemoryWarning() {
