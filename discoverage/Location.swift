@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreLocation
 
-class Location: NSObject {
+class Location: NSObject, CLLocationManagerDelegate  {
    override init () {
         switch CLLocationManager.authorizationStatus() {
             case .AuthorizedAlways, .AuthorizedWhenInUse:
@@ -32,9 +32,32 @@ class Location: NSObject {
                         UIApplication.sharedApplication().openURL(url)
                     }
                 }
-                alertController.addAction(openAction)
 
-//                self.presentViewController(alertController, animated: true, completion: nil)
+                alertController.addAction(openAction)
+        }
+    }
+    
+    class var sharedInstance: Location {
+        struct Static {
+            static let instance = Location ()
+        }
+        
+        return Static.instance
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        println(locations)
+        println(locations.last)
+        
+        let geoPoint = PFGeoPoint(location: locations.last as? CLLocation)
+        var query = PFQuery(className: "BananaTree")
+        query.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
+        query.limit = 10
+        
+        if let bananaTrees = query.findObjects() {
+            for bananaTree in bananaTrees {
+                // Add to user's banana stash
+            }
         }
     }
 }
