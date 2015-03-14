@@ -97,7 +97,7 @@ class Animal: NSObject {
                 println("failed")
             }
         }
-        //seems dangerous, user could be nil if findObjectsInBackgroundWithBlock failed
+
         return Animal.initWithArray(pfObjects)
     }
 }
