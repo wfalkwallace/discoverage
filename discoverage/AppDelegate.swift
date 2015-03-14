@@ -24,7 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println(error)
             }
         })
-
+        
+        var navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.barTintColor = UIColor(red: 0.240, green: 0.0, blue: 0.0, alpha:0.75)
+        navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PokemonHollowNormal", size: 30)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
         let location = Location()
 
         return true

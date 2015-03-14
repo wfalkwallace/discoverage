@@ -15,9 +15,13 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var monstersLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
+<<<<<<< HEAD
     var user: User?
     var animals: [Animal]?
     
+=======
+
+>>>>>>> origin/master
     override func viewDidLoad() {
         super.viewDidLoad()
         

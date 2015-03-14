@@ -9,14 +9,14 @@
 import UIKit
 import MapKit
 
-class BananaMapViewController: UIViewController {
+class BananaMapViewController: UIViewController, UITabBarDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var tabBar: UITabBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tabBar.selectedItem = tabBar.items![1] as? UITabBarItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,15 +24,16 @@ class BananaMapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        if item.title == (tabBar.items![0] as! UITabBarItem).title {
+            let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+            let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+            self.presentViewController(menagerieViewController, animated: true, completion: nil)
+        } else if item.title == (tabBar.items![2] as! UITabBarItem).title {
+            let rankingStoryboard = UIStoryboard(name: "Ranking", bundle: nil)
+            let rankingViewController = rankingStoryboard.instantiateInitialViewController() as! UINavigationController
+            self.presentViewController(rankingViewController, animated: true, completion: nil)
+        }
     }
-    */
 
 }

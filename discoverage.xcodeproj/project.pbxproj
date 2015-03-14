@@ -21,7 +21,6 @@
 		BEBCED131AAFE2A90048D9E9 /* SpriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */; };
 		E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */; };
 		E69444D51AB0B61000003443 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69444D41AB0B61000003443 /* Location.swift */; };
-		E697A25B1AB4A12000F76121 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E697A25A1AB4A12000F76121 /* AppViewController.swift */; };
 		E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C31AA6662A00852C9F /* AppDelegate.swift */; };
 		E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B513C51AA6662A00852C9F /* LoginViewController.swift */; };
 		E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B513CA1AA6662A00852C9F /* Images.xcassets */; };
@@ -30,10 +29,12 @@
 		E6BDBAF11AAD6FDC00AE4D2A /* BananaMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */; };
 		E6C01AC71AAEC53800F88401 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C01AC61AAEC53800F88401 /* CoreLocation.framework */; };
 		E6C01AC91AAEC54900F88401 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C01AC81AAEC54900F88401 /* MapKit.framework */; };
-		E6F418201AA9739A007E4FF3 /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F4181F1AA9739A007E4FF3 /* App.storyboard */; };
+		E6F418201AA9739A007E4FF3 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F4181F1AA9739A007E4FF3 /* Login.storyboard */; };
 		E6F418251AAA6F2D007E4FF3 /* BananaTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */; };
 		E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418261AAA6F3A007E4FF3 /* User.swift */; };
 		E6FA65A71AB4B86200340CF2 /* BananaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FA65A61AB4B86200340CF2 /* BananaMapViewController.swift */; };
+		E6FA65AA1AB4E73900340CF2 /* PokemonHollow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6FA65A81AB4E73900340CF2 /* PokemonHollow.ttf */; };
+		E6FA65AB1AB4E73900340CF2 /* PokemonSolid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6FA65A91AB4E73900340CF2 /* PokemonSolid.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,6 @@
 		E617BBC01AA833B800342FBB /* discoverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = discoverage.xcconfig; sourceTree = "<group>"; };
 		E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaPick.swift; sourceTree = "<group>"; };
 		E69444D41AB0B61000003443 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		E697A25A1AB4A12000F76121 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		E6B513BE1AA6662A00852C9F /* discoverage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = discoverage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B513C21AA6662A00852C9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6B513C31AA6662A00852C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,10 +78,12 @@
 		E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BananaMap.storyboard; sourceTree = "<group>"; };
 		E6C01AC61AAEC53800F88401 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E6C01AC81AAEC54900F88401 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		E6F4181F1AA9739A007E4FF3 /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
+		E6F4181F1AA9739A007E4FF3 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaTree.swift; sourceTree = "<group>"; };
 		E6F418261AAA6F3A007E4FF3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E6FA65A61AB4B86200340CF2 /* BananaMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaMapViewController.swift; sourceTree = "<group>"; };
+		E6FA65A81AB4E73900340CF2 /* PokemonHollow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PokemonHollow.ttf; sourceTree = "<group>"; };
+		E6FA65A91AB4E73900340CF2 /* PokemonSolid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PokemonSolid.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +161,6 @@
 			children = (
 				E6FA65A61AB4B86200340CF2 /* BananaMapViewController.swift */,
 				E6B513C51AA6662A00852C9F /* LoginViewController.swift */,
-				E697A25A1AB4A12000F76121 /* AppViewController.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -197,6 +198,7 @@
 				E6F418221AA973AB007E4FF3 /* View Controllers */,
 				E6F418211AA9739D007E4FF3 /* Storyboards */,
 				E6B513CA1AA6662A00852C9F /* Images.xcassets */,
+				E6FA65AC1AB4E75500340CF2 /* Resources */,
 				E6B513C11AA6662A00852C9F /* Supporting Files */,
 			);
 			path = discoverage;
@@ -232,7 +234,7 @@
 			children = (
 				E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */,
 				BEBCED081AAFE1EF0048D9E9 /* Menagerie.storyboard */,
-				E6F4181F1AA9739A007E4FF3 /* App.storyboard */,
+				E6F4181F1AA9739A007E4FF3 /* Login.storyboard */,
 				45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */,
 			);
 			name = Storyboards;
@@ -257,6 +259,15 @@
 				45B1A3F51AABC80500E6248C /* Animal.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E6FA65AC1AB4E75500340CF2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E6FA65A81AB4E73900340CF2 /* PokemonHollow.ttf */,
+				E6FA65A91AB4E73900340CF2 /* PokemonSolid.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,9 +355,11 @@
 				E6B513CE1AA6662A00852C9F /* LaunchScreen.xib in Resources */,
 				E6BDBAF11AAD6FDC00AE4D2A /* BananaMap.storyboard in Resources */,
 				E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */,
+				E6FA65AB1AB4E73900340CF2 /* PokemonSolid.ttf in Resources */,
 				BEBCED131AAFE2A90048D9E9 /* SpriteCell.xib in Resources */,
+				E6FA65AA1AB4E73900340CF2 /* PokemonHollow.ttf in Resources */,
 				BEBCED091AAFE1F00048D9E9 /* Menagerie.storyboard in Resources */,
-				E6F418201AA9739A007E4FF3 /* App.storyboard in Resources */,
+				E6F418201AA9739A007E4FF3 /* Login.storyboard in Resources */,
 				45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +415,6 @@
 				45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */,
 				45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */,
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
-				E697A25B1AB4A12000F76121 /* AppViewController.swift in Sources */,
 				E6FA65A71AB4B86200340CF2 /* BananaMapViewController.swift in Sources */,
 				45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */,
 				E69444D51AB0B61000003443 /* Location.swift in Sources */,
