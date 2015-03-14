@@ -50,13 +50,25 @@ class Location: NSObject, CLLocationManagerDelegate  {
         println(locations.last)
         
         let geoPoint = PFGeoPoint(location: locations.last as? CLLocation)
-        var query = PFQuery(className: "BananaTree")
-        query.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
-        query.limit = 10
         
-        if let bananaTrees = query.findObjects() {
+        var aQuery = PFQuery(className: "Animal")
+        aQuery.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
+        aQuery.limit = 1
+        
+        if let animal = aQuery.findObjects()?[0] as? PFObject {
+            let animal = Animal(object: animal)
+            animal.owner = User.currentUser
+            animal.save({ (error: NSError) })
+        }
+
+        var bQuery = PFQuery(className: "BananaTree")
+        bQuery.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
+        bQuery.limit = 10
+        
+        if let bananaTrees = bQuery.findObjects() {
             for bananaTree in bananaTrees {
-                // Add to user's banana stash
+                User.currentUser?.bananaCount += 1
+                User.currentUser?.bananaPicks.append(BananaPick(bananaTree: BananaTree(object: bananaTree as! PFObject), timestamp: NSDate()))
             }
         }
     }

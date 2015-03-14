@@ -38,11 +38,4 @@ class BananaTree {
         }
         return trees
     }
-    
-//    class getByLocation(location, block) {
-    
-//        parse query,
-//        return initwitharray
-    
-//    }
 }
