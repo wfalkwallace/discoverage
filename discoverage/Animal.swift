@@ -9,19 +9,20 @@
 import UIKit
 
 class Animal: NSObject {
-    var owner: User?
+    var owner: String
     var health: Int
     var name: String
     var sprite: String
-    var location: PFGeoPoint
+   // var location: PFGeoPoint
     var object : PFObject
 
     init(object: PFObject) {
-        self.owner = User.queryWithId(object.objectForKey("owner") as! String)
+        
+        self.owner = "" //object.objectForKey("owner") as! String
         self.name = object.objectForKey("name") as! String
         self.sprite = object.objectForKey("sprite") as! String
         self.health = object.objectForKey("health") as! Int
-        self.location = object.objectForKey("location") as! PFGeoPoint
+        //self.location = object.objectForKey("location") as! PFGeoPoint
         self.object = object
     }
     
@@ -34,17 +35,17 @@ class Animal: NSObject {
         return animals
     }
     
-    func feed () {
-        if (health <= 10 && owner?.bananaCount > 0) {
-            self.health = self.health + 1
-        }
-    }
+//    func feed () {
+//        if (health <= 10 && owner.bananaCount > 0) {
+//            self.health = self.health + 1
+//        }
+//    }
     
     //this method should have a completion block
     class func animalsForUserAndCompletion(userName: String, completion: (animals: [Animal]?, error: NSError?) -> ()) {
 
         
-        User.queryWithNameAndCompletion(userName) {
+        User.queryWithName(userName) {
             (usr: User?, error: NSError?) in
             if error == nil {
                 var user = usr
@@ -54,13 +55,14 @@ class Animal: NSObject {
                 println(user!.email)
                 
                 var query = PFQuery(className:"Animal")
-                query.whereKey("owner", equalTo: user!)
+                query.whereKey("owner", equalTo: user!.userId!)
             
                 query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
                     if error == nil {
                         println("Successfully retrieved \(results?.count) animals.")
                         if let objects = results as? [PFObject] {
-                            completion(animals: Animal.initWithArray(objects), error: nil)
+                            var animals = Animal.initWithArray(objects)
+                            completion(animals: animals, error: nil)
                         }
                     }
                     else {
@@ -95,11 +97,7 @@ class Animal: NSObject {
                 println("failed")
             }
         }
-<<<<<<< HEAD
         //seems dangerous, user could be nil if findObjectsInBackgroundWithBlock failed
         return Animal.initWithArray(pfObjects)
-=======
-        return pfObjects
->>>>>>> origin/master
     }
 }

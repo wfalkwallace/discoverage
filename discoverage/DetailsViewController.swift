@@ -16,6 +16,7 @@ protocol DetailsViewControllerDelegate {
 class DetailsViewController: UIViewController {
 
     var user: User?
+    var animal : Animal?
     var animalIndexRow : Int?
 
     var delegate: DetailsViewControllerDelegate?
@@ -35,21 +36,19 @@ class DetailsViewController: UIViewController {
         var button = UIBarButtonItem(title: "Menagerie", style: .Bordered, target: self, action: "onBack")
         button.tintColor = UIColor.blackColor()
         navigationItem.leftBarButtonItem = button
-        let animal = user!.animals[animalIndexRow!]
-        navigationItem.title = animal.name as? String
+        navigationItem.title = animal!.name as? String
 
         initView()
     }
 
     func initView() {
-        let animal = user?.animals[animalIndexRow!]
 
         animalImageView.image =  UIImage(named: animal!.sprite as String)
         animalName.text = animal!.name as String
 
-        UIProgressView.animateWithDuration(2.0, animations: {
-            self.healthMeter.setProgress(animal!.health as Float, animated: true)
-        })
+//        UIProgressView.animateWithDuration(2.0, animations: {
+//            self.healthMeter.setProgress(animal!.health as Float, animated: true)
+//        })
 
         bananasCount.text = String(user!.bananaCount)
     }
@@ -67,11 +66,10 @@ class DetailsViewController: UIViewController {
         //update this view
         bananasCount.text = String(user!.bananaCount)
 
-        let animal = user?.animals[animalIndexRow!]
-        var health = animal?.health as Float!
+        var health = animal?.health as Int!
 
-        UIProgressView.animateWithDuration(2.0, animations: {
-            self.healthMeter.setProgress(health!,  animated: true)
-        })
+//        UIProgressView.animateWithDuration(2.0, animations: {
+//            self.healthMeter.setProgress(health!,  animated: true)
+//        })
     }
 }
