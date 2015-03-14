@@ -59,11 +59,11 @@
                                 <exclude reference="wkL-4h-1fx"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="fBg-F9-x8D"/>
-                                <exclude reference="fbY-4v-uT2"/>
                                 <exclude reference="48Z-dr-rb2"/>
                                 <exclude reference="abf-zG-2eB"/>
                                 <exclude reference="exW-5o-djo"/>
+                                <exclude reference="fBg-F9-x8D"/>
+                                <exclude reference="fbY-4v-uT2"/>
                                 <exclude reference="T1A-gp-CVB"/>
                             </mask>
                         </variation>
@@ -72,13 +72,13 @@
                                 <include reference="wkL-4h-1fx"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="48Z-dr-rb2"/>
+                                <include reference="abf-zG-2eB"/>
+                                <include reference="exW-5o-djo"/>
                                 <exclude reference="ZSV-CB-WcN"/>
                                 <include reference="fBg-F9-x8D"/>
                                 <include reference="fbY-4v-uT2"/>
                                 <exclude reference="wwM-2Z-IG3"/>
-                                <include reference="48Z-dr-rb2"/>
-                                <include reference="abf-zG-2eB"/>
-                                <include reference="exW-5o-djo"/>
                                 <exclude reference="7gf-2N-4oO"/>
                                 <include reference="T1A-gp-CVB"/>
                             </mask>

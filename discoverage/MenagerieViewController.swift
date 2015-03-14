@@ -12,16 +12,10 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bananaCount: UILabel!
-    @IBOutlet weak var monstersLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
-    
-<<<<<<< HEAD
+
     var user: User?
     var animals: [Animal]?
-    
-=======
 
->>>>>>> origin/master
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,13 +39,9 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
     }
     
-    func loadViews() {
-        bananaCount.text = String(user!.bananaCount)
-        monstersLabel.text = String(animals!.count)
-        profileImageView.layer.borderWidth = 1
-        profileImageView.layer.borderColor = UIColor.blackColor().CGColor
-        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
-        profileImageView.clipsToBounds = true
+    override func viewDidAppear(animated: Bool) {
+        var users = User.initWithObject(User.queryWithName("aditya"))
+        var animals = Animal.animalsForUser(Animal.initWithArray(Animal.query()), userName: "aditya")
     }
     
     override func viewDidAppear(animated: Bool) {

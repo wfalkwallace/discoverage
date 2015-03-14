@@ -53,14 +53,14 @@
                     <exclude reference="kId-c2-rCX"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="3GZ-AP-XY3"/>
-                    <exclude reference="4em-zx-kea"/>
-                    <exclude reference="Zwa-0c-YyD"/>
                     <exclude reference="2Cw-5K-ilW"/>
                     <exclude reference="A31-Fu-Hbj"/>
                     <exclude reference="Krm-yY-uXf"/>
                     <exclude reference="TnO-04-dgn"/>
                     <exclude reference="gmZ-Tc-Wfs"/>
+                    <exclude reference="3GZ-AP-XY3"/>
+                    <exclude reference="4em-zx-kea"/>
+                    <exclude reference="Zwa-0c-YyD"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -70,14 +70,14 @@
                     <include reference="kId-c2-rCX"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="3GZ-AP-XY3"/>
-                    <include reference="4em-zx-kea"/>
-                    <include reference="Zwa-0c-YyD"/>
                     <include reference="2Cw-5K-ilW"/>
                     <include reference="A31-Fu-Hbj"/>
                     <include reference="Krm-yY-uXf"/>
                     <include reference="TnO-04-dgn"/>
                     <include reference="gmZ-Tc-Wfs"/>
+                    <include reference="3GZ-AP-XY3"/>
+                    <include reference="4em-zx-kea"/>
+                    <include reference="Zwa-0c-YyD"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="548" y="455"/>
