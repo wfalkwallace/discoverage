@@ -84,7 +84,7 @@ class User {
     }
     
     func logout() {
-        _currentUser = nil
+        User.currentUser = nil
     }
     
     class var currentUser: User? {
