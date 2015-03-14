@@ -16,6 +16,8 @@ class User {
     //var location: PFGeoPoint
     //var lastLocationUpdate: NSDate?
     //var bananaPicks: [BananaPick]
+    var bananaPicks: [BananaPick]
+    var object: PFObject
 
     /*init (dictionary: NSDictionary) {
         name = dictionary["name"] as! String
@@ -42,6 +44,11 @@ class User {
         self.email = object.objectForKey("email") as! String
         //self.location = object.objectForKey("location") as! PFGeoPoint
         self.bananaCount = object.objectForKey("bananaCount") as! Int
+        self.name = object.objectForKey("userName") as! String
+        self.email = object.objectForKey("email") as! String
+        self.location = object.objectForKey("location") as? PFGeoPoint
+        self.bananaCount = object.objectForKey("bananaCount") as! Int
+        self.object = object
     }
     
     class func initWithObjects(results: [PFObject]) -> User {
@@ -58,6 +65,7 @@ class User {
             return user
         }
     }
+
     
     class func queryWithNameAndCompletion(userName : String, completion: (user: User?, error: NSError?) -> ()) {
         var query = PFQuery(className:"User")
