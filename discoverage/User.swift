@@ -46,7 +46,7 @@ class User {
         self.bananaCount = object.objectForKey("bananaCount") as! Int
         self.name = object.objectForKey("userName") as! String
         self.email = object.objectForKey("email") as! String
-        self.location = object.objectForKey("location") as? PFGeoPoint
+       // self.location = object.objectForKey("location") as? PFGeoPoint
         self.bananaCount = object.objectForKey("bananaCount") as! Int
         self.object = object
     }
