@@ -58,7 +58,7 @@ class Location: NSObject, CLLocationManagerDelegate  {
         if let animal = aQuery.findObjects()?[0] as? PFObject {
             let animal = Animal(object: animal)
             animal.owner = User.currentUser
-            animal.save({ (error: NSError) })
+            animal.save() {(success: Bool, error: NSError?) -> Void in}
         }
 
         var bQuery = PFQuery(className: "BananaTree")
@@ -68,7 +68,8 @@ class Location: NSObject, CLLocationManagerDelegate  {
         if let bananaTrees = bQuery.findObjects() {
             for bananaTree in bananaTrees {
                 User.currentUser?.bananaCount += 1
-                User.currentUser?.bananaPicks.append(BananaPick(bananaTree: BananaTree(object: bananaTree as! PFObject), timestamp: NSDate()))
+                let bananaPick = BananaPick(bananaTree: BananaTree(object: bananaTree as! PFObject), timestamp: NSDate())
+                bananaPick.save() {(success: Bool, error: NSError?) -> Void in}
             }
         }
     }
