@@ -9,22 +9,30 @@
 import UIKit
 
 class BananaPick {
-    var bananaTree: BananaTree
-    var timestamp: NSDate
-    var user: User
-    var object: PFObject
+    let bananaTree: BananaTree
+    let timestamp: NSDate
+    let user: User
+    private let object: PFObject!
+    var id: Int {
+        return object.objectForKey("id") as! Int
+    }
     
     init(bananaTree: BananaTree, timestamp: NSDate) {
         self.bananaTree = bananaTree
         self.timestamp = timestamp
         self.user = User.currentUser!
+        self.object = createObject()
     }
     
     func createObject () -> PFObject {
-        var bananaTree = PFObject(className:"BananaTree")
-        bananaTree.setObject(self.bananaTree.object.objectId!, forKey: "bananaTree")
-        bananaTree.setObject(self.timestamp, forKey: "timestamp")
-        bananaTree.setObject(self.user.object.objectId!, forKey: "user")
-        return bananaTree
+        var object = PFObject(className:"BananaTree")
+        object.setObject(self.bananaTree.id, forKey: "bananaTree")
+        object.setObject(self.timestamp, forKey: "timestamp")
+        object.setObject(self.user.id, forKey: "user")
+        return object
+    }
+    
+    func save (block: (success: Bool, error: NSError?) -> ()) {
+        object.saveInBackgroundWithBlock(block)
     }
 }
