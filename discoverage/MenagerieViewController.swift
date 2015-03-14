@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailsViewControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -115,6 +114,5 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         
         var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
         self.collectionView!.reloadItemsAtIndexPaths([indexPath])
-    }
-    
+    }    
 }

@@ -4,15 +4,16 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
     </dependencies>
     <scenes>
-        <!--I-->
+        <!--Banana Map View Controller-->
         <scene sceneID="8YR-i4-buX">
             <objects>
-                <viewController id="siK-5u-1HF" customClass="I" sceneMemberID="viewController">
+                <viewController id="siK-5u-1HF" customClass="BananaMapViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DOx-Tq-ESg"/>
                         <viewControllerLayoutGuide type="bottom" id="cui-Ql-QrD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UqL-KC-oNT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2NA-H2-EfP">
@@ -31,10 +32,10 @@
                                 <exclude reference="2NA-H2-EfP"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="92w-Kn-jpB"/>
                                 <exclude reference="PEu-rJ-cUi"/>
                                 <exclude reference="eSj-As-j4U"/>
                                 <exclude reference="ywh-5S-1iy"/>
-                                <exclude reference="92w-Kn-jpB"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -42,13 +43,16 @@
                                 <include reference="2NA-H2-EfP"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="92w-Kn-jpB"/>
                                 <include reference="PEu-rJ-cUi"/>
                                 <include reference="eSj-As-j4U"/>
                                 <include reference="ywh-5S-1iy"/>
-                                <include reference="92w-Kn-jpB"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="2NA-H2-EfP" id="qPq-Nu-EzR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5H-rh-1rD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

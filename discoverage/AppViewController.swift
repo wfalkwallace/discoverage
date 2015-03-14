@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppViewController: UIViewController {
+class AppViewController: UIViewController, UITabBarDelegate {
 
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var containerView: UIView!
@@ -16,11 +16,7 @@ class AppViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-        let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! MenagerieViewController
-        menagerieViewController.view.frame = containerView.frame
-        containerView.addSubview(menagerieViewController.view)
-        tabBar.selectedItem = tabBar.items[0] as! UITabBarItem
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,15 +24,23 @@ class AppViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        if let title = item.title {
+            if title == "Home" {
+                let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+                let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! MenagerieViewController
+                menagerieViewController.view.frame = containerView.frame
+                containerView.addSubview(menagerieViewController.view)
+            } else if title == "Map" {
+                let mapStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+                let mapViewController = menagerieStoryboard.instantiateInitialViewController() as! MenagerieViewController
+                menagerieViewController.view.frame = containerView.frame
+                containerView.addSubview(menagerieViewController.view)
+            } else {
+                
+            }
+        }
+        
     }
-    */
 
 }

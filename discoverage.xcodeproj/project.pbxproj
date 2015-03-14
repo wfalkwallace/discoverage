@@ -33,6 +33,7 @@
 		E6F418201AA9739A007E4FF3 /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F4181F1AA9739A007E4FF3 /* App.storyboard */; };
 		E6F418251AAA6F2D007E4FF3 /* BananaTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */; };
 		E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F418261AAA6F3A007E4FF3 /* User.swift */; };
+		E6FA65A71AB4B86200340CF2 /* BananaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FA65A61AB4B86200340CF2 /* BananaMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		E6F4181F1AA9739A007E4FF3 /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
 		E6F418241AAA6F2D007E4FF3 /* BananaTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaTree.swift; sourceTree = "<group>"; };
 		E6F418261AAA6F3A007E4FF3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E6FA65A61AB4B86200340CF2 /* BananaMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 		E60DB2F31AB13DFE00494F2A /* App */ = {
 			isa = PBXGroup;
 			children = (
+				E6FA65A61AB4B86200340CF2 /* BananaMapViewController.swift */,
 				E6B513C51AA6662A00852C9F /* LoginViewController.swift */,
 				E697A25A1AB4A12000F76121 /* AppViewController.swift */,
 			);
@@ -400,6 +403,7 @@
 				45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */,
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
 				E697A25B1AB4A12000F76121 /* AppViewController.swift in Sources */,
+				E6FA65A71AB4B86200340CF2 /* BananaMapViewController.swift in Sources */,
 				45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */,
 				E69444D51AB0B61000003443 /* Location.swift in Sources */,
 				BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */,

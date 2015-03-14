@@ -22,8 +22,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginButton:" destination="Oza-vg-DQ1" eventType="touchUpInside" id="bpY-qk-ijy"/>
-                                    <segue destination="NJ6-zK-DDc" kind="show" id="yDN-ZJ-C92"/>
+                                    <segue destination="NJ6-zK-DDc" kind="show" id="sHh-4C-diz"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fMy-t0-mlx">
@@ -38,8 +37,7 @@
                                         <exclude reference="j97-EW-a0y"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="126" y="205" width="150" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="j97-EW-a0y"/>
                                     </mask>
@@ -95,6 +93,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mbe-Vt-z9i"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="W5T-xn-96E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl6-zg-FOY">
@@ -105,6 +104,9 @@
                                     <tabBarItem title="Map" id="JiP-nO-Aaa"/>
                                     <tabBarItem title="Leaderboard" id="cny-J1-duF"/>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="NJ6-zK-DDc" id="XgU-qH-JIz"/>
+                                </connections>
                             </tabBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdO-sa-8C7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -127,13 +129,13 @@
                                 <exclude reference="XdO-sa-8C7"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5st-j9-azI"/>
-                                <exclude reference="kqH-53-iq9"/>
-                                <exclude reference="wdv-dw-vKP"/>
+                                <exclude reference="htD-S0-NvO"/>
                                 <exclude reference="F5v-14-ap0"/>
                                 <exclude reference="awO-E1-s03"/>
                                 <exclude reference="nbm-de-yk0"/>
-                                <exclude reference="htD-S0-NvO"/>
+                                <exclude reference="5st-j9-azI"/>
+                                <exclude reference="kqH-53-iq9"/>
+                                <exclude reference="wdv-dw-vKP"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -142,13 +144,13 @@
                                 <include reference="XdO-sa-8C7"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="5st-j9-azI"/>
-                                <include reference="kqH-53-iq9"/>
-                                <include reference="wdv-dw-vKP"/>
+                                <include reference="htD-S0-NvO"/>
                                 <include reference="F5v-14-ap0"/>
                                 <include reference="awO-E1-s03"/>
                                 <include reference="nbm-de-yk0"/>
-                                <include reference="htD-S0-NvO"/>
+                                <include reference="5st-j9-azI"/>
+                                <include reference="kqH-53-iq9"/>
+                                <include reference="wdv-dw-vKP"/>
                             </mask>
                         </variation>
                     </view>
@@ -159,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erB-HO-Nat" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1230" y="356"/>
+            <point key="canvasLocation" x="1114.5" y="356"/>
         </scene>
     </scenes>
 </document>

@@ -20,12 +20,17 @@ class BananaTree {
         self.object = object
     }
     
+    init(location: PFGeoPoint) {
+        self.object = PFObject(className: "BananaTree")
+        self.location = location
+    }
+    
     func save(block: (success: Bool, error: NSError?) -> ()) {
         object.setObject(location, forKey: "location")
         object.saveInBackgroundWithBlock(block)
     }
     
-    class func initArray(results: [PFObject]) -> [BananaTree] {
+    class func initWithArray(results: [PFObject]) -> [BananaTree] {
         var trees = [BananaTree]()
         for result in results {
             var tree = BananaTree(object: result)
@@ -33,4 +38,11 @@ class BananaTree {
         }
         return trees
     }
+    
+//    class getByLocation(location, block) {
+    
+//        parse query,
+//        return initwitharray
+    
+//    }
 }
