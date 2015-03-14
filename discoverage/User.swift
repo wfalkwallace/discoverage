@@ -63,7 +63,7 @@ class User {
         }
     }
 
-    class func queryWithId(id: String, completion: (user: User?, error: NSError?) -> ()) -> User {
+    class func queryWithId(id: String, completion: (user: User?, error: NSError?) -> ()) {
         var query = PFQuery(className:"User")
         query.getObjectInBackgroundWithId(id) {
             (object: PFObject?, error: NSError?) -> Void in
