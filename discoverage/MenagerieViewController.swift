@@ -15,7 +15,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var monstersLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

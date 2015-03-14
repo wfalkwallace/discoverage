@@ -72,4 +72,5 @@ class Animal: NSObject {
             }
         }
         return pfObjects
+    }
 }

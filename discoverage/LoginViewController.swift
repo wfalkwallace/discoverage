@@ -23,6 +23,11 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func didTapLogin(sender: UIButton) {
+        let mapStoryboard = UIStoryboard(name: "BananaMap", bundle: nil)
+        let mapViewController = mapStoryboard.instantiateInitialViewController() as! BananaMapViewController
+        self.presentViewController(mapViewController, animated: true, completion: nil)
+    }
 
 }
 

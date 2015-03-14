@@ -91,9 +91,5 @@ class User {
         }
         //seems dangerous
         return user!
-        bananaPicks = picks.map {
-            (var pick) -> NSDictionary in
-            return BananaPick() // <- Not finished
-        }
     }
 }

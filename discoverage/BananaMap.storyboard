@@ -19,39 +19,66 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2NA-H2-EfP">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </mapView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSI-H4-BST">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Home" image="icon-home" id="ORg-HS-Dmf"/>
+                                    <tabBarItem title="Map" image="icon-map" id="o8L-bj-zsv"/>
+                                    <tabBarItem title="Leaderboard" image="icon-leaderboard" id="oXy-E5-fl6"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="siK-5u-1HF" id="lew-2C-3rw"/>
+                                </connections>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="oSI-H4-BST" firstAttribute="top" secondItem="2NA-H2-EfP" secondAttribute="bottom" id="5Pi-2h-Yoj"/>
                             <constraint firstItem="cui-Ql-QrD" firstAttribute="top" secondItem="2NA-H2-EfP" secondAttribute="bottom" id="92w-Kn-jpB"/>
+                            <constraint firstAttribute="trailing" secondItem="oSI-H4-BST" secondAttribute="trailing" id="H8Q-4W-vU0"/>
+                            <constraint firstItem="oSI-H4-BST" firstAttribute="leading" secondItem="UqL-KC-oNT" secondAttribute="leading" id="HZl-5A-l3N"/>
                             <constraint firstItem="2NA-H2-EfP" firstAttribute="leading" secondItem="UqL-KC-oNT" secondAttribute="leading" id="PEu-rJ-cUi"/>
+                            <constraint firstItem="cui-Ql-QrD" firstAttribute="top" secondItem="oSI-H4-BST" secondAttribute="bottom" id="Rv7-54-MjT"/>
                             <constraint firstAttribute="trailing" secondItem="2NA-H2-EfP" secondAttribute="trailing" id="eSj-As-j4U"/>
                             <constraint firstItem="2NA-H2-EfP" firstAttribute="top" secondItem="UqL-KC-oNT" secondAttribute="top" id="ywh-5S-1iy"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="2NA-H2-EfP"/>
+                                <exclude reference="oSI-H4-BST"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="92w-Kn-jpB"/>
                                 <exclude reference="PEu-rJ-cUi"/>
                                 <exclude reference="eSj-As-j4U"/>
                                 <exclude reference="ywh-5S-1iy"/>
+                                <exclude reference="5Pi-2h-Yoj"/>
+                                <exclude reference="H8Q-4W-vU0"/>
+                                <exclude reference="HZl-5A-l3N"/>
+                                <exclude reference="92w-Kn-jpB"/>
+                                <exclude reference="Rv7-54-MjT"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="2NA-H2-EfP"/>
+                                <include reference="oSI-H4-BST"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="92w-Kn-jpB"/>
                                 <include reference="PEu-rJ-cUi"/>
                                 <include reference="eSj-As-j4U"/>
                                 <include reference="ywh-5S-1iy"/>
+                                <include reference="5Pi-2h-Yoj"/>
+                                <include reference="H8Q-4W-vU0"/>
+                                <include reference="HZl-5A-l3N"/>
+                                <exclude reference="92w-Kn-jpB"/>
+                                <include reference="Rv7-54-MjT"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="2NA-H2-EfP" id="qPq-Nu-EzR"/>
+                        <outlet property="tabBar" destination="oSI-H4-BST" id="YgG-YM-UTZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5H-rh-1rD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -59,4 +86,9 @@
             <point key="canvasLocation" x="597" y="249"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-home" width="30" height="30"/>
+        <image name="icon-leaderboard" width="30" height="30"/>
+        <image name="icon-map" width="30" height="30"/>
+    </resources>
 </document>
