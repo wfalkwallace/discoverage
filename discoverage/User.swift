@@ -8,14 +8,18 @@
 
 import UIKit
 
+var _currentUser: User?
+let currentUserKey = "CurrentUser"
+
 class User {
+
+    
     var name: String
     var email: String
     var location: PFGeoPoint?
     var lastLocationUpdate: NSDate?
     var bananaCount: Int
-    var bananaPicks: [BananaPick]
-    var object: PFObject
+    private var object: PFObject
 
     /*init (dictionary: NSDictionary) {
         name = dictionary["name"] as! String
@@ -40,14 +44,6 @@ class User {
         var result = results[0]
         var user = User(object: result)
         return user
-    }
-
-    class var currentUser: User? {
-        get {
-            return User(object: PFObject())
-        }
-        
-        set (user) {}
     }
     
     //this method should have a completion block
@@ -91,5 +87,29 @@ class User {
         }
         //seems dangerous
         return user!
+    }
+    
+    func logout() {
+        _currentUser = nil
+    }
+    
+    class var currentUser: User? {
+        get {
+            if _currentUser == nil {
+                if let user = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? User {
+                    _currentUser = user
+                }
+            }
+            return _currentUser
+        }
+        set(user) {
+            _currentUser = user
+            if _currentUser != nil {
+                NSUserDefaults.standardUserDefaults().setObject(_currentUser, forKey: currentUserKey)
+            } else {
+                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: currentUserKey)
+            }
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
     }
 }
