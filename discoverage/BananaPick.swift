@@ -12,7 +12,7 @@ class BananaPick {
     let bananaTree: BananaTree
     let timestamp: NSDate
     let user: User
-    private let object: PFObject!
+    private var object: PFObject!
     var id: Int {
         return object.objectForKey("id") as! Int
     }
