@@ -58,11 +58,11 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var u: [User] = [User()]
-
-        self.users = u as [User]
-        println(users[3].name)
-        self.tableView?.reloadData()
+//        var u: [User] = [User()]
+//
+//        self.users = u as [User]
+//        println(users[3].name)
+//        self.tableView?.reloadData()
         // Do any additional setup after loading the view.
     }
 

@@ -56,7 +56,7 @@ class Location: NSObject, CLLocationManagerDelegate  {
         aQuery.limit = 1
         
         if let animal = aQuery.findObjects()?[0] as? PFObject {
-            let animal = Animal(object: animal, owner: User.currentUser!)
+            let animal = Animal(object: animal)
             animal.save() {(success: Bool, error: NSError?) -> Void in println("saved animal!")}
         }
 

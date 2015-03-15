@@ -12,9 +12,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bananaCount: UILabel!
-
-    @IBOutlet weak var monstersLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
     
     var user: User?
     var animals: [Animal]?
@@ -23,46 +20,26 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         self.user = User.currentUser
+        bananaCount.text = String(self.user!.bananaCount)
+        
+        let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
+        self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
         
         Animal.animalsForUserAndCompletion(self.user!.name) {
             (animals: [Animal]?, error: NSError?) in
-            if error == nil {
+            if animals != nil {
                 self.animals = animals
                 println(self.animals!.count)
-                self.loadViews()
                 self.collectionView.reloadData()
             } else {
-                //handle getting user failure
+                //handle getting animals failure
             }
         }
-    
-        let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
-        self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
-    }
-    
 
-    func loadViews() {
-        bananaCount.text = String(self.user!.bananaCount)
-        monstersLabel.text = String(self.animals!.count)
-        profileImageView.layer.borderWidth = 1
-        profileImageView.layer.borderColor = UIColor.blackColor().CGColor
-        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
-        profileImageView.clipsToBounds = true
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-    }
-    
-    /*override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-    //#warning Incomplete method implementation -- Return the number of sections
-    return 0
-    }*/
-    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        
         if animals != nil {
             return animals!.count
         }
@@ -71,7 +48,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpriteCell", forIndexPath: indexPath) as! SpriteCell
-        
         cell.populate(animals![indexPath.row])
         return cell
     }
@@ -85,25 +61,18 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
   
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        var storyboard = UIStoryboard(name: "details", bundle: nil)
-        let detailsViewController = storyboard.instantiateViewControllerWithIdentifier("DetailsViewController") as! DetailsViewController
+        let detailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailsViewController") as! DetailsViewController
         
         detailsViewController.user = self.user
         detailsViewController.animalIndexRow = indexPath.row
         detailsViewController.delegate = self
 
-        let nav = self.navigationController
-        if nav != nil {
-            nav!.pushViewController(detailsViewController, animated: true)
-        } else {
-            self.presentViewController(detailsViewController, animated: true, completion: nil)
-        }
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
  
     func healthShouldChange(row: Int) -> Bool {
         //user has bananas
-        if (user!.bananaCount == 0) {
+        if (user?.bananaCount == 0) {
             return false
         }
         

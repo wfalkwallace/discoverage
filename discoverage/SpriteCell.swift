@@ -22,8 +22,6 @@ class SpriteCell: UICollectionViewCell {
         monsterImageView.image = UIImage(named: animal.sprite as String)
         monsterName.text = animal.name as String
     
-//        UIProgressView.animateWithDuration(5, animations: {
-//            self.healthMeter.setProgress(animal.health, animated: true)
-//        })
+        self.healthMeter.setProgress(Float(animal.health), animated: true)
     }
 }

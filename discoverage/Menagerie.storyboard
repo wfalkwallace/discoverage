@@ -116,7 +116,7 @@
                     <connections>
                         <outlet property="bananaCount" destination="JZ4-7w-dzD" id="MSP-8V-5RZ"/>
                         <outlet property="collectionView" destination="2is-SM-rQ6" id="Jw2-DT-nBD"/>
-                        <segue destination="jfQ-lv-UZs" kind="show" identifier="animalDetailSegue" id="Mc2-xz-aJb"/>
+                        <segue destination="jfQ-lv-UZs" kind="show" id="cnQ-QL-lxC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFP-r3-8zS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -126,7 +126,7 @@
         <!--View Controller-->
         <scene sceneID="cPK-9r-Okd">
             <objects>
-                <viewController id="jfQ-lv-UZs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="jfQ-lv-UZs" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wz7-89-E1v"/>
                         <viewControllerLayoutGuide type="bottom" id="gXf-vo-Vab"/>
@@ -270,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vvj-Xh-nZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2739" y="-216"/>
+            <point key="canvasLocation" x="2839.5" y="-216"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fr5-7W-Y6U">

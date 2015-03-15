@@ -24,12 +24,17 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func didTapLogin(sender: UIButton) {
-        var user = User(name: usernameTextField.text ?? "WFW", email: "", bananaCount: 5)
+        var user = User(name: "WFW", email: "", bananaCount: 5)
+        user.save { (success, error) -> () in
+            // do nothing
+        }
+        println(user.name)
+        println(user.id)
         User.currentUser = user
         
-        let mapStoryboard = UIStoryboard(name: "BananaMap", bundle: nil)
-        let mapViewController = mapStoryboard.instantiateInitialViewController() as! BananaMapViewController
-        self.presentViewController(mapViewController, animated: true, completion: nil)
+        let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+        let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+        self.presentViewController(menagerieViewController, animated: true, completion: nil)
     }
 
 }

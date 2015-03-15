@@ -28,7 +28,9 @@ class BananaPick {
         var object = PFObject(className:"BananaTree")
         object.setObject(self.bananaTree.id, forKey: "bananaTree")
         object.setObject(self.timestamp, forKey: "timestamp")
-        object.setObject(self.user.id, forKey: "user")
+        if let id = self.user.id {
+            object.setObject(id, forKey: "user")
+        }
         return object
     }
     

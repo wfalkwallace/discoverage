@@ -28,19 +28,21 @@
                     <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="36"/>
                     <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="140" y="215" width="200" height="51"/>
+                    <variation key="widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="143" y="219" width="196" height="42"/>
                     </variation>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerY" secondItem="kId-c2-rCX" secondAttribute="centerY" id="0Je-Tr-IhY"/>
                 <constraint firstItem="PLW-X3-wFa" firstAttribute="top" secondItem="RkY-QG-pek" secondAttribute="bottom" id="2Cw-5K-ilW"/>
                 <constraint firstAttribute="trailing" secondItem="RkY-QG-pek" secondAttribute="trailing" id="3GZ-AP-XY3"/>
                 <constraint firstItem="RkY-QG-pek" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4em-zx-kea"/>
                 <constraint firstAttribute="bottom" secondItem="PLW-X3-wFa" secondAttribute="bottom" id="A31-Fu-Hbj"/>
                 <constraint firstAttribute="trailing" secondItem="PLW-X3-wFa" secondAttribute="trailing" id="Krm-yY-uXf"/>
                 <constraint firstItem="PLW-X3-wFa" firstAttribute="height" secondItem="RkY-QG-pek" secondAttribute="height" id="TnO-04-dgn"/>
+                <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="Z8y-iO-qhW"/>
                 <constraint firstItem="RkY-QG-pek" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Zwa-0c-YyD"/>
                 <constraint firstItem="PLW-X3-wFa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gmZ-Tc-Wfs"/>
             </constraints>
@@ -53,6 +55,8 @@
                     <exclude reference="kId-c2-rCX"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="0Je-Tr-IhY"/>
+                    <exclude reference="Z8y-iO-qhW"/>
                     <exclude reference="2Cw-5K-ilW"/>
                     <exclude reference="A31-Fu-Hbj"/>
                     <exclude reference="Krm-yY-uXf"/>
@@ -70,6 +74,8 @@
                     <include reference="kId-c2-rCX"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="0Je-Tr-IhY"/>
+                    <include reference="Z8y-iO-qhW"/>
                     <include reference="2Cw-5K-ilW"/>
                     <include reference="A31-Fu-Hbj"/>
                     <include reference="Krm-yY-uXf"/>

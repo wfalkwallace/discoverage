@@ -9,23 +9,39 @@
 import UIKit
 
 class Animal: NSObject {
-    var owner: User
-    var health: Int
-    var name: String
-    var sprite: String
-    var object : PFObject
+    var owner: User?
+    var health: Int!
+    var name: String!
+    var sprite: String!
+    var object : PFObject!
 
-    init(object: PFObject, owner: User) {
-        self.owner = owner
+    init(object: PFObject) {
+        super.init()
+        
+        User.queryWithId(object.objectForKey("owner") as! String, completion: { (user, error) -> () in
+            self.owner = user!
+        })
+
         self.name = object.objectForKey("name") as! String
         self.sprite = object.objectForKey("sprite") as! String
         self.health = object.objectForKey("health") as! Int
         self.object = object
     }
     
+    class func initWithArray(results: [PFObject]) -> [Animal] {
+        var animals = [Animal]()
+        for result in results {
+            var animal = Animal(object: result)
+            animals.append(animal)
+        }
+        return animals
+    }
+    
     func sync () {
         self.object.setObject(self.name, forKey: "name")
-        self.object.setObject(self.owner.id, forKey: "ownerId")
+        if let id = self.owner?.id {
+            self.object.setObject(id, forKey: "owner")
+        }
         self.object.setObject(self.health, forKey: "health")
         self.object.setObject(self.sprite, forKey: "sprite")
     }
@@ -36,7 +52,7 @@ class Animal: NSObject {
     }
     
     func feed () {
-        if (health <= 10 && owner.bananaCount > 0) {
+        if (health <= 10 && owner?.bananaCount > 0) {
             self.health = self.health + 1
         }
     }
@@ -58,7 +74,7 @@ class Animal: NSObject {
                         if let objects = results as? [PFObject] {
                             var animals = [Animal]()
                             for object in objects {
-                                var animal = Animal(object: object, owner: user!)
+                                var animal = Animal(object: object)
                                 animals.append(animal)
                             }
                             completion(animals: animals, error: nil)

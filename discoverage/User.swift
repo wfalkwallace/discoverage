@@ -18,8 +18,8 @@ class User {
     var email: String
     var bananaCount: Int
     private var object: PFObject!
-    var id: Int {
-        return object.objectForKey("id") as! Int
+    var id: String? {
+        return object.objectForKey("id") as? String
     }
     //var location: PFGeoPoint
     //var lastLocationUpdate: NSDate?
@@ -108,8 +108,10 @@ class User {
     class var currentUser: User? {
         get {
             if _currentUser == nil {
-                if let user = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? User {
-                    _currentUser = user
+                if let id = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? String {
+                    User.queryWithId(id, completion: { (user, error) -> () in
+                        _currentUser = user
+                    })
                 }
             }
             return _currentUser
@@ -117,7 +119,7 @@ class User {
         set(user) {
             _currentUser = user
             if _currentUser != nil {
-                NSUserDefaults.standardUserDefaults().setObject(_currentUser, forKey: currentUserKey)
+                NSUserDefaults.standardUserDefaults().setObject(_currentUser?.id, forKey: currentUserKey)
             } else {
                 NSUserDefaults.standardUserDefaults().setObject(nil, forKey: currentUserKey)
             }

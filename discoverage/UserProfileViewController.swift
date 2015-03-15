@@ -17,7 +17,7 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpriteCell", forIndexPath: indexPath) as! SpriteCell
         
-        cell.populate(user.animals[indexPath.row])
+//        cell.populate(user.animals[indexPath.row])
         return cell
     }
     
@@ -28,7 +28,8 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // warning Incomplete method implementation -- Return the number of items in the section
-        return user.animals.count
+//        return user.animals.count
+        return 0
     }
 
     override func viewDidLoad() {

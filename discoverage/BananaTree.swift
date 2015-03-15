@@ -20,11 +20,10 @@ class BananaTree {
         self.object = object
     }
 
-// Probably don't need this
-//    init(location: PFGeoPoint) {
-//        self.object = PFObject(className: "BananaTree")
-//        self.location = location
-//    }
+    init(location: PFGeoPoint) {
+        self.object = PFObject(className: "BananaTree")
+        self.location = location
+    }
     
     func save(block: (success: Bool, error: NSError?) -> ()) {
         object.setObject(location, forKey: "location")
