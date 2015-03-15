@@ -9,16 +9,23 @@
 import UIKit
 
 class Animal: NSObject {
-    var owner: String
+    var owner: User?
     var health: Int
     var name: String
     var sprite: String
    // var location: PFGeoPoint
     var object : PFObject
 
+    init(object: PFObject, user: User) {
+        self.owner = user
+        self.name = object.objectForKey("name") as! String
+        self.sprite = object.objectForKey("sprite") as! String
+        self.health = object.objectForKey("health") as! Int
+        //self.location = object.objectForKey("location") as! PFGeoPoint
+        self.object = object
+    }
+    
     init(object: PFObject) {
-        
-        self.owner = "" //object.objectForKey("owner") as! String
         self.name = object.objectForKey("name") as! String
         self.sprite = object.objectForKey("sprite") as! String
         self.health = object.objectForKey("health") as! Int
@@ -35,11 +42,11 @@ class Animal: NSObject {
         return animals
     }
     
-//    func feed () {
-//        if (health <= 10 && owner.bananaCount > 0) {
-//            self.health = self.health + 1
-//        }
-//    }
+    func feed () {
+        if (health <= 10 && owner?.bananaCount > 0) {
+            self.health = self.health + 1
+        }
+    }
     
     //this method should have a completion block
     class func animalsForUserAndCompletion(userName: String, completion: (animals: [Animal]?, error: NSError?) -> ()) {
@@ -50,10 +57,6 @@ class Animal: NSObject {
             if error == nil {
                 var user = usr
                 
-                println(user!.name)
-                println(user!.userId!)
-                println(user!.email)
-                
                 var query = PFQuery(className:"Animal")
                 query.whereKey("owner", equalTo: user!.userId!)
             
@@ -61,7 +64,21 @@ class Animal: NSObject {
                     if error == nil {
                         println("Successfully retrieved \(results?.count) animals.")
                         if let objects = results as? [PFObject] {
-                            var animals = Animal.initWithArray(objects)
+                            var animals = [Animal]()
+                            for object in objects {
+                                let userId = object.objectForKey("owner") as! String
+                                User.queryWithId(userId)  {
+                                    (usr: User?, error: NSError?) in
+                                    if (error == nil) {
+                                        //init animal
+                                        var animal = Animal(object: object, user: usr!)
+                                        animals.append(animal)
+                                    } else {
+                                        //failed
+                                        println("getitng owner failed")
+                                    }
+                                }
+                            }
                             completion(animals: animals, error: nil)
                         }
                     }
