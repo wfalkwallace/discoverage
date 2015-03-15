@@ -24,6 +24,9 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func didTapLogin(sender: UIButton) {
+        var user = User(name: usernameTextField.text ?? "WFW", email: "", bananaCount: 5)
+        User.currentUser = user
+        
         let mapStoryboard = UIStoryboard(name: "BananaMap", bundle: nil)
         let mapViewController = mapStoryboard.instantiateInitialViewController() as! BananaMapViewController
         self.presentViewController(mapViewController, animated: true, completion: nil)
