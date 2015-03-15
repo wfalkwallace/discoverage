@@ -14,8 +14,6 @@ let currentUserKey = "CurrentUser"
 class User {
     var name: String
     var email: String
-    var location: PFGeoPoint?
-    var lastLocationUpdate: NSDate?
     var bananaCount: Int
     private var object: PFObject!
     var id: Int {
@@ -27,7 +25,7 @@ class User {
         self.email = email
         self.bananaCount = bananaCount
         self.object = PFObject(className:"User")
-        self.sync()
+        sync()
     }
     
     init(object: PFObject) {
@@ -38,9 +36,14 @@ class User {
     }
     
     func sync () {
-        object.setObject(self.name, forKey: "name")
-        object.setObject(self.email, forKey: "email")
-        object.setObject(self.bananaCount, forKey: "bananaCount")
+        self.object.setObject(self.name, forKey: "name")
+        self.object.setObject(self.email, forKey: "email")
+        self.object.setObject(self.bananaCount, forKey: "bananaCount")
+    }
+    
+    func save (block: (success: Bool, error: NSError?) -> ()) {
+        sync()
+        object.saveInBackgroundWithBlock(block)
     }
 
     class func queryWithName(name : String, completion: (user: User?, error: NSError?) -> ()) {
