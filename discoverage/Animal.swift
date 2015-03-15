@@ -9,33 +9,34 @@
 import UIKit
 
 class Animal: NSObject {
-    var owner: User?
+    var owner: User
     var health: Int
     var name: String
     var sprite: String
-    var location: PFGeoPoint
     var object : PFObject
 
-    init(object: PFObject) {
-        self.owner = User.queryWithId(object.objectForKey("owner") as! String)
+    init(object: PFObject, owner: User) {
+        self.owner = owner
         self.name = object.objectForKey("name") as! String
         self.sprite = object.objectForKey("sprite") as! String
         self.health = object.objectForKey("health") as! Int
-        self.location = object.objectForKey("location") as! PFGeoPoint
         self.object = object
     }
     
-    class func initWithArray(results: [PFObject]) -> [Animal] {
-        var animals = [Animal]()
-        for result in results {
-            var animal = Animal(object: result)
-            animals.append(animal)
-        }
-        return animals
+    func sync () {
+        self.object.setObject(self.name, forKey: "name")
+        self.object.setObject(self.owner.id, forKey: "ownerId")
+        self.object.setObject(self.health, forKey: "health")
+        self.object.setObject(self.sprite, forKey: "sprite")
+    }
+    
+    func save (block: (success: Bool, error: NSError?) -> ()) {
+        sync()
+        object.saveInBackgroundWithBlock(block)
     }
     
     func feed () {
-        if (health <= 10 && owner?.bananaCount > 0) {
+        if (health <= 10 && owner.bananaCount > 0) {
             self.health = self.health + 1
         }
     }
@@ -44,13 +45,13 @@ class Animal: NSObject {
     class func animalsForUserAndCompletion(userName: String, completion: (animals: [Animal]?, error: NSError?) -> ()) {
 
         
-        User.queryWithNameAndCompletion(userName) {
+        User.queryWithName(userName) {
             (usr: User?, error: NSError?) in
             if error == nil {
                 var user = usr
                 
                 println(user!.name)
-                println(user!.userId!)
+                println(user!.id)
                 println(user!.email)
                 
                 var query = PFQuery(className:"Animal")
