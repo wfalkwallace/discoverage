@@ -11,29 +11,25 @@ import Foundation
 import CoreLocation
 
 class Location: NSObject, CLLocationManagerDelegate  {
+    var locationManager : CLLocationManager?
+
    override init () {
-        switch CLLocationManager.authorizationStatus() {
-            case .AuthorizedAlways, .AuthorizedWhenInUse:
-                println("authorized!")
-            case .NotDetermined:
-                var locManager = CLLocationManager()
-                locManager.requestAlwaysAuthorization()
-            case .AuthorizedWhenInUse, .Restricted, .Denied:
-                let alertController = UIAlertController(
-                    title: "Background Location Access Disabled",
-                    message: "In order to be notified about adorable kittens near you, please open this app's settings and set location access to 'Always'.",
-                    preferredStyle: .Alert)
+    
+    super.init()
+    
+        println("locations contructor")
+        self.locationManager = CLLocationManager()
 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-                alertController.addAction(cancelAction)
-
-                let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
-                    if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                        UIApplication.sharedApplication().openURL(url)
-                    }
-                }
-
-                alertController.addAction(openAction)
+        // Ask for Authorisation from the User.
+        self.locationManager!.requestAlwaysAuthorization()
+    
+        // For use in foreground
+        self.locationManager!.requestWhenInUseAuthorization()
+    
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager!.delegate = self
+            self.locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager!.startUpdatingLocation()
         }
     }
     
@@ -41,14 +37,51 @@ class Location: NSObject, CLLocationManagerDelegate  {
         struct Static {
             static let instance = Location ()
         }
-        
         return Static.instance
     }
+
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("Failed to update location : \(error)")
+        self.locationManager!.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        println("auth changed")
+        
+        switch CLLocationManager.authorizationStatus() {
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                println("authorized to use location!")
+                //send notification
+            case .NotDetermined:
+                var locManager = CLLocationManager()
+                locManager.requestAlwaysAuthorization()
+            case .AuthorizedWhenInUse, .Restricted, .Denied:
+                let alertController = UIAlertController(
+                title: "Background Location Access Disabled", message: "In order to be notified about adorable kittens near you, please open this app's settings and set location access to 'Always'.", preferredStyle: .Alert)
+            
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+            
+                let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+                    if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                        UIApplication.sharedApplication().openURL(url)
+                    }
+                }
+            
+            alertController.addAction(openAction)
+        }
+    }
+
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        println("did update locations")
+
         println(locations)
         println(locations.last)
         
+        self.locationManager!.stopUpdatingLocation()
+
+    
         let geoPoint = PFGeoPoint(location: locations.last as? CLLocation)
         
         var aQuery = PFQuery(className: "Animal")
