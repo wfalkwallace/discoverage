@@ -49,19 +49,29 @@ class Animal: NSObject {
             (usr: User?, error: NSError?) in
             if error == nil {
                 var user = usr
-                
-                println(user!.name)
-                println(user!.id)
-                println(user!.email)
-                
                 var query = PFQuery(className:"Animal")
-                query.whereKey("owner", equalTo: user!)
+                query.whereKey("owner", equalTo: user!.userId!)
             
                 query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
                     if error == nil {
                         println("Successfully retrieved \(results?.count) animals.")
                         if let objects = results as? [PFObject] {
-                            completion(animals: Animal.initWithArray(objects), error: nil)
+                            var animals = [Animal]()
+                            for object in objects {
+                                let userId = object.objectForKey("owner") as! String
+                                User.queryWithId(userId)  {
+                                    (usr: User?, error: NSError?) in
+                                    if (error == nil) {
+                                        //init animal
+                                        var animal = Animal(object: object, user: usr!)
+                                        animals.append(animal)
+                                    } else {
+                                        //failed
+                                        println("getitng owner failed")
+                                    }
+                                }
+                            }
+                            completion(animals: animals, error: nil)
                         }
                     }
                     else {
@@ -96,8 +106,7 @@ class Animal: NSObject {
                 println("failed")
             }
         }
-        
-        //seems dangerous, user could be nil if findObjectsInBackgroundWithBlock failed
+
         return Animal.initWithArray(pfObjects)
     }
 }

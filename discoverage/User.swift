@@ -12,6 +12,8 @@ var _currentUser: User?
 let currentUserKey = "CurrentUser"
 
 class User {
+
+    var userId: String?
     var name: String
     var email: String
     var bananaCount: Int
@@ -19,6 +21,21 @@ class User {
     var id: Int {
         return object.objectForKey("id") as! Int
     }
+    //var location: PFGeoPoint
+    //var lastLocationUpdate: NSDate?
+    //var bananaPicks: [BananaPick]
+    //var bananaPicks: [BananaPick]
+
+    /*init (dictionary: NSDictionary) {
+        name = dictionary["name"] as! String
+        email = dictionary["email"] as! String
+        bananaCount = dictionary["bananaCount"] as! Int
+        let picks = dictionary["bananaPicks"] as! [NSDictionary]
+        //bananaPicks = picks.map {
+          //  (var pick) -> NSDictionary in
+           // return BananaPick() // <- Not finished
+        //}
+    }*/
     
     init(name: String, email: String, bananaCount: Int) {
         self.name = name
@@ -29,6 +46,10 @@ class User {
     }
     
     init(object: PFObject) {
+        self.userId = object.objectId!
+        self.name = object.objectForKey("userName") as! String
+        self.email = object.objectForKey("email") as! String
+        //self.location = object.objectForKey("location") as! PFGeoPoint
         self.bananaCount = object.objectForKey("bananaCount") as! Int
         self.name = object.objectForKey("name") as! String
         self.email = object.objectForKey("email") as! String
