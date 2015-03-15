@@ -37,6 +37,8 @@ class User {
         //}
     }*/
     
+   
+    
     init(name: String, email: String, bananaCount: Int) {
         self.name = name
         self.email = email
@@ -51,8 +53,6 @@ class User {
         self.email = object.objectForKey("email") as! String
         //self.location = object.objectForKey("location") as! PFGeoPoint
         self.bananaCount = object.objectForKey("bananaCount") as! Int
-        self.name = object.objectForKey("name") as! String
-        self.email = object.objectForKey("email") as! String
         self.object = object
     }
     
@@ -70,7 +70,7 @@ class User {
     class func queryWithName(name : String, completion: (user: User?, error: NSError?) -> ()) {
         var query = PFQuery(className:"User")
         
-        query.whereKey("name", equalTo: name)
+        query.whereKey("userName", equalTo: name)
         query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
             
             if error == nil {
