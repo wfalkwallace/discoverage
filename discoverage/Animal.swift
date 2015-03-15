@@ -28,6 +28,16 @@ class Animal: NSObject {
         self.object = object
     }
     
+    init(object: PFObject, owner: User) {
+        super.init()
+        
+        self.owner = owner
+        self.name = object.objectForKey("name") as! String
+        self.sprite = object.objectForKey("sprite") as! String
+        self.health = object.objectForKey("health") as! Int
+        self.object = object
+    }
+    
     class func initWithArray(results: [PFObject]) -> [Animal] {
         var animals = [Animal]()
         for result in results {
@@ -74,7 +84,7 @@ class Animal: NSObject {
                         if let objects = results as? [PFObject] {
                             var animals = [Animal]()
                             for object in objects {
-                                var animal = Animal(object: object)
+                                var animal = Animal(object: object, owner: user!)
                                 animals.append(animal)
                             }
                             completion(animals: animals, error: nil)

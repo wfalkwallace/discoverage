@@ -22,10 +22,19 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>so that you can find monsters and bananas and stuff</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>so that you can find monsters and bananas and stuff</string>
 	<key>PARSE_APP_ID</key>
 	<string>$(PARSE_APP_ID)</string>
 	<key>PARSE_CLIENT_KEY</key>
 	<string>$(PARSE_CLIENT_KEY)</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PokemonHollow.ttf</string>
+		<string>PokemonSolid.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -46,11 +55,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>PokemonHollow.ttf</string>
-		<string>PokemonSolid.ttf</string>
 	</array>
 </dict>
 </plist>
