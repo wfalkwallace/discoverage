@@ -58,18 +58,8 @@ class Animal: NSObject {
                         if let objects = results as? [PFObject] {
                             var animals = [Animal]()
                             for object in objects {
-                                let userId = object.objectForKey("owner") as! String
-                                User.queryWithId(userId)  {
-                                    (usr: User?, error: NSError?) in
-                                    if (error == nil) {
-                                        //init animal
-                                        var animal = Animal(object: object, user: usr!)
-                                        animals.append(animal)
-                                    } else {
-                                        //failed
-                                        println("getitng owner failed")
-                                    }
-                                }
+                                var animal = Animal(object: object, owner: user!)
+                                animals.append(animal)
                             }
                             completion(animals: animals, error: nil)
                         }
