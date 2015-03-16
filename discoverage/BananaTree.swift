@@ -16,7 +16,8 @@ class BananaTree {
     let dictionary: NSDictionary?
     
     init(dictionary: NSDictionary) {
-        self.location = CLLocation
+        let locationData = dictionary["location"] as! [String:CLLocationDegrees]
+        self.location = CLLocation(latitude: locationData["lat"]!, longitude: locationData["lon"]!)
         self.dictionary = dictionary
     }
 
@@ -32,12 +33,11 @@ class BananaTree {
             params["id"] = id
         }
         
-        Alamofire.request(Discoverage.Router.BananaTree(params)).response((request, response, data, error) -> () {
+        Alamofire.request(Discoverage.Router.BananaTree(params)).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
-            println(request)
-            println(response)
+            println(data)
             println(error)
-        })
+        }
     }
     
     class func initWithArray(array: [NSDictionary]) -> [BananaTree] {

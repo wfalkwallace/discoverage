@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AlamoFire
+import Alamofire
 
 struct Discoverage {
     
@@ -15,19 +15,15 @@ struct Discoverage {
         static let baseURLString = "https://discoverage.herokuapp.com"
         
         case Animal([String: AnyObject])
-        case Animals()
         case Animals(String)
         case AnimalsForUser(String)
         case AnimalsNear([String: AnyObject])
         case User([String: AnyObject])
-        case Users()
         case Users(String)
         case BananaPick([String: AnyObject])
-        case BananaPicks()
         case BananaPicks(String)
         case BananaPicksForUser(String)
         case BananaTree([String: AnyObject])
-        case BananaTrees()
         case BananaTrees(String)
         case BananaTreesNear([String: AnyObject])
         
