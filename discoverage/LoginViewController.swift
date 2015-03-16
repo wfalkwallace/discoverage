@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Accounts
+import Alamofire
 
 class LoginViewController: UIViewController {
 
@@ -16,6 +16,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Alamofire.request(Discoverage.Router.Animals("")).responseJSON { (_, _, data, error) in
+            // todo: save dict and call block
+            println(data)
+            println(error)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,13 +30,13 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func didTapLogin(sender: UIButton) {
-        var user = User(name: "WFW", email: "", bananaCount: 5)
-        user.save { (success, error) -> () in
+//        var user = User(name: "WFW", email: "", bananaCount: 5)
+//        user.save { (success, error) -> () in
             // do nothing
-        }
-        println(user.name)
-        println(user.id)
-        User.currentUser = user
+//        }
+//        println(user.name)
+//        println(user.id)
+//        User.currentUser = user
         
         let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
         let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController

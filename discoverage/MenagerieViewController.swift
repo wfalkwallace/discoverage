@@ -25,17 +25,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
-        
-        Animal.animalsForUserAndCompletion(self.user!.name) {
-            (animals: [Animal]?, error: NSError?) in
-            if animals != nil {
-                self.animals = animals
-                println(self.animals!.count)
-                self.collectionView.reloadData()
-            } else {
-                //handle getting animals failure
-            }
-        }
 
     }
     
