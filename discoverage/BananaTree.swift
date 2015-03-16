@@ -7,27 +7,26 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class BananaTree {
-    let location: PFGeoPoint
-    private let object: PFObject
-    var id: Int {
-        return object.objectForKey("id") as! Int
-    }
+    var id: String?
+    let location: CLLocation
+    let dictionary: NSDictionary?
     
-    init(object: PFObject) {
-        self.location = object.objectForKey("location") as! PFGeoPoint
-        self.object = object
+    init(dictionary: NSDictionary) {
+        self.location = CLLocation
+        self.dictionary = dictionary
     }
 
-    init(location: PFGeoPoint) {
-        self.object = PFObject(className: "BananaTree")
+    init(location: CLLocation) {
         self.location = location
     }
     
-    func save(block: (success: Bool, error: NSError?) -> ()) {
-        object.setObject(location, forKey: "location")
-        object.saveInBackgroundWithBlock(block)
+    func save(block: (bananaTree: BananaTree, error: NSError?) -> ()) {
+        Alamofire
+        self.dictionary =
     }
     
     class func initWithArray(results: [PFObject]) -> [BananaTree] {
@@ -39,5 +38,3 @@ class BananaTree {
         return trees
     }
 }
-
-CLLocation

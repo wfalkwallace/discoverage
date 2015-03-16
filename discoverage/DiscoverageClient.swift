@@ -14,67 +14,124 @@ struct Discoverage {
     enum Router: URLRequestConvertible {
         static let baseURLString = "https://discoverage.herokuapp.com"
         
+        case Animal([String: AnyObject])
         case Animals()
         case Animals(String)
         case AnimalsForUser(String)
-        case AnimalsNear(Float, Float)
+        case AnimalsNear([String: AnyObject])
+        case User([String: AnyObject])
         case Users()
         case Users(String)
+        case BananaPick([String: AnyObject])
         case BananaPicks()
         case BananaPicks(String)
         case BananaPicksForUser(String)
+        case BananaTree([String: AnyObject])
         case BananaTrees()
         case BananaTrees(String)
-        case BananaTreesNear(Float, Float)
+        case BananaTreesNear([String: AnyObject])
+        
+        
+        var method: Alamofire.Method {
+            switch self {
+
+            case .Animal:
+                return .POST
+            case .Animals:
+                return .GET
+            case .Animals:
+                return .GET
+            case .AnimalsForUser:
+                return .GET
+            case .AnimalsNear:
+                return .GET
+            case .User:
+                return .POST
+            case .Users:
+                return .GET
+            case .Users:
+                return .GET
+            case .BananaPick:
+                return .POST
+            case .BananaPicks:
+                return .GET
+            case .BananaPicks:
+                return .GET
+            case .BananaPicksForUser:
+                return .GET
+            case .BananaTree:
+                return .POST
+            case .BananaTrees:
+                return .GET
+            case .BananaTrees:
+                return .GET
+            case .BananaTreesNear:
+                return .GET
+                
+            }
+        }
+        
+        var path: String {
+            switch self {
+            case .Animal:
+                return "/animal"
+            case .Animals:
+                return "/animals"
+            case .Animals(let id):
+                return "/animals/\(id)"
+            case .AnimalsForUser(let id):
+                return "/animals/user/\(id)"
+            case .AnimalsNear:
+                return "/animals/near"
+            case .User:
+                return "/user"
+            case .Users:
+                return "/users"
+            case .Users(let id):
+                return "/users/\(id)"
+            case .BananaPick:
+                return "/bananapick"
+            case .BananaPicks:
+                return "/bananapicks"
+            case .BananaPicks(let id):
+                return "/bananapicks/\(id)"
+            case .BananaPicksForUser(let id):
+                return "/bananapicks/user/\(id)"
+            case .BananaTree:
+                return "/bananatree"
+            case .BananaTrees:
+                return "/bananatrees"
+            case .BananaTrees(let id):
+                return "/bananatrees/\(id)"
+            case .BananaTreesNear:
+                return "/bananatrees"
+            }
+        }
+        
         
         var URLRequest: NSURLRequest {
-            let (path: String, parameters: [String: AnyObject]) = {
-                switch self {
-                    
-                case .Animals():
-                    let params = []
-                    return ("/animals", params)
-                case .Animals(let id):
-                    let params = []
-                    return ("/animals/\(id)", params)
-                case .AnimalsForUser(let id):
-                    let params = []
-                    return ("/animals/user/\(id)", params)
-                case .AnimalsNear(let lat, let lon):
-                    let params = ["lat": "\(lat)", "lon": "\(lon)"]
-                    return ("/animals/near", params)
-                case .Users():
-                    let params = []
-                    return ("/users", params)
-                case .Users(let id):
-                    let params = []
-                    return ("/users/\(id)", params)
-                case .BananaPicks():
-                    let params = []
-                    return ("/bananapicks", params)
-                case .BananaPicks(let id):
-                    let params = []
-                    return ("/bananapicks/\(id)", params)
-                case .BananaPicksForUser(let id):
-                    let params = []
-                    return ("/bananapicks/user/\(id)", params)
-                case .BananaTrees():
-                    let params = []
-                    return ("/bananatrees", params)
-                case .BananaTrees(let id):
-                    let params = []
-                    return ("/bananatrees/\(id)", params)
-                case .BananaTreesNear(let lat, let lon):
-                    let params = ["lat": "\(lat)", "lon": "\(lon)"]
-                    return ("/bananatrees", params)
-                }
-                }()
+            let URL = NSURL(string: Router.baseURLString)!
+            let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
+            mutableURLRequest.HTTPMethod = method.rawValue
             
-            let URL = NSURL(string: Router.baseURLString)
-            let URLRequest = NSURLRequest(URL: URL!.URLByAppendingPathComponent(path))
-            let encoding = Alamofire.ParameterEncoding.URL
-            
-            return encoding.encode(URLRequest, parameters: parameters).0
+            switch self {
+            case Animal(let params):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+            case AnimalsNear(let params):
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameters).0
+            case User(let params):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+            case BananaPick(let params):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+            case BananaTree(let params):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+            case BananaTreesNear(let params):
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameters).0
+            default:
+                return mutableURLRequest
+                
+            }
         }
+        
     }
 }
