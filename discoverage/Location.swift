@@ -46,7 +46,7 @@ class Location: NSObject, CLLocationManagerDelegate  {
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("Failed to update location : \(error)")
-        self.locationManager.stopUpdatingLocation()
+        //self.locationManager.stopUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -92,12 +92,12 @@ class Location: NSObject, CLLocationManagerDelegate  {
                 let interval = currentLocation.timestamp.timeIntervalSinceDate(user.location!.timestamp)
                 if interval >= 60.0 {
                     user.location = currentLocation
-                    user.claimBananasAndMonsters()
+                    user.claimBananasAndAnimals()
                 }
                 println(interval)
             } else {
                 user.location = currentLocation
-                user.claimBananasAndMonsters()
+                user.claimBananasAndAnimals()
             }
             
         } else {
