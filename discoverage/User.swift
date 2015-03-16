@@ -69,14 +69,9 @@ class User {
         return users
     }
     
-    
-    
-    
-    
-    func logout() {
+    class func logout() {
         User.currentUser = nil
     }
-    
     
     class var currentUser: User? {
         get {
@@ -92,7 +87,7 @@ class User {
         set(user) {
             _currentUser = user
             if _currentUser != nil {
-                var data = NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: nil, error: nil)
+                var data = NSJSONSerialization.dataWithJSONObject(user!.dictionary!, options: nil, error: nil)
                 NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
             } else {
                 NSUserDefaults.standardUserDefaults().setObject(nil, forKey: currentUserKey)
