@@ -25,16 +25,28 @@ class BananaTree {
     }
     
     func save(block: (bananaTree: BananaTree, error: NSError?) -> ()) {
-        Alamofire
-        self.dictionary =
+        var params = [String: AnyObject]()
+        params["lat"] = location.coordinate.latitude
+        params["lon"] = location.coordinate.longitude
+        if let id = id {
+            params["id"] = id
+        }
+        
+        Alamofire.request(Discoverage.Router.BananaTree(params)).response((request, response, data, error) -> () {
+            // todo: save dict and call block
+            println(request)
+            println(response)
+            println(error)
+        })
     }
     
-    class func initWithArray(results: [PFObject]) -> [BananaTree] {
+    class func initWithArray(array: [NSDictionary]) -> [BananaTree] {
         var trees = [BananaTree]()
-        for result in results {
-            var tree = BananaTree(object: result)
-            trees.append(tree)
+        
+        for dictionary in array {
+            trees.append(BananaTree(dictionary: dictionary))
         }
+
         return trees
     }
 }
