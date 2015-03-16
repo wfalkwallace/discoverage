@@ -102,13 +102,14 @@ class User {
         User.currentUser = nil
     }
     
+    
     class var currentUser: User? {
         get {
             if _currentUser == nil {
-                if let id = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? String {
-                    User.queryWithId(id, completion: { (user, error) -> () in
-                        _currentUser = user
-                    })
+                var data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
+                if data != nil {
+                    var dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
+                    _currentUser = User(dictionary: dictionary)
                 }
             }
             return _currentUser
@@ -116,7 +117,8 @@ class User {
         set(user) {
             _currentUser = user
             if _currentUser != nil {
-                NSUserDefaults.standardUserDefaults().setObject(_currentUser?.id, forKey: currentUserKey)
+                var data = NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: nil, error: nil)
+                NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
             } else {
                 NSUserDefaults.standardUserDefaults().setObject(nil, forKey: currentUserKey)
             }

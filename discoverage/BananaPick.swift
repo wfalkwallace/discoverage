@@ -7,34 +7,54 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class BananaPick {
-    let bananaTree: BananaTree
-    let timestamp: NSDate
-    let user: User
-    private var object: PFObject!
-    var id: Int {
-        return object.objectForKey("id") as! Int
-    }
+    var id: String?
+    var bananaTree: BananaTree
+    var timestamp: NSDate
+    var user: User
+    var dictionary: NSDictionary?
     
     init(bananaTree: BananaTree, timestamp: NSDate) {
         self.bananaTree = bananaTree
         self.timestamp = timestamp
         self.user = User.currentUser!
-        self.object = createObject()
     }
     
-    func createObject () -> PFObject {
-        var object = PFObject(className:"BananaTree")
-        object.setObject(self.bananaTree.id, forKey: "bananaTree")
-        object.setObject(self.timestamp, forKey: "timestamp")
-        if let id = self.user.id {
-            object.setObject(id, forKey: "user")
+    init(dictionary: NSDictionary) {
+        self.id = dictionary["_id"] as! String
+        self.bananaTree = BananaTree(dictionary: dictionary["bananaTree"] as! NSDictionary)
+        self.user = User(dictionary: dictionary["user"] as! NSDictionary)
+        self.timestamp = NSDate(timeIntervalSince1970: dictionary["timestamp"] as! NSTimeInterval)
+        self.dictionary = dictionary
+    }
+    
+    func save(block: (bananaPick: BananaPick, error: NSError?) -> ()) {
+        var params = [String: AnyObject]()
+        params["bananaTree"] = bananaTree
+        params["timestamp"] = timestamp.timeIntervalSince1970
+        params["user"] = user
+        if let id = id {
+            params["_id"] = id
         }
-        return object
+        
+        Alamofire.request(Discoverage.Router.BananaPick(params)).responseJSON { (_, _, data, error) in
+            // todo: save dict and call block
+            println(data)
+            println(error)
+        }
     }
     
-    func save (block: (success: Bool, error: NSError?) -> ()) {
-        object.saveInBackgroundWithBlock(block)
+    class func initWithArray(array: [NSDictionary]) -> [BananaPick] {
+        var picks = [BananaPick]()
+        
+        for dictionary in array {
+            picks.append(BananaPick(dictionary: dictionary))
+        }
+        
+        return picks
     }
+
 }

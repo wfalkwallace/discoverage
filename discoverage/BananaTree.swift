@@ -12,17 +12,21 @@ import SwiftyJSON
 
 class BananaTree {
     var id: String?
-    let location: CLLocation
-    let dictionary: NSDictionary?
-    
-    init(dictionary: NSDictionary) {
-        let locationData = dictionary["location"] as! [String:CLLocationDegrees]
-        self.location = CLLocation(latitude: locationData["lat"]!, longitude: locationData["lon"]!)
-        self.dictionary = dictionary
-    }
+    var location: CLLocation
+    var dictionary: NSDictionary?
 
     init(location: CLLocation) {
         self.location = location
+    }
+    
+    init(dictionary: NSDictionary) {
+        self.id = dictionary["_id"] as! String
+        let locationData = dictionary["location"] as! NSDictionary
+        let lat = locationData["lat"] as! CLLocationDegrees
+        let lon = locationData["lon"] as! CLLocationDegrees
+        
+        self.location = CLLocation(latitude: lat, longitude: lon)
+        self.dictionary = dictionary
     }
     
     func save(block: (bananaTree: BananaTree, error: NSError?) -> ()) {
@@ -30,7 +34,7 @@ class BananaTree {
         params["lat"] = location.coordinate.latitude
         params["lon"] = location.coordinate.longitude
         if let id = id {
-            params["id"] = id
+            params["_id"] = id
         }
         
         Alamofire.request(Discoverage.Router.BananaTree(params)).responseJSON { (_, _, data, error) in
