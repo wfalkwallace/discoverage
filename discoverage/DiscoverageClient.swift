@@ -71,8 +71,6 @@ struct Discoverage {
             switch self {
             case .Animal:
                 return "/animal"
-            case .Animals:
-                return "/animals"
             case .Animals(let id):
                 return "/animals/\(id)"
             case .AnimalsForUser(let id):
@@ -81,22 +79,16 @@ struct Discoverage {
                 return "/animals/near"
             case .User:
                 return "/user"
-            case .Users:
-                return "/users"
             case .Users(let id):
                 return "/users/\(id)"
             case .BananaPick:
                 return "/bananapick"
-            case .BananaPicks:
-                return "/bananapicks"
             case .BananaPicks(let id):
                 return "/bananapicks/\(id)"
             case .BananaPicksForUser(let id):
                 return "/bananapicks/user/\(id)"
             case .BananaTree:
                 return "/bananatree"
-            case .BananaTrees:
-                return "/bananatrees"
             case .BananaTrees(let id):
                 return "/bananatrees/\(id)"
             case .BananaTreesNear:

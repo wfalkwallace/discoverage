@@ -11,8 +11,10 @@ import Alamofire
 import SwiftyJSON
 
 class BananaTree: NSObject {
+    
     var id: String?
     var location: CLLocation
+    
     var dictionary: NSDictionary?
 
     init(location: CLLocation) {

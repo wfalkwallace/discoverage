@@ -7,96 +7,71 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 var _currentUser: User?
 let currentUserKey = "CurrentUser"
 
 class User {
 
-    var userId: String?
+    var id: String?
     var name: String
-    var email: String
     var bananaCount: Int
-    private var object: PFObject!
-    var id: String? {
-        return object.objectForKey("id") as? String
-    }
     var location: CLLocation?
-    
-    //var bananaPicks: [BananaPick]?
 
-    /*init (dictionary: NSDictionary) {
-        name = dictionary["name"] as! String
-        email = dictionary["email"] as! String
-        bananaCount = dictionary["bananaCount"] as! Int
-        let picks = dictionary["bananaPicks"] as! [NSDictionary]
-        //bananaPicks = picks.map {
-          //  (var pick) -> NSDictionary in
-           // return BananaPick() // <- Not finished
-        //}
-    }*/
-    
-    init(name: String, email: String, bananaCount: Int) {
+    var dictionary: NSDictionary?
+
+    init(name: String, email: String, bananaCount: Int, location: CLLocation) {
         self.name = name
-        self.email = email
+        self.location = location
         self.bananaCount = bananaCount
-        self.object = PFObject(className:"User")
-        sync()
     }
     
-    init(object: PFObject) {
-        self.userId = object.objectId!
-        self.name = object.objectForKey("userName") as! String
-        self.email = object.objectForKey("email") as! String
-        //self.location = object.objectForKey("location") as! PFGeoPoint
-        self.bananaCount = object.objectForKey("bananaCount") as! Int
-        self.object = object
-    }
-    
-    func sync () {
-        self.object.setObject(self.name, forKey: "name")
-        self.object.setObject(self.email, forKey: "email")
-        self.object.setObject(self.bananaCount, forKey: "bananaCount")
-    }
-    
-    func save (block: (success: Bool, error: NSError?) -> ()) {
-        sync()
-        object.saveInBackgroundWithBlock(block)
-    }
-
-    class func queryWithName(name : String, completion: (user: User?, error: NSError?) -> ()) {
-        var query = PFQuery(className:"User")
+    init(dictionary: NSDictionary) {
+        self.id = dictionary["_id"] as! String
+        self.name = dictionary["name"] as! String
         
-        query.whereKey("userName", equalTo: name)
-        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                println("Successfully retrieved \(results?.count) users")
-                if let objects = results as? [PFObject] {
-                    var user = User(object: objects[0])
-                    completion(user: user, error: nil)
-                }
-            }
-            else {
-                println("failed")
-                completion(user: nil, error: error)
-            }
+        let locationData = dictionary["location"] as! NSDictionary
+        let lat = locationData["lat"] as! CLLocationDegrees
+        let lon = locationData["lon"] as! CLLocationDegrees
+        self.location = CLLocation(latitude: lat, longitude: lon)
+        
+        self.bananaCount = dictionary["bananaCount"] as! Int
+        self.dictionary = dictionary
+    }
+    
+    func save(block: (user: User, error: NSError?) -> ()) {
+        var params = [String: AnyObject]()
+        params["name"] = name
+        params["bananaCount"] = bananaCount
+        if let location = location {
+            params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
+        }
+        if let id = id {
+            params["_id"] = id
+        }
+        
+        Alamofire.request(Discoverage.Router.User(params)).responseJSON { (_, _, data, error) in
+            // todo: save dict and call block
+            println(data)
+            println(error)
         }
     }
-
-    class func queryWithId(id: String, completion: (user: User?, error: NSError?) -> ()) {
-        var query = PFQuery(className:"User")
-        query.getObjectInBackgroundWithId(id) {
-            (object: PFObject?, error: NSError?) -> Void in
-            
-            if let object = object {
-                completion(user: User(object: object), error: nil)
-            } else {
-                println("couldn't get user")
-                completion(user: nil, error: error)
-            }
+    
+    class func initWithArray(array: [NSDictionary]) -> [User] {
+        var users = [User]()
+        
+        for dictionary in array {
+            users.append(User(dictionary: dictionary))
         }
+        
+        return users
     }
+    
+    
+    
+    
     
     func logout() {
         User.currentUser = nil
@@ -125,6 +100,8 @@ class User {
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
+    
+    
     
     func claimBananasAndAnimals() {
         
