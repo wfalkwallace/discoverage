@@ -112,17 +112,17 @@ struct Discoverage {
             
             switch self {
             case Animal(let params):
-                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
             case AnimalsNear(let params):
-                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameters).0
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
             case User(let params):
-                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
             case BananaPick(let params):
-                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
             case BananaTree(let params):
-                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
             case BananaTreesNear(let params):
-                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameters).0
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
             default:
                 return mutableURLRequest
                 
