@@ -74,7 +74,9 @@
                                             <color key="backgroundColor" red="0.7474228599710816" green="0.95804990927219247" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <gestureRecognizers/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="176" id="VvN-pt-K98"/>
+                                                <constraint firstAttribute="height" constant="176" id="VvN-pt-K98">
+                                                    <variation key="widthClass=compact" constant="125"/>
+                                                </constraint>
                                                 <constraint firstAttribute="centerY" secondItem="Cag-do-R3g" secondAttribute="centerY" constant="0.5" id="ZhX-uK-KmL"/>
                                                 <constraint firstAttribute="centerX" secondItem="Cag-do-R3g" secondAttribute="centerX" id="zXe-x2-Ub2"/>
                                             </constraints>
@@ -233,16 +235,66 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tvf-3e-XW7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Home" image="icon-home" id="SgA-Kd-guL"/>
+                                    <tabBarItem title="Map" image="icon-map" id="DYq-lT-d2S"/>
+                                    <tabBarItem title="Leaderboard" image="icon-leaderboard" id="Wud-99-Taq"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Tvf-3e-XW7" secondAttribute="trailing" id="2AP-Mh-IS5"/>
                             <constraint firstItem="kTr-56-WBg" firstAttribute="width" secondItem="qOa-AL-BPe" secondAttribute="width" id="5mV-Tz-BhW"/>
+                            <constraint firstItem="Tvf-3e-XW7" firstAttribute="top" secondItem="kTr-56-WBg" secondAttribute="bottom" id="AFi-3D-2qX"/>
                             <constraint firstItem="kTr-56-WBg" firstAttribute="top" secondItem="5y1-2x-3s8" secondAttribute="bottom" constant="-64" id="I3l-AY-UIW"/>
+                            <constraint firstAttribute="trailing" secondItem="kTr-56-WBg" secondAttribute="trailing" id="M1J-mm-KXd"/>
+                            <constraint firstItem="kTr-56-WBg" firstAttribute="top" secondItem="5y1-2x-3s8" secondAttribute="bottom" id="MwL-0o-qKk"/>
+                            <constraint firstItem="kTr-56-WBg" firstAttribute="leading" secondItem="qOa-AL-BPe" secondAttribute="leading" id="f2t-WL-zSa"/>
+                            <constraint firstItem="Tvf-3e-XW7" firstAttribute="leading" secondItem="qOa-AL-BPe" secondAttribute="leading" id="mhe-D7-vFP"/>
                             <constraint firstAttribute="centerX" secondItem="kTr-56-WBg" secondAttribute="centerX" id="rkS-QD-FWW"/>
                             <constraint firstAttribute="centerY" secondItem="kTr-56-WBg" secondAttribute="centerY" id="rtV-Dz-uxz"/>
                             <constraint firstItem="kTr-56-WBg" firstAttribute="height" secondItem="qOa-AL-BPe" secondAttribute="height" id="tvp-6F-Vik"/>
+                            <constraint firstItem="eOA-Li-VDp" firstAttribute="top" secondItem="Tvf-3e-XW7" secondAttribute="bottom" id="xN1-jo-7VS"/>
                             <constraint firstItem="eOA-Li-VDp" firstAttribute="top" secondItem="kTr-56-WBg" secondAttribute="bottom" id="zKa-8J-L0q"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Tvf-3e-XW7"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="M1J-mm-KXd"/>
+                                <exclude reference="MwL-0o-qKk"/>
+                                <exclude reference="f2t-WL-zSa"/>
+                                <exclude reference="2AP-Mh-IS5"/>
+                                <exclude reference="AFi-3D-2qX"/>
+                                <exclude reference="mhe-D7-vFP"/>
+                                <exclude reference="xN1-jo-7VS"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Tvf-3e-XW7"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="5mV-Tz-BhW"/>
+                                <exclude reference="I3l-AY-UIW"/>
+                                <include reference="M1J-mm-KXd"/>
+                                <include reference="MwL-0o-qKk"/>
+                                <include reference="f2t-WL-zSa"/>
+                                <exclude reference="rkS-QD-FWW"/>
+                                <exclude reference="rtV-Dz-uxz"/>
+                                <exclude reference="tvp-6F-Vik"/>
+                                <include reference="2AP-Mh-IS5"/>
+                                <include reference="AFi-3D-2qX"/>
+                                <include reference="mhe-D7-vFP"/>
+                                <include reference="xN1-jo-7VS"/>
+                                <exclude reference="zKa-8J-L0q"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Qgr-wD-oll"/>
                     <connections>
@@ -356,7 +408,12 @@
             <point key="canvasLocation" x="1091" y="630"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-home" width="30" height="30"/>
+        <image name="icon-leaderboard" width="30" height="30"/>
+        <image name="icon-map" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Lie-1f-RIO"/>
+        <segue reference="U3k-Xs-ShS"/>
     </inferredMetricsTieBreakers>
 </document>
