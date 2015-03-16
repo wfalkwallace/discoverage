@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class BananaTree {
+class BananaTree: NSObject {
     var id: String?
     var location: CLLocation
     var dictionary: NSDictionary?
@@ -21,18 +21,18 @@ class BananaTree {
     
     init(dictionary: NSDictionary) {
         self.id = dictionary["_id"] as! String
+        
         let locationData = dictionary["location"] as! NSDictionary
         let lat = locationData["lat"] as! CLLocationDegrees
         let lon = locationData["lon"] as! CLLocationDegrees
-        
         self.location = CLLocation(latitude: lat, longitude: lon)
+        
         self.dictionary = dictionary
     }
     
     func save(block: (bananaTree: BananaTree, error: NSError?) -> ()) {
         var params = [String: AnyObject]()
-        params["lat"] = location.coordinate.latitude
-        params["lon"] = location.coordinate.longitude
+        params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
         if let id = id {
             params["_id"] = id
         }

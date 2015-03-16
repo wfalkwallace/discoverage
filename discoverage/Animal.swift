@@ -11,120 +11,68 @@ import Alamofire
 import SwiftyJSON
 
 class Animal: NSObject {
+    var id: String?
     var owner: User?
-    var health: Int!
-    var name: String!
-    var sprite: String!
-    var object : PFObject!
+    var health: Int
+    var name: String
+    var sprite: String
+    var location: CLLocation
+    var dictionary: NSDictionary?
 
-    init(object: PFObject) {
-        super.init()
-        
-        User.queryWithId(object.objectForKey("owner") as! String, completion: { (user, error) -> () in
-            self.owner = user!
-        })
-
-        self.name = object.objectForKey("name") as! String
-        self.sprite = object.objectForKey("sprite") as! String
-        self.health = object.objectForKey("health") as! Int
-        self.object = object
-    }
-    
-    init(object: PFObject, owner: User) {
-        super.init()
-        
+    init(health: Int, name: String, sprite: String, location: CLLocation, owner: User) {
         self.owner = owner
-        self.name = object.objectForKey("name") as! String
-        self.sprite = object.objectForKey("sprite") as! String
-        self.health = object.objectForKey("health") as! Int
-        self.object = object
+        self.name = name
+        self.sprite = sprite
+        self.health = health
+        self.location = location
     }
     
-    class func initWithArray(results: [PFObject]) -> [Animal] {
+    init(dictionary: NSDictionary) {
+        self.owner = User(dictionary: dictionary["owner"] as! NSDictionary)
+        self.name = dictionary["name"] as! String
+        self.id = dictionary["_id"] as! String
+        self.sprite = dictionary["sprite"] as! String
+        self.health = dictionary["health"] as! Int
+        
+        let locationData = dictionary["location"] as! NSDictionary
+        let lat = locationData["lat"] as! CLLocationDegrees
+        let lon = locationData["lon"] as! CLLocationDegrees
+        self.location = CLLocation(latitude: lat, longitude: lon)
+
+        self.dictionary = dictionary
+    }
+    
+    class func initWithArray(array: [NSDictionary]) -> [Animal] {
         var animals = [Animal]()
-        for result in results {
-            var animal = Animal(object: result)
-            animals.append(animal)
+        
+        for dictionary in array {
+            animals.append(Animal(dictionary: dictionary))
         }
+        
         return animals
     }
     
-    func sync () {
-        self.object.setObject(self.name, forKey: "name")
-        if let id = self.owner?.id {
-            self.object.setObject(id, forKey: "owner")
+    func save(block: (animal: Animal, error: NSError?) -> ()) {
+        var params = [String: AnyObject]()
+        params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
+        params["owner"] = owner
+        params["name"] = name
+        params["health"] = health
+        params["sprite"] = sprite
+        if let id = id {
+            params["_id"] = id
         }
-        self.object.setObject(self.health, forKey: "health")
-        self.object.setObject(self.sprite, forKey: "sprite")
-    }
-    
-    func save (block: (success: Bool, error: NSError?) -> ()) {
-        sync()
-        object.saveInBackgroundWithBlock(block)
+        
+        Alamofire.request(Discoverage.Router.Animal(params)).responseJSON { (_, _, data, error) in
+            // todo: save dict and call block
+            println(data)
+            println(error)
+        }
     }
     
     func feed () {
-        if (health <= 10 && owner?.bananaCount > 0) {
+        if (health < 10 && owner?.bananaCount > 0) {
             self.health = self.health + 1
         }
-    }
-    
-    //this method should have a completion block
-    class func animalsForUserAndCompletion(userName: String, completion: (animals: [Animal]?, error: NSError?) -> ()) {
-
-        
-        User.queryWithName(userName) {
-            (usr: User?, error: NSError?) in
-            if error == nil {
-                var user = usr
-                var query = PFQuery(className:"Animal")
-                query.whereKey("owner", equalTo: user!.userId!)
-            
-                query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
-                    if error == nil {
-                        println("Successfully retrieved \(results?.count) animals.")
-                        if let objects = results as? [PFObject] {
-                            var animals = [Animal]()
-                            for object in objects {
-                                var animal = Animal(object: object, owner: user!)
-                                animals.append(animal)
-                            }
-                            completion(animals: animals, error: nil)
-                        }
-                    }
-                    else {
-                        // Log details of the failure
-                        println("failed to get animals for user")
-                        completion(animals: nil, error: error)
-                    }
-                }
-                
-            } else {
-                completion(animals: nil, error: error)
-            }
-        }
-    }
-    
-    //this method should have a completion block
-    class func query() -> [Animal] {
-        
-        var pfObjects = [PFObject]()
-        
-        var query = PFQuery(className:"Animal")
-        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
-            // The find succeeded.
-            println("Successfully retrieved \(results?.count) animals.")
-            if let objects = results as? [PFObject] {
-                for object in objects {
-                    pfObjects.append(object)
-                }
-            }
-            else {
-                // Log details of the failure
-                println("failed")
-            }
-        }
-
-        return Animal.initWithArray(pfObjects)
     }
 }

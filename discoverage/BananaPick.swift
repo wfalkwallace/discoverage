@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class BananaPick {
+class BananaPick: NSObject {
     var id: String?
     var bananaTree: BananaTree
     var timestamp: NSDate
