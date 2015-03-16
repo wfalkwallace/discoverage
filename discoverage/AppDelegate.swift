@@ -12,8 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.enableLocalDatastore()
         let parseAppId = NSBundle.mainBundle().objectForInfoDictionaryKey("PARSE_APP_ID") as! String
@@ -29,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.barTintColor = UIColor(red: 0.240, green: 0.0, blue: 0.0, alpha:0.75)
         navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PokemonHollowNormal", size: 30)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        let location = Location()
-
         return true
     }
 

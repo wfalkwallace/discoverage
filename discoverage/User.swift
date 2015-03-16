@@ -21,10 +21,9 @@ class User {
     var id: String? {
         return object.objectForKey("id") as? String
     }
-    //var location: PFGeoPoint
-    //var lastLocationUpdate: NSDate?
-    //var bananaPicks: [BananaPick]
-    //var bananaPicks: [BananaPick]
+    var location: CLLocation?
+    
+    //var bananaPicks: [BananaPick]?
 
     /*init (dictionary: NSDictionary) {
         name = dictionary["name"] as! String
@@ -36,8 +35,6 @@ class User {
            // return BananaPick() // <- Not finished
         //}
     }*/
-    
-   
     
     init(name: String, email: String, bananaCount: Int) {
         self.name = name
@@ -125,5 +122,26 @@ class User {
             }
             NSUserDefaults.standardUserDefaults().synchronize()
         }
+    }
+    
+    func claimBananasAndAnimals() {
+        
+//        println(self.location!)
+//        
+//        let bananaPicks : [BananaPick]  = BananaPick.BananaPicksInRange(self.location, 10.0)
+//        let animals : [Animal] = Animal.AnimalsInRange(self.location, 10.0)
+//        
+//        for animal in animals {
+//            animal.setOwner(self)
+//        }
+//        
+//        for bananaPick in bananaPicks {
+//            bananaPick.setPicker(self)
+//            self.bananaCount += 1
+//        }
+//        save()
+//        //refresh views using notifications
+//        NSNotificationCenter.defaultCenter().postNotificationName("updateViews", object: nil)
+
     }
 }
