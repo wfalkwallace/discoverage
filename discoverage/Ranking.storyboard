@@ -243,6 +243,9 @@
                                     <tabBarItem title="Map" image="icon-map" id="DYq-lT-d2S"/>
                                     <tabBarItem title="Leaderboard" image="icon-leaderboard" id="Wud-99-Taq"/>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="lum-mD-TwZ" id="xsP-R5-cqj"/>
+                                </connections>
                             </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -300,6 +303,7 @@
                     <connections>
                         <outlet property="firstUsername" destination="lWA-IT-awd" id="6Vk-HH-KWN"/>
                         <outlet property="secondUsername" destination="D5d-ye-pwx" id="I63-rc-ixC"/>
+                        <outlet property="tabBar" destination="Tvf-3e-XW7" id="EPt-L8-frZ"/>
                         <outlet property="tableView" destination="kTr-56-WBg" id="gW8-yK-DEg"/>
                         <outlet property="thirdUsername" destination="VgY-s9-bOE" id="akv-qH-cKp"/>
                         <segue destination="4XI-mj-8iG" kind="show" identifier="userProfileSegue" id="Lie-1f-RIO"/>

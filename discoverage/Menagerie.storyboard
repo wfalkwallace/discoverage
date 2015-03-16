@@ -25,6 +25,9 @@
                                     <tabBarItem title="Map" image="icon-map" id="OYV-Tq-N6J"/>
                                     <tabBarItem title="Leaderboard" image="icon-leaderboard" id="7sO-Y6-NM2"/>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="zQG-Dp-m2f" id="rP8-Y1-Jga"/>
+                                </connections>
                             </tabBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2is-SM-rQ6">
                                 <rect key="frame" x="16" y="64" width="568" height="536"/>
@@ -116,6 +119,7 @@
                     <connections>
                         <outlet property="bananaCount" destination="JZ4-7w-dzD" id="MSP-8V-5RZ"/>
                         <outlet property="collectionView" destination="2is-SM-rQ6" id="Jw2-DT-nBD"/>
+                        <outlet property="tabBar" destination="wkL-4h-1fx" id="azn-4S-hJf"/>
                         <segue destination="jfQ-lv-UZs" kind="show" id="cnQ-QL-lxC"/>
                     </connections>
                 </viewController>

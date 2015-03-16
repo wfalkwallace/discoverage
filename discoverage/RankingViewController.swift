@@ -8,12 +8,13 @@
 
 import UIKit
 
-class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var firstUsername: UILabel!
     @IBOutlet weak var secondUsername: UILabel!
     @IBOutlet weak var thirdUsername: UILabel!
+    @IBOutlet weak var tabBar: UITabBar!
     
     @IBAction func firstTap(sender: AnyObject) {
         self.performSegueWithIdentifier("userProfileSegue", sender: users[0])

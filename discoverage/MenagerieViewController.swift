@@ -8,10 +8,11 @@
 
 import UIKit
 
-class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailsViewControllerDelegate {
+class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailsViewControllerDelegate, UITabBarDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bananaCount: UILabel!
+    @IBOutlet weak var tabBar: UITabBar!
     
     var user: User?
     var animals: [Animal]?
