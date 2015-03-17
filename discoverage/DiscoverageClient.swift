@@ -14,84 +14,92 @@ struct Discoverage {
     enum Router: URLRequestConvertible {
         static let baseURLString = "https://discoverage.herokuapp.com"
         
-        case Animal([String: AnyObject])
-        case Animals(String)
-        case AnimalsForUser(String)
         case AnimalsNear([String: AnyObject])
-        case User([String: AnyObject])
-        case Users(String)
-        case BananaPick([String: AnyObject])
-        case BananaPicks(String)
-        case BananaPicksForUser(String)
-        case BananaTree([String: AnyObject])
-        case BananaTrees(String)
-        case BananaTreesNear([String: AnyObject])
+        case AnimalUpdate(String, [String: AnyObject])
+        case AnimalWithId(String)
+        case AnimalsWithParams([String: AnyObject])
         
+        case UserCreate([String: AnyObject])
+        case UserUpdate(String, [String: AnyObject])
+        case UsersWithParams([String: AnyObject])
+        case UserWithId(String)
+        
+        case BananaPickCreate([String: AnyObject])
+        case BananaPicksWithParams([String: AnyObject])
+        case BananaPickWithId(String)
+        
+        case BananaTreesNear([String: AnyObject])
+        case BananaTreeWithId(String)
+        case BananaTreesWithParams([String: AnyObject])
         
         var method: Alamofire.Method {
             switch self {
-
-            case .Animal:
-                return .POST
-            case .Animals:
-                return .GET
-            case .Animals:
-                return .GET
-            case .AnimalsForUser:
-                return .GET
             case .AnimalsNear:
                 return .GET
-            case .User:
+            case .AnimalUpdate:
                 return .POST
-            case .Users:
+            case .AnimalWithId:
                 return .GET
-            case .Users:
-                return .GET
-            case .BananaPick:
-                return .POST
-            case .BananaPicks:
-                return .GET
-            case .BananaPicks:
-                return .GET
-            case .BananaPicksForUser:
-                return .GET
-            case .BananaTree:
-                return .POST
-            case .BananaTrees:
-                return .GET
-            case .BananaTrees:
-                return .GET
-            case .BananaTreesNear:
+            case .AnimalsWithParams:
                 return .GET
                 
+            case .UserCreate:
+                return .POST
+            case .UserUpdate:
+                return .POST
+            case .UsersWithParams:
+                return .GET
+            case .UserWithId:
+                return .GET
+                
+            case .BananaPickCreate:
+                return .POST
+            case .BananaPicksWithParams:
+                return .GET
+            case .BananaPickWithId:
+                return .GET
+                
+            case .BananaTreesNear:
+                return .GET
+            case .BananaTreeWithId:
+                return .GET
+            case .BananaTreesWithParams:
+                return .GET
             }
         }
         
         var path: String {
             switch self {
-            case .Animal:
-                return "/animal"
-            case .Animals(let id):
-                return "/animals/\(id)"
-            case .AnimalsForUser(let id):
-                return "/animals/user/\(id)"
-            case .AnimalsNear:
+            case .AnimalsNear(_):
                 return "/animals/near"
-            case .User:
+            case .AnimalUpdate(let id, let _):
+                return "/animal/\(id)"
+            case .AnimalWithId(let id):
+                return "/animals/\(id)"
+            case .AnimalsWithParams(_):
+                return "/animals"
+                
+            case .UserCreate(_):
                 return "/user"
-            case .Users(let id):
+            case .UserUpdate(let id, _):
+                return "/user/\(id)"
+            case .UsersWithParams(_):
+                return "/users"
+            case .UserWithId(let id):
                 return "/users/\(id)"
-            case .BananaPick:
-                return "/bananapick"
-            case .BananaPicks(let id):
-                return "/bananapicks/\(id)"
-            case .BananaPicksForUser(let id):
-                return "/bananapicks/user/\(id)"
-            case .BananaTree:
-                return "/bananatree"
-            case .BananaTrees(let id):
+                
+            case .BananaPickCreate(_):
+                return "/bananaPick"
+            case .BananaPicksWithParams(_):
+                return "/bananaPicks"
+            case .BananaPickWithId(let id):
+                return "/bananaPicks/\(id)"
+                
+            case .BananaTreesNear(_):
+                return "/bananatrees/near"
+            case .BananaTreeWithId(let id):
                 return "/bananatrees/\(id)"
-            case .BananaTreesNear:
+            case .BananaTreesWithParams(_):
                 return "/bananatrees"
             }
         }
@@ -103,21 +111,33 @@ struct Discoverage {
             mutableURLRequest.HTTPMethod = method.rawValue
             
             switch self {
-            case Animal(let params):
-                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
-            case AnimalsNear(let params):
+            case .AnimalsNear(let params):
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
-            case User(let params):
+            case .AnimalUpdate(_, let params):
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
-            case BananaPick(let params):
-                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
-            case BananaTree(let params):
-                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
-            case BananaTreesNear(let params):
+            case .AnimalsWithParams(let params):
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
-            default:
-                return mutableURLRequest
                 
+            case .UserCreate(let params):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
+            case .UserUpdate(_, let params):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
+            case .UsersWithParams(let params):
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
+                
+            case .BananaPickCreate(let params):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
+            case .BananaPicksWithParams(let params):
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
+                
+            case .BananaTreesNear(let params):
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
+            case .BananaTreesWithParams(let params):
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
+                
+            default:
+                // these are the "WithId" requests that take no params
+                return mutableURLRequest
             }
         }
         
