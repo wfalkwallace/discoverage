@@ -22,13 +22,13 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         //self.user = User.currentUser
-        //bananaCount.text = String(self.user!.bananaCount)
+        self.user = User(name: "aditya", email: "aditya@gmail.com", bananaCount: 20)
+        bananaCount.text = String(self.user!.bananaCount)
         
         self.animals = [Animal]()
         Alamofire.request(Discoverage.Router.Animals("")).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             var animalss = Animal.initWithArray(data as! [NSDictionary])
-            
             
             for i in 1...10 {
                 for animal in animalss {
@@ -45,7 +45,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
         if animals != nil {
             return animals!.count
         }
@@ -83,26 +82,47 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
             return false
         }
         
-        //monster health is not already 100
+        //monster health is not already 10
         let animal = animals![row]
         let health = animal.health
         
-        if (health == 1) {
+        if (health == 10) {
             return false
         }
         return true
     }
     
     
-    func healthDidChange(row: Int) {
+    //TODO: everything needs to be in one block
+    func feed(row: Int, block: (user: User?, animal: Animal?, success: Bool) -> ()) {
+        
+        
+        if (user!.bananaCount == 0) {
+            block(user: nil, animal: nil, success: false)
+        }
+        
+        //monster health is not already 10
+        let animal = animals![row]
+        var health = animal.health
+        
+        if (health == 10) {
+            block(user: nil, animal: nil, success: false)
+        }
+        
         //decrement user banana count
         user!.bananaCount -= 1
+//        user?.save({ (user, error) -> () in
+//            call block
+//        })
         
-        //increate monster health
-        var animal = animals![row]
-        var health = animal.health
-        health = health + 10
+        //increase monster health
+        health = health + 1
         animal.health = health
+//        animal.save { (animal, error) -> () in
+//            call block
+//        }
+        
+        block(user: self.user, animal: animal, success: true)
         
         var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
         self.collectionView!.reloadItemsAtIndexPaths([indexPath])
