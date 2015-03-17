@@ -22,9 +22,16 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         self.user = User.currentUser
-       // self.user = User(name: "aditya", email: "aditya@gmail.com", bananaCount: 20)
-        bananaCount.text = String(self.user!.bananaCount)
         
+        let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
+        self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        bananaCount.text = String(self.user!.bananaCount)
+
         self.animals = [Animal]()
         Alamofire.request(Discoverage.Router.Animals("")).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
@@ -39,9 +46,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
             println(data)
             println(error)
         }
-       
-        let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
-        self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -93,7 +97,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     
-    //TODO: everything needs to be in one block
+    //TODO: move this into the models
     func feed(row: Int, block: (user: User?, animal: Animal?, success: Bool) -> ()) {
         
         

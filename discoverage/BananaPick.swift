@@ -14,7 +14,7 @@ class BananaPick: NSObject {
     var id: String?
     var bananaTree: BananaTree
     var timestamp: NSDate
-    var user: User
+    var user: User?
     var dictionary: NSDictionary?
     
     init(bananaTree: BananaTree, timestamp: NSDate) {

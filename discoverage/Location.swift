@@ -84,7 +84,7 @@ class Location: NSObject, CLLocationManagerDelegate  {
         
         //check if current user exists and do stuff, if no user, stop updating location
         if let user = User.currentUser {
-            println("current user exists")
+            println("current user exists, doing location stuff")
             var currentLocation = locations.last as! CLLocation
             
             //claim nearby bananas and monsters the first time the location changes and every 60 seconds thereafter
@@ -93,10 +93,13 @@ class Location: NSObject, CLLocationManagerDelegate  {
                 if interval >= 60.0 {
                     user.location = currentLocation
                     user.claimBananasAndAnimals()
+                    NSNotificationCenter.defaultCenter().postNotificationName("updateViews", object: nil)
+
                 }
                 println(interval)
             } else {
                 user.location = currentLocation
+                NSNotificationCenter.defaultCenter().postNotificationName("updateViews", object: nil)
                 user.claimBananasAndAnimals()
             }
             
