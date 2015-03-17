@@ -12,6 +12,7 @@ import Alamofire
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +27,13 @@ class LoginViewController: UIViewController {
 
     @IBAction func didTapLogin(sender: UIButton) {
         
-        var user = User(name: "WFW", email: "", bananaCount: 5)
-//        user.save { (success, error) -> () in
-            // do nothing
-//        }
-//        println(user.name)
-//        println(user.id)
-//        User.currentUser = user
+        Alamofire.request(Discoverage.Router.Login(usernameTextField.text, passwordTextField.text)).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
+            if let error = error {
+                // deal with login error
+            } else {
+                User.currentUser = User(data as! NSDictionary)
+            }
+        }
         
         let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
         let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
