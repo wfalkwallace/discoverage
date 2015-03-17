@@ -188,6 +188,9 @@
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onFeed:" destination="jfQ-lv-UZs" eventType="touchUpInside" id="ij2-xL-UUa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -275,7 +278,7 @@
                         <outlet property="animalImageView" destination="nWK-l0-d3R" id="vBD-91-yJW"/>
                         <outlet property="animalMood" destination="R7F-mW-E0J" id="EjF-Z0-FKE"/>
                         <outlet property="animalName" destination="VaJ-uS-ujX" id="PV9-Mb-HIZ"/>
-                        <outlet property="bananasCount" destination="eG4-n1-B5l" id="hPS-T0-SdB"/>
+                        <outlet property="bananasCount" destination="b6S-za-Lii" id="JOi-Ic-lgS"/>
                         <outlet property="bananasEaten" destination="dOa-Zc-bq6" id="Dwh-GL-nr0"/>
                         <outlet property="feedButton" destination="JwI-FR-uSC" id="Ldr-RH-44G"/>
                         <outlet property="healthMeter" destination="a7I-Wa-Ino" id="trU-T2-C4g"/>

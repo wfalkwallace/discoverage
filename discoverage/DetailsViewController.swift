@@ -9,8 +9,7 @@
 import UIKit
 
 protocol DetailsViewControllerDelegate {
-    func healthShouldChange(row: Int) -> Bool
-    func healthDidChange(row : Int)
+    func feed(row: Int, block: (user: User?, animal: Animal?, success: Bool) -> ())
 }
 
 class DetailsViewController: UIViewController {
@@ -31,13 +30,7 @@ class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        var navigationItem = navigationBar.items[0] as! UINavigationItem
-//        var button = UIBarButtonItem(title: "Menagerie", style: .Bordered, target: self, action: "onBack")
-//        button.tintColor = UIColor.blackColor()
-//        navigationItem.leftBarButtonItem = button
         navigationItem.title = animal!.name as? String
-
         initView()
     }
 
@@ -45,12 +38,13 @@ class DetailsViewController: UIViewController {
 
         animalImageView.image =  UIImage(named: animal!.sprite as String)
         animalName.text = animal!.name as String
+        let displayHealth:Float = Float(animal!.health) / 10.0
+        
+        UIProgressView.animateWithDuration(2.0, animations: {
+            self.healthMeter.setProgress(displayHealth, animated: true)
+        })
 
-//        UIProgressView.animateWithDuration(2.0, animations: {
-//            self.healthMeter.setProgress(animal!.health as Float, animated: true)
-//        })
-
-        //bananasCount.text = String(user!.bananaCount)
+        bananasCount.text = String(user!.bananaCount)
     }
 
     func onBack() {
@@ -59,17 +53,23 @@ class DetailsViewController: UIViewController {
 
     @IBAction func onFeed(sender: UIButton) {
 
-        if (delegate?.healthShouldChange(animalIndexRow!) == true) {
-            delegate?.healthDidChange(animalIndexRow!)
-        }
+        println("onfeed")
+        delegate?.feed(animalIndexRow!, block: { (user, animal, success) -> () in
+            
+            if success == true {
+                self.user = user!
+                self.animal = animal!
+                
+                //update this view
+                self.bananasCount.text = String(user!.bananaCount)
+                
+                let displayHealth:Float = Float(animal!.health) / 10.0
+                
+                UIProgressView.animateWithDuration(2.0, animations: {
+                    self.healthMeter.setProgress(displayHealth,  animated: true)
+                })
+            }
+        })
 
-        //update this view
-        bananasCount.text = String(user!.bananaCount)
-
-        var health = animal?.health as Int!
-
-//        UIProgressView.animateWithDuration(2.0, animations: {
-//            self.healthMeter.setProgress(health!,  animated: true)
-//        })
     }
 }

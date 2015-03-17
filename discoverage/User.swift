@@ -28,6 +28,11 @@ class User {
         self.bananaCount = bananaCount
     }
     
+    init(name: String, email: String, bananaCount: Int) {
+        self.name = name
+        self.bananaCount = bananaCount
+    }
+    
     init(dictionary: NSDictionary) {
         self.id = dictionary["_id"] as! String
         self.name = dictionary["name"] as! String
