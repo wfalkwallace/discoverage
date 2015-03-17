@@ -26,8 +26,8 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func didTapLogin(sender: UIButton) {
-        
-        Alamofire.request(Discoverage.Router.Login(usernameTextField.text, passwordTextField.text)).responseString({ (_, _, data: String?, error: NSError?) -> Void in
+        Alamofire.request(Discoverage.Router.Login(usernameTextField.text, passwordTextField.text))
+            .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let error = error {
                 // deal with login error
                 println(error)
@@ -38,7 +38,23 @@ class LoginViewController: UIViewController {
             let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
             let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
             self.presentViewController(menagerieViewController, animated: true, completion: nil)
-        })
+        }
+    }
+    
+    @IBAction func didTapSignup(sender: UIButton) {
+        Alamofire.request(Discoverage.Router.UserCreate(["name": "name", "email" : usernameTextField.text, "password": passwordTextField.text]))
+            .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
+            if let error = error {
+                // deal with login error
+                println(error)
+            } else {
+                println(data)
+                //                User.currentUser = User(dictionary: data as! NSDictionary)
+            }
+            let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+            let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+            self.presentViewController(menagerieViewController, animated: true, completion: nil)
+        }
     }
 
 }

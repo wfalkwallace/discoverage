@@ -14,27 +14,14 @@ var _currentUser: User?
 let currentUserKey = "CurrentUser"
 
 class User {
-    var id: String?
+    var id: String
     var token: String?
     var name: String
     var email: String
     var bananaCount: Int
     var location: CLLocation?
 
-    var dictionary: NSDictionary?
-
-    init(name: String, email: String, bananaCount: Int, location: CLLocation) {
-        self.name = name
-        self.email = email
-        self.location = location
-        self.bananaCount = bananaCount
-    }
-    
-    init(name: String, email: String, bananaCount: Int) {
-        self.name = name
-        self.email = email
-        self.bananaCount = bananaCount
-    }
+    var dictionary: NSDictionary
     
     init(dictionary: NSDictionary) {
         self.id = dictionary["_id"] as! String
@@ -73,11 +60,8 @@ class User {
 //        if let location = location {
 //            params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
 //        }
-        if let id = id {
-            params["_id"] = id
-        }
         
-        Alamofire.request(Discoverage.Router.UserCreate(params)).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.UserUpdate(id, params)).responseJSON { (_, _, data, error) in
             
             if error == nil {
                 println(data)
@@ -118,7 +102,7 @@ class User {
         set(user) {
             _currentUser = user
             if _currentUser != nil {
-                var data = NSJSONSerialization.dataWithJSONObject(user!.dictionary!, options: nil, error: nil)
+                var data = NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: nil, error: nil)
                 NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
             } else {
                 NSUserDefaults.standardUserDefaults().setObject(nil, forKey: currentUserKey)
