@@ -22,6 +22,12 @@ class SpriteCell: UICollectionViewCell {
         monsterImageView.image = UIImage(named: animal.sprite as String)
         monsterName.text = animal.name as String
     
-        self.healthMeter.setProgress(Float(animal.health), animated: true)
+        let displayHealth:Float = Float(animal.health) / 10.0
+        self.healthMeter.setProgress(displayHealth, animated: true)
+        
+        UIView.animateWithDuration(3.0, animations: {
+            self.healthMeter.setProgress(displayHealth,  animated: true)
+        })
+        
     }
 }

@@ -32,10 +32,10 @@ class User {
         self.id = dictionary["_id"] as! String
         self.name = dictionary["name"] as! String
         
-        let locationData = dictionary["location"] as! NSDictionary
-        let lat = locationData["lat"] as! CLLocationDegrees
-        let lon = locationData["lon"] as! CLLocationDegrees
-        self.location = CLLocation(latitude: lat, longitude: lon)
+      //  let locationData = dictionary["location"] as! NSDictionary
+//        let lat = locationData["lat"] as! CLLocationDegrees
+//        let lon = locationData["lon"] as! CLLocationDegrees
+//        self.location = CLLocation(latitude: lat, longitude: lon)
         
         self.bananaCount = dictionary["bananaCount"] as! Int
         self.dictionary = dictionary

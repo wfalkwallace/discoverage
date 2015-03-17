@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailsViewControllerDelegate, UITabBarDelegate {
     
@@ -20,12 +21,27 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.user = User.currentUser
-        bananaCount.text = String(self.user!.bananaCount)
+        //self.user = User.currentUser
+        //bananaCount.text = String(self.user!.bananaCount)
         
+        self.animals = [Animal]()
+        Alamofire.request(Discoverage.Router.Animals("")).responseJSON { (_, _, data, error) in
+            // todo: save dict and call block
+            var animalss = Animal.initWithArray(data as! [NSDictionary])
+            
+            
+            for i in 1...10 {
+                for animal in animalss {
+                    self.animals!.append(animal)
+                }
+            }
+            self.collectionView.reloadData()
+            println(data)
+            println(error)
+        }
+       
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
-
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -53,6 +69,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let detailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailsViewController") as! DetailsViewController
         
+        detailsViewController.animal = animals![indexPath.row]
         detailsViewController.user = self.user
         detailsViewController.animalIndexRow = indexPath.row
         detailsViewController.delegate = self

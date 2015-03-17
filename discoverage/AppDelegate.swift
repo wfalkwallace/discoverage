@@ -14,15 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Parse.enableLocalDatastore()
-        let parseAppId = NSBundle.mainBundle().objectForInfoDictionaryKey("PARSE_APP_ID") as! String
-        let parseClientKey = NSBundle.mainBundle().objectForInfoDictionaryKey("PARSE_CLIENT_KEY") as! String
-        Parse.setApplicationId(parseAppId, clientKey: parseClientKey)
-        PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: { (success: Bool, error: NSError?) -> Void in
-            if !success {
-                println(error)
-            }
-        })
+        
+//        Parse.enableLocalDatastore()
+//        let parseAppId = NSBundle.mainBundle().objectForInfoDictionaryKey("PARSE_APP_ID") as! String
+//        let parseClientKey = NSBundle.mainBundle().objectForInfoDictionaryKey("PARSE_CLIENT_KEY") as! String
+//        Parse.setApplicationId(parseAppId, clientKey: parseClientKey)
+//        PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: { (success: Bool, error: NSError?) -> Void in
+//            if !success {
+//                println(error)
+//            }
+//        })
         
         var navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = UIColor(red: 0.240, green: 0.0, blue: 0.0, alpha:0.75)

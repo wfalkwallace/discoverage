@@ -32,10 +32,10 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var navigationItem = navigationBar.items[0] as! UINavigationItem
-        var button = UIBarButtonItem(title: "Menagerie", style: .Bordered, target: self, action: "onBack")
-        button.tintColor = UIColor.blackColor()
-        navigationItem.leftBarButtonItem = button
+//        var navigationItem = navigationBar.items[0] as! UINavigationItem
+//        var button = UIBarButtonItem(title: "Menagerie", style: .Bordered, target: self, action: "onBack")
+//        button.tintColor = UIColor.blackColor()
+//        navigationItem.leftBarButtonItem = button
         navigationItem.title = animal!.name as? String
 
         initView()
@@ -50,7 +50,7 @@ class DetailsViewController: UIViewController {
 //            self.healthMeter.setProgress(animal!.health as Float, animated: true)
 //        })
 
-        bananasCount.text = String(user!.bananaCount)
+        //bananasCount.text = String(user!.bananaCount)
     }
 
     func onBack() {

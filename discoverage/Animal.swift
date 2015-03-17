@@ -34,9 +34,9 @@ class Animal: NSObject {
         self.sprite = dictionary["sprite"] as! String
         self.health = dictionary["health"] as! Int
         
-        let locationData = dictionary["location"] as! NSDictionary
-        let lat = locationData["lat"] as! CLLocationDegrees
-        let lon = locationData["lon"] as! CLLocationDegrees
+        let locationData = dictionary["location"] as! NSArray
+        let lat = locationData[0] as! CLLocationDegrees
+        let lon = locationData[1] as! CLLocationDegrees
         self.location = CLLocation(latitude: lat, longitude: lon)
 
         self.dictionary = dictionary
