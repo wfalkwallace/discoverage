@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wvf-L9-ORa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wvf-L9-ORa">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -269,12 +269,12 @@
                                 <exclude reference="Tvf-3e-XW7"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="M1J-mm-KXd"/>
-                                <exclude reference="MwL-0o-qKk"/>
-                                <exclude reference="f2t-WL-zSa"/>
                                 <exclude reference="2AP-Mh-IS5"/>
                                 <exclude reference="AFi-3D-2qX"/>
                                 <exclude reference="mhe-D7-vFP"/>
+                                <exclude reference="M1J-mm-KXd"/>
+                                <exclude reference="MwL-0o-qKk"/>
+                                <exclude reference="f2t-WL-zSa"/>
                                 <exclude reference="xN1-jo-7VS"/>
                             </mask>
                         </variation>
@@ -283,6 +283,9 @@
                                 <include reference="Tvf-3e-XW7"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="2AP-Mh-IS5"/>
+                                <include reference="AFi-3D-2qX"/>
+                                <include reference="mhe-D7-vFP"/>
                                 <exclude reference="5mV-Tz-BhW"/>
                                 <exclude reference="I3l-AY-UIW"/>
                                 <include reference="M1J-mm-KXd"/>
@@ -291,9 +294,6 @@
                                 <exclude reference="rkS-QD-FWW"/>
                                 <exclude reference="rtV-Dz-uxz"/>
                                 <exclude reference="tvp-6F-Vik"/>
-                                <include reference="2AP-Mh-IS5"/>
-                                <include reference="AFi-3D-2qX"/>
-                                <include reference="mhe-D7-vFP"/>
                                 <include reference="xN1-jo-7VS"/>
                                 <exclude reference="zKa-8J-L0q"/>
                             </mask>

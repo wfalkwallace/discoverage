@@ -42,6 +42,21 @@ class Animal: NSObject {
         self.dictionary = dictionary
     }
     
+    func reset(dictionary: NSDictionary) {
+        self.owner = User(dictionary: dictionary["owner"] as! NSDictionary)
+        self.name = dictionary["name"] as! String
+        self.id = dictionary["_id"] as! String
+        self.sprite = dictionary["sprite"] as! String
+        self.health = dictionary["health"] as! Int
+        
+        let locationData = dictionary["location"] as! NSArray
+        let lat = locationData[0] as! CLLocationDegrees
+        let lon = locationData[1] as! CLLocationDegrees
+        self.location = CLLocation(latitude: lat, longitude: lon)
+        
+        self.dictionary = dictionary
+    }
+    
     class func initWithArray(array: [NSDictionary]) -> [Animal] {
         var animals = [Animal]()
         
@@ -52,7 +67,7 @@ class Animal: NSObject {
         return animals
     }
     
-    func save(block: (animal: Animal, error: NSError?) -> ()) {
+    func save(block: (animal: Animal?, error: NSError?) -> ()) {
         var params = [String: AnyObject]()
         params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
         params["owner"] = owner
@@ -64,9 +79,14 @@ class Animal: NSObject {
         }
         
         Alamofire.request(Discoverage.Router.Animal(params)).responseJSON { (_, _, data, error) in
-            // todo: save dict and call block
-            println(data)
-            println(error)
+            if error == nil {
+                println(data)
+                self.reset(data as! NSDictionary)
+                block(animal: self, error: nil)
+            } else {
+                block(animal: nil, error: error)
+                println(error)
+            }
         }
     }
     

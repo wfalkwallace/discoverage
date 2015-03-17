@@ -21,8 +21,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.user = User.currentUser
-        self.user = User(name: "aditya", email: "aditya@gmail.com", bananaCount: 20)
+        self.user = User.currentUser
+       // self.user = User(name: "aditya", email: "aditya@gmail.com", bananaCount: 20)
         bananaCount.text = String(self.user!.bananaCount)
         
         self.animals = [Animal]()
@@ -111,20 +111,28 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         
         //decrement user banana count
         user!.bananaCount -= 1
-//        user?.save({ (user, error) -> () in
-//            call block
-//        })
-        
-        //increase monster health
-        health = health + 1
-        animal.health = health
-//        animal.save { (animal, error) -> () in
-//            call block
-//        }
-        
-        block(user: self.user, animal: animal, success: true)
-        
-        var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
-        self.collectionView!.reloadItemsAtIndexPaths([indexPath])
+        user!.save { (user, error) -> () in
+            if error == nil {
+                User.currentUser = user
+                println(User.currentUser!.name)
+                println(User.currentUser!.id)
+                
+                health = health + 1
+                animal.health = health
+                
+                animal.save({ (animal, error) -> () in
+                    if error == nil {
+                        var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
+                        self.collectionView!.reloadItemsAtIndexPaths([indexPath])
+                        block(user: self.user, animal: animal, success: true)
+                    } else {
+                        block(user: nil, animal: nil, success: false)
+                    }
+                })
+                
+            } else {
+                block(user: nil, animal: nil, success: false)
+            }
+        }
     }    
 }

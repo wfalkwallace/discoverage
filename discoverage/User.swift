@@ -17,6 +17,7 @@ class User {
 
     var id: String?
     var name: String
+    var email: String
     var bananaCount: Int
     var location: CLLocation?
 
@@ -24,19 +25,22 @@ class User {
 
     init(name: String, email: String, bananaCount: Int, location: CLLocation) {
         self.name = name
+        self.email = email
         self.location = location
         self.bananaCount = bananaCount
     }
     
     init(name: String, email: String, bananaCount: Int) {
         self.name = name
+        self.email = email
         self.bananaCount = bananaCount
     }
     
     init(dictionary: NSDictionary) {
         self.id = dictionary["_id"] as! String
         self.name = dictionary["name"] as! String
-        
+        self.email = dictionary["email"] as! String
+
       //  let locationData = dictionary["location"] as! NSDictionary
 //        let lat = locationData["lat"] as! CLLocationDegrees
 //        let lon = locationData["lon"] as! CLLocationDegrees
@@ -46,21 +50,42 @@ class User {
         self.dictionary = dictionary
     }
     
-    func save(block: (user: User, error: NSError?) -> ()) {
+    func reset(dictionary: NSDictionary) {
+        self.id = dictionary["_id"] as! String
+        self.name = dictionary["name"] as! String
+        self.email = dictionary["email"] as! String
+
+        //  let locationData = dictionary["location"] as! NSDictionary
+        //        let lat = locationData["lat"] as! CLLocationDegrees
+        //        let lon = locationData["lon"] as! CLLocationDegrees
+        //        self.location = CLLocation(latitude: lat, longitude: lon)
+        
+        self.bananaCount = dictionary["bananaCount"] as! Int
+        self.dictionary = dictionary
+    }
+    
+    func save(block: (user: User?, error: NSError?) -> ()) {
         var params = [String: AnyObject]()
         params["name"] = name
         params["bananaCount"] = bananaCount
-        if let location = location {
-            params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
-        }
+        params["email"] = email
+//        if let location = location {
+//            params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
+//        }
         if let id = id {
             params["_id"] = id
         }
         
         Alamofire.request(Discoverage.Router.User(params)).responseJSON { (_, _, data, error) in
-            // todo: save dict and call block
-            println(data)
-            println(error)
+            
+            if error == nil {
+                println(data)
+                self.reset(data as! NSDictionary)
+                block(user: self, error: nil)
+            } else {
+                block(user: nil, error: error)
+                println(error)
+            }
         }
     }
     
