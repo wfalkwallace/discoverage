@@ -11,21 +11,13 @@ import Alamofire
 import SwiftyJSON
 
 class Animal: NSObject {
-    var id: String?
+    var id: String
     var owner: User?
     var health: Int
     var name: String
     var sprite: String
     var location: CLLocation
-    var dictionary: NSDictionary?
-
-    init(health: Int, name: String, sprite: String, location: CLLocation, owner: User) {
-        self.owner = owner
-        self.name = name
-        self.sprite = sprite
-        self.health = health
-        self.location = location
-    }
+    var dictionary: NSDictionary
     
     init(dictionary: NSDictionary) {
         self.owner = User(dictionary: dictionary["owner"] as! NSDictionary)
@@ -74,11 +66,9 @@ class Animal: NSObject {
         params["name"] = name
         params["health"] = health
         params["sprite"] = sprite
-        if let id = id {
-            params["_id"] = id
-        }
+        params["_id"] = id
         
-        Alamofire.request(Discoverage.Router.Animal(params)).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.AnimalUpdate(id, params)).responseJSON { (_, _, data, error) in
             if error == nil {
                 println(data)
                 self.reset(data as! NSDictionary)

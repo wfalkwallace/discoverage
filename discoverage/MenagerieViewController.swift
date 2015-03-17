@@ -33,7 +33,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         bananaCount.text = String(self.user!.bananaCount)
 
         self.animals = [Animal]()
-        Alamofire.request(Discoverage.Router.Animals("")).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.AnimalsWithParams([:])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             var animalss = Animal.initWithArray(data as! [NSDictionary])
             

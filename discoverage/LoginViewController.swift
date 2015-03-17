@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
             if let error = error {
                 // deal with login error
             } else {
-                User.currentUser = User(data as! NSDictionary)
+                User.currentUser = User(dictionary: data as! NSDictionary)
             }
         }
         

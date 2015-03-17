@@ -40,7 +40,7 @@ class BananaPick: NSObject {
             params["_id"] = id
         }
         
-        Alamofire.request(Discoverage.Router.BananaPick(params)).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.BananaPickCreate(params)).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             println(data)
             println(error)

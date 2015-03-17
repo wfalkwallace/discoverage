@@ -14,8 +14,8 @@ var _currentUser: User?
 let currentUserKey = "CurrentUser"
 
 class User {
-
     var id: String?
+    var token: String?
     var name: String
     var email: String
     var bananaCount: Int
@@ -40,7 +40,8 @@ class User {
         self.id = dictionary["_id"] as! String
         self.name = dictionary["name"] as! String
         self.email = dictionary["email"] as! String
-
+        
+        self.token = dictionary["token"] as? String
       //  let locationData = dictionary["location"] as! NSDictionary
 //        let lat = locationData["lat"] as! CLLocationDegrees
 //        let lon = locationData["lon"] as! CLLocationDegrees
@@ -76,7 +77,7 @@ class User {
             params["_id"] = id
         }
         
-        Alamofire.request(Discoverage.Router.User(params)).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.UserCreate(params)).responseJSON { (_, _, data, error) in
             
             if error == nil {
                 println(data)

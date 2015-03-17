@@ -81,7 +81,7 @@ class BananaMapViewController: UIViewController, UITabBarDelegate {
         println("location changed")
         
         //TODO banana trees near user
-        Alamofire.request(Discoverage.Router.BananaTrees("")).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.BananaTreesWithParams([:])).responseJSON { (_, _, data, error) in
             println(data)
             if error == nil {
                 self.bananaTrees = BananaTree.initWithArray(data as! [NSDictionary])

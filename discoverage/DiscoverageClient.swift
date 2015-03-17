@@ -129,25 +129,25 @@ struct Discoverage {
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
             case .AnimalUpdate(_, let params):
                 var paramsWithToken = params
-                paramsWithToken["token"] = User.currentUser.token
+                paramsWithToken["token"] = User.currentUser?.token
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: paramsWithToken).0
             case .AnimalsWithParams(let params):
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
 
             case .UserCreate(let params):
                 var paramsWithToken = params
-                paramsWithToken["token"] = User.currentUser.token
+                paramsWithToken["token"] = User.currentUser?.token
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: paramsWithToken).0
             case .UserUpdate(_, let params):
                 var paramsWithToken = params
-                paramsWithToken["token"] = User.currentUser.token
+                paramsWithToken["token"] = User.currentUser?.token
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: paramsWithToken).0
             case .UsersWithParams(let params):
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
 
             case .BananaPickCreate(let params):
                 var paramsWithToken = params
-                paramsWithToken["token"] = User.currentUser.token
+                paramsWithToken["token"] = User.currentUser?.token
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: paramsWithToken).0
             case .BananaPicksWithParams(let params):
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
