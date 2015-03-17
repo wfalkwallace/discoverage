@@ -27,17 +27,18 @@ class LoginViewController: UIViewController {
 
     @IBAction func didTapLogin(sender: UIButton) {
         
-        Alamofire.request(Discoverage.Router.Login(usernameTextField.text, passwordTextField.text)).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
+        Alamofire.request(Discoverage.Router.Login(usernameTextField.text, passwordTextField.text)).responseString({ (_, _, data: String?, error: NSError?) -> Void in
             if let error = error {
                 // deal with login error
+                println(error)
             } else {
-                User.currentUser = User(dictionary: data as! NSDictionary)
+                println(data)
+//                User.currentUser = User(dictionary: data as! NSDictionary)
             }
-        }
-        
-        let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-        let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
-        self.presentViewController(menagerieViewController, animated: true, completion: nil)
+            let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+            let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+            self.presentViewController(menagerieViewController, animated: true, completion: nil)
+        })
     }
 
 }

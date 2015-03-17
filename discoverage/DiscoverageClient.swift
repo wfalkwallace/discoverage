@@ -37,7 +37,7 @@ struct Discoverage {
         var method: Alamofire.Method {
             switch self {
             case .Login:
-                return .GET
+                return .POST
 
             case .AnimalsNear:
                 return .GET
@@ -123,7 +123,7 @@ struct Discoverage {
                 var params = [String: AnyObject]()
                 params["email"] = email
                 params["password"] = password
-                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
 
             case .AnimalsNear(let params):
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
