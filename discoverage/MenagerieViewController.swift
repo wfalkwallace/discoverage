@@ -138,5 +138,18 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
                 block(user: nil, animal: nil, success: false)
             }
         }
-    }    
+    }
+    
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        if item.title == (tabBar.items![1] as! UITabBarItem).title {
+            let mapStoryboard = UIStoryboard(name: "BananaMap", bundle: nil)
+            let mapViewController = mapStoryboard.instantiateInitialViewController() as! BananaMapViewController
+            self.presentViewController(mapViewController, animated: true, completion: nil)
+        } else if item.title == (tabBar.items![2] as! UITabBarItem).title {
+            let rankingStoryboard = UIStoryboard(name: "Ranking", bundle: nil)
+            let rankingViewController = rankingStoryboard.instantiateInitialViewController() as! UINavigationController
+            self.presentViewController(rankingViewController, animated: true, completion: nil)
+        }
+    }
+
 }

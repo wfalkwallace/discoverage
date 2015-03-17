@@ -85,4 +85,17 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
+    
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        if item.title == (tabBar.items![0] as! UITabBarItem).title {
+            let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+            let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+            self.presentViewController(menagerieViewController, animated: true, completion: nil)
+        } else if item.title == (tabBar.items![1] as! UITabBarItem).title {
+            let mapStoryboard = UIStoryboard(name: "BananaMap", bundle: nil)
+            let mapViewController = mapStoryboard.instantiateInitialViewController() as! BananaMapViewController
+            self.presentViewController(mapViewController, animated: true, completion: nil)
+        }
+    }
+
 }
