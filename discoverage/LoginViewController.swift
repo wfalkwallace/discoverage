@@ -33,11 +33,12 @@ class LoginViewController: UIViewController {
                 println(error)
             } else {
                 println(data)
-//                User.currentUser = User(dictionary: data as! NSDictionary)
+                User.currentUser = User(dictionary: data as! NSDictionary)
+                
+                let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+                let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+                self.presentViewController(menagerieViewController, animated: true, completion: nil)
             }
-            let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-            let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
-            self.presentViewController(menagerieViewController, animated: true, completion: nil)
         }
     }
     
@@ -49,11 +50,7 @@ class LoginViewController: UIViewController {
                 println(error)
             } else {
                 println(data)
-                //                User.currentUser = User(dictionary: data as! NSDictionary)
             }
-            let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-            let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
-            self.presentViewController(menagerieViewController, animated: true, completion: nil)
         }
     }
 
