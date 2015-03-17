@@ -16,11 +16,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Alamofire.request(Discoverage.Router.Animals("")).responseJSON { (_, _, data, error) in
-            // todo: save dict and call block
-            println(data)
-            println(error)
-        }
         
     }
 
@@ -30,7 +25,8 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func didTapLogin(sender: UIButton) {
-//        var user = User(name: "WFW", email: "", bananaCount: 5)
+        
+        var user = User(name: "WFW", email: "", bananaCount: 5)
 //        user.save { (success, error) -> () in
             // do nothing
 //        }
