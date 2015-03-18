@@ -50,8 +50,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didTapSignup(sender: UIButton) {
-        Alamofire.request(Discoverage.Router.UserCreate(["name": usernameTextField.text, "email" : emailTextField.text, "password": passwordTextField.text]))
-            .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
+        Alamofire.request(Discoverage.Router.UserCreate(["name": usernameTextField.text, "email" : emailTextField.text, "password": passwordTextField.text])).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let error = error {
                 // deal with signup error error
                 println(error)

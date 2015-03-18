@@ -1,4 +1,4 @@
-//
+    //
 //  User.swift
 //  discoverage
 //
@@ -50,6 +50,7 @@ class User {
         //        self.location = CLLocation(latitude: lat, longitude: lon)
         
         self.bananaCount = dictionary["bananaCount"] as! Int
+        self.token = dictionary["token"] as? String
         self.dictionary = dictionary
     }
     

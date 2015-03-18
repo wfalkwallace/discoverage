@@ -84,7 +84,7 @@ class Location: NSObject, CLLocationManagerDelegate  {
         
         //check if current user exists and do stuff, if no user, stop updating location
         if let user = User.currentUser {
-            println("current user exists, doing location stuff")
+            //println("current user exists, doing location stuff")
             var currentLocation = locations.last as! CLLocation
             
             //claim nearby bananas and monsters the first time the location changes and every 60 seconds thereafter
@@ -93,13 +93,12 @@ class Location: NSObject, CLLocationManagerDelegate  {
                 if interval >= 60.0 {
                     user.location = currentLocation
                     user.claimBananasAndAnimals()
-                    NSNotificationCenter.defaultCenter().postNotificationName("updateViews", object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName("locationUpdate", object: nil)
 
                 }
-                println(interval)
             } else {
                 user.location = currentLocation
-                NSNotificationCenter.defaultCenter().postNotificationName("updateViews", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("locationUpdate", object: nil)
                 user.claimBananasAndAnimals()
             }
             
@@ -107,32 +106,6 @@ class Location: NSObject, CLLocationManagerDelegate  {
             stopUpdatingLocation()
         }
         
-        //lastTenLocato
-        
-//        NSNotificationCenter.defaultCenter().postNotificationName("LabelHasbeenUpdated", object: nil)
-//
-//        
-//        let geoPoint = PFGeoPoint(location: locations.last as? CLLocation)
-//        
-//        var aQuery = PFQuery(className: "Animal")
-//        aQuery.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
-//        aQuery.limit = 1
-//        
-//        if let animal = aQuery.findObjects()?[0] as? PFObject {
-//            let animal = Animal(object: animal)
-//            animal.save() {(success: Bool, error: NSError?) -> Void in println("saved animal!")}
-//        }
-//
-//        var bQuery = PFQuery(className: "BananaTree")
-//        bQuery.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
-//        bQuery.limit = 10
-//        
-//        if let bananaTrees = bQuery.findObjects() {
-//            for bananaTree in bananaTrees {
-//                User.currentUser?.bananaCount += 1
-//                let bananaPick = BananaPick(bananaTree: BananaTree(object: bananaTree as! PFObject), timestamp: NSDate())
-//                bananaPick.save() {(success: Bool, error: NSError?) -> Void in println("saved bananaPick!")}
-//            }
-//        }
+ 
     }
 }
