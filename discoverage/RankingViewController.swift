@@ -59,6 +59,8 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBar.selectedItem = tabBar.items![2] as? UITabBarItem
+        
 //        var u: [User] = [User()]
 //
 //        self.users = u as [User]

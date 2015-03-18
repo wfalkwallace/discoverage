@@ -19,7 +19,9 @@ class BananaMapViewController: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         bananaTrees = [BananaTree]()
         super.viewDidLoad()
+        
         tabBar.selectedItem = tabBar.items![1] as? UITabBarItem
+                
         //Location.sharedInstance.startUpdatingLocation()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateViews:", name:"updateViews", object: nil)
         

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import MapKit
 
 class Animal: NSObject {
     var id: String

@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         var navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.barTintColor = UIColor(red: 0.240, green: 0.0, blue: 0.0, alpha:1)
-        navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PokemonHollowNormal", size: 30)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationBarAppearace.barTintColor = UIColor(red:0.8, green:0.15, blue:0.09, alpha:1)
+        navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 28)!, NSForegroundColorAttributeName: UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)]
         
         if User.currentUser != nil {
             let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)

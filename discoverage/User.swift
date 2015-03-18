@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import MapKit
 
 var _currentUser: User?
 let currentUserKey = "CurrentUser"

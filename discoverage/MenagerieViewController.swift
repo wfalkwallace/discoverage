@@ -22,7 +22,9 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         self.user = User.currentUser
-        
+
+        tabBar.selectedItem = tabBar.items![0] as? UITabBarItem
+
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
     }
