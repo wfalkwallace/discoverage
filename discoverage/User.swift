@@ -87,6 +87,7 @@ class User {
     
     class func logout() {
         User.currentUser = nil
+        NSNotificationCenter.defaultCenter().postNotificationName("userDidLogout", object: nil)
     }
     
     class var currentUser: User? {

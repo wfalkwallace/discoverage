@@ -15,11 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: "userDidLogout", object: nil)
+        
         var navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = UIColor(red:0.8, green:0.15, blue:0.09, alpha:1)
         navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 28)!, NSForegroundColorAttributeName: UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)]
         
         if User.currentUser != nil {
+            Location.sharedInstance.startUpdatingLocation()
             let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
             window?.rootViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
         }
@@ -49,6 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func userDidLogout() {
+        var loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        var vc = loginStoryboard.instantiateInitialViewController() as! UIViewController
+        //let navigationController = UINavigationController(rootViewController: vc)
+        self.window?.rootViewController = vc
+    }
 
 }
 

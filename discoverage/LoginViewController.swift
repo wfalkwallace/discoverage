@@ -30,9 +30,15 @@ class LoginViewController: UIViewController {
             .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let error = error {
                 // deal with login error
+                let alert = UIAlertView()
+                alert.title = "Alert"
+                alert.message = "Incorrect username or password!"
+                alert.addButtonWithTitle("OK")
+                alert.show()
                 println(error)
             } else {
                 println(data)
+                print(error)
                 User.currentUser = User(dictionary: data as! NSDictionary)
                 
                 let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
@@ -46,10 +52,15 @@ class LoginViewController: UIViewController {
         Alamofire.request(Discoverage.Router.UserCreate(["name": "name", "email" : usernameTextField.text, "password": passwordTextField.text]))
             .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let error = error {
-                // deal with login error
+                // deal with signup error error
                 println(error)
             } else {
                 println(data)
+                User.currentUser = User(dictionary: data as! NSDictionary)
+                
+                let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+                let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+                self.presentViewController(menagerieViewController, animated: true, completion: nil)
             }
         }
     }

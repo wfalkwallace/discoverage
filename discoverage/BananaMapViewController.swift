@@ -21,8 +21,9 @@ class BananaMapViewController: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         
         tabBar.selectedItem = tabBar.items![1] as? UITabBarItem
-                
+            
         //Location.sharedInstance.startUpdatingLocation()
+        Location.sharedInstance.startUpdatingLocation()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateViews:", name:"updateViews", object: nil)
         
     }

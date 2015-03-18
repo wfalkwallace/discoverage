@@ -22,11 +22,18 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         self.user = User.currentUser
+        println(self.user)
 
         tabBar.selectedItem = tabBar.items![0] as? UITabBarItem
 
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
+        
+        var logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: self, action: "logout")
+        logoutButton.tintColor = UIColor.whiteColor()
+        navigationItem.leftBarButtonItem = logoutButton
+        navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 12)!], forState: UIControlState.Normal)
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -35,7 +42,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         bananaCount.text = String(self.user!.bananaCount)
 
         self.animals = [Animal]()
-        Alamofire.request(Discoverage.Router.AnimalsWithParams([:])).responseJSON { (_, _, data, error) in
+     
+        Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             var animalss = Animal.initWithArray(data as! [NSDictionary])
             
@@ -152,6 +160,10 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
             let rankingViewController = rankingStoryboard.instantiateInitialViewController() as! UINavigationController
             self.presentViewController(rankingViewController, animated: true, completion: nil)
         }
+    }
+    
+    func logout() {
+        User.logout()
     }
 
 }
