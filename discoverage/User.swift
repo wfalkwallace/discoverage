@@ -62,8 +62,8 @@ class User {
 //            params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
 //        }
         
-        Alamofire.request(Discoverage.Router.UserUpdate(id, params)).responseJSON { (_, _, data, error) in
-            
+        Alamofire.request(Discoverage.Router.UserUpdate(id, params)).responseJSON { (request, _, data, error) in
+            println(request)
             if error == nil {
                 println(data)
                 self.reset(data as! NSDictionary)
