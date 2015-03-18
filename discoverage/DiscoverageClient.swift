@@ -75,7 +75,7 @@ struct Discoverage {
 
         var path: String {
             switch self {
-            case .Login(_, _):
+            case .Login(_, _, _):
                 return "/login"
 
             case .AnimalsNear(_):
