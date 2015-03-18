@@ -7,26 +7,27 @@
 //
 
 import UIKit
+import Alamofire
 
 class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var firstUsername: UILabel!
-    @IBOutlet weak var secondUsername: UILabel!
-    @IBOutlet weak var thirdUsername: UILabel!
+//    @IBOutlet weak var firstUsername: UILabel!
+//    @IBOutlet weak var secondUsername: UILabel!
+//    @IBOutlet weak var thirdUsername: UILabel!
     @IBOutlet weak var tabBar: UITabBar!
     
-    @IBAction func firstTap(sender: AnyObject) {
-        self.performSegueWithIdentifier("userProfileSegue", sender: users[0])
-    }
-    
-    @IBAction func secondTap(sender: AnyObject) {
-        self.performSegueWithIdentifier("userProfileSegue", sender: users[1])
-    }
-    
-    @IBAction func thirdTap(sender: AnyObject) {
-        self.performSegueWithIdentifier("userProfileSegue", sender: users[2])
-    }
+//    @IBAction func firstTap(sender: AnyObject) {
+//        self.performSegueWithIdentifier("userProfileSegue", sender: users[0])
+//    }
+//    
+//    @IBAction func secondTap(sender: AnyObject) {
+//        self.performSegueWithIdentifier("userProfileSegue", sender: users[1])
+//    }
+//    
+//    @IBAction func thirdTap(sender: AnyObject) {
+//        self.performSegueWithIdentifier("userProfileSegue", sender: users[2])
+//    }
 
     var users: [User]! = []
 
@@ -40,8 +41,8 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         if users.count > 0 {
             let users = self.users as [User]
-            let user = users[indexPath.row + 3]
-            cell.rankLabel.text = "\(indexPath.row + 3))"
+            let user = users[indexPath.row]
+            cell.rankLabel.text = "\(indexPath.row + 1)"
             cell.usernameLabel.text = user.name
         }
 
@@ -56,17 +57,30 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return users.count
     }
 
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.selectedItem = tabBar.items![2] as? UITabBarItem
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.users = [User]()
+     
+        Alamofire.request(Discoverage.Router.UsersWithParams([:])).responseJSON { (_, _, data, error) in
+            // todo: save dict and call block
+            var users = User.initWithArray(data as! [NSDictionary])
+            
+            for i in 1...10 {
+                for user in users {
+                    self.users!.append(user)
+                }
+            }
+            self.tableView.reloadData()
+        }
         
-//        var u: [User] = [User()]
-//
-//        self.users = u as [User]
-//        println(users[3].name)
-//        self.tableView?.reloadData()
-        // Do any additional setup after loading the view.
+        tabBar.selectedItem = tabBar.items![2] as? UITabBarItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,8 +95,8 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             dest.user = sender as! User
         } else {
             let indexPath = self.tableView.indexPathForSelectedRow()!
-            let dest = segue.destinationViewController as! UserProfileViewController
-            dest.user = users[indexPath.row + 3]
+            let dest = segue.destinationViewController as! MenagerieViewController
+            dest.user = users[indexPath.row]
             
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }

@@ -47,10 +47,10 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         //Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).
         Alamofire.request(Discoverage.Router.AnimalsWithParams([:])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
-            var animalss = Animal.initWithArray(data as! [NSDictionary])
+            var animals = Animal.initWithArray(data as! [NSDictionary])
             
             for i in 1...10 {
-                for animal in animalss {
+                for animal in animals {
                     self.animals!.append(animal)
                 }
             }
