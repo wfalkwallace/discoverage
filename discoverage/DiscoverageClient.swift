@@ -15,6 +15,7 @@ struct Discoverage {
         static let baseURLString = "https://discoverage.herokuapp.com"
         
         case Login(String, String, String)
+        case Update([User], [BananaPick], [Animal])
 
         case AnimalsNear([String: AnyObject])
         case AnimalUpdate(String, [String: AnyObject])
@@ -36,39 +37,10 @@ struct Discoverage {
 
         var method: Alamofire.Method {
             switch self {
-            case .Login:
+            case .Login, .Update, .AnimalUpdate, .UserCreate, .UserUpdate, .BananaPickCreate:
                 return .POST
-
-            case .AnimalsNear:
-                return .GET
-            case .AnimalUpdate:
-                return .POST
-            case .AnimalWithId:
-                return .GET
-            case .AnimalsWithParams:
-                return .GET
-
-            case .UserCreate:
-                return .POST
-            case .UserUpdate:
-                return .POST
-            case .UsersWithParams:
-                return .GET
-            case .UserWithId:
-                return .GET
-
-            case .BananaPickCreate:
-                return .POST
-            case .BananaPicksWithParams:
-                return .GET
-            case .BananaPickWithId:
-                return .GET
-
-            case .BananaTreesNear:
-                return .GET
-            case .BananaTreeWithId:
-                return .GET
-            case .BananaTreesWithParams:
+                
+            case .AnimalsNear, .AnimalWithId, .AnimalsWithParams, .UsersWithParams, .UserWithId, .BananaPicksWithParams, .BananaPickWithId, .BananaTreesNear, .BananaTreeWithId, .BananaTreesWithParams:
                 return .GET
             }
         }
@@ -77,6 +49,8 @@ struct Discoverage {
             switch self {
             case .Login(_, _, _):
                 return "/login"
+            case .Update(_, _, _):
+                return "/update"
 
             case .AnimalsNear(_):
                 return "/animals/near"
@@ -124,6 +98,13 @@ struct Discoverage {
                 params["name"] = username
                 params["email"] = email
                 params["password"] = password
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
+
+            case .Update(let users, let bananaPicks, let animals):
+                var params = [String: AnyObject]()
+                params["users"] = users
+                params["bananaPicks"] = bananaPicks
+                params["animals"] = animals
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
 
             case .AnimalsNear(let params):
