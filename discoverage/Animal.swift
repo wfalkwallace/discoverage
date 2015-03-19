@@ -21,15 +21,18 @@ class Animal: NSObject {
     var dictionary: NSDictionary
     
     init(dictionary: NSDictionary) {
-        self.owner = User(dictionary: dictionary["owner"] as! NSDictionary)
+        if let user = dictionary.objectForKey("owner") as? NSDictionary {
+            println(user)
+            self.owner = User(dictionary: user)
+        }
         self.name = dictionary["name"] as! String
         self.id = dictionary["_id"] as! String
         self.sprite = dictionary["sprite"] as! String
         self.health = dictionary["health"] as! Int
         
         let locationData = dictionary["location"] as! NSArray
-        let lat = locationData[0] as! CLLocationDegrees
-        let lon = locationData[1] as! CLLocationDegrees
+        let lat = locationData[1] as! CLLocationDegrees
+        let lon = locationData[0] as! CLLocationDegrees
         self.location = CLLocation(latitude: lat, longitude: lon)
 
         self.dictionary = dictionary

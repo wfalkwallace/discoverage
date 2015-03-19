@@ -24,10 +24,9 @@ class BananaTree: NSObject {
     
     init(dictionary: NSDictionary) {
         self.id = dictionary["_id"] as! String
-        
         let locationData = dictionary["location"] as! NSArray
-        let lat = locationData[0] as! CLLocationDegrees
-        let lon = locationData[1] as! CLLocationDegrees
+        let lat = locationData[1] as! CLLocationDegrees
+        let lon = locationData[0] as! CLLocationDegrees
         self.location = CLLocation(latitude: lat, longitude: lon)
         
         self.dictionary = dictionary
@@ -35,7 +34,6 @@ class BananaTree: NSObject {
     
     class func initWithArray(array: [NSDictionary]) -> [BananaTree] {
         var trees = [BananaTree]()
-        
         for dictionary in array {
             trees.append(BananaTree(dictionary: dictionary))
         }
