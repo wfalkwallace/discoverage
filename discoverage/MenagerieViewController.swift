@@ -48,15 +48,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         Alamofire.request(Discoverage.Router.AnimalsWithParams([:])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             var animals = Animal.initWithArray(data as! [NSDictionary])
-            
-            for i in 1...10 {
-                for animal in animals {
-                    self.animals!.append(animal)
-                }
-            }
             self.collectionView.reloadData()
-            println(data)
-            println(error)
+            //println(data)
         }
     }
     
