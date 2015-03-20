@@ -95,7 +95,6 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             let indexPath = self.tableView.indexPathForSelectedRow()!
             let dest = segue.destinationViewController as! MenagerieViewController
-            dest.user = users[indexPath.row]
             
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }

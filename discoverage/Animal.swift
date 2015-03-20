@@ -20,7 +20,7 @@ class Animal: NSObject {
     var location: CLLocation
     var dictionary: NSDictionary
     
-    class var FULL_HEALTH: Int = 10
+    static let FULL_HEALTH: Int = 10
     
     init(dictionary: NSDictionary) {
         if let user = dictionary.objectForKey("owner") as? NSDictionary {
@@ -89,29 +89,24 @@ class Animal: NSObject {
             self.health = self.health + 1
         }
         
-        user!.bananaCount = 5
-        if (user!.bananaCount > 0 &&  health < 10) {
+        User.currentUser!.bananaCount = 5
+        if (User.currentUser!.bananaCount > 0 &&  health < 10) {
             
-            user!.bananaCount -= 1
-            user!.save { (user, error) -> () in
+            User.currentUser!.bananaCount -= 1
+            User.currentUser!.save { (user, error) -> () in
                 if error == nil {
-                    User.currentUser = user
+                    self.health += 1
                     
-                    health = health + 1
-                    animal.health = health
-                    
-                    animal.save({ (animal, error) -> () in
-                        if error == nil {
-                            var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
-                            self.collectionView!.reloadItemsAtIndexPaths([indexPath])
-                            block(user: self.user, animal: animal, success: true)
-                        } else {
-                            block(user: nil, animal: nil, success: false)
-                        }
-                    })
+//                    self.save({ (animal, error) -> () in
+//                        if error == nil {
+//                            block(user: self.user, animal: animal, success: true)
+//                        } else {
+//                            block(user: nil, animal: nil, success: false)
+//                        }
+//                    })
                     
                 } else {
-                    block(user: nil, animal: nil, success: false)
+//                    block(user: nil, animal: nil, success: false)
                 }
             }
         }

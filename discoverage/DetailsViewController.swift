@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol DetailsViewControllerDelegate {
+    func detailsViewControllerDelegate (detailsViewControllerDelegate: DetailsViewController, didEndViewing animal: Animal)
+}
+
 class DetailsViewController: UIViewController {
 
-    var user: User?
-    var animal : Animal?
-    var animalIndexRow : Int?
+    var user: User!
+    var animal : Animal!
+
+    var delegate: DetailsViewControllerDelegate?
 
     @IBOutlet weak var bananasCount: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -25,32 +30,29 @@ class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = animal!.name as? String
-        initView()
-    }
+        navigationItem.title = animal.name as String
 
-    func initView() {
-
-        animalImageView.image =  UIImage(named: animal!.sprite as String)
-        animalName.text = animal!.name as String
-        let displayHealth:Float = Float(animal!.health) / 10.0
+        animalImageView.image =  UIImage(named: animal.sprite as String)
+        animalName.text = animal.name as String
+        let displayHealth:Float = Float(animal.health) / 10.0
         
         UIProgressView.animateWithDuration(2.0, animations: {
             self.healthMeter.setProgress(displayHealth, animated: true)
         })
-
+        
         bananasCount.text = String(user!.bananaCount)
     }
 
+    // TODO this should be a delegate
     func onBack() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func onFeed(sender: UIButton) {
-        if let animal = animals?[row] {
-            if (User.currentUser.bananasCount > 0 && animal.health < Animal.FULL_HEALTH) {
-                animal.feed()
-            }
+        if User.currentUser!.bananaCount > 0 && animal.health < Animal.FULL_HEALTH {
+            animal.feed({ (animal, success) -> () in
+                //reload data
+            })
         }
 
         

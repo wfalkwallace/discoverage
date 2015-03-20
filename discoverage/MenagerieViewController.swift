@@ -9,20 +9,17 @@
 import UIKit
 import Alamofire
 
-class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
+class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailsViewControllerDelegate, UITabBarDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bananaCount: UILabel!
     @IBOutlet weak var tabBar: UITabBar!
-    
-    var user: User?
+
     var animals: [Animal]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.user = User.currentUser
-
         tabBar.selectedItem = tabBar.items![0] as? UITabBarItem
 
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
@@ -38,11 +35,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        bananaCount.text = String(self.user!.bananaCount)
-
-        self.animals = [Animal]()
+        bananaCount.text = String(User.currentUser!.bananaCount)
      
-        //Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).
         Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             self.animals = Animal.initWithArray(data as! [NSDictionary])
@@ -76,15 +70,14 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         let detailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailsViewController") as! DetailsViewController
         
         detailsViewController.animal = animals![indexPath.row]
-        detailsViewController.user = self.user
-        detailsViewController.animalIndexRow = indexPath.row
+        detailsViewController.delegate = self
 
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
  
     func healthShouldChange(row: Int) -> Bool {
         //user has bananas
-        if (user?.bananaCount == 0) {
+        if (User.currentUser?.bananaCount == 0) {
             return false
         }
         
@@ -97,6 +90,10 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         return true
     }
+    
+    
+    //TODO: move this into the models
+
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
         if item.title == (tabBar.items![1] as! UITabBarItem).title {
@@ -112,6 +109,19 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func logout() {
         User.logout()
+    }
+    
+    func detailsViewControllerDelegate(detailsViewControllerDelegate: DetailsViewController, didEndViewing animal: Animal) {
+        var index: Int? = nil
+        if let animals = animals {
+             index
+                = find(animals, animal)
+        }
+        if let i = index {
+            animals?.removeAtIndex(i)
+            animals?.insert(animal, atIndex: i)
+            self.collectionView!.reloadItemsAtIndexPaths([i])
+        }
     }
 
 }
