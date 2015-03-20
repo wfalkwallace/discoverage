@@ -5,43 +5,50 @@ animals = [
   {
     'sprite': '100_voltorb',
     'name': 'Voltorb',
-    'health': 1,
+    'health': 9,
+    'owner': '550648a8fa6b8286095dd5ce',
     'location': [-122.0307700, 37.3321125]
   },
   {
     'sprite': '101_electrode',
     'name': 'Electrode',
-    'health': 1,
+    'health': 5,
+    'owner': '550648a8fa6b8286095dd5ce',
     'location': [-122.0307700, 37.3321125]
   },
   {
     'sprite': '102_exeggcute',
     'name': 'Exeggcute',
-    'health': 1,
+    'health': 2,
+    'owner': '550648a8fa6b8286095dd5ce',
     'location': [-122.0277700, 37.3321125]
   },
   {
     'sprite': '103_exeggutor',
     'name': 'Exeggutor',
-    'health': 1,
+    'health': 8,
+    'owner': '550648a8fa6b8286095dd5ce',
     'location': [-122.0337700, 37.3321125]
   },
   {
     'sprite': '104_cubone',
     'name': 'Cubone',
-    'health': 1,
+    'health': 5,
+    'owner': '550648a8fa6b8286095dd5ce',
     'location': [-122.0247700, 37.3321125]
   },
   {
     'sprite': '105_marowak',
     'name': 'Marowak',
-    'health': 1,
+    'health': 3,
+    'owner': '550648a8fa6b8286095dd5ce',
     'location': [-122.0367700, 37.3321125]
   },
   {
     'sprite': '106_hitmonlee',
     'name': 'Hitmonlee',
-    'health': 1,
+    'health': 6,
+    'owner': '550648a8fa6b8286095dd5ce',
     'location': [-122.0217700, 37.3321125]
   },
   {

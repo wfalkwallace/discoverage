@@ -22,8 +22,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         self.user = User.currentUser
-        println(self.user!.name)
-        println(self.user?.token)
 
         tabBar.selectedItem = tabBar.items![0] as? UITabBarItem
 
@@ -45,11 +43,10 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         self.animals = [Animal]()
      
         //Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).
-        Alamofire.request(Discoverage.Router.AnimalsWithParams([:])).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
-            var animals = Animal.initWithArray(data as! [NSDictionary])
+            self.animals = Animal.initWithArray(data as! [NSDictionary])
             self.collectionView.reloadData()
-            //println(data)
         }
     }
     
@@ -62,6 +59,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpriteCell", forIndexPath: indexPath) as! SpriteCell
+        println("JNT 24242 \(animals![indexPath.row])")
         cell.populate(animals![indexPath.row])
         return cell
     }
@@ -110,25 +108,17 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         
         user!.bananaCount = 5
         if (user!.bananaCount > 0 &&  health < 10) {
-        
-            
-            println(User.currentUser!.name)
-            println(User.currentUser!.bananaCount)
-            println(User.currentUser?.token)
 
             user!.bananaCount -= 1
             user!.save { (user, error) -> () in
                 if error == nil {
                     User.currentUser = user
-                    println(User.currentUser!.name)
-                    println(User.currentUser!.bananaCount)
                 
                     health = health + 1
                     animal.health = health
                 
                     animal.save({ (animal, error) -> () in
                         if error == nil {
-                            println(animal!.health)
                             var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
                             self.collectionView!.reloadItemsAtIndexPaths([indexPath])
                             block(user: self.user, animal: animal, success: true)

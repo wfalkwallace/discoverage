@@ -22,7 +22,6 @@ class Animal: NSObject {
     
     init(dictionary: NSDictionary) {
         if let user = dictionary.objectForKey("owner") as? NSDictionary {
-            println(user)
             self.owner = User(dictionary: user)
         }
         self.name = dictionary["name"] as! String
@@ -74,12 +73,10 @@ class Animal: NSObject {
         
         Alamofire.request(Discoverage.Router.AnimalUpdate(id, params)).responseJSON { (_, _, data, error) in
             if error == nil {
-                println(data)
                 self.reset(data as! NSDictionary)
                 block(animal: self, error: nil)
             } else {
                 block(animal: nil, error: error)
-                println(error)
             }
         }
     }

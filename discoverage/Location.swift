@@ -14,7 +14,6 @@ class Location: NSObject, CLLocationManagerDelegate  {
     var locationManager : CLLocationManager
 
     override init () {
-        println("locations constructor")
         self.locationManager = CLLocationManager()
         super.init()
     }
@@ -27,7 +26,6 @@ class Location: NSObject, CLLocationManagerDelegate  {
     }
 
     func startUpdatingLocation() {
-        println("start updating location")
 
         //self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.requestAlwaysAuthorization()
@@ -45,12 +43,10 @@ class Location: NSObject, CLLocationManagerDelegate  {
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("Failed to update location : \(error)")
         //self.locationManager.stopUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        println("auth changed")
         
         switch CLLocationManager.authorizationStatus() {
             case .AuthorizedAlways, .AuthorizedWhenInUse:

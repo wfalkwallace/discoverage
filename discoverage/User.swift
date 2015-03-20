@@ -64,14 +64,11 @@ class User {
 //        }
         
         Alamofire.request(Discoverage.Router.UserUpdate(id, params)).responseJSON { (request, _, data, error) in
-            println(request)
             if error == nil {
-                println(data)
                 self.reset(data as! NSDictionary)
                 block(user: self, error: nil)
             } else {
                 block(user: nil, error: error)
-                println(error)
             }
         }
     }
