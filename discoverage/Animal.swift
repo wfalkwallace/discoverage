@@ -20,6 +20,8 @@ class Animal: NSObject {
     var location: CLLocation
     var dictionary: NSDictionary
     
+    class var FULL_HEALTH: Int = 10
+    
     init(dictionary: NSDictionary) {
         if let user = dictionary.objectForKey("owner") as? NSDictionary {
             self.owner = User(dictionary: user)
@@ -81,9 +83,39 @@ class Animal: NSObject {
         }
     }
     
-    func feed () {
+    func feed(block: (animal: Animal?, success: Bool) -> ()) {
+        
         if (health < 10 && owner?.bananaCount > 0) {
             self.health = self.health + 1
         }
+        
+        user!.bananaCount = 5
+        if (user!.bananaCount > 0 &&  health < 10) {
+            
+            user!.bananaCount -= 1
+            user!.save { (user, error) -> () in
+                if error == nil {
+                    User.currentUser = user
+                    
+                    health = health + 1
+                    animal.health = health
+                    
+                    animal.save({ (animal, error) -> () in
+                        if error == nil {
+                            var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
+                            self.collectionView!.reloadItemsAtIndexPaths([indexPath])
+                            block(user: self.user, animal: animal, success: true)
+                        } else {
+                            block(user: nil, animal: nil, success: false)
+                        }
+                    })
+                    
+                } else {
+                    block(user: nil, animal: nil, success: false)
+                }
+            }
+        }
     }
+    
+    
 }

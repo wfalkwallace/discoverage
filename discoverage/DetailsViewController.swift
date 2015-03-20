@@ -8,17 +8,12 @@
 
 import UIKit
 
-protocol DetailsViewControllerDelegate {
-    func feed(row: Int, block: (user: User?, animal: Animal?, success: Bool) -> ())
-}
-
 class DetailsViewController: UIViewController {
 
     var user: User?
     var animal : Animal?
     var animalIndexRow : Int?
 
-    var delegate: DetailsViewControllerDelegate?
     @IBOutlet weak var bananasCount: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var animalImageView: UIImageView!
@@ -52,21 +47,18 @@ class DetailsViewController: UIViewController {
     }
 
     @IBAction func onFeed(sender: UIButton) {
-        delegate?.feed(animalIndexRow!, block: { (user, animal, success) -> () in
-            
-            if success == true {
-                self.user = user!
-                self.animal = animal!
-                
-                //update this view
-                self.bananasCount.text = String(user!.bananaCount)
-                
-                let displayHealth:Float = Float(animal!.health) / 10.0
-                
-                UIProgressView.animateWithDuration(2.0, animations: {
-                    self.healthMeter.setProgress(displayHealth,  animated: true)
-                })
+        if let animal = animals?[row] {
+            if (User.currentUser.bananasCount > 0 && animal.health < Animal.FULL_HEALTH) {
+                animal.feed()
             }
+        }
+
+        
+        //update this view
+        self.bananasCount.text = String(user!.bananaCount)
+        let displayHealth:Float = Float(animal!.health) / 10.0
+        UIProgressView.animateWithDuration(2.0, animations: {
+            self.healthMeter.setProgress(displayHealth,  animated: true)
         })
 
     }

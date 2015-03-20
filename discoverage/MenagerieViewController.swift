@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailsViewControllerDelegate, UITabBarDelegate {
+class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bananaCount: UILabel!
@@ -78,7 +78,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         detailsViewController.animal = animals![indexPath.row]
         detailsViewController.user = self.user
         detailsViewController.animalIndexRow = indexPath.row
-        detailsViewController.delegate = self
 
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
@@ -97,41 +96,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
             return false
         }
         return true
-    }
-    
-    
-    //TODO: move this into the models
-    func feed(row: Int, block: (user: User?, animal: Animal?, success: Bool) -> ()) {
-        
-        let animal = animals![row]
-        var health = animal.health
-        
-        user!.bananaCount = 5
-        if (user!.bananaCount > 0 &&  health < 10) {
-
-            user!.bananaCount -= 1
-            user!.save { (user, error) -> () in
-                if error == nil {
-                    User.currentUser = user
-                
-                    health = health + 1
-                    animal.health = health
-                
-                    animal.save({ (animal, error) -> () in
-                        if error == nil {
-                            var indexPath : NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
-                            self.collectionView!.reloadItemsAtIndexPaths([indexPath])
-                            block(user: self.user, animal: animal, success: true)
-                        } else {
-                            block(user: nil, animal: nil, success: false)
-                        }
-                    })
-                
-                } else {
-                    block(user: nil, animal: nil, success: false)
-                }
-            }
-        }
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
