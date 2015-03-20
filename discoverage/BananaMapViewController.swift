@@ -50,7 +50,6 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
             let annotation = annotation as! MKPointAnnotation
             let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             let distance = self.lastLocation?.distanceFromLocation(location)
-            //println(distance)
             if (distance <= 10) {
                 self.mapView.removeAnnotation(annotation as? MKAnnotation)
             }
@@ -62,7 +61,6 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         
         //TODO banana trees near user and animals near user and then draw the annotations
         Alamofire.request(Discoverage.Router.BananaTreesWithParams([:])).responseJSON { (_, _, data, error) in
-            //println(data)
             if error == nil {
                 self.bananaTrees = BananaTree.initWithArray(data as! [NSDictionary])
                 self.annotateMapViewWithBananas()
@@ -70,7 +68,6 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         }
      
         Alamofire.request(Discoverage.Router.AnimalsWithParams([:])).responseJSON { (_, _, data, error) in
-            //println(data)
             if error == nil {
                 self.animals = Animal.initWithArray(data as! [NSDictionary])
                 self.annotateMapViewWithAnimals()
@@ -101,8 +98,6 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        
-        //println(annotation.title)
         
         if annotation.title! == "Banana" {
             let view = MKAnnotationView()

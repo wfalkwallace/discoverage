@@ -53,7 +53,6 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        println("section: \(section)")
         return users.count
     }
 

@@ -36,10 +36,7 @@ class LoginViewController: UIViewController {
                 alert.message = "Incorrect username or password!"
                 alert.addButtonWithTitle("OK")
                 alert.show()
-                println(error)
             } else {
-                println(data)
-                print(error)
                 User.currentUser = User(dictionary: data as! NSDictionary)
                 
                 let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)

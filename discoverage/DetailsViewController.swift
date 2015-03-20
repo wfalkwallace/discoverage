@@ -52,8 +52,6 @@ class DetailsViewController: UIViewController {
     }
 
     @IBAction func onFeed(sender: UIButton) {
-
-        println("onfeed")
         delegate?.feed(animalIndexRow!, block: { (user, animal, success) -> () in
             
             if success == true {
