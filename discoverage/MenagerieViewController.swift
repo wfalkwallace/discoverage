@@ -45,8 +45,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         //Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).
         Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
-            println("JNT 32909\(data)")
-            var animals = Animal.initWithArray(data as! [NSDictionary])
+            self.animals = Animal.initWithArray(data as! [NSDictionary])
             self.collectionView.reloadData()
         }
     }
@@ -60,6 +59,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpriteCell", forIndexPath: indexPath) as! SpriteCell
+        println("JNT 24242 \(animals![indexPath.row])")
         cell.populate(animals![indexPath.row])
         return cell
     }
