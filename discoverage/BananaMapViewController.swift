@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 import Alamofire
 
+let _ANNOTATE_DISTANCE_ = 300.0 //annotate if within this distance
+let _CLAIM_DISTANCE = 10.0 //claim if within this distance
+
 class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -17,8 +20,9 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
     var bananaTrees:[BananaTree]?
     var animals:[Animal]?
     var lastLocation:CLLocation?
-    let _fakeBananaLocations_ = [(lat:37.331329,lon:-122.031758), (lat:37.332456,lon:-122.028977),(lat:37.331532,lon:-122.032731), (lat:37.331982,lon:-122.024246)]
-    let _fakeAnimalLocations_ = [(lat:37.329362,lon:-122.027884,sprite: "7_squirtle"), (lat:37.3331819,lon:-122.0302396, sprite:"25_pikachu")]
+    
+//    let _fakeBananaLocations_ = [(lat:37.331329,lon:-122.031758), (lat:37.332456,lon:-122.028977),(lat:37.331532,lon:-122.032731), (lat:37.331982,lon:-122.024246)]
+//    let _fakeAnimalLocations_ = [(lat:37.329362,lon:-122.027884,sprite: "7_squirtle"), (lat:37.3331819,lon:-122.0302396, sprite:"25_pikachu")]
     
     
     override func viewDidLoad() {
@@ -28,12 +32,14 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         tabBar.selectedItem = tabBar.items![1] as? UITabBarItem
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
+        
+        let annotationsToRemove = mapView.annotations.filter { $0 !== self.mapView.userLocation }
+        mapView.removeAnnotations( annotationsToRemove )
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let annotationsToRemove = mapView.annotations.filter { $0 !== self.mapView.userLocation }
-        mapView.removeAnnotations( annotationsToRemove )
+        getBananasAndAnimals()
     }
 
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
@@ -43,22 +49,14 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         var newRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
         self.mapView.setRegion(newRegion, animated: true)
         self.lastLocation = userLocation.location
-        
-        
-        let annotations = mapView.annotations.filter { $0 !== self.mapView.userLocation }
-        for annotation in annotations {
-            let annotation = annotation as! MKPointAnnotation
-            let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-            let distance = self.lastLocation?.distanceFromLocation(location)
-            //println(distance)
-            if (distance <= 10) {
-                self.mapView.removeAnnotation(annotation as? MKAnnotation)
-            }
-        }
-        
     }
     
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
+        self.annotateMapViewWithBananas()
+        self.annotateMapViewWithAnimals()
+    }
+    
+    func getBananasAndAnimals() {
         
         //TODO banana trees near user and animals near user and then draw the annotations
         Alamofire.request(Discoverage.Router.BananaTreesWithParams([:])).responseJSON { (_, _, data, error) in
@@ -73,30 +71,79 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
             //println(data)
             if error == nil {
                 self.animals = Animal.initWithArray(data as! [NSDictionary])
+                println(data)
                 self.annotateMapViewWithAnimals()
             }
         }
 
         
     }
-    func annotateMapViewWithBananas() {
+    
+    func annotateMapViewWithAnimals() {
         
-        for btree in self.bananaTrees! {
-            let ann = MKPointAnnotation()
-            ann.setCoordinate(btree.location.coordinate)
-            ann.title = "Banana"
-            mapView.addAnnotation(ann)
+        //3 cases
+        // 1. If bananas are < 100 meters away annotate them on the map
+        // 2. if bananas are < 5 meters away add them to users banana count and remove annotation
+        // 3. if bananas are > 100 meters away remove the annotation
+        
+        //case #1
+        if let animals = self.animals {
+            for entity in animals {
+                let location = entity.location as CLLocation
+                let distance = self.lastLocation?.distanceFromLocation(location)
+                if distance < _ANNOTATE_DISTANCE_ {
+                    let ann = MKPointAnnotation()
+                    ann.setCoordinate(location.coordinate)
+                    ann.title = entity.sprite
+                    mapView.addAnnotation(ann)
+                }
+            }
         }
+        
+        //case 2,3
+        updateExistingAnnotations()
+    }
+
+    func annotateMapViewWithBananas() {
+    
+        //3 cases
+        // 1. If bananas are < 100 meters away annotate them on the map
+        // 2. if bananas are < 5 meters away add them to users banana count and remove annotation
+        // 3. if bananas are > 100 meters away remove the annotation
+        
+        //case #1
+        if let btrees = self.bananaTrees {
+            for entity in btrees {
+                let location = entity.location as CLLocation
+                let distance = self.lastLocation?.distanceFromLocation(location)
+                if distance < _ANNOTATE_DISTANCE_ {
+                    let ann = MKPointAnnotation()
+                    ann.setCoordinate(location.coordinate)
+                    ann.title = "Banana"
+                    mapView.addAnnotation(ann)
+                }
+            }
+        }
+        
+        //case 2,3
+        updateExistingAnnotations()
     }
  
+    func updateExistingAnnotations() {
         
-    func annotateMapViewWithAnimals() {
-
-        for animal in self.animals! {
-            let ann = MKPointAnnotation()
-            ann.setCoordinate(animal.location.coordinate)
-            ann.title = animal.sprite
-            mapView.addAnnotation(ann)
+        //case #2,#3
+        let annotations = mapView.annotations.filter { $0 !== self.mapView.userLocation }
+        for annotation in annotations {
+            let annotation = annotation as! MKPointAnnotation
+            let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+            let distance = self.lastLocation?.distanceFromLocation(location)
+            //println(distance)
+            if (distance > _ANNOTATE_DISTANCE_) {
+                self.mapView.removeAnnotation(annotation as? MKAnnotation)
+            } else if (distance < _CLAIM_DISTANCE) {
+                //call delegate, or send notification
+                self.mapView.removeAnnotation(annotation as? MKAnnotation)
+            }
         }
     }
     
