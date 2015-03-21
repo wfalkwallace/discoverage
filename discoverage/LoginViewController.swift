@@ -27,10 +27,11 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func didTapLogin(sender: UIButton) {
-        Alamofire.request(Discoverage.Router.Login(usernameTextField.text, emailTextField.text, passwordTextField.text))
+        Alamofire.request(Discoverage.Router.Login(usernameTextField.text, passwordTextField.text))
             .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let error = error {
                 // deal with login error
+                println(error)
                 let alert = UIAlertView()
                 alert.title = "Alert"
                 alert.message = "Incorrect username or password!"

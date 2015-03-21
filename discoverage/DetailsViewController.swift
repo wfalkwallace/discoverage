@@ -9,14 +9,12 @@
 import UIKit
 
 protocol DetailsViewControllerDelegate {
-    func detailsViewControllerDelegate (detailsViewControllerDelegate: DetailsViewController, didEndViewing animal: Animal)
+    func detailsViewControllerDelegate(detailsViewControllerDelegate: DetailsViewController, didEndViewing animal: Animal)
 }
 
 class DetailsViewController: UIViewController {
 
-    var user: User!
-    var animal : Animal!
-
+    var animal: Animal!
     var delegate: DetailsViewControllerDelegate?
 
     @IBOutlet weak var bananasCount: UILabel!
@@ -40,7 +38,7 @@ class DetailsViewController: UIViewController {
             self.healthMeter.setProgress(displayHealth, animated: true)
         })
         
-        bananasCount.text = String(user!.bananaCount)
+        bananasCount.text = String(User.currentUser!.bananaCount)
     }
 
     // TODO this should be a delegate
@@ -49,19 +47,15 @@ class DetailsViewController: UIViewController {
     }
 
     @IBAction func onFeed(sender: UIButton) {
-        if User.currentUser!.bananaCount > 0 && animal.health < Animal.FULL_HEALTH {
-            animal.feed({ (animal, success) -> () in
-                //reload data
-            })
-        }
-
-        
         //update this view
-        self.bananasCount.text = String(user!.bananaCount)
-        let displayHealth:Float = Float(animal!.health) / 10.0
+        self.bananasCount.text = "\(User.currentUser!.bananaCount - 1)"
+        let displayHealth = Float(animal!.health + 1) / 10.0
         UIProgressView.animateWithDuration(2.0, animations: {
             self.healthMeter.setProgress(displayHealth,  animated: true)
         })
-
+        
+        animal.feed({ (animal, success) -> () in
+            //reload data or alert
+        })
     }
 }

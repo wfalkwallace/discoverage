@@ -84,31 +84,20 @@ class Animal: NSObject {
     }
     
     func feed(block: (animal: Animal?, success: Bool) -> ()) {
-        
-        if (health < 10 && owner?.bananaCount > 0) {
-            self.health = self.health + 1
-        }
-        
-        User.currentUser!.bananaCount = 5
+        // TODO confirm owner == currentUser
         if (User.currentUser!.bananaCount > 0 &&  health < 10) {
             
             User.currentUser!.bananaCount -= 1
-            User.currentUser!.save { (user, error) -> () in
-                if error == nil {
-                    self.health += 1
-                    
-//                    self.save({ (animal, error) -> () in
-//                        if error == nil {
-//                            block(user: self.user, animal: animal, success: true)
-//                        } else {
-//                            block(user: nil, animal: nil, success: false)
-//                        }
-//                    })
-                    
-                } else {
-//                    block(user: nil, animal: nil, success: false)
+            health += 1
+            Alamofire.request(Discoverage.Router.Update([User.currentUser!], [], [self])).responseJSON { (_, _, response: AnyObject?, error: NSError?) -> Void in
+                if let responseDictionary = response as? NSDictionary {
+                    User.currentUser!.reset((responseDictionary["users"] as! [NSDictionary])[0]) //hack, but we know it's only one.
+                    var animal = Animal.initWithArray(responseDictionary["animals"] as! [NSDictionary])[0] //hack, but we know it's only one.
+                    block(animal: animal, success: (error == nil))
                 }
             }
+        } else {
+            //cantfeed
         }
     }
     

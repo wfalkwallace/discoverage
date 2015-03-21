@@ -14,7 +14,7 @@ struct Discoverage {
     enum Router: URLRequestConvertible {
         static let baseURLString = "https://discoverage.herokuapp.com"
         
-        case Login(String, String, String)
+        case Login(String, String)
         case Update([User], [BananaPick], [Animal])
 
         case AnimalsNear([String: AnyObject])
@@ -47,7 +47,7 @@ struct Discoverage {
 
         var path: String {
             switch self {
-            case .Login(_, _, _):
+            case .Login(_, _):
                 return "/login"
             case .Update(_, _, _):
                 return "/update"
@@ -93,10 +93,9 @@ struct Discoverage {
             mutableURLRequest.HTTPMethod = method.rawValue
 
             switch self {
-            case .Login(let username, let email, let password):
+            case .Login(let username, let password):
                 var params = [String: AnyObject]()
                 params["name"] = username
-                params["email"] = email
                 params["password"] = password
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
 

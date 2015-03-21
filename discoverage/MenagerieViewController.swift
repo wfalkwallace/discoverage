@@ -112,16 +112,17 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func detailsViewControllerDelegate(detailsViewControllerDelegate: DetailsViewController, didEndViewing animal: Animal) {
-        var index: Int? = nil
-        if let animals = animals {
-             index
-                = find(animals, animal)
-        }
-        if let i = index {
-            animals?.removeAtIndex(i)
-            animals?.insert(animal, atIndex: i)
-            self.collectionView!.reloadItemsAtIndexPaths([i])
-        }
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            var index: Int? = nil
+            if let animals = self.animals {
+                index = find(animals, animal)
+            }
+            if let index = index {
+                self.animals?.removeAtIndex(index)
+                self.animals?.insert(animal, atIndex: index)
+                self.collectionView!.reloadItemsAtIndexPaths([index])
+            }
+        })
     }
 
 }
