@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		452BA3DF1ABD568D007A7154 /* Hearts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452BA3DE1ABD568D007A7154 /* Hearts.xib */; };
 		45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */; };
 		45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3EF1AABADD000E6248C /* RankingViewController.swift */; };
 		45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		452BA3DE1ABD568D007A7154 /* Hearts.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Hearts.xib; sourceTree = "<group>"; };
 		45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */,
 				BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */,
+				452BA3DE1ABD568D007A7154 /* Hearts.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				E6FA65AB1AB4E73900340CF2 /* PokemonSolid.ttf in Resources */,
 				BEBCED131AAFE2A90048D9E9 /* SpriteCell.xib in Resources */,
 				E6FA65AA1AB4E73900340CF2 /* PokemonHollow.ttf in Resources */,
+				452BA3DF1ABD568D007A7154 /* Hearts.xib in Resources */,
 				BEBCED091AAFE1F00048D9E9 /* Menagerie.storyboard in Resources */,
 				E6F418201AA9739A007E4FF3 /* Login.storyboard in Resources */,
 				45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */,
