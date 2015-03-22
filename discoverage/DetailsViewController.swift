@@ -41,9 +41,6 @@ class DetailsViewController: UIViewController {
     }
 
     override func viewWillDisappear(animated: Bool) {
-        println(delegate)
-        println(self)
-        println(animal)
         delegate?.detailsViewControllerDelegate(self, didEndViewing: animal)
     }
     

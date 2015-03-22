@@ -47,8 +47,6 @@ class BananaPick: NSObject {
         
         Alamofire.request(Discoverage.Router.BananaPickCreate(params)).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
-            println(data)
-            println(error)
         }
     }
     
