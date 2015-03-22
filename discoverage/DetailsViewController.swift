@@ -34,7 +34,7 @@ class DetailsViewController: UIViewController {
         animalImageView.image =  UIImage(named: animal.sprite as String)
         animalName.text = animal.name as String
         let displayHealth:Float = Float(animal.health) / 10.0
-//        heartsView.countIt()s
+        heartsView.countIt()
 //        UIProgressView.animateWithDuration(2.0, animations: {
 //            self.healthMeter.setProgress(displayHealth, animated: true)
 //        })

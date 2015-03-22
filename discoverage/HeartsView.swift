@@ -45,8 +45,8 @@ import UIKit
         return view
     }
     
-//    func countIt () {
-//        println(full_hearts.count)
-//    }
+    func countIt () {
+        println(full_hearts.count)
+    }
 
 }
