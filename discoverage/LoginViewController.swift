@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func didTapLogin(sender: UIButton) {
-        Alamofire.request(Discoverage.Router.Login(usernameTextField.text, passwordTextField.text))
+        Alamofire.request(Discoverage.Router.Login(emailTextField.text, passwordTextField.text))
             .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let error = error {
                 // deal with login error
@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
                 alert.addButtonWithTitle("OK")
                 alert.show()
             } else {
+                // TODO deal with 401 user not found error in data.
                 User.currentUser = User(dictionary: data as! NSDictionary)
                 
                 let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)

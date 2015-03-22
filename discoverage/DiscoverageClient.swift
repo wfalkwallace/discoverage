@@ -93,9 +93,9 @@ struct Discoverage {
             mutableURLRequest.HTTPMethod = method.rawValue
 
             switch self {
-            case .Login(let username, let password):
+            case .Login(let email, let password):
                 var params = [String: AnyObject]()
-                params["name"] = username
+                params["email"] = email
                 params["password"] = password
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
 
