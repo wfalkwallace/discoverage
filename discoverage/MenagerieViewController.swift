@@ -25,10 +25,10 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
         
-        var logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: self, action: "logout")
-        logoutButton.tintColor = UIColor.whiteColor()
-        navigationItem.leftBarButtonItem = logoutButton
-        navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 12)!], forState: UIControlState.Normal)
+//        var logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: self, action: "logout")
+//        logoutButton.tintColor = UIColor.whiteColor()
+//        navigationItem.leftBarButtonItem = logoutButton
+//        navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 12)!], forState: UIControlState.Normal)
 
     }
     
@@ -56,11 +56,14 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpriteCell", forIndexPath: indexPath) as! SpriteCell
-        println("JNT 24242 \(animals![indexPath.row])")
         cell.populate(animals![indexPath.row])
         return cell
     }
     
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 150, height: 200)
+    }
   
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {

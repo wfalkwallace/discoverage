@@ -12,7 +12,7 @@ class SpriteCell: UICollectionViewCell {
 
     @IBOutlet weak var monsterImageView: UIImageView!
     @IBOutlet weak var monsterName: UILabel!
-    @IBOutlet weak var healthMeter: UIProgressView!
+    @IBOutlet weak var healthMeter: HeartsView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,12 +22,8 @@ class SpriteCell: UICollectionViewCell {
         monsterImageView.image = UIImage(named: animal.sprite as String)
         monsterName.text = animal.name as String
     
-        let displayHealth:Float = Float(animal.health) / 10.0
-        self.healthMeter.setProgress(displayHealth, animated: true)
-        
-        UIView.animateWithDuration(3.0, animations: {
-            self.healthMeter.setProgress(displayHealth,  animated: true)
-        })
-        
+        let displayHealth: Float = Float(animal.health) / 10.0
+        self.healthMeter.setHealth(displayHealth)
+
     }
 }
