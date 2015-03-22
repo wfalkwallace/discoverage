@@ -10,8 +10,10 @@ import UIKit
 import MapKit
 import Alamofire
 
-let _ANNOTATE_DISTANCE_ = 500.0 //annotate if within this distance
-let _CLAIM_DISTANCE = 50.0 //claim if within this distance
+let _ANNOTATE_BANANA_DISTANCE_ = 1000.0 //annotate if within this distance
+let _ANNOTATE_ANIMAL_DISTANCE_ = 200.0 //annotate if within this distance
+
+let _CLAIM_DISTANCE = 10.0 //claim if within this distance
 
 struct BananaClaim  {
     var btree : BananaTree
@@ -23,6 +25,7 @@ struct AnimalClaim  {
     var claimed: Bool
 }
 
+
 class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -30,7 +33,7 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
     var bananaTrees:[BananaClaim]?
     var animals:[AnimalClaim]?
     var lastLocation:CLLocation?
-    
+        
     override func viewDidLoad() {
         bananaTrees = [BananaClaim]()
         animals = [AnimalClaim]()
@@ -51,8 +54,8 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
 
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         
-        let spanX = 0.010
-        let spanY = 0.010
+        let spanX = 0.01
+        let spanY = 0.01
         
         //dont change region unless user location
         
@@ -123,7 +126,7 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
                 if entity.claimed == false {
                     let location = entity.animal.location as CLLocation
                     if let distance = self.lastLocation?.distanceFromLocation(location) {
-                        if distance < _ANNOTATE_DISTANCE_ {
+                        if distance < _ANNOTATE_ANIMAL_DISTANCE_ {
                             let ann = MKPointAnnotation()
                             ann.setCoordinate(location.coordinate)
                             ann.title = entity.animal.sprite
@@ -152,7 +155,7 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
                 if entity.claimed == false {
                     let location = entity.btree.location as CLLocation
                     if let distance = self.lastLocation?.distanceFromLocation(location) {
-                        if distance < _ANNOTATE_DISTANCE_ {
+                        if distance < _ANNOTATE_BANANA_DISTANCE_ {
                             let ann = MKPointAnnotation()
                             ann.setCoordinate(location.coordinate)
                             ann.title = "Banana"
@@ -176,7 +179,8 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
             let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             if let distance = self.lastLocation?.distanceFromLocation(location) {
                 //println(distance)
-                if (distance > _ANNOTATE_DISTANCE_) {
+                let fromDistance = (annotation.title == "Banana") ? _ANNOTATE_BANANA_DISTANCE_ : _ANNOTATE_ANIMAL_DISTANCE_
+                if (distance > fromDistance) {
                     self.mapView.removeAnnotation(annotation as? MKAnnotation)
                 } else if (distance < _CLAIM_DISTANCE) {
                     self.mapView.removeAnnotation(annotation as? MKAnnotation)
@@ -235,19 +239,18 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
                 }
             }
         }
-        
-        
-        
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
         if item.title == (tabBar.items![0] as! UITabBarItem).title {
             let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
             let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+            //TODO: update model here and present VC in block
             self.presentViewController(menagerieViewController, animated: true, completion: nil)
         } else if item.title == (tabBar.items![2] as! UITabBarItem).title {
             let rankingStoryboard = UIStoryboard(name: "Ranking", bundle: nil)
             let rankingViewController = rankingStoryboard.instantiateInitialViewController() as! UINavigationController
+                //TODO: update model here and present VC in block
             self.presentViewController(rankingViewController, animated: true, completion: nil)
         }
     }
