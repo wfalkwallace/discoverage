@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		452BA3DF1ABD568D007A7154 /* Hearts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452BA3DE1ABD568D007A7154 /* Hearts.xib */; };
+		452BA3E11ABE2601007A7154 /* HeartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BA3E01ABE2601007A7154 /* HeartsView.swift */; };
 		45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */; };
 		45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3EF1AABADD000E6248C /* RankingViewController.swift */; };
 		45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		452BA3DE1ABD568D007A7154 /* Hearts.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Hearts.xib; sourceTree = "<group>"; };
+		452BA3E01ABE2601007A7154 /* HeartsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartsView.swift; sourceTree = "<group>"; };
 		45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */,
 				BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */,
 				452BA3DE1ABD568D007A7154 /* Hearts.xib */,
+				452BA3E01ABE2601007A7154 /* HeartsView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				BEBCED0D1AAFE2320048D9E9 /* MenagerieViewController.swift in Sources */,
 				E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */,
 				E6F418251AAA6F2D007E4FF3 /* BananaTree.swift in Sources */,
+				452BA3E11ABE2601007A7154 /* HeartsView.swift in Sources */,
 				E6B513C41AA6662A00852C9F /* AppDelegate.swift in Sources */,
 				BEBCED0F1AAFE2750048D9E9 /* DetailsViewController.swift in Sources */,
 			);

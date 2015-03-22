@@ -39,8 +39,11 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
      
         Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
-            self.animals = Animal.initWithArray(data as! [NSDictionary])
-            self.collectionView.reloadData()
+            println(error)
+            if let data: AnyObject = data {
+                self.animals = Animal.initWithArray(data as! [NSDictionary])
+                self.collectionView.reloadData()
+            }
         }
     }
     

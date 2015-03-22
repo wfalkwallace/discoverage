@@ -1,15 +1,131 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeartsView" customModule="discoverage" customModuleProvider="target">
+            <connections>
+                <outletCollection property="full_hearts" destination="VKn-L8-Zon" collectionClass="NSMutableArray" id="fgY-BQ-bjj"/>
+                <outletCollection property="full_hearts" destination="DAr-fb-e0B" collectionClass="NSMutableArray" id="tjQ-3g-KQ0"/>
+                <outletCollection property="full_hearts" destination="0fg-cQ-mht" collectionClass="NSMutableArray" id="fFp-0y-7Bh"/>
+                <outletCollection property="full_hearts" destination="9sr-Yy-UZi" collectionClass="NSMutableArray" id="Zfv-b5-tIT"/>
+                <outletCollection property="full_hearts" destination="4pE-3G-1vB" collectionClass="NSMutableArray" id="Tef-Ac-iL1"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVh-Gm-m9s" userLabel="full-hearts">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="VKn-L8-Zon">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="127"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="DAr-fb-e0B">
+                            <rect key="frame" x="120" y="0.0" width="120" height="127"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="0fg-cQ-mht">
+                            <rect key="frame" x="240" y="0.0" width="120" height="127"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="9sr-Yy-UZi">
+                            <rect key="frame" x="360" y="0.0" width="120" height="127"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="4pE-3G-1vB">
+                            <rect key="frame" x="480" y="0.0" width="120" height="127"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="9sr-Yy-UZi" firstAttribute="width" secondItem="gVh-Gm-m9s" secondAttribute="width" multiplier="0.2" id="5bv-L0-8d4"/>
+                        <constraint firstItem="VKn-L8-Zon" firstAttribute="leading" secondItem="gVh-Gm-m9s" secondAttribute="leading" id="6Yl-et-gUf"/>
+                        <constraint firstItem="4pE-3G-1vB" firstAttribute="top" secondItem="gVh-Gm-m9s" secondAttribute="top" id="Czv-8g-5lD"/>
+                        <constraint firstItem="VKn-L8-Zon" firstAttribute="top" secondItem="gVh-Gm-m9s" secondAttribute="top" id="DLb-3a-n7V"/>
+                        <constraint firstItem="0fg-cQ-mht" firstAttribute="top" secondItem="gVh-Gm-m9s" secondAttribute="top" id="Fau-CS-NJt"/>
+                        <constraint firstItem="4pE-3G-1vB" firstAttribute="leading" secondItem="9sr-Yy-UZi" secondAttribute="trailing" id="Fuh-a3-scO"/>
+                        <constraint firstAttribute="height" secondItem="VKn-L8-Zon" secondAttribute="height" id="JK9-Q9-mah"/>
+                        <constraint firstItem="DAr-fb-e0B" firstAttribute="height" secondItem="gVh-Gm-m9s" secondAttribute="height" id="LrI-ga-cO3"/>
+                        <constraint firstItem="DAr-fb-e0B" firstAttribute="leading" secondItem="VKn-L8-Zon" secondAttribute="trailing" id="MQB-Mz-XPg"/>
+                        <constraint firstItem="9sr-Yy-UZi" firstAttribute="leading" secondItem="0fg-cQ-mht" secondAttribute="trailing" id="Njk-R4-iG3"/>
+                        <constraint firstItem="DAr-fb-e0B" firstAttribute="top" secondItem="gVh-Gm-m9s" secondAttribute="top" id="TIW-Td-NAP"/>
+                        <constraint firstAttribute="height" secondItem="0fg-cQ-mht" secondAttribute="height" id="WKg-yn-zVv"/>
+                        <constraint firstItem="4pE-3G-1vB" firstAttribute="width" secondItem="gVh-Gm-m9s" secondAttribute="width" multiplier="0.2" id="Z65-4D-Vrx"/>
+                        <constraint firstItem="9sr-Yy-UZi" firstAttribute="top" secondItem="gVh-Gm-m9s" secondAttribute="top" id="cAB-TB-91b"/>
+                        <constraint firstItem="VKn-L8-Zon" firstAttribute="width" secondItem="gVh-Gm-m9s" secondAttribute="width" multiplier="0.2" id="hej-Ts-w6P"/>
+                        <constraint firstItem="0fg-cQ-mht" firstAttribute="width" secondItem="gVh-Gm-m9s" secondAttribute="width" multiplier="0.2" id="k1A-hC-UzO"/>
+                        <constraint firstItem="0fg-cQ-mht" firstAttribute="leading" secondItem="DAr-fb-e0B" secondAttribute="trailing" id="kCd-Cm-e1S"/>
+                        <constraint firstAttribute="height" secondItem="9sr-Yy-UZi" secondAttribute="height" id="nIO-6b-RaY"/>
+                        <constraint firstItem="DAr-fb-e0B" firstAttribute="width" secondItem="gVh-Gm-m9s" secondAttribute="width" multiplier="0.2" id="u7O-PR-xrd"/>
+                        <constraint firstItem="4pE-3G-1vB" firstAttribute="height" secondItem="gVh-Gm-m9s" secondAttribute="height" id="yZe-Ff-Fcf"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPI-aQ-ihk" userLabel="half-hearts">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="half_heart" translatesAutoresizingMaskIntoConstraints="NO" id="OeF-pz-fCf">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="127"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="half_heart" translatesAutoresizingMaskIntoConstraints="NO" id="XIJ-zV-6WC">
+                            <rect key="frame" x="120" y="0.0" width="120" height="127"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="half_heart" translatesAutoresizingMaskIntoConstraints="NO" id="fsC-eC-oqT">
+                            <rect key="frame" x="240" y="0.0" width="120" height="127"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="half_heart" translatesAutoresizingMaskIntoConstraints="NO" id="yeX-OT-iXK">
+                            <rect key="frame" x="360" y="0.0" width="120" height="127"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="half_heart" translatesAutoresizingMaskIntoConstraints="NO" id="Xtk-PB-DRO">
+                            <rect key="frame" x="480" y="0.0" width="120" height="127"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="yeX-OT-iXK" firstAttribute="top" secondItem="cPI-aQ-ihk" secondAttribute="top" id="3BE-Wj-qtI"/>
+                        <constraint firstAttribute="height" secondItem="yeX-OT-iXK" secondAttribute="height" id="4se-2O-atR"/>
+                        <constraint firstItem="XIJ-zV-6WC" firstAttribute="width" secondItem="cPI-aQ-ihk" secondAttribute="width" multiplier="0.2" id="7KZ-Ul-gwf"/>
+                        <constraint firstItem="fsC-eC-oqT" firstAttribute="top" secondItem="cPI-aQ-ihk" secondAttribute="top" id="88K-lX-gjn"/>
+                        <constraint firstItem="XIJ-zV-6WC" firstAttribute="leading" secondItem="OeF-pz-fCf" secondAttribute="trailing" id="8je-DP-EmC"/>
+                        <constraint firstItem="Xtk-PB-DRO" firstAttribute="width" secondItem="cPI-aQ-ihk" secondAttribute="width" multiplier="0.2" id="9kJ-3y-5qd"/>
+                        <constraint firstItem="fsC-eC-oqT" firstAttribute="width" secondItem="cPI-aQ-ihk" secondAttribute="width" multiplier="0.2" id="A14-oc-lhh"/>
+                        <constraint firstItem="Xtk-PB-DRO" firstAttribute="height" secondItem="cPI-aQ-ihk" secondAttribute="height" id="Kbz-p6-lxh"/>
+                        <constraint firstAttribute="height" secondItem="OeF-pz-fCf" secondAttribute="height" id="NLC-3D-Wcg"/>
+                        <constraint firstItem="OeF-pz-fCf" firstAttribute="leading" secondItem="cPI-aQ-ihk" secondAttribute="leading" id="Oa9-az-uQZ"/>
+                        <constraint firstItem="XIJ-zV-6WC" firstAttribute="top" secondItem="cPI-aQ-ihk" secondAttribute="top" id="QRG-ZE-i3K"/>
+                        <constraint firstItem="yeX-OT-iXK" firstAttribute="width" secondItem="cPI-aQ-ihk" secondAttribute="width" multiplier="0.2" id="RMT-W5-6c4"/>
+                        <constraint firstItem="fsC-eC-oqT" firstAttribute="leading" secondItem="XIJ-zV-6WC" secondAttribute="trailing" id="VaT-Iq-bKo"/>
+                        <constraint firstItem="OeF-pz-fCf" firstAttribute="width" secondItem="cPI-aQ-ihk" secondAttribute="width" multiplier="0.2" id="XKF-bO-YeC"/>
+                        <constraint firstItem="OeF-pz-fCf" firstAttribute="top" secondItem="cPI-aQ-ihk" secondAttribute="top" id="dc8-4I-ivo"/>
+                        <constraint firstAttribute="height" secondItem="fsC-eC-oqT" secondAttribute="height" id="fjL-wY-71i"/>
+                        <constraint firstItem="yeX-OT-iXK" firstAttribute="leading" secondItem="fsC-eC-oqT" secondAttribute="trailing" id="gsP-3n-FMX"/>
+                        <constraint firstItem="Xtk-PB-DRO" firstAttribute="top" secondItem="cPI-aQ-ihk" secondAttribute="top" id="omV-fv-C7x"/>
+                        <constraint firstItem="Xtk-PB-DRO" firstAttribute="leading" secondItem="yeX-OT-iXK" secondAttribute="trailing" id="uK3-YJ-R3A"/>
+                        <constraint firstItem="XIJ-zV-6WC" firstAttribute="height" secondItem="cPI-aQ-ihk" secondAttribute="height" id="un7-vb-YvK"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gVh-Gm-m9s" secondAttribute="bottom" id="CAc-rV-Xt3"/>
+                <constraint firstAttribute="trailing" secondItem="cPI-aQ-ihk" secondAttribute="trailing" id="JIb-Jd-NaK"/>
+                <constraint firstItem="cPI-aQ-ihk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QvP-1v-Yax"/>
+                <constraint firstItem="cPI-aQ-ihk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dtb-te-cie"/>
+                <constraint firstAttribute="bottom" secondItem="cPI-aQ-ihk" secondAttribute="bottom" id="kmN-3S-284"/>
+                <constraint firstItem="gVh-Gm-m9s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mqp-oB-KaE"/>
+                <constraint firstItem="gVh-Gm-m9s" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pv8-S9-EQP"/>
+                <constraint firstAttribute="trailing" secondItem="gVh-Gm-m9s" secondAttribute="trailing" id="t7d-9L-wjj"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="276" y="41.5"/>
         </view>
+        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="I5r-XR-j7T">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+        </imageView>
     </objects>
+    <resources>
+        <image name="half_heart" width="358" height="320"/>
+        <image name="heart" width="358" height="320"/>
+    </resources>
 </document>

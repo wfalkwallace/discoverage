@@ -17,13 +17,14 @@ class DetailsViewController: UIViewController {
     var animal: Animal!
     var delegate: DetailsViewControllerDelegate?
 
+    @IBOutlet weak var heartsView: HeartsView!
     @IBOutlet weak var bananasCount: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var animalImageView: UIImageView!
     @IBOutlet weak var animalName: UILabel!
-    @IBOutlet weak var healthMeter: UIProgressView!
-    @IBOutlet weak var bananasEaten: UILabel!
-    @IBOutlet weak var animalMood: UILabel!
+//    @IBOutlet weak var healthMeter: UIProgressView!
+//    @IBOutlet weak var bananasEaten: UILabel!
+//    @IBOutlet weak var animalMood: UILabel!
     @IBOutlet weak var feedButton: UIButton!
 
     override func viewDidLoad() {
@@ -33,10 +34,10 @@ class DetailsViewController: UIViewController {
         animalImageView.image =  UIImage(named: animal.sprite as String)
         animalName.text = animal.name as String
         let displayHealth:Float = Float(animal.health) / 10.0
-        
-        UIProgressView.animateWithDuration(2.0, animations: {
-            self.healthMeter.setProgress(displayHealth, animated: true)
-        })
+//        heartsView.countIt()s
+//        UIProgressView.animateWithDuration(2.0, animations: {
+//            self.healthMeter.setProgress(displayHealth, animated: true)
+//        })
         
         bananasCount.text = String(User.currentUser!.bananaCount)
     }
@@ -50,9 +51,9 @@ class DetailsViewController: UIViewController {
         //update this view
         self.bananasCount.text = "\(User.currentUser!.bananaCount - 1)"
         let displayHealth = Float(animal!.health + 1) / 10.0
-        UIProgressView.animateWithDuration(2.0, animations: {
-            self.healthMeter.setProgress(displayHealth,  animated: true)
-        })
+//        UIProgressView.animateWithDuration(2.0, animations: {
+//            self.healthMeter.setProgress(displayHealth,  animated: true)
+//        })
         
         animal.feed({ (animal, success) -> () in
             //reload data or alert
