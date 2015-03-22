@@ -25,10 +25,10 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
         
-//        var logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: self, action: "logout")
-//        logoutButton.tintColor = UIColor.whiteColor()
-//        navigationItem.leftBarButtonItem = logoutButton
-//        navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 12)!], forState: UIControlState.Normal)
+        var logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: self, action: "logout")
+        logoutButton.tintColor = UIColor.whiteColor()
+        navigationItem.leftBarButtonItem = logoutButton
+        navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 12)!], forState: UIControlState.Normal)
 
     }
     

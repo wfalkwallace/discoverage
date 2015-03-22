@@ -146,6 +146,8 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         if annotation.title! == "Banana" {
             let view = MKAnnotationView()
             view.image = UIImage(named: "banana")
+            view.sizeToFit()
+            view.frame = CGRect(x: 0, y:0 , width: 48, height: 48)
             return view
         } else if (annotation.title == "Current Location") {
             return nil;
@@ -153,6 +155,8 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
             let view = MKAnnotationView()
             let image = annotation.title!
             view.image = UIImage(named: image!)
+            view.sizeToFit()
+            view.frame = CGRect(x: 0, y:0 , width: 96, height: 96)
             return view
         }
     }
