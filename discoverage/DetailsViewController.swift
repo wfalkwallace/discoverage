@@ -40,11 +40,6 @@ class DetailsViewController: UIViewController {
         bananasCount.text = String(User.currentUser!.bananaCount)
     }
 
-    // TODO this should be a delegate
-    func onBack() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-
     @IBAction func onFeed(sender: UIButton) {
         //update this view
         self.bananasCount.text = "\(User.currentUser!.bananaCount - 1)"
