@@ -12,6 +12,7 @@ import UIKit
 
     @IBOutlet var full_hearts: [UIImageView]!
 
+    @IBOutlet var half_hearts: [UIImageView]!
     // Our custom view from the XIB file
     var view: UIView!
 
@@ -48,5 +49,26 @@ import UIKit
     func countIt () {
         println(full_hearts.count)
     }
-
+    
+    func setHealth (health: Float) {
+        let health = health * 5.0
+        for (index, heart) in enumerate(full_hearts) {
+            let index = index + 1
+            if Float(index) > health {
+//                heart.hidden = true
+                heart.alpha = CGFloat(0.2)
+            } else {
+                heart.alpha = CGFloat(1)
+            }
+        }
+        
+        for (index, heart) in enumerate(half_hearts) {
+            let index = index + 1
+            if (Float(index) > health + 0.5) {
+                heart.alpha = CGFloat(0)
+            } else {
+                heart.alpha = CGFloat(1)
+            }
+        }
+    }
 }

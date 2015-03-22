@@ -12,6 +12,11 @@
                 <outletCollection property="full_hearts" destination="0fg-cQ-mht" collectionClass="NSMutableArray" id="fFp-0y-7Bh"/>
                 <outletCollection property="full_hearts" destination="9sr-Yy-UZi" collectionClass="NSMutableArray" id="Zfv-b5-tIT"/>
                 <outletCollection property="full_hearts" destination="4pE-3G-1vB" collectionClass="NSMutableArray" id="Tef-Ac-iL1"/>
+                <outletCollection property="half_hearts" destination="OeF-pz-fCf" collectionClass="NSMutableArray" id="xPX-32-ewO"/>
+                <outletCollection property="half_hearts" destination="XIJ-zV-6WC" collectionClass="NSMutableArray" id="sFi-Fn-API"/>
+                <outletCollection property="half_hearts" destination="fsC-eC-oqT" collectionClass="NSMutableArray" id="QuM-o9-6jq"/>
+                <outletCollection property="half_hearts" destination="yeX-OT-iXK" collectionClass="NSMutableArray" id="mAd-gk-4RN"/>
+                <outletCollection property="half_hearts" destination="Xtk-PB-DRO" collectionClass="NSMutableArray" id="DaR-ya-CSG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

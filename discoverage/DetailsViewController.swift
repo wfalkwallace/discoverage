@@ -33,12 +33,9 @@ class DetailsViewController: UIViewController {
 
         animalImageView.image =  UIImage(named: animal.sprite as String)
         animalName.text = animal.name as String
-        let displayHealth:Float = Float(animal.health) / 10.0
-        heartsView.countIt()
-//        UIProgressView.animateWithDuration(2.0, animations: {
-//            self.healthMeter.setProgress(displayHealth, animated: true)
-//        })
-        
+        let displayHealth: Float = Float(animal.health) / 10.0
+        heartsView.setHealth(displayHealth)
+
         bananasCount.text = String(User.currentUser!.bananaCount)
     }
 
@@ -51,10 +48,8 @@ class DetailsViewController: UIViewController {
         //update this view
         self.bananasCount.text = "\(User.currentUser!.bananaCount - 1)"
         let displayHealth = Float(animal!.health + 1) / 10.0
-//        UIProgressView.animateWithDuration(2.0, animations: {
-//            self.healthMeter.setProgress(displayHealth,  animated: true)
-//        })
-        
+
+        heartsView.setHealth(displayHealth)
         animal.feed({ (animal, success) -> () in
             //reload data or alert
         })
