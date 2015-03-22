@@ -40,14 +40,29 @@ class DetailsViewController: UIViewController {
         bananasCount.text = String(User.currentUser!.bananaCount)
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        println(delegate)
+        println(self)
+        println(animal)
+        delegate?.detailsViewControllerDelegate(self, didEndViewing: animal)
+    }
+    
     @IBAction func onFeed(sender: UIButton) {
         //update this view
-        self.bananasCount.text = "\(User.currentUser!.bananaCount - 1)"
-        let displayHealth = Float(animal!.health + 1) / 10.0
+        if (User.currentUser!.bananaCount > 0 &&  animal.health < 10) {
+            self.bananasCount.text = "\(User.currentUser!.bananaCount - 1)"
+            let displayHealth = Float(animal!.health + 1) / 10.0
 
-        heartsView.setHealth(displayHealth)
-        animal.feed({ (animal, success) -> () in
-            //reload data or alert
-        })
+            heartsView.setHealth(displayHealth)
+            animal.feed({ (animal, success) -> () in
+                if success {
+
+                } else {
+                    // TODO alert network failed
+                }
+            })
+        } else {
+            //TODO can't feed alert
+        }
     }
 }
