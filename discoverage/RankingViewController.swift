@@ -11,39 +11,58 @@ import Alamofire
 
 class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     @IBOutlet weak var tableView: UITableView!
-    
-//    @IBOutlet weak var firstUsername: UILabel!
-//    @IBOutlet weak var secondUsername: UILabel!
-//    @IBOutlet weak var thirdUsername: UILabel!
     @IBOutlet weak var tabBar: UITabBar!
-    
-//    @IBAction func firstTap(sender: AnyObject) {
-//        self.performSegueWithIdentifier("userProfileSegue", sender: users[0])
-//    }
-//    
-//    @IBAction func secondTap(sender: AnyObject) {
-//        self.performSegueWithIdentifier("userProfileSegue", sender: users[1])
-//    }
-//    
-//    @IBAction func thirdTap(sender: AnyObject) {
-//        self.performSegueWithIdentifier("userProfileSegue", sender: users[2])
-//    }
 
     var users: [User]! = []
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(
-            "RankingTableViewCell"
-        ) as! RankingTableViewCell
+    func tableView(
+        tableView: UITableView,
+        cellForRowAtIndexPath indexPath: NSIndexPath
+    ) -> UITableViewCell {
+        if (indexPath.row < 3) {
+            let cell = tableView.dequeueReusableCellWithIdentifier(
+                "TopRankingTableViewCell"
+            ) as! TopRankingTableViewCell
+            
+            if users.count > 0 {
+                let users = self.users as [User]
+                let user = users[indexPath.row]
+                cell.rankLabel.text = "\(indexPath.row + 1)"
+                cell.usernameLabel.text = user.name
+            }
+            
+            switch indexPath.row {
+                case 0:
+                    cell.medalImage.image = UIImage(named: "gold_medal")
+                case 1:
+                    cell.medalImage.image = UIImage(named: "silver_medal")
+                default:
+                    cell.medalImage.image = UIImage(named: "bronze_medal")
+            }
 
-        if users.count > 0 {
-            let users = self.users as [User]
-            let user = users[indexPath.row]
-            cell.rankLabel.text = "\(indexPath.row + 1)"
-            cell.usernameLabel.text = user.name
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(
+                "RankingTableViewCell"
+            ) as! RankingTableViewCell
+            
+            if users.count > 0 {
+                let users = self.users as [User]
+                let user = users[indexPath.row]
+                cell.rankLabel.text = "\(indexPath.row + 1)"
+                cell.usernameLabel.text = user.name
+            }
+
+            return cell
         }
+    }
 
-        return cell
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (indexPath.row < 3) {
+            return 120
+        } else {
+            return 75
+        }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,10 +82,8 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             // todo: save dict and call block
             var users = User.initWithArray(data as! [NSDictionary])
             
-            for i in 1...10 {
-                for user in users {
-                    self.users!.append(user)
-                }
+            for user in users {
+                self.users!.append(user)
             }
             self.tableView.reloadData()
         }
