@@ -10,19 +10,30 @@ import UIKit
 import MapKit
 import Alamofire
 
-let _ANNOTATE_DISTANCE_ = 300.0 //annotate if within this distance
-let _CLAIM_DISTANCE = 10.0 //claim if within this distance
+let _ANNOTATE_DISTANCE_ = 500.0 //annotate if within this distance
+let _CLAIM_DISTANCE = 50.0 //claim if within this distance
+
+struct BananaClaim  {
+    var btree : BananaTree
+    var claimed: Bool
+}
+
+struct AnimalClaim  {
+    var animal : Animal
+    var claimed: Bool
+}
 
 class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tabBar: UITabBar!
-    var bananaTrees:[BananaTree]?
-    var animals:[Animal]?
+    var bananaTrees:[BananaClaim]?
+    var animals:[AnimalClaim]?
     var lastLocation:CLLocation?
     
     override func viewDidLoad() {
-        bananaTrees = [BananaTree]()
+        bananaTrees = [BananaClaim]()
+        animals = [AnimalClaim]()
         super.viewDidLoad()
         
         tabBar.selectedItem = tabBar.items![1] as? UITabBarItem
@@ -42,14 +53,35 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         
         let spanX = 0.010
         let spanY = 0.010
-        var newRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
-        self.mapView.setRegion(newRegion, animated: true)
-        self.lastLocation = userLocation.location
+        
+        //dont change region unless user location
+        
+
+        let location = CLLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+
+        if let distance = self.lastLocation?.distanceFromLocation(location) {
+
+            if distance > 10 {
+                var newRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+                self.mapView.setRegion(newRegion, animated: true)
+                self.lastLocation = userLocation.location
+            }
+        } else {
+            var newRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+            self.mapView.setRegion(newRegion, animated: true)
+            self.lastLocation = userLocation.location
+        }
     }
     
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
-        self.annotateMapViewWithBananas()
-        self.annotateMapViewWithAnimals()
+        
+        if self.animals!.count > 0 {
+            self.annotateMapViewWithAnimals()
+        }
+        
+        if self.bananaTrees!.count > 0 {
+            self.annotateMapViewWithBananas()
+        }
     }
     
     func getBananasAndAnimals() {
@@ -57,20 +89,23 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         //TODO banana trees near user and animals near user and then draw the annotations
         Alamofire.request(Discoverage.Router.BananaTreesWithParams([:])).responseJSON { (_, _, data, error) in
             if error == nil {
-                self.bananaTrees = BananaTree.initWithArray(data as! [NSDictionary])
-                self.annotateMapViewWithBananas()
+                let btrees = BananaTree.initWithArray(data as! [NSDictionary])
+                for btree in btrees {
+                    self.bananaTrees?.append(BananaClaim(btree: btree, claimed: false))
+                    self.annotateMapViewWithBananas()
+                }
             }
         }
      
         Alamofire.request(Discoverage.Router.AnimalsWithParams([:])).responseJSON { (_, _, data, error) in
             if error == nil {
-                self.animals = Animal.initWithArray(data as! [NSDictionary])
-                println(data)
-                self.annotateMapViewWithAnimals()
+                let animals = Animal.initWithArray(data as! [NSDictionary])
+                for animal in animals {
+                    self.animals?.append(AnimalClaim(animal: animal, claimed: false))
+                    self.annotateMapViewWithAnimals()
+                }
             }
         }
-
-        
     }
     
     func annotateMapViewWithAnimals() {
@@ -82,14 +117,19 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         
         //case #1
         if let animals = self.animals {
-            for entity in animals {
-                let location = entity.location as CLLocation
-                let distance = self.lastLocation?.distanceFromLocation(location)
-                if distance < _ANNOTATE_DISTANCE_ {
-                    let ann = MKPointAnnotation()
-                    ann.setCoordinate(location.coordinate)
-                    ann.title = entity.sprite
-                    mapView.addAnnotation(ann)
+            
+            for index in 0...(animals.count-1) {
+                let entity = animals[index]
+                if entity.claimed == false {
+                    let location = entity.animal.location as CLLocation
+                    if let distance = self.lastLocation?.distanceFromLocation(location) {
+                        if distance < _ANNOTATE_DISTANCE_ {
+                            let ann = MKPointAnnotation()
+                            ann.setCoordinate(location.coordinate)
+                            ann.title = entity.animal.sprite
+                            mapView.addAnnotation(ann)
+                        }
+                    }
                 }
             }
         }
@@ -105,16 +145,20 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         // 2. if bananas are < 5 meters away add them to users banana count and remove annotation
         // 3. if bananas are > 100 meters away remove the annotation
         
-        //case #1
+        
         if let btrees = self.bananaTrees {
-            for entity in btrees {
-                let location = entity.location as CLLocation
-                let distance = self.lastLocation?.distanceFromLocation(location)
-                if distance < _ANNOTATE_DISTANCE_ {
-                    let ann = MKPointAnnotation()
-                    ann.setCoordinate(location.coordinate)
-                    ann.title = "Banana"
-                    mapView.addAnnotation(ann)
+            for index in 0...(btrees.count-1) {
+                let entity = btrees[index]
+                if entity.claimed == false {
+                    let location = entity.btree.location as CLLocation
+                    if let distance = self.lastLocation?.distanceFromLocation(location) {
+                        if distance < _ANNOTATE_DISTANCE_ {
+                            let ann = MKPointAnnotation()
+                            ann.setCoordinate(location.coordinate)
+                            ann.title = "Banana"
+                            mapView.addAnnotation(ann)
+                        }
+                    }
                 }
             }
         }
@@ -130,13 +174,15 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         for annotation in annotations {
             let annotation = annotation as! MKPointAnnotation
             let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-            let distance = self.lastLocation?.distanceFromLocation(location)
-            //println(distance)
-            if (distance > _ANNOTATE_DISTANCE_) {
-                self.mapView.removeAnnotation(annotation as? MKAnnotation)
-            } else if (distance < _CLAIM_DISTANCE) {
-                //call delegate, or send notification
-                self.mapView.removeAnnotation(annotation as? MKAnnotation)
+            if let distance = self.lastLocation?.distanceFromLocation(location) {
+                //println(distance)
+                if (distance > _ANNOTATE_DISTANCE_) {
+                    self.mapView.removeAnnotation(annotation as? MKAnnotation)
+                } else if (distance < _CLAIM_DISTANCE) {
+                    self.mapView.removeAnnotation(annotation as? MKAnnotation)
+                    claim(location)
+               
+                }
             }
         }
     }
@@ -164,6 +210,34 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func claim(location : CLLocation) {
+        
+        if let btrees = self.bananaTrees {
+            if btrees.count > 0 {
+                for index in 0...(btrees.count-1) {
+                    let entity = btrees[index]
+                    if entity.btree.location.coordinate.latitude == location.coordinate.latitude && entity.btree.location.coordinate.longitude == location.coordinate.longitude {
+                        self.bananaTrees![index] = BananaClaim(btree: entity.btree, claimed: true)
+                    }
+                }
+            }
+        }
+        
+        if let animals = self.animals {
+            if animals.count > 0 {
+                for index in 0...(animals.count-1) {
+                    let entity = animals[index]
+                    if entity.animal.location.coordinate.latitude == location.coordinate.latitude && entity.animal.location.coordinate.longitude == location.coordinate.longitude {
+                        self.animals![index] = AnimalClaim(animal: entity.animal, claimed: true)
+                    }
+                }
+            }
+        }
+        
+        
+        
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
