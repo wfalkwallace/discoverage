@@ -33,9 +33,7 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
     var bananaTrees:[BananaClaim]?
     var animals:[AnimalClaim]?
     var lastLocation:CLLocation?
-    
-    var delegate:BananaMapViewControllerDelegate?
-    
+        
     override func viewDidLoad() {
         bananaTrees = [BananaClaim]()
         animals = [AnimalClaim]()
