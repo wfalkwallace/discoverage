@@ -31,7 +31,7 @@ class BananaPick: NSObject {
         self.dictionary = dictionary
     }
     
-    func save(block: (bananaPick: BananaPick, error: NSError?) -> ()) {
+    func serialize() -> [String: AnyObject] {
         var params = [String: AnyObject]()
         params["bananaTree"] = bananaTree
         params["timestamp"] = timestamp.timeIntervalSince1970
@@ -39,6 +39,11 @@ class BananaPick: NSObject {
         if let id = id {
             params["_id"] = id
         }
+        return params
+    }
+    
+    func save(block: (bananaPick: BananaPick, error: NSError?) -> ()) {
+        var params = serialize()
         
         Alamofire.request(Discoverage.Router.BananaPickCreate(params)).responseJSON { (_, _, data, error) in
             // todo: save dict and call block

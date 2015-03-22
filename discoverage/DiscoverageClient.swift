@@ -101,9 +101,10 @@ struct Discoverage {
 
             case .Update(let users, let bananaPicks, let animals):
                 var params = [String: AnyObject]()
-                params["users"] = users
-                params["bananaPicks"] = bananaPicks
-                params["animals"] = animals
+                params["token"] = User.currentUser?.token
+                params["users"] = users.map({ $0.serialize() })
+                params["bananaPicks"] = bananaPicks.map({ $0.serialize() })
+                params["animals"] = animals.map({ $0.serialize() })
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
 
             case .AnimalsNear(let params):

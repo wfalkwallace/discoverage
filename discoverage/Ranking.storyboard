@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wvf-L9-ORa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wvf-L9-ORa">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-464" y="630"/>
         </scene>
-        <!--Foo-->
+        <!--Leaderboard-->
         <scene sceneID="UZf-dZ-PT4">
             <objects>
                 <viewController id="lum-mD-TwZ" customClass="RankingViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,7 +139,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Foo" id="Qgr-wD-oll"/>
+                    <navigationItem key="navigationItem" title="Leaderboard" id="Qgr-wD-oll"/>
                     <connections>
                         <outlet property="tabBar" destination="Tvf-3e-XW7" id="EPt-L8-frZ"/>
                         <outlet property="tableView" destination="kTr-56-WBg" id="gW8-yK-DEg"/>
@@ -221,9 +221,9 @@
                                 <exclude reference="ehc-lK-tOp"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="LfJ-mt-EFO"/>
                                 <exclude reference="UYs-bE-Alr"/>
                                 <exclude reference="n1L-0p-Dte"/>
-                                <exclude reference="LfJ-mt-EFO"/>
                                 <exclude reference="pZ4-q9-vqg"/>
                                 <exclude reference="qnr-hG-JSg"/>
                                 <exclude reference="feN-Ct-5uJ"/>
@@ -234,19 +234,19 @@
                                 <include reference="ehc-lK-tOp"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="LfJ-mt-EFO"/>
                                 <include reference="UYs-bE-Alr"/>
                                 <include reference="n1L-0p-Dte"/>
-                                <include reference="LfJ-mt-EFO"/>
                                 <exclude reference="74Q-rI-gsf"/>
+                                <exclude reference="oHu-Tb-NS5"/>
                                 <include reference="pZ4-q9-vqg"/>
                                 <include reference="qnr-hG-JSg"/>
-                                <exclude reference="oHu-Tb-NS5"/>
                                 <exclude reference="0cQ-et-0Am"/>
                                 <include reference="feN-Ct-5uJ"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Menagerie" id="fzI-Nt-VrM">
+                    <navigationItem key="navigationItem" title="Profile" id="fzI-Nt-VrM">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Bqb-Be-ymP">
                             <view key="customView" contentMode="scaleToFill" id="Ggj-V5-QgI">
                                 <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>

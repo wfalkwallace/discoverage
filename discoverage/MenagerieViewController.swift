@@ -80,26 +80,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
 
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
- 
-    func healthShouldChange(row: Int) -> Bool {
-        //user has bananas
-        if (User.currentUser?.bananaCount == 0) {
-            return false
-        }
-        
-        //monster health is not already 10
-        let animal = animals![row]
-        let health = animal.health
-        
-        if (health == 10) {
-            return false
-        }
-        return true
-    }
-    
-    
-    //TODO: move this into the models
-
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
         if item.title == (tabBar.items![1] as! UITabBarItem).title {

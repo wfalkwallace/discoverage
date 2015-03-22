@@ -64,14 +64,19 @@ class Animal: NSObject {
         return animals
     }
     
-    func save(block: (animal: Animal?, error: NSError?) -> ()) {
+    func serialize() -> [String: AnyObject] {
         var params = [String: AnyObject]()
-        params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
-        params["owner"] = owner
+        params["location"] = [location.coordinate.longitude, location.coordinate.latitude]
+        params["owner"] = owner?.id
         params["name"] = name
         params["health"] = health
         params["sprite"] = sprite
         params["_id"] = id
+        return params
+    }
+    
+    func save(block: (animal: Animal?, error: NSError?) -> ()) {
+        var params = serialize()
         
         Alamofire.request(Discoverage.Router.AnimalUpdate(id, params)).responseJSON { (_, _, data, error) in
             if error == nil {
@@ -91,6 +96,8 @@ class Animal: NSObject {
             health += 1
             Alamofire.request(Discoverage.Router.Update([User.currentUser!], [], [self])).responseJSON { (_, _, response: AnyObject?, error: NSError?) -> Void in
                 if let responseDictionary = response as? NSDictionary {
+                    println("WFW:")
+                    println(responseDictionary)
                     User.currentUser!.reset((responseDictionary["users"] as! [NSDictionary])[0]) //hack, but we know it's only one.
                     var animal = Animal.initWithArray(responseDictionary["animals"] as! [NSDictionary])[0] //hack, but we know it's only one.
                     block(animal: animal, success: (error == nil))

@@ -14,7 +14,7 @@ import MapKit
 var _currentUser: User?
 let currentUserKey = "CurrentUser"
 
-class User {
+    class User: NSObject {
     var id: String
     var token: String?
     var name: String
@@ -53,15 +53,22 @@ class User {
         self.dictionary = dictionary
     }
     
-    func save(block: (user: User?, error: NSError?) -> ()) {
+    func serialize() -> [String: AnyObject] {
         var params = [String: AnyObject]()
+        params["_id"] = id
         params["name"] = name
         params["bananaCount"] = bananaCount
         params["email"] = email
+        
 //        if let location = location {
 //            params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
 //        }
-        
+        return params
+    }
+    
+    func save(block: (user: User?, error: NSError?) -> ()) {
+        var params = serialize()
+
         Alamofire.request(Discoverage.Router.UserUpdate(id, params)).responseJSON { (request, _, data, error) in
             if error == nil {
                 self.reset(data as! NSDictionary)
