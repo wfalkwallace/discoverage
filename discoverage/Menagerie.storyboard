@@ -164,7 +164,7 @@
                                 <rect key="frame" x="240" y="505" width="122" height="68"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banana" translatesAutoresizingMaskIntoConstraints="NO" id="HT2-kg-Tv3">
-                                        <rect key="frame" x="8" y="8" width="106" height="52"/>
+                                        <rect key="frame" x="13" y="13" width="96" height="42"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-xl-NOt">
                                         <rect key="frame" x="0.0" y="0.0" width="122" height="68"/>
@@ -175,12 +175,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.77647058823529413" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottomMargin" secondItem="HT2-kg-Tv3" secondAttribute="bottom" id="14Y-e0-kws"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="HT2-kg-Tv3" secondAttribute="bottom" constant="5" id="14Y-e0-kws"/>
                                     <constraint firstAttribute="height" constant="68" id="2yq-mY-JhG"/>
-                                    <constraint firstItem="HT2-kg-Tv3" firstAttribute="top" secondItem="DNc-jX-Xq6" secondAttribute="topMargin" id="T0g-g0-2rH"/>
+                                    <constraint firstItem="HT2-kg-Tv3" firstAttribute="top" secondItem="DNc-jX-Xq6" secondAttribute="topMargin" constant="5" id="T0g-g0-2rH"/>
                                     <constraint firstAttribute="width" constant="122" id="TmA-Uk-4L5"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="HT2-kg-Tv3" secondAttribute="trailing" id="WWW-sk-Nl5"/>
-                                    <constraint firstItem="HT2-kg-Tv3" firstAttribute="leading" secondItem="DNc-jX-Xq6" secondAttribute="leadingMargin" id="vTh-gi-2e3"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="HT2-kg-Tv3" secondAttribute="trailing" constant="5" id="WWW-sk-Nl5"/>
+                                    <constraint firstItem="HT2-kg-Tv3" firstAttribute="leading" secondItem="DNc-jX-Xq6" secondAttribute="leadingMargin" constant="5" id="vTh-gi-2e3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -231,6 +231,7 @@
                     <connections>
                         <outlet property="animalImageView" destination="nWK-l0-d3R" id="vBD-91-yJW"/>
                         <outlet property="animalName" destination="VaJ-uS-ujX" id="PV9-Mb-HIZ"/>
+                        <outlet property="bananaButtonView" destination="DNc-jX-Xq6" id="IoV-nk-O4k"/>
                         <outlet property="bananasCount" destination="b6S-za-Lii" id="JOi-Ic-lgS"/>
                         <outlet property="heartsView" destination="10m-02-W7r" id="lB2-sg-7jo"/>
                     </connections>

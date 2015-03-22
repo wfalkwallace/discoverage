@@ -17,6 +17,7 @@ class DetailsViewController: UIViewController {
     var animal: Animal!
     var delegate: DetailsViewControllerDelegate?
 
+    @IBOutlet weak var bananaButtonView: UIView!
     @IBOutlet weak var heartsView: HeartsView!
     @IBOutlet weak var bananasCount: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
