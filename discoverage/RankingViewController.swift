@@ -31,10 +31,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     var users: [User]! = []
 
-    func tableView(
-        tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath
-    ) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(
             "RankingTableViewCell"
         ) as! RankingTableViewCell
@@ -49,19 +46,14 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
 
-    func tableView(
-        tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
-    }
-
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.automaticallyAdjustsScrollViewInsets = false
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -80,11 +72,6 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         tabBar.selectedItem = tabBar.items![2] as? UITabBarItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -21,6 +21,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         tabBar.selectedItem = tabBar.items![0] as? UITabBarItem
+        self.automaticallyAdjustsScrollViewInsets = false
 
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
