@@ -38,6 +38,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         
         bananaCount.text = String(User.currentUser!.bananaCount)
      
+        collectionView.reloadData()
+        
         Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             println(error)
@@ -99,17 +101,14 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func detailsViewControllerDelegate(detailsViewControllerDelegate: DetailsViewController, didEndViewing animal: Animal) {
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            var index: Int? = nil
-            if let animals = self.animals {
-                index = find(animals, animal)
-            }
-            if let index = index {
-                self.animals?.removeAtIndex(index)
-                self.animals?.insert(animal, atIndex: index)
-                self.collectionView!.reloadItemsAtIndexPaths([index])
-            }
-        })
+        var index: Int? = nil
+        if let animals = self.animals {
+            index = find(animals, animal)
+        }
+        if let index = index {
+            self.animals?.removeAtIndex(index)
+            self.animals?.insert(animal, atIndex: index)
+        }
     }
 
 }
