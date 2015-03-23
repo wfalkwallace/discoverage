@@ -99,6 +99,7 @@ class Animal: NSObject {
             health += 1
             Alamofire.request(Discoverage.Router.Update([User.currentUser!], [], [self])).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
                 if let dictionary = data as? NSDictionary {
+                    println(dictionary)
                     User.currentUser!.reset((dictionary["users"] as! [NSDictionary])[0]) //hack, but we know it's only one.
                     var animal = Animal.initWithArray(dictionary["animals"] as! [NSDictionary])[0] //hack, but we know it's only one.
                     block(animal: animal, success: (error == nil))
