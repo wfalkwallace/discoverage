@@ -16,31 +16,36 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var tabBar: UITabBar!
 
     var animals: [Animal]?
+    var user: User?
+    var canFeedInDetails: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if user == nil {
+            user = User.currentUser!
+            var logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: self, action: "logout")
+            logoutButton.tintColor = UIColor.blackColor()
+            navigationItem.leftBarButtonItem = logoutButton
+            navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 12)!], forState: UIControlState.Normal)
+            canFeedInDetails = true
+        }
+        
         tabBar.selectedItem = tabBar.items![0] as? UITabBarItem
         self.automaticallyAdjustsScrollViewInsets = false
-
+        
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
-        
-        var logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: self, action: "logout")
-        logoutButton.tintColor = UIColor.whiteColor()
-        navigationItem.leftBarButtonItem = logoutButton
-        navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 12)!], forState: UIControlState.Normal)
-
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        bananaCount.text = String(User.currentUser!.bananaCount)
+        bananaCount.text = String(user!.bananaCount)
      
         collectionView.reloadData()
         
-        Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":user!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             println(error)
             if let data: AnyObject = data {
@@ -76,12 +81,12 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
   
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let detailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailsViewController") as! DetailsViewController
-        
-        detailsViewController.animal = animals![indexPath.row]
-        detailsViewController.delegate = self
-
-        self.navigationController?.pushViewController(detailsViewController, animated: true)
+        if canFeedInDetails {
+            let detailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailsViewController") as! DetailsViewController
+            detailsViewController.animal = animals![indexPath.row]
+            detailsViewController.delegate = self
+            self.navigationController?.pushViewController(detailsViewController, animated: true)
+        }
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {

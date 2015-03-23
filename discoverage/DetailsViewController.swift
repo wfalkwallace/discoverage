@@ -23,10 +23,6 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var animalImageView: UIImageView!
     @IBOutlet weak var animalName: UILabel!
-//    @IBOutlet weak var healthMeter: UIProgressView!
-//    @IBOutlet weak var bananasEaten: UILabel!
-//    @IBOutlet weak var animalMood: UILabel!
-    @IBOutlet weak var feedButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
