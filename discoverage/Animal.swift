@@ -19,6 +19,8 @@ class Animal: NSObject {
     var sprite: String
     var location: CLLocation
     var dictionary: NSDictionary
+    let names =  ["wartortle", "blastoise"]
+    let sprites = ["8_wartortle", "9_blastoise"]
     
     static let FULL_HEALTH: Int = 10
     
@@ -26,6 +28,7 @@ class Animal: NSObject {
         if let user = dictionary.objectForKey("owner") as? NSDictionary {
             self.owner = User(dictionary: user)
         }
+        
         self.name = dictionary["name"] as! String
         self.id = dictionary["_id"] as! String
         self.sprite = dictionary["sprite"] as! String
