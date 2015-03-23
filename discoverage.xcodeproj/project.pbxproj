@@ -13,6 +13,7 @@
 		45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3EF1AABADD000E6248C /* RankingViewController.swift */; };
 		45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */; };
 		45B1A3F61AABC80500E6248C /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F51AABC80500E6248C /* Animal.swift */; };
+		45B774921ABF7490007E23A4 /* TopRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B774911ABF7490007E23A4 /* TopRankingTableViewCell.swift */; };
 		45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */; };
 		BEBCED091AAFE1F00048D9E9 /* Menagerie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBCED081AAFE1EF0048D9E9 /* Menagerie.storyboard */; };
 		BEBCED0D1AAFE2320048D9E9 /* MenagerieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBCED0C1AAFE2320048D9E9 /* MenagerieViewController.swift */; };
@@ -56,6 +57,7 @@
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		45B1A3F51AABC80500E6248C /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
+		45B774911ABF7490007E23A4 /* TopRankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRankingTableViewCell.swift; sourceTree = "<group>"; };
 		45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		8305CA6DAD0E44E8AFDAEE68 /* Pods_discoverage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_discoverage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB25EE746160ACF953C0E1F9 /* Pods-discoverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-discoverage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-discoverage/Pods-discoverage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				45B1A3EF1AABADD000E6248C /* RankingViewController.swift */,
 				45EAB04E1AAEDAE400945C7D /* UserProfileViewController.swift */,
 				45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */,
+				45B774911ABF7490007E23A4 /* TopRankingTableViewCell.swift */,
 			);
 			name = Ranking;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				E69444D51AB0B61000003443 /* Location.swift in Sources */,
 				BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */,
 				E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */,
+				45B774921ABF7490007E23A4 /* TopRankingTableViewCell.swift in Sources */,
 				E66D23071AB63E92008676CE /* DiscoverageClient.swift in Sources */,
 				BEBCED0D1AAFE2320048D9E9 /* MenagerieViewController.swift in Sources */,
 				E6B513C61AA6662A00852C9F /* LoginViewController.swift in Sources */,
