@@ -31,19 +31,25 @@ class LoginViewController: UIViewController {
             .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let error = error {
                 // deal with login error
-                println(error)
                 let alert = UIAlertView()
                 alert.title = "Alert"
-                alert.message = "Incorrect username or password!"
+                alert.message = "Login failed. No network connection"
                 alert.addButtonWithTitle("OK")
                 alert.show()
-            } else {
-                // TODO deal with 401 user not found error in data.
-                User.currentUser = User(dictionary: data as! NSDictionary)
-                
-                let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-                let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
-                self.presentViewController(menagerieViewController, animated: true, completion: nil)
+            } else if let data = data {
+                if let code = data.objectForKey("error") {
+                    println(data)
+                    let alert = UIAlertView()
+                    alert.title = "Alert"
+                    alert.message = data.objectForKey("error") as? String
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
+                } else {
+                    User.currentUser = User(dictionary: data as! NSDictionary)
+                    let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+                    let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+                    self.presentViewController(menagerieViewController, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -51,11 +57,23 @@ class LoginViewController: UIViewController {
     @IBAction func didTapSignup(sender: UIButton) {
         Alamofire.request(Discoverage.Router.UserCreate(["name": usernameTextField.text, "email" : emailTextField.text, "password": passwordTextField.text])).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let error = error {
-                // deal with signup error error
-                println(error)
-            } else {
-                println(data)
-                self.didTapLogin(sender)
+                // deal with login error
+                let alert = UIAlertView()
+                alert.title = "Alert"
+                alert.message = "Signup failed. No network connection"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else if let data = data {
+                if let code = data.objectForKey("error") {
+                    println(data)
+                    let alert = UIAlertView()
+                    alert.title = "Alert"
+                    alert.message = data.objectForKey("error") as? String
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
+                } else {
+                    self.didTapLogin(sender)
+                }
             }
         }
     }

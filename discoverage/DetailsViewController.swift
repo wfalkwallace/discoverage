@@ -32,12 +32,14 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = animal.name as String
 
-        animalImageView.image =  UIImage(named: animal.sprite as String)
-        animalName.text = animal.name as String
+        bananasCount.text = String(User.currentUser!.bananaCount)
+        
         let displayHealth: Float = Float(animal.health) / 10.0
         heartsView.setHealth(displayHealth)
-
-        bananasCount.text = String(User.currentUser!.bananaCount)
+        
+        animalImageView.image =  UIImage(named: animal.sprite as String)
+        animalName.text = animal.name as String
+        //SpriteCell.displaySprite(animalImageView, label: animalName, animal: animal, animate: false)
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -45,6 +47,8 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func onFeed(sender: UIButton) {
+        let oldHealth = animal!.health
+        
         //update this view
         if (User.currentUser!.bananaCount > 0 &&  animal.health < 10) {
             self.bananasCount.text = "\(User.currentUser!.bananaCount - 1)"
@@ -53,7 +57,7 @@ class DetailsViewController: UIViewController {
             heartsView.setHealth(displayHealth)
             animal.feed({ (animal, success) -> () in
                 if success {
-
+                    SpriteCell.displaySprite(self.animalImageView, label: self.animalName, animal: animal!, animate:true)
                 } else {
                     // TODO alert network failed
                 }
