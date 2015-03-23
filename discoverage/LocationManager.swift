@@ -119,14 +119,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate  {
             }
             
             var capturedAnimals = animalsInRegion.filter({ animal in
-                return animal.location.distanceFromLocation(currentLocation) <= CAPTURE_THRESHOLD_RADIUS
+                return animal.location.distanceFromLocation(currentLocation) <= CAPTURE_RADIUS
             }).map({ (animal: Animal) -> Animal in
                 animal.owner = User.currentUser
                 return animal
             })
 
             var capturedBananas = bananaTreesInRegion.filter({ bananaTree in
-                return bananaTree.location.distanceFromLocation(currentLocation) <= CAPTURE_THRESHOLD_RADIUS
+                return bananaTree.location.distanceFromLocation(currentLocation) <= CAPTURE_RADIUS
             }).map({ bananaTree in
                 return BananaPick(bananaTree: bananaTree, timestamp: NSDate())
             })
