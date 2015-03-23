@@ -70,12 +70,22 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
+    
+    //TODO: wire to userprofile instead of menagerie
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
+        let userProfileViewController = menagerieStoryboard.instantiateViewControllerWithIdentifier("MenagerieViewController") as! MenagerieViewController
+        let users = self.users as [User]
+        userProfileViewController.user = users[indexPath.row]
+        
+        self.navigationController?.pushViewController(userProfileViewController, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
-        
         tableView.delegate = self
         tableView.dataSource = self
         self.users = [User]()
@@ -93,13 +103,12 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tabBar.selectedItem = tabBar.items![2] as? UITabBarItem
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let indexPath = self.tableView.indexPathForSelectedRow()!
-        let dest = segue.destinationViewController as! UserProfileViewController
-        
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let indexPath = sender as! NSIndexPath
+//        let dest = segue.destinationViewController as! UserProfileViewController
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//    }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
         if item.title == (tabBar.items![0] as! UITabBarItem).title {

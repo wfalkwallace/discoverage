@@ -19,8 +19,7 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
         super.viewDidLoad()
 
         self.automaticallyAdjustsScrollViewInsets = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
+
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
     }
@@ -29,8 +28,6 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
     // Eh Jack's //
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-     
-        collectionView.reloadData()
         
         Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
@@ -45,8 +42,9 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
     
     // Cell Display //
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if animals != nil {
-            return animals!.count
+        if let animals = self.animals {
+            println(animals.count)
+            return animals.count
         }
         return 0
     }
