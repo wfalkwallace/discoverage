@@ -16,6 +16,7 @@ struct Discoverage {
         
         case Login(String, String)
         case Update([User], [BananaPick], [Animal])
+        case ItemsNear([String: AnyObject])
 
         case AnimalsNear([String: AnyObject])
         case AnimalUpdate(String, [String: AnyObject])
@@ -40,7 +41,7 @@ struct Discoverage {
             case .Login, .Update, .AnimalUpdate, .UserCreate, .UserUpdate, .BananaPickCreate:
                 return .POST
                 
-            case .AnimalsNear, .AnimalWithId, .AnimalsWithParams, .UsersWithParams, .UserWithId, .BananaPicksWithParams, .BananaPickWithId, .BananaTreesNear, .BananaTreeWithId, .BananaTreesWithParams:
+            case .ItemsNear, .AnimalsNear, .AnimalWithId, .AnimalsWithParams, .UsersWithParams, .UserWithId, .BananaPicksWithParams, .BananaPickWithId, .BananaTreesNear, .BananaTreeWithId, .BananaTreesWithParams:
                 return .GET
             }
         }
@@ -51,7 +52,9 @@ struct Discoverage {
                 return "/login"
             case .Update(_, _, _):
                 return "/update"
-
+            case .ItemsNear(_):
+                return "/items/near"
+                
             case .AnimalsNear(_):
                 return "/animals/near"
             case .AnimalUpdate(let id, let _):
@@ -106,7 +109,10 @@ struct Discoverage {
                 params["bananaPicks"] = bananaPicks.map({ $0.serialize() })
                 params["animals"] = animals.map({ $0.serialize() })
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
+            case .ItemsNear(let params):
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
 
+                
             case .AnimalsNear(let params):
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
             case .AnimalUpdate(_, let params):
