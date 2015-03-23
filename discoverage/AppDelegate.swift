@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 28)!, NSForegroundColorAttributeName: UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)]
         
         if User.currentUser != nil {
-            Location.sharedInstance.startUpdatingLocation()
+            LocationManager.sharedInstance.startUpdatingLocation()
             let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
             window?.rootViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
         }
