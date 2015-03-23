@@ -27,17 +27,19 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             if users.count > 0 {
                 let users = self.users as [User]
                 let user = users[indexPath.row]
-                cell.rankLabel.text = "\(indexPath.row + 1)"
                 cell.usernameLabel.text = user.name
             }
             
             switch indexPath.row {
                 case 0:
                     cell.medalImage.image = UIImage(named: "gold_medal")
+                    cell.rankLabel.text = "1"
                 case 1:
                     cell.medalImage.image = UIImage(named: "silver_medal")
+                    cell.rankLabel.text = "2"
                 default:
                     cell.medalImage.image = UIImage(named: "bronze_medal")
+                    cell.rankLabel.text = "3"
             }
 
             return cell
@@ -59,9 +61,9 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (indexPath.row < 3) {
-            return 120
+            return 70
         } else {
-            return 75
+            return 50
         }
     }
 

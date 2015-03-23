@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wvf-L9-ORa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wvf-L9-ORa">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -37,31 +37,88 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankingTableViewCell" rowHeight="92" id="144-ps-CaG" customClass="RankingTableViewCell" customModule="discoverage" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopRankingTableViewCell" rowHeight="105" id="n8q-20-BfA" customClass="TopRankingTableViewCell" customModule="discoverage" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n8q-20-BfA" id="56K-wn-CZw">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVU-s1-B9R">
+                                                    <rect key="frame" x="15" y="29" width="58" height="48"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="40"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sasuke2490" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5a-ih-dkC">
+                                                    <rect key="frame" x="93" y="36" width="153" height="34"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="28"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold_medal" translatesAutoresizingMaskIntoConstraints="NO" id="V5f-2T-PXx">
+                                                    <rect key="frame" x="562" y="27" width="30" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="g8P-ae-3ti"/>
+                                                        <constraint firstAttribute="width" constant="30" id="qHJ-gi-3Mw"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YVU-s1-B9R" firstAttribute="leading" secondItem="56K-wn-CZw" secondAttribute="leadingMargin" constant="7" id="1SH-iR-PpU"/>
+                                                <constraint firstAttribute="centerY" secondItem="V5f-2T-PXx" secondAttribute="centerY" id="724-rJ-tnn"/>
+                                                <constraint firstItem="V5f-2T-PXx" firstAttribute="trailing" secondItem="56K-wn-CZw" secondAttribute="trailingMargin" id="7nA-EG-bms"/>
+                                                <constraint firstItem="Q5a-ih-dkC" firstAttribute="leading" secondItem="YVU-s1-B9R" secondAttribute="trailing" constant="20" id="JQ6-jE-HOr"/>
+                                                <constraint firstItem="YVU-s1-B9R" firstAttribute="baseline" secondItem="Q5a-ih-dkC" secondAttribute="baseline" id="b5w-Wd-rTe"/>
+                                                <constraint firstItem="YVU-s1-B9R" firstAttribute="centerY" secondItem="Q5a-ih-dkC" secondAttribute="centerY" id="fJR-0h-ICO"/>
+                                                <constraint firstAttribute="centerY" secondItem="YVU-s1-B9R" secondAttribute="centerY" constant="-0.5" id="tzt-dC-FNK"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="b5w-Wd-rTe"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="medalImage" destination="V5f-2T-PXx" id="64c-dy-yHj"/>
+                                            <outlet property="rankLabel" destination="YVU-s1-B9R" id="8b0-6Q-3BT"/>
+                                            <outlet property="usernameLabel" destination="Q5a-ih-dkC" id="cLF-aQ-9eE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankingTableViewCell" rowHeight="75" id="144-ps-CaG" customClass="RankingTableViewCell" customModule="discoverage" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="144-ps-CaG" id="WP2-W9-cvZ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utH-ki-kYP">
-                                                    <rect key="frame" x="23" y="16" width="28" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                    <rect key="frame" x="15" y="18" width="18" height="39"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="32"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sasuke2490" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQz-sh-99K">
-                                                    <rect key="frame" x="71" y="32" width="127" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <rect key="frame" x="53" y="26" width="109" height="24"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="utH-ki-kYP" secondAttribute="centerY" constant="-0.25" id="3FC-pA-Ybr"/>
+                                                <constraint firstItem="bQz-sh-99K" firstAttribute="bottom" secondItem="utH-ki-kYP" secondAttribute="bottom" constant="-15" id="CVT-Co-uPA"/>
                                                 <constraint firstItem="bQz-sh-99K" firstAttribute="leading" secondItem="utH-ki-kYP" secondAttribute="trailing" constant="20" id="VC5-xa-2vX"/>
-                                                <constraint firstItem="utH-ki-kYP" firstAttribute="leading" secondItem="WP2-W9-cvZ" secondAttribute="leadingMargin" constant="15" id="lUT-kZ-lDo"/>
+                                                <constraint firstItem="bQz-sh-99K" firstAttribute="centerY" secondItem="utH-ki-kYP" secondAttribute="centerY" id="cJd-xi-6DX"/>
+                                                <constraint firstItem="bQz-sh-99K" firstAttribute="baseline" secondItem="utH-ki-kYP" secondAttribute="baseline" id="i1k-RO-lt7"/>
+                                                <constraint firstItem="utH-ki-kYP" firstAttribute="leading" secondItem="WP2-W9-cvZ" secondAttribute="leadingMargin" constant="7" id="lUT-kZ-lDo"/>
                                                 <constraint firstItem="bQz-sh-99K" firstAttribute="centerY" secondItem="utH-ki-kYP" secondAttribute="centerY" id="xaQ-MT-d2l"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="CVT-Co-uPA"/>
+                                                    <exclude reference="i1k-RO-lt7"/>
+                                                    <exclude reference="xaQ-MT-d2l"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="rankLabel" destination="utH-ki-kYP" id="gX9-ra-E2f"/>
@@ -288,6 +345,7 @@
     </scenes>
     <resources>
         <image name="banana" width="32" height="32"/>
+        <image name="gold_medal" width="384" height="640"/>
         <image name="icon-home" width="30" height="30"/>
         <image name="icon-leaderboard" width="30" height="30"/>
         <image name="icon-map" width="30" height="30"/>
