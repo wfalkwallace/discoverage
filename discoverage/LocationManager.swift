@@ -13,8 +13,7 @@ import Alamofire
 
 let CACHE_REGION_UPDATE_INTERVAL = 60.0
 let CACHE_REGION_RADIUS = 1000.0
-let CAPTURE_THRESHOLD_RADIUS = 50.0
-let ITEMS_CAPTURED_NOTIFICATION = "itemsCaptured"
+let CAPTURE_RADIUS = 50.0
 
 protocol LocationManagerDelegate {
     func locationManager(locationManagerDelegate: LocationManager, didCaptureBananas bananaPicks: [BananaPick], didCaptureAnimals animals: [Animal])
@@ -112,7 +111,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate  {
                         println(error)
                     } else {
                         if let dictionary = data as? NSDictionary {
-                            println(dictionary)
                             self.animalsInRegion = Animal.initWithArray(dictionary["animals"] as! [NSDictionary])
                             self.bananaTreesInRegion = BananaTree.initWithArray(dictionary["bananaTrees"] as! [NSDictionary])
                         }

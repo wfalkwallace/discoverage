@@ -171,7 +171,6 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
     }
  
     func updateExistingAnnotations() {
-        
         //case #2,#3
         let annotations = mapView.annotations.filter { $0 !== self.mapView.userLocation }
         for annotation in annotations {
