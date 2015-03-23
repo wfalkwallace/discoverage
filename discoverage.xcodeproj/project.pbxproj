@@ -154,6 +154,13 @@
 			name = Menagerie;
 			sourceTree = "<group>";
 		};
+		BEF2E9631ABFD20200BC38F4 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tab;
+			sourceTree = "<group>";
+		};
 		E60DB2F21AB13DE400494F2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +269,7 @@
 		E6F418221AA973AB007E4FF3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BEF2E9631ABFD20200BC38F4 /* Tab */,
 				BEBCED061AAFE03D0048D9E9 /* Menagerie */,
 				45EAB0501AAEDC1600945C7D /* Ranking */,
 				E60DB2F31AB13DFE00494F2A /* App */,

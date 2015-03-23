@@ -18,7 +18,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     var animals: [Animal]?
     var user: User?
     var canFeedInDetails: Bool = false
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +32,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         
         tabBar.selectedItem = tabBar.items![0] as? UITabBarItem
+        UITabBar.appearance().barTintColor = UIColor.whiteColor()
         self.automaticallyAdjustsScrollViewInsets = false
         
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
@@ -94,6 +95,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
             let mapStoryboard = UIStoryboard(name: "BananaMap", bundle: nil)
             let mapViewController = mapStoryboard.instantiateInitialViewController() as! BananaMapViewController
             self.presentViewController(mapViewController, animated: true, completion: nil)
+
+            
         } else if item.title == (tabBar.items![2] as! UITabBarItem).title {
             let rankingStoryboard = UIStoryboard(name: "Ranking", bundle: nil)
             let rankingViewController = rankingStoryboard.instantiateInitialViewController() as! UINavigationController

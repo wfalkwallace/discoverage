@@ -53,7 +53,7 @@ class DetailsViewController: UIViewController {
             heartsView.setHealth(displayHealth)
             animal.feed({ (animal, success) -> () in
                 if success {
-                    SpriteCell.displaySprite(self.animalImageView, label: self.animalName, animal: animal!, animate:true)
+//                    SpriteCell.displaySprite(self.animalImageView, label: self.animalName, animal: animal!, animate:true)
                 } else {
                     // TODO alert network failed
                 }
