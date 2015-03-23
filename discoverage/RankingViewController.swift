@@ -95,15 +95,10 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "tweetDetailSegue") {
-            let dest = segue.destinationViewController as! UserProfileViewController
-            dest.user = sender as! User
-        } else {
-            let indexPath = self.tableView.indexPathForSelectedRow()!
-            let dest = segue.destinationViewController as! MenagerieViewController
-            
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
+        let indexPath = self.tableView.indexPathForSelectedRow()!
+        let dest = segue.destinationViewController as! UserProfileViewController
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
