@@ -136,8 +136,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate  {
                     
                 } else {
                     if let dictionary = data as? NSDictionary {
-                        var animals = Animal.initWithArray(dictionary["animals"] as! [NSDictionary])
-                        var bananaPicks = BananaPick.initWithArray(dictionary["bananaPicks"] as! [NSDictionary])
+                        var animals = [Animal]()
+                        var bananaPicks = [BananaPick]()
+                        if let animalArray = dictionary["animals"] as? [NSDictionary] {
+                            animals = Animal.initWithArray(animalArray)
+                        }
+                        if let bananasArray = dictionary["bananaPicks"] as? [NSDictionary] {
+                            bananaPicks = BananaPick.initWithArray(bananasArray)
+                        }
                         if animals.count > 0 || bananaPicks.count > 0 {
                             self.delegate?.locationManager(self, didCaptureBananas: bananaPicks, didCaptureAnimals: animals)
                         }

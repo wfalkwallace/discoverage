@@ -33,9 +33,9 @@ class BananaPick: NSObject {
     
     func serialize() -> [String: AnyObject] {
         var params = [String: AnyObject]()
-        params["bananaTree"] = bananaTree
+        params["bananaTree"] = bananaTree.id
         params["timestamp"] = timestamp.timeIntervalSince1970
-        params["user"] = user
+        params["user"] = user?.id
         if let id = id {
             params["_id"] = id
         }
