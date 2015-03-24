@@ -35,7 +35,7 @@ class BananaPick: NSObject {
         var params = [String: AnyObject]()
         params["bananaTree"] = bananaTree.id
         params["timestamp"] = timestamp.timeIntervalSince1970
-        params["user"] = user?.id
+        params["picker"] = user?.id
         if let id = id {
             params["_id"] = id
         }
