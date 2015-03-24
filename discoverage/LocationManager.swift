@@ -147,6 +147,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate  {
                         if animals.count > 0 || bananaPicks.count > 0 {
                             self.delegate?.locationManager(self, didCaptureBananas: bananaPicks, didCaptureAnimals: animals)
                         }
+                        User.currentUser?.bananaCount += bananaPicks.count
                     }
                 }
             }
