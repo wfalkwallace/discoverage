@@ -43,8 +43,8 @@ class AppViewController: UITabBarController {
         rankingVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
         rankingVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.yellowColor()], forState: .Selected)
 
-        let red = UIColor(hex: 0xC1301D)
-        let yellow = UIColor(hex: 0xFFDF2A)
+        let red = UIColor(red: 193 / 255, green: 48 / 255, blue: 29 / 255, alpha: 1)
+        let yellow = UIColor(red: 255 / 255, green: 223 / 255, blue: 42 / 255, alpha: 1)
         
         tabBar.barTintColor = red
         tabBar.tintColor = yellow
