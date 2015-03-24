@@ -42,9 +42,9 @@ class AppViewController: UITabBarController {
         rankingVC.tabBarItem.selectedImage = UIImage(named: "icon-leaderboard")
         rankingVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
         rankingVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.yellowColor()], forState: .Selected)
-        
-        tabBar.barTintColor = UIColor.redColor()
-        tabBar.tintColor = UIColor.yellowColor()
+
+        tabBar.barTintColor = UIColor(red: 193, green: 48, blue: 29, alpha: 1)
+        tabBar.tintColor = UIColor(red: 255, green: 223, blue: 42, alpha: 1)
         selectedIndex = 1
     }
 
