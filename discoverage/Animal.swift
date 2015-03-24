@@ -25,7 +25,7 @@ class Animal: NSObject {
     static let FULL_HEALTH: Int = 10
 
     init(owner: User) {
-        self.owner = User.currentUser
+        self.owner = owner
         
         self.name = "Charmander"
         self.sprite = "4_charmander"

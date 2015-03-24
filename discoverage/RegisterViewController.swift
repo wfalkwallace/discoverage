@@ -37,6 +37,7 @@ class RegisterViewController: UIViewController {
                 if let code: AnyObject = data.objectForKey("error") {
                     Alert.login(data)
                 } else {
+                    println(data)
                     let owner = User(dictionary: data as! NSDictionary)
                     var starter = Animal(owner: owner)
                     Alamofire.request(Discoverage.Router.AnimalCreate(starter.serialize())).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
