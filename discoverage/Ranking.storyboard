@@ -266,4 +266,5 @@
         <image name="gold_medal" width="384" height="640"/>
         <image name="icon-logout" width="30" height="30"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
