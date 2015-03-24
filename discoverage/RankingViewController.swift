@@ -100,7 +100,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.tableView.reloadData()
         }
         
-        tabBar.selectedItem = tabBar.items![2] as? UITabBarItem
+        //tabBar.selectedItem = tabBar.items![2] as? UITabBarItem
     }
     
 //    // In a storyboard-based application, you will often want to do a little preparation before navigation

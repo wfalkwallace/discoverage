@@ -46,6 +46,7 @@ class LoginViewController: UIViewController {
                     alert.show()
                 } else {
                     User.currentUser = User(dictionary: data as! NSDictionary)
+                    LocationManager.sharedInstance.startUpdatingLocation()
                     let appStoryboard = UIStoryboard(name: "App", bundle: nil)
                     let appVC = appStoryboard.instantiateInitialViewController() as! UITabBarController
                     self.presentViewController(appVC, animated: true, completion: nil)
