@@ -26,7 +26,7 @@ class BananaPick: NSObject {
     init(dictionary: NSDictionary) {
         self.id = dictionary["_id"] as! String
         self.bananaTree = BananaTree(dictionary: dictionary["bananaTree"] as! NSDictionary)
-        self.user = User(dictionary: dictionary["user"] as! NSDictionary)
+        self.user = User(dictionary: dictionary["picker"] as! NSDictionary)
         self.timestamp = NSDate(timeIntervalSince1970: dictionary["timestamp"] as! NSTimeInterval)
         self.dictionary = dictionary
     }
