@@ -20,6 +20,7 @@
 		BEBCED0F1AAFE2750048D9E9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBCED0E1AAFE2750048D9E9 /* DetailsViewController.swift */; };
 		BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */; };
 		BEBCED131AAFE2A90048D9E9 /* SpriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */; };
+		BEC97A801AC14561006CB2B8 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC97A7F1AC14561006CB2B8 /* Alerts.swift */; };
 		E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */; };
 		E658FAFD1AC0D9EE003CC3E1 /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E658FAFC1AC0D9EE003CC3E1 /* App.storyboard */; };
 		E658FAFF1AC0DC3B003CC3E1 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658FAFE1AC0DC3B003CC3E1 /* AppViewController.swift */; };
@@ -71,6 +72,7 @@
 		BEBCED0E1AAFE2750048D9E9 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteCell.swift; sourceTree = "<group>"; };
 		BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpriteCell.xib; sourceTree = "<group>"; };
+		BEC97A7F1AC14561006CB2B8 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		E617BBBD1AA832F000342FBB /* Discoverage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Discoverage-Bridging-Header.h"; sourceTree = "<group>"; };
 		E617BBC01AA833B800342FBB /* discoverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = discoverage.xcconfig; sourceTree = "<group>"; };
 		E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaPick.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */,
 				452BA3DE1ABD568D007A7154 /* Hearts.xib */,
 				452BA3E01ABE2601007A7154 /* HeartsView.swift */,
+				BEC97A7F1AC14561006CB2B8 /* Alerts.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
 				E658FB011AC12480003CC3E1 /* RegisterViewController.swift in Sources */,
 				E6FA65A71AB4B86200340CF2 /* BananaMapViewController.swift in Sources */,
+				BEC97A801AC14561006CB2B8 /* Alerts.swift in Sources */,
 				45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */,
 				E658FAFF1AC0DC3B003CC3E1 /* AppViewController.swift in Sources */,
 				E69444D51AB0B61000003443 /* LocationManager.swift in Sources */,

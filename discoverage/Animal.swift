@@ -24,20 +24,20 @@ class Animal: NSObject {
     
     static let FULL_HEALTH: Int = 10
 
-    init() {
-        self.owner = User.currentUser
-        
-        self.name = "Pikachi"
-        self.sprite = dictionary["sprite"] as! String
-        self.health = 6
-        
-        let locationData = dictionary["location"] as! NSArray
-        let lat = locationData[1] as! CLLocationDegrees
-        let lon = locationData[0] as! CLLocationDegrees
-        self.location = CLLocation(latitude: lat, longitude: lon)
-        
-        self.dictionary = dictionary
-    }
+//    init() {
+//        self.owner = User.currentUser
+//        
+//        self.name = "Pikachu"
+//        self.sprite = dictionary["sprite"] as! String
+//        self.health = 6
+//        
+//        let locationData = dictionary["location"] as! NSArray
+//        let lat = locationData[1] as! CLLocationDegrees
+//        let lon = locationData[0] as! CLLocationDegrees
+//        self.location = CLLocation(latitude: lat, longitude: lon)
+//        
+//        self.dictionary = dictionary
+//    }
     
     init(dictionary: NSDictionary) {
         if let user = dictionary.objectForKey("owner") as? NSDictionary {
