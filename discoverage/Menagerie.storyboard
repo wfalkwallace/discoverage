@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ORV-EC-7Pu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ORV-EC-7Pu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -74,23 +74,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banana" translatesAutoresizingMaskIntoConstraints="NO" id="UJW-Zq-b8E">
-                                        <rect key="frame" x="17" y="5" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="77d-ak-Z72"/>
-                                            <constraint firstAttribute="height" constant="24" id="7HQ-ph-fPF"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZ4-7w-dzD">
-                                        <rect key="frame" x="49" y="5" width="22" height="24"/>
+                                        <rect key="frame" x="39" y="-1" width="32" height="35"/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="28"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banana" translatesAutoresizingMaskIntoConstraints="NO" id="UJW-Zq-b8E">
+                                        <rect key="frame" x="7" y="2" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="77d-ak-Z72"/>
+                                            <constraint firstAttribute="height" constant="28" id="7HQ-ph-fPF"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="JZ4-7w-dzD" secondAttribute="trailing" id="85b-fP-RAQ"/>
-                                    <constraint firstItem="JZ4-7w-dzD" firstAttribute="leading" secondItem="UJW-Zq-b8E" secondAttribute="trailing" constant="8" id="KIR-Qo-Z2I"/>
+                                    <constraint firstItem="JZ4-7w-dzD" firstAttribute="leading" secondItem="UJW-Zq-b8E" secondAttribute="trailing" constant="4" id="KIR-Qo-Z2I"/>
                                     <constraint firstAttribute="centerY" secondItem="JZ4-7w-dzD" secondAttribute="centerY" id="slW-kh-MUo"/>
                                     <constraint firstItem="JZ4-7w-dzD" firstAttribute="centerY" secondItem="UJW-Zq-b8E" secondAttribute="centerY" id="udn-7g-2ky"/>
                                 </constraints>

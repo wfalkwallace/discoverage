@@ -26,7 +26,6 @@ class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = animal.name as String
 
         bananasCount.text = String(User.currentUser!.bananaCount)
         
