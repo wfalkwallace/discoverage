@@ -32,8 +32,10 @@ class DetailsViewController: UIViewController {
         let displayHealth: Float = Float(animal.health) / 10.0
         heartsView.setHealth(displayHealth)
         
-        animalImageView.image =  UIImage(named: animal.sprite)
-        animalName.text = animal.name
+        let sprite = animal.sprite
+        animalImageView.image =  UIImage(named: sprite)
+        let name = animal.name
+        animalName.text = name
     }
 
     override func viewWillDisappear(animated: Bool) {

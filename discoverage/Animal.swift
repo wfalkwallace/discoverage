@@ -15,11 +15,19 @@ class Animal: NSObject {
     var id: String
     var owner: User?
     var health: Int
-    var name: String {
+    var location: CLLocation
+    var dictionary: NSDictionary
+    var names : NSArray
+    var sprites: NSArray
+    var name : String
+    var sprite : String
+    
+    var _name: String {
         get {
             let index = IndexFor(self.names)
             if index == -1 {
-                return _name
+                //println(_name)
+                return name
             } else {
                 return names[index] as! String
             }
@@ -28,25 +36,21 @@ class Animal: NSObject {
             self.name = name
         }
     }
-    var sprite: String {
+    var _sprite: String {
         get {
             let index = IndexFor(self.sprites)
             if index == -1 {
-                return _sprite
+                println(sprite)
+                return sprite
+                
             } else {
                 return sprites[index] as! String
             }
         }
         set(sprite) {
-            self.sprite = sprite
+            self._sprite = sprite
         }
     }
-    var location: CLLocation
-    var dictionary: NSDictionary
-    var names : NSArray
-    var sprites: NSArray
-    var _name : String
-    var _sprite : String
     
     static let FULL_HEALTH: Int = 10
 
@@ -70,10 +74,10 @@ class Animal: NSObject {
             self.owner = User(dictionary: user)
         }
 
-        self._name = dictionary["name"] as! String
+        self.name = dictionary["name"] as! String
         self.names = dictionary["names"] as! NSArray
         self.id = dictionary["_id"] as! String
-        self._sprite = dictionary["sprite"] as! String
+        self.sprite = dictionary["sprite"] as! String
         self.sprites = dictionary["sprites"] as! NSArray
         self.health = dictionary["health"] as! Int
         
@@ -88,11 +92,11 @@ class Animal: NSObject {
     func reset(dictionary: NSDictionary) {
         self.owner = User(dictionary: dictionary["owner"] as! NSDictionary)
         self.names = dictionary["names"] as! NSArray
-        self._name = dictionary["name"] as! String
+        self.name = dictionary["name"] as! String
 
         self.id = dictionary["_id"] as! String
         self.sprites = dictionary["sprites"] as! NSArray
-        self._sprite = dictionary["sprite"] as! String
+        self.sprite = dictionary["sprite"] as! String
         self.health = dictionary["health"] as! Int
 
         let locationData = dictionary["location"] as! NSArray
@@ -159,14 +163,12 @@ class Animal: NSObject {
     
 
     func IndexFor(array: NSArray) -> Int {
-        println(array)
         //hack because the server sends this
         if array.count == 1 {
             if array[0].length == 0 {
                 return -1
             }
         }
-        
         switch (array.count) {
         case 0:
             return -1
