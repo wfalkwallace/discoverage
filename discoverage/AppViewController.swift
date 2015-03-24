@@ -32,6 +32,7 @@ class AppViewController: UITabBarController {
         bananaMapVC.tabBarItem = UITabBarItem(title: "Map", image: bananaMapTabImage, tag:2)
         rankingVC.tabBarItem = UITabBarItem(title: "Leaderboard", image: rankingTabImage, tag:3)
         
+        tabBar.barTintColor = UIColor.redColor()
         selectedIndex = 1
     }
 

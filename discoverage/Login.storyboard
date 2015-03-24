@@ -641,44 +641,6 @@
             </objects>
             <point key="canvasLocation" x="1134" y="348"/>
         </scene>
-        <!--Item 2-->
-        <scene sceneID="Fi0-8c-7GY">
-            <objects>
-                <viewController id="jKI-ms-SST" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="X3j-tv-VI2"/>
-                        <viewControllerLayoutGuide type="bottom" id="JA6-RY-BE2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uZx-Ip-xbZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="unK-Ug-3NZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aMM-bX-Z8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1881" y="470"/>
-        </scene>
-        <!--Item 1-->
-        <scene sceneID="iRt-Pz-TVd">
-            <objects>
-                <viewController id="4hR-dM-mDy" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vvx-wN-hFb"/>
-                        <viewControllerLayoutGuide type="bottom" id="o03-wK-g0y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DeF-Pg-Ckc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Efc-1M-Rhw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EWJ-jk-7bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1881" y="-192"/>
-        </scene>
     </scenes>
     <resources>
         <image name="baka" width="500" height="500"/>
