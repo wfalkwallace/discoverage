@@ -21,6 +21,8 @@
 		BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBCED101AAFE29C0048D9E9 /* SpriteCell.swift */; };
 		BEBCED131AAFE2A90048D9E9 /* SpriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBCED121AAFE2A90048D9E9 /* SpriteCell.xib */; };
 		E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */; };
+		E658FAFD1AC0D9EE003CC3E1 /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E658FAFC1AC0D9EE003CC3E1 /* App.storyboard */; };
+		E658FAFF1AC0DC3B003CC3E1 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658FAFE1AC0DC3B003CC3E1 /* AppViewController.swift */; };
 		E66D23071AB63E92008676CE /* DiscoverageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D23061AB63E92008676CE /* DiscoverageClient.swift */; };
 		E69444D51AB0B61000003443 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69444D41AB0B61000003443 /* LocationManager.swift */; };
 		E69C17E11ABFDEE3004C5B38 /* Guider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E69C17E01ABFDEE3004C5B38 /* Guider.storyboard */; };
@@ -71,6 +73,8 @@
 		E617BBBD1AA832F000342FBB /* Discoverage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Discoverage-Bridging-Header.h"; sourceTree = "<group>"; };
 		E617BBC01AA833B800342FBB /* discoverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = discoverage.xcconfig; sourceTree = "<group>"; };
 		E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaPick.swift; sourceTree = "<group>"; };
+		E658FAFC1AC0D9EE003CC3E1 /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
+		E658FAFE1AC0DC3B003CC3E1 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		E66D23061AB63E92008676CE /* DiscoverageClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverageClient.swift; sourceTree = "<group>"; };
 		E69444D41AB0B61000003443 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E69C17E01ABFDEE3004C5B38 /* Guider.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Guider.storyboard; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			children = (
 				E6FA65A61AB4B86200340CF2 /* BananaMapViewController.swift */,
 				E6B513C51AA6662A00852C9F /* LoginViewController.swift */,
+				E658FAFE1AC0DC3B003CC3E1 /* AppViewController.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				E6BDBAF01AAD6FDC00AE4D2A /* BananaMap.storyboard */,
 				BEBCED081AAFE1EF0048D9E9 /* Menagerie.storyboard */,
 				E6F4181F1AA9739A007E4FF3 /* Login.storyboard */,
+				E658FAFC1AC0D9EE003CC3E1 /* App.storyboard */,
 				45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */,
 			);
 			name = Storyboards;
@@ -382,6 +388,7 @@
 			files = (
 				E6B513CE1AA6662A00852C9F /* LaunchScreen.xib in Resources */,
 				E69C17E11ABFDEE3004C5B38 /* Guider.storyboard in Resources */,
+				E658FAFD1AC0D9EE003CC3E1 /* App.storyboard in Resources */,
 				E6BDBAF11AAD6FDC00AE4D2A /* BananaMap.storyboard in Resources */,
 				E6B513CB1AA6662A00852C9F /* Images.xcassets in Resources */,
 				E6FA65AB1AB4E73900340CF2 /* PokemonSolid.ttf in Resources */,
@@ -462,6 +469,7 @@
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
 				E6FA65A71AB4B86200340CF2 /* BananaMapViewController.swift in Sources */,
 				45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */,
+				E658FAFF1AC0DC3B003CC3E1 /* AppViewController.swift in Sources */,
 				E69444D51AB0B61000003443 /* LocationManager.swift in Sources */,
 				BEBCED111AAFE29C0048D9E9 /* SpriteCell.swift in Sources */,
 				E6F418271AAA6F3A007E4FF3 /* User.swift in Sources */,

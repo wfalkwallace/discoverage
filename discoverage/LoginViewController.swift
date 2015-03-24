@@ -46,9 +46,9 @@ class LoginViewController: UIViewController {
                     alert.show()
                 } else {
                     User.currentUser = User(dictionary: data as! NSDictionary)
-                    let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-                    let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
-                    self.presentViewController(menagerieViewController, animated: true, completion: nil)
+                    let appStoryboard = UIStoryboard(name: "App", bundle: nil)
+                    let appVC = appStoryboard.instantiateInitialViewController() as! UITabBarController
+                    self.presentViewController(appVC, animated: true, completion: nil)
                 }
             }
         }

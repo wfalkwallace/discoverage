@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if User.currentUser != nil {
             LocationManager.sharedInstance.startUpdatingLocation()
-            let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-            window?.rootViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
+            let appStoryboard = UIStoryboard(name: "App", bundle: nil)
+            window?.rootViewController = appStoryboard.instantiateInitialViewController() as! UITabBarController
         }
         
         return true

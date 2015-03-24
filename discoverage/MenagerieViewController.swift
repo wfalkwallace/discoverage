@@ -13,7 +13,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bananaCount: UILabel!
-    @IBOutlet weak var tabBar: UITabBar!
 
     var animals: [Animal]?
     var user: User?
@@ -31,7 +30,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
             canFeedInDetails = true
         }
         
-        tabBar.selectedItem = tabBar.items![0] as? UITabBarItem
         UITabBar.appearance().barTintColor = UIColor.whiteColor()
         self.automaticallyAdjustsScrollViewInsets = false
         

@@ -121,57 +121,30 @@
                                     <outlet property="delegate" destination="lum-mD-TwZ" id="B6s-mp-XB0"/>
                                 </connections>
                             </tableView>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tvf-3e-XW7">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem title="Home" image="icon-home" id="SgA-Kd-guL"/>
-                                    <tabBarItem title="Map" image="icon-map" id="DYq-lT-d2S"/>
-                                    <tabBarItem title="Leaderboard" image="icon-leaderboard" id="Wud-99-Taq"/>
-                                </items>
-                                <connections>
-                                    <outlet property="delegate" destination="lum-mD-TwZ" id="xsP-R5-cqj"/>
-                                </connections>
-                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Tvf-3e-XW7" secondAttribute="trailing" id="2AP-Mh-IS5"/>
                             <constraint firstItem="kTr-56-WBg" firstAttribute="width" secondItem="qOa-AL-BPe" secondAttribute="width" id="5mV-Tz-BhW"/>
-                            <constraint firstItem="Tvf-3e-XW7" firstAttribute="top" secondItem="kTr-56-WBg" secondAttribute="bottom" id="AFi-3D-2qX"/>
                             <constraint firstItem="kTr-56-WBg" firstAttribute="top" secondItem="5y1-2x-3s8" secondAttribute="bottom" constant="-64" id="I3l-AY-UIW"/>
                             <constraint firstAttribute="trailing" secondItem="kTr-56-WBg" secondAttribute="trailing" id="M1J-mm-KXd"/>
                             <constraint firstItem="kTr-56-WBg" firstAttribute="top" secondItem="5y1-2x-3s8" secondAttribute="bottom" id="MwL-0o-qKk"/>
+                            <constraint firstItem="eOA-Li-VDp" firstAttribute="top" secondItem="kTr-56-WBg" secondAttribute="bottom" id="Wue-Zv-U9g"/>
                             <constraint firstItem="kTr-56-WBg" firstAttribute="leading" secondItem="qOa-AL-BPe" secondAttribute="leading" id="f2t-WL-zSa"/>
-                            <constraint firstItem="Tvf-3e-XW7" firstAttribute="leading" secondItem="qOa-AL-BPe" secondAttribute="leading" id="mhe-D7-vFP"/>
                             <constraint firstAttribute="centerX" secondItem="kTr-56-WBg" secondAttribute="centerX" id="rkS-QD-FWW"/>
                             <constraint firstAttribute="centerY" secondItem="kTr-56-WBg" secondAttribute="centerY" id="rtV-Dz-uxz"/>
                             <constraint firstItem="kTr-56-WBg" firstAttribute="height" secondItem="qOa-AL-BPe" secondAttribute="height" id="tvp-6F-Vik"/>
-                            <constraint firstItem="eOA-Li-VDp" firstAttribute="top" secondItem="Tvf-3e-XW7" secondAttribute="bottom" id="xN1-jo-7VS"/>
                             <constraint firstItem="eOA-Li-VDp" firstAttribute="top" secondItem="kTr-56-WBg" secondAttribute="bottom" id="zKa-8J-L0q"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Tvf-3e-XW7"/>
-                            </mask>
                             <mask key="constraints">
-                                <exclude reference="2AP-Mh-IS5"/>
-                                <exclude reference="AFi-3D-2qX"/>
-                                <exclude reference="mhe-D7-vFP"/>
                                 <exclude reference="M1J-mm-KXd"/>
                                 <exclude reference="MwL-0o-qKk"/>
                                 <exclude reference="f2t-WL-zSa"/>
-                                <exclude reference="xN1-jo-7VS"/>
+                                <exclude reference="Wue-Zv-U9g"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Tvf-3e-XW7"/>
-                            </mask>
                             <mask key="constraints">
-                                <include reference="2AP-Mh-IS5"/>
-                                <include reference="AFi-3D-2qX"/>
-                                <include reference="mhe-D7-vFP"/>
                                 <exclude reference="5mV-Tz-BhW"/>
                                 <exclude reference="I3l-AY-UIW"/>
                                 <include reference="M1J-mm-KXd"/>
@@ -180,14 +153,13 @@
                                 <exclude reference="rkS-QD-FWW"/>
                                 <exclude reference="rtV-Dz-uxz"/>
                                 <exclude reference="tvp-6F-Vik"/>
-                                <include reference="xN1-jo-7VS"/>
+                                <include reference="Wue-Zv-U9g"/>
                                 <exclude reference="zKa-8J-L0q"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Leaderboard" id="Qgr-wD-oll"/>
                     <connections>
-                        <outlet property="tabBar" destination="Tvf-3e-XW7" id="EPt-L8-frZ"/>
                         <outlet property="tableView" destination="kTr-56-WBg" id="gW8-yK-DEg"/>
                         <segue destination="vn7-k4-rG5" kind="show" identifier="gotoprofile" id="sCj-q0-Ijc"/>
                     </connections>
@@ -256,8 +228,5 @@
     </scenes>
     <resources>
         <image name="gold_medal" width="384" height="640"/>
-        <image name="icon-home" width="30" height="30"/>
-        <image name="icon-leaderboard" width="30" height="30"/>
-        <image name="icon-map" width="30" height="30"/>
     </resources>
 </document>

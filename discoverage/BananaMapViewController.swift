@@ -27,7 +27,6 @@ struct AnimalClaim  {
 class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDelegate, LocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var tabBar: UITabBar!
     var bananaTrees:[BananaClaim]?
     var animals:[AnimalClaim]?
     var lastLocation:CLLocation?
@@ -38,7 +37,6 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         super.viewDidLoad()
         
         //LocationManager.sharedInstance.delegate = self
-        tabBar.selectedItem = tabBar.items![1] as? UITabBarItem
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
         let annotationsToRemove = mapView.annotations.filter { $0 !== self.mapView.userLocation }
