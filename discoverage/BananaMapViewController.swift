@@ -117,7 +117,7 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
             
             for index in 0...(animals.count-1) {
                 let entity = animals[index]
-                if entity.claimed == false {
+                if entity.claimed == false && entity.animal.owner == nil {
                     let location = entity.animal.location as CLLocation
                     if let distance = self.lastLocation?.distanceFromLocation(location) {
                         if distance < ANIMAL_VISIBILITY_RADIUS {
