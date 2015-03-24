@@ -135,7 +135,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate  {
                 if let error = error {
                     
                 } else {
-                    println(data)
                     if let dictionary = data as? NSDictionary {
                         var animals = [Animal]()
                         var bananaPicks = [BananaPick]()
