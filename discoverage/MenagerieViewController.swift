@@ -17,7 +17,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     var animals: [Animal]?
     var user: User?
     var canFeedInDetails: Bool = false
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +33,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         UITabBar.appearance().barTintColor = UIColor.whiteColor()
         self.automaticallyAdjustsScrollViewInsets = false
         
+        self.setupRefresh()
+        
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
     }
@@ -41,15 +43,18 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidAppear(animated)
         
         bananaCount.text = String(user!.bananaCount)
-     
-        collectionView.reloadData()
-        
+        getMenagerie()
+    }
+    
+    func getMenagerie() {
+
         Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":user!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             println(error)
             if let data: AnyObject = data {
                 self.animals = Animal.initWithArray(data as! [NSDictionary])
                 self.collectionView.reloadData()
+                self.collectionView.pullToRefreshView.stopAnimating()
             }
         }
     }
@@ -117,4 +122,9 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
 
+    func setupRefresh() {
+        self.collectionView.addPullToRefreshWithActionHandler({ () -> Void in
+            self.getMenagerie()
+        })
+    }
 }

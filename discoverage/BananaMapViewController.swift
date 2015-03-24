@@ -23,7 +23,6 @@ struct AnimalClaim  {
     var claimed: Bool
 }
 
-
 class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDelegate, LocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -36,28 +35,30 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         animals = [AnimalClaim]()
         super.viewDidLoad()
         
-        LocationManager.sharedInstance.delegate = self
-        self.mapView.delegate = self
-        self.mapView.showsUserLocation = true
         let annotationsToRemove = mapView.annotations.filter { $0 !== self.mapView.userLocation }
         mapView.removeAnnotations( annotationsToRemove )
+        LocationManager.sharedInstance.delegate = self
+        self.mapView.delegate = self
+        getBananasAndAnimals()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        getBananasAndAnimals()
+        self.mapView.showsUserLocation = true
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.mapView.showsUserLocation = false
     }
 
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-        
-        let spanX = 0.01
-        let spanY = 0.01
-
+       
         let location = CLLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-
+        let spanX = 0.001
+        let spanY = 0.001
         if let distance = self.lastLocation?.distanceFromLocation(location) {
-
-            if distance > 10 {
+            if distance > 20 {
                 var newRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
                 self.mapView.setRegion(newRegion, animated: true)
                 self.lastLocation = userLocation.location
