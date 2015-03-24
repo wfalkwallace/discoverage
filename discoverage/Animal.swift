@@ -23,6 +23,21 @@ class Animal: NSObject {
     let sprites = ["8_wartortle", "9_blastoise"]
     
     static let FULL_HEALTH: Int = 10
+
+    init() {
+        self.owner = User.currentUser
+        
+        self.name = "Pikachi"
+        self.sprite = dictionary["sprite"] as! String
+        self.health = 6
+        
+        let locationData = dictionary["location"] as! NSArray
+        let lat = locationData[1] as! CLLocationDegrees
+        let lon = locationData[0] as! CLLocationDegrees
+        self.location = CLLocation(latitude: lat, longitude: lon)
+        
+        self.dictionary = dictionary
+    }
     
     init(dictionary: NSDictionary) {
         if let user = dictionary.objectForKey("owner") as? NSDictionary {
@@ -99,7 +114,6 @@ class Animal: NSObject {
             health += 1
             Alamofire.request(Discoverage.Router.Update([User.currentUser!], [], [self])).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
                 if let dictionary = data as? NSDictionary {
-                    println(dictionary)
                     User.currentUser!.reset((dictionary["users"] as! [NSDictionary])[0]) //hack, but we know it's only one.
                     var animal = Animal.initWithArray(dictionary["animals"] as! [NSDictionary])[0] //hack, but we know it's only one.
                     block(animal: animal, success: (error == nil))

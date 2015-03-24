@@ -97,17 +97,17 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource = self
         self.users = [User]()
      
-        Alamofire.request(Discoverage.Router.UsersWithParams([:])).responseJSON { (_, _, data, error) in
-            // todo: save dict and call block
-            var users = User.initWithArray(data as! [NSDictionary])
-            
-            for user in users {
-                self.users!.append(user)
+        Alamofire.request(Discoverage.Router.UsersRanked()).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
+            if let dictionary = data as? [NSDictionary] {
+                var users = User.initWithArray(dictionary)
+                
+                for user in users {
+                    self.users!.append(user)
+                }
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
         }
         
-        //tabBar.selectedItem = tabBar.items![2] as? UITabBarItem
     }
     
 //    // In a storyboard-based application, you will often want to do a little preparation before navigation
