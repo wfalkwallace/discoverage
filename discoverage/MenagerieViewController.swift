@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailsViewControllerDelegate, UITabBarDelegate {
+class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailsViewControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bananaCount: UILabel!
@@ -21,6 +21,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        
         if user == nil {
             user = User.currentUser!
             var logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: self, action: "logout")
@@ -30,7 +32,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
             canFeedInDetails = true
         }
         
-        UITabBar.appearance().barTintColor = UIColor.whiteColor()
         self.automaticallyAdjustsScrollViewInsets = false
         
         self.setupRefresh()
@@ -90,20 +91,6 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
             detailsViewController.animal = animals![indexPath.row]
             detailsViewController.delegate = self
             self.navigationController?.pushViewController(detailsViewController, animated: true)
-        }
-    }
-    
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
-        if item.title == (tabBar.items![1] as! UITabBarItem).title {
-            let mapStoryboard = UIStoryboard(name: "BananaMap", bundle: nil)
-            let mapViewController = mapStoryboard.instantiateInitialViewController() as! BananaMapViewController
-            self.presentViewController(mapViewController, animated: true, completion: nil)
-
-            
-        } else if item.title == (tabBar.items![2] as! UITabBarItem).title {
-            let rankingStoryboard = UIStoryboard(name: "Ranking", bundle: nil)
-            let rankingViewController = rankingStoryboard.instantiateInitialViewController() as! UINavigationController
-            self.presentViewController(rankingViewController, animated: true, completion: nil)
         }
     }
     

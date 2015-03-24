@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
+class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tabBar: UITabBar!
 
@@ -85,6 +85,8 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -109,17 +111,5 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        let dest = segue.destinationViewController as! UserProfileViewController
 //        tableView.deselectRowAtIndexPath(indexPath, animated: true)
 //    }
-    
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
-        if item.title == (tabBar.items![0] as! UITabBarItem).title {
-            let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-            let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
-            self.presentViewController(menagerieViewController, animated: true, completion: nil)
-        } else if item.title == (tabBar.items![1] as! UITabBarItem).title {
-            let mapStoryboard = UIStoryboard(name: "BananaMap", bundle: nil)
-            let mapViewController = mapStoryboard.instantiateInitialViewController() as! BananaMapViewController
-            self.presentViewController(mapViewController, animated: true, completion: nil)
-        }
-    }
 
 }

@@ -23,7 +23,7 @@ struct AnimalClaim  {
     var claimed: Bool
 }
 
-class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDelegate, LocationManagerDelegate {
+class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var bananaTrees:[BananaClaim]?
@@ -237,19 +237,6 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
                     }
                 }
             }
-        }
-    }
-    
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
-        if item.title == (tabBar.items![0] as! UITabBarItem).title {
-            let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-            let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
-            self.presentViewController(menagerieViewController, animated: true, completion: nil)
-        } else if item.title == (tabBar.items![2] as! UITabBarItem).title {
-            let rankingStoryboard = UIStoryboard(name: "Ranking", bundle: nil)
-            let rankingViewController = rankingStoryboard.instantiateInitialViewController() as! UINavigationController
-                //TODO: update model here and present VC in block
-            self.presentViewController(rankingViewController, animated: true, completion: nil)
         }
     }
 

@@ -62,7 +62,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Menagerie" id="a3G-Zf-XM2">
+                    <navigationItem key="navigationItem" id="a3G-Zf-XM2">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="seg-Gd-Sve">
                             <view key="customView" contentMode="scaleToFill" id="82I-jm-ZfN">
                                 <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
@@ -237,6 +237,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ByJ-It-2Ne">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="zQG-Dp-m2f" kind="relationship" relationship="rootViewController" id="q4g-JD-ZAu"/>
                     </connections>
