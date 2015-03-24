@@ -17,9 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: "userDidLogout", object: nil)
         
-        // var navigationBarAppearace = UINavigationBar.appearance()
-        // navigationBarAppearace.barTintColor = UIColor.whiteColor()
-        // navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica-BoldOblique", size: 24)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+         var navigationBarAppearace = UINavigationBar.appearance()
+         navigationBarAppearace.barTintColor = UIColor.whiteColor()
+         navigationBarAppearace.translucent = false
+         navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica-BoldOblique", size: 24)!, NSForegroundColorAttributeName: UIColor.blackColor()]
         
         if User.currentUser != nil {
             LocationManager.sharedInstance.startUpdatingLocation()

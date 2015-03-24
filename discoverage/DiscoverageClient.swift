@@ -19,6 +19,7 @@ struct Discoverage {
         case ItemsNear([String: AnyObject])
 
         case AnimalsNear([String: AnyObject])
+        case AnimalCreate([String: AnyObject])
         case AnimalUpdate(String, [String: AnyObject])
         case AnimalWithId(String)
         case AnimalsWithParams([String: AnyObject])
@@ -26,6 +27,8 @@ struct Discoverage {
         case UserCreate([String: AnyObject])
         case UserUpdate(String, [String: AnyObject])
         case UsersWithParams([String: AnyObject])
+        case UsersNear([String: AnyObject])
+        case UsersRanked()
         case UserWithId(String)
 
         case BananaPickCreate([String: AnyObject])
@@ -38,10 +41,10 @@ struct Discoverage {
 
         var method: Alamofire.Method {
             switch self {
-            case .Login, .Update, .AnimalUpdate, .UserCreate, .UserUpdate, .BananaPickCreate:
+            case .Login, .Update, .AnimalCreate, .AnimalUpdate, .UserCreate, .UserUpdate, .BananaPickCreate:
                 return .POST
                 
-            case .ItemsNear, .AnimalsNear, .AnimalWithId, .AnimalsWithParams, .UsersWithParams, .UserWithId, .BananaPicksWithParams, .BananaPickWithId, .BananaTreesNear, .BananaTreeWithId, .BananaTreesWithParams:
+            case .ItemsNear, .AnimalsNear, .AnimalWithId, .AnimalsWithParams, .UsersWithParams, .UsersRanked, .UsersNear, .UserWithId, .BananaPicksWithParams, .BananaPickWithId, .BananaTreesNear, .BananaTreeWithId, .BananaTreesWithParams:
                 return .GET
             }
         }
@@ -57,6 +60,8 @@ struct Discoverage {
                 
             case .AnimalsNear(_):
                 return "/animals/near"
+            case .AnimalCreate(_):
+                return "/animal/"
             case .AnimalUpdate(let id, let _):
                 return "/animal/\(id)"
             case .AnimalWithId(let id):
@@ -70,6 +75,10 @@ struct Discoverage {
                 return "/user/\(id)"
             case .UsersWithParams(_):
                 return "/users"
+            case .UsersNear(_):
+                return "/users/near"
+            case .UsersRanked():
+                return "/users/ranked"
             case .UserWithId(let id):
                 return "/users/\(id)"
 
@@ -115,6 +124,8 @@ struct Discoverage {
                 
             case .AnimalsNear(let params):
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
+            case .AnimalCreate(let params):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
             case .AnimalUpdate(_, let params):
                 var paramsWithToken = params
                 paramsWithToken["token"] = User.currentUser?.token
@@ -130,6 +141,8 @@ struct Discoverage {
                 var paramsWithToken = params
                 paramsWithToken["token"] = User.currentUser?.token
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: paramsWithToken).0
+            case .UsersNear(let params):
+                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
             case .UsersWithParams(let params):
                 return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
 
