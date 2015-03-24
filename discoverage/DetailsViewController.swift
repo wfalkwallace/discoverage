@@ -33,9 +33,8 @@ class DetailsViewController: UIViewController {
         let displayHealth: Float = Float(animal.health) / 10.0
         heartsView.setHealth(displayHealth)
         
-        animalImageView.image =  UIImage(named: animal.sprite as String)
-        animalName.text = animal.name as String
-        //SpriteCell.displaySprite(animalImageView, label: animalName, animal: animal, animate: false)
+        animalImageView.image =  UIImage(named: animal.sprite)
+        animalName.text = animal.name
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -53,7 +52,7 @@ class DetailsViewController: UIViewController {
             heartsView.setHealth(displayHealth)
             animal.feed({ (animal, success) -> () in
                 if success {
-//                    SpriteCell.displaySprite(self.animalImageView, label: self.animalName, animal: animal!, animate:true)
+                   SpriteCell.animateSpriteTransition(self.animalImageView, label: self.animalName, sprite: self.animal.sprite, name: self.animal.name)
                 } else {
                     // TODO alert network failed
                 }
