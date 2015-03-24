@@ -23,6 +23,7 @@
 		E634235B1AAFAD4C002BD1D4 /* BananaPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */; };
 		E658FAFD1AC0D9EE003CC3E1 /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E658FAFC1AC0D9EE003CC3E1 /* App.storyboard */; };
 		E658FAFF1AC0DC3B003CC3E1 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658FAFE1AC0DC3B003CC3E1 /* AppViewController.swift */; };
+		E658FB011AC12480003CC3E1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658FB001AC12480003CC3E1 /* RegisterViewController.swift */; };
 		E66D23071AB63E92008676CE /* DiscoverageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D23061AB63E92008676CE /* DiscoverageClient.swift */; };
 		E69444D51AB0B61000003443 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69444D41AB0B61000003443 /* LocationManager.swift */; };
 		E69C17E11ABFDEE3004C5B38 /* Guider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E69C17E01ABFDEE3004C5B38 /* Guider.storyboard */; };
@@ -75,6 +76,7 @@
 		E634235A1AAFAD4C002BD1D4 /* BananaPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaPick.swift; sourceTree = "<group>"; };
 		E658FAFC1AC0D9EE003CC3E1 /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
 		E658FAFE1AC0DC3B003CC3E1 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		E658FB001AC12480003CC3E1 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E66D23061AB63E92008676CE /* DiscoverageClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverageClient.swift; sourceTree = "<group>"; };
 		E69444D41AB0B61000003443 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E69C17E01ABFDEE3004C5B38 /* Guider.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Guider.storyboard; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				E6FA65A61AB4B86200340CF2 /* BananaMapViewController.swift */,
 				E6B513C51AA6662A00852C9F /* LoginViewController.swift */,
+				E658FB001AC12480003CC3E1 /* RegisterViewController.swift */,
 				E658FAFE1AC0DC3B003CC3E1 /* AppViewController.swift */,
 			);
 			name = App;
@@ -459,6 +462,7 @@
 				45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */,
 				45EAB04F1AAEDAE400945C7D /* UserProfileViewController.swift in Sources */,
 				45B1A3F61AABC80500E6248C /* Animal.swift in Sources */,
+				E658FB011AC12480003CC3E1 /* RegisterViewController.swift in Sources */,
 				E6FA65A71AB4B86200340CF2 /* BananaMapViewController.swift in Sources */,
 				45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */,
 				E658FAFF1AC0DC3B003CC3E1 /* AppViewController.swift in Sources */,

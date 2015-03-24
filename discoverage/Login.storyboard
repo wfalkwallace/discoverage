@@ -359,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mie-j7-X51" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="366" y="348"/>
+            <point key="canvasLocation" x="319.5" y="348"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ahh-Hc-L05">
@@ -650,6 +650,7 @@
                         <viewControllerLayoutGuide type="bottom" id="JA6-RY-BE2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uZx-Ip-xbZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -668,6 +669,7 @@
                         <viewControllerLayoutGuide type="bottom" id="o03-wK-g0y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DeF-Pg-Ckc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
