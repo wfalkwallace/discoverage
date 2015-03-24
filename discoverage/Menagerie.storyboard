@@ -260,5 +260,5 @@
         <image name="banana" width="32" height="32"/>
         <image name="icon-logout" width="30" height="30"/>
     </resources>
-    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
