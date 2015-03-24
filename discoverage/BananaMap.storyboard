@@ -33,11 +33,11 @@
                                 <exclude reference="2NA-H2-EfP"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="2CO-Wb-ZNI"/>
+                                <exclude reference="92w-Kn-jpB"/>
                                 <exclude reference="PEu-rJ-cUi"/>
                                 <exclude reference="eSj-As-j4U"/>
                                 <exclude reference="ywh-5S-1iy"/>
-                                <exclude reference="2CO-Wb-ZNI"/>
-                                <exclude reference="92w-Kn-jpB"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -45,11 +45,11 @@
                                 <include reference="2NA-H2-EfP"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="2CO-Wb-ZNI"/>
+                                <exclude reference="92w-Kn-jpB"/>
                                 <include reference="PEu-rJ-cUi"/>
                                 <include reference="eSj-As-j4U"/>
                                 <include reference="ywh-5S-1iy"/>
-                                <include reference="2CO-Wb-ZNI"/>
-                                <exclude reference="92w-Kn-jpB"/>
                             </mask>
                         </variation>
                     </view>

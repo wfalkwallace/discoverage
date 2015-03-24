@@ -12,6 +12,7 @@ import Alamofire
 class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tabBar: UITabBar!
+    @IBOutlet weak var bananaCount: UILabel!
 
     var users: [User]! = []
 
@@ -82,10 +83,14 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.pushViewController(userProfileViewController, animated: true)
     }
 
+    @IBAction func didTapLogout(sender: AnyObject) {
+        User.logout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        bananaCount.text = String(User.currentUser?.bananaCount ?? 0)
         
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.delegate = self

@@ -20,15 +20,9 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
-        
+                
         if user == nil {
             user = User.currentUser!
-            var logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: self, action: "logout")
-            logoutButton.tintColor = UIColor.blackColor()
-            navigationItem.leftBarButtonItem = logoutButton
-            navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 12)!], forState: UIControlState.Normal)
             canFeedInDetails = true
         }
         
@@ -43,7 +37,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        bananaCount.text = String(user!.bananaCount)
+        bananaCount.text = String(user?.bananaCount ?? 0)
         getMenagerie()
     }
     
@@ -94,7 +88,7 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
     
-    func logout() {
+    @IBAction func didTapLogout(sender: AnyObject) {
         User.logout()
     }
     

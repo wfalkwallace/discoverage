@@ -158,8 +158,43 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Qgr-wD-oll"/>
+                    <navigationItem key="navigationItem" id="Qgr-wD-oll">
+                        <barButtonItem key="leftBarButtonItem" image="icon-logout" id="Z14-It-TWj">
+                            <color key="tintColor" red="0.1333333333" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="didTapLogout:" destination="lum-mD-TwZ" id="GkT-tm-LmX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="lh6-36-nnz">
+                            <view key="customView" contentMode="scaleToFill" id="cgX-t2-w8c">
+                                <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banana" translatesAutoresizingMaskIntoConstraints="NO" id="MYe-xX-hml">
+                                        <rect key="frame" x="17" y="5" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="CZK-tD-urb"/>
+                                            <constraint firstAttribute="width" constant="24" id="FUY-sX-XjZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmH-RR-pjT">
+                                        <rect key="frame" x="49" y="5" width="22" height="24"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="cmH-RR-pjT" firstAttribute="centerY" secondItem="MYe-xX-hml" secondAttribute="centerY" id="0Ub-Op-Hcd"/>
+                                    <constraint firstItem="cmH-RR-pjT" firstAttribute="leading" secondItem="MYe-xX-hml" secondAttribute="trailing" constant="8" id="Blw-H0-LjQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="cmH-RR-pjT" secondAttribute="trailing" id="OLV-vQ-bw6"/>
+                                    <constraint firstAttribute="centerY" secondItem="cmH-RR-pjT" secondAttribute="centerY" id="R35-pH-rHQ"/>
+                                </constraints>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="bananaCount" destination="cmH-RR-pjT" id="7D0-oL-oZR"/>
                         <outlet property="tableView" destination="kTr-56-WBg" id="gW8-yK-DEg"/>
                         <segue destination="vn7-k4-rG5" kind="show" identifier="gotoprofile" id="sCj-q0-Ijc"/>
                     </connections>
@@ -227,6 +262,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="banana" width="32" height="32"/>
         <image name="gold_medal" width="384" height="640"/>
+        <image name="icon-logout" width="30" height="30"/>
     </resources>
 </document>

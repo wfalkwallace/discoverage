@@ -63,6 +63,12 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="a3G-Zf-XM2">
+                        <barButtonItem key="leftBarButtonItem" image="icon-logout" id="1mX-L4-e65">
+                            <color key="tintColor" red="0.1333333333" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="didTapLogout:" destination="zQG-Dp-m2f" id="jf0-GL-08O"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="seg-Gd-Sve">
                             <view key="customView" contentMode="scaleToFill" id="82I-jm-ZfN">
                                 <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
@@ -252,5 +258,6 @@
     <resources>
         <image name="9_blastoise" width="640" height="640"/>
         <image name="banana" width="32" height="32"/>
+        <image name="icon-logout" width="30" height="30"/>
     </resources>
 </document>
