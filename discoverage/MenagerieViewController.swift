@@ -26,6 +26,10 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
             canFeedInDetails = true
         }
         
+        self.navigationItem.title = "Menagerie"
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
         self.automaticallyAdjustsScrollViewInsets = false
         
         self.setupRefresh()

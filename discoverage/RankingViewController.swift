@@ -96,6 +96,10 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         self.users = [User]()
+        
+        self.navigationItem.title = "Leaderboard"
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
      
         Alamofire.request(Discoverage.Router.UsersRanked()).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let dictionary = data as? [NSDictionary] {
