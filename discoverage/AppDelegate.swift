@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var navigationBarAppearace = UINavigationBar.appearance()
         //navigationBarAppearace.barTintColor = UIColor(red:0.8, green:0.15, blue:0.09, alpha:1)
-        navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 28)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+        // navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PokemonSolidNormal", size: 28)!, NSForegroundColorAttributeName: UIColor.blackColor()]
         
         if User.currentUser != nil {
             LocationManager.sharedInstance.startUpdatingLocation()

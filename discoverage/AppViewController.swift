@@ -15,24 +15,36 @@ class AppViewController: UITabBarController {
 
         let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
         let menagerieVC = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
-        let menagerieTabImage = UIImage(named: "icon-home")
+        let menagerieTabImage = UIImage(named: "icon-home-white")?.imageWithRenderingMode(.AlwaysOriginal)
 
         let bananaMapStoryboard = UIStoryboard(name: "BananaMap", bundle: nil)
         let bananaMapVC = bananaMapStoryboard.instantiateInitialViewController() as! UIViewController
-        let bananaMapTabImage = UIImage(named: "icon-map")
+        let bananaMapTabImage = UIImage(named: "icon-map-white")?.imageWithRenderingMode(.AlwaysOriginal)
 
         let rankingStoryboard = UIStoryboard(name: "Ranking", bundle: nil)
         let rankingVC = rankingStoryboard.instantiateInitialViewController() as! UINavigationController
-        let rankingTabImage = UIImage(named: "icon-leaderboard")
+        let rankingTabImage = UIImage(named: "icon-leaderboard-white")?.imageWithRenderingMode(.AlwaysOriginal)
 
         let controllers = [menagerieVC, bananaMapVC, rankingVC]
         viewControllers = controllers
 
         menagerieVC.tabBarItem = UITabBarItem(title: "Menagerie", image: menagerieTabImage, tag: 1)
+        menagerieVC.tabBarItem.selectedImage = UIImage(named: "icon-home")
+        menagerieVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
+        menagerieVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.yellowColor()], forState: .Selected)
+        
         bananaMapVC.tabBarItem = UITabBarItem(title: "Map", image: bananaMapTabImage, tag:2)
+        bananaMapVC.tabBarItem.selectedImage = UIImage(named: "icon-map")
+        bananaMapVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
+        bananaMapVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.yellowColor()], forState: .Selected)
+        
         rankingVC.tabBarItem = UITabBarItem(title: "Leaderboard", image: rankingTabImage, tag:3)
+        rankingVC.tabBarItem.selectedImage = UIImage(named: "icon-leaderboard")
+        rankingVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
+        rankingVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.yellowColor()], forState: .Selected)
         
         tabBar.barTintColor = UIColor.redColor()
+        tabBar.tintColor = UIColor.yellowColor()
         selectedIndex = 1
     }
 
