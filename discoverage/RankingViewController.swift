@@ -99,7 +99,11 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
      
         Alamofire.request(Discoverage.Router.UsersWithParams([:])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
-            self.users = User.initWithArray(data as! [NSDictionary])
+            var users = User.initWithArray(data as! [NSDictionary])
+            
+            for user in users {
+                self.users!.append(user)
+            }
             self.tableView.reloadData()
         }
         

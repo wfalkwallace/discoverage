@@ -32,10 +32,20 @@ class RegisterViewController: UIViewController {
     func register () {
         Alamofire.request(Discoverage.Router.UserCreate(["name": usernameTextField.text, "email" : emailTextField.text, "password": passwordTextField.text])).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let error = error {
-                Alert.network(error)
+                // deal with login error
+                let alert = UIAlertView()
+                alert.title = "Alert"
+                alert.message = "Signup failed. No network connection"
+                alert.addButtonWithTitle("OK")
+                alert.show()
             } else if let data: AnyObject = data {
                 if let code: AnyObject = data.objectForKey("error") {
-                    Alert.login(data)
+                    println(data)
+                    let alert = UIAlertView()
+                    alert.title = "Alert"
+                    alert.message = data.objectForKey("error") as? String
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
                 } else {
                     self.login()
                 }
@@ -47,10 +57,20 @@ class RegisterViewController: UIViewController {
         Alamofire.request(Discoverage.Router.Login(emailTextField.text, passwordTextField.text))
             .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
                 if let error = error {
-                    Alert.network(error)
+                    // deal with login error
+                    let alert = UIAlertView()
+                    alert.title = "Alert"
+                    alert.message = "Login failed. No network connection"
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
                 } else if let data: AnyObject = data {
                     if let code: AnyObject = data.objectForKey("error") {
-                        Alert.login(data)
+                        println(data)
+                        let alert = UIAlertView()
+                        alert.title = "Alert"
+                        alert.message = data.objectForKey("error") as? String
+                        alert.addButtonWithTitle("OK")
+                        alert.show()
                     } else {
                         User.currentUser = User(dictionary: data as! NSDictionary)
                         LocationManager.sharedInstance.startUpdatingLocation()

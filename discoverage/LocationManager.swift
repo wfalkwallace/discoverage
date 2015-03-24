@@ -13,7 +13,7 @@ import Alamofire
 
 let CACHE_REGION_UPDATE_INTERVAL = 60.0
 let CACHE_REGION_RADIUS = 1000.0
-let CAPTURE_RADIUS = 100.0
+let CAPTURE_RADIUS = 500.0
 
 protocol LocationManagerDelegate {
     func locationManager(locationManagerDelegate: LocationManager, didCaptureBananas bananaPicks: [BananaPick], didCaptureAnimals animals: [Animal])
@@ -135,7 +135,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate  {
                 if let error = error {
                     
                 } else {
-                    //println(data)
                     if let dictionary = data as? NSDictionary {
                         var animals = [Animal]()
                         var bananaPicks = [BananaPick]()
