@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func userDidLogout() {
-        var loginStoryboard = UIStoryboard(name: "Register", bundle: nil)
+        var loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
         var vc = loginStoryboard.instantiateInitialViewController() as! UIViewController
         //let navigationController = UINavigationController(rootViewController: vc)
         self.window?.rootViewController = vc
