@@ -31,6 +31,8 @@ class AppViewController: UITabBarController {
         menagerieVC.tabBarItem = UITabBarItem(title: "Menagerie", image: menagerieTabImage, tag: 1)
         bananaMapVC.tabBarItem = UITabBarItem(title: "Map", image: bananaMapTabImage, tag:2)
         rankingVC.tabBarItem = UITabBarItem(title: "Leaderboard", image: rankingTabImage, tag:3)
+        
+        selectedIndex = 1
     }
 
     override func didReceiveMemoryWarning() {
