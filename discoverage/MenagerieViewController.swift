@@ -41,6 +41,8 @@ class MenagerieViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.tabBarController?.tabBar.hidden = false
+
         bananaCount.text = String(user?.bananaCount ?? 0)
         getMenagerie()
     }

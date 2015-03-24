@@ -32,6 +32,8 @@ class DetailsViewController: UIViewController {
         let displayHealth: Float = Float(animal.health) / 10.0
         heartsView.setHealth(displayHealth)
         
+        self.tabBarController?.tabBar.hidden = true
+        
         let sprite = animal.sprite
         animalImageView.image =  UIImage(named: sprite)
         let name = animal.name

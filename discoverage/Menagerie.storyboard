@@ -10,7 +10,7 @@
         <!--MenagerieViewController-->
         <scene sceneID="yZW-cA-bKE">
             <objects>
-                <viewController storyboardIdentifier="MenagerieViewController" title="MenagerieViewController" id="zQG-Dp-m2f" customClass="MenagerieViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenagerieViewController" title="MenagerieViewController" extendedLayoutIncludesOpaqueBars="YES" id="zQG-Dp-m2f" customClass="MenagerieViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mZU-yI-fbR"/>
                         <viewControllerLayoutGuide type="bottom" id="bP0-ao-pFv"/>
@@ -110,7 +110,7 @@
         <!--DetailsViewController-->
         <scene sceneID="cPK-9r-Okd">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" title="DetailsViewController" id="jfQ-lv-UZs" customClass="DetailsViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" title="DetailsViewController" extendedLayoutIncludesOpaqueBars="YES" id="jfQ-lv-UZs" customClass="DetailsViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wz7-89-E1v"/>
                         <viewControllerLayoutGuide type="bottom" id="gXf-vo-Vab"/>
