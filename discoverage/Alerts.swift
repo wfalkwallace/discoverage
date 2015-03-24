@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Discoverage. All rights reserved.
 //
 
-import Foundation
-
 class Alert {
     
     class func network(error: AnyObject) {
@@ -17,7 +15,7 @@ class Alert {
         alert.addButtonWithTitle("OK")
         alert.show()
     }
-
+    
     class func login(error: AnyObject) {
         println(error)
         let alert = UIAlertView()
