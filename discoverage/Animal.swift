@@ -12,32 +12,29 @@ import SwiftyJSON
 import MapKit
 
 class Animal: NSObject {
-    var id: String
+    var id: String?
     var owner: User?
     var health: Int
     var name: String
     var sprite: String
     var location: CLLocation
-    var dictionary: NSDictionary
-    let names =  ["wartortle", "blastoise"]
-    let sprites = ["8_wartortle", "9_blastoise"]
+    var dictionary: NSDictionary?
+    var names =  ["wartortle", "blastoise"]
+    var sprites = ["8_wartortle", "9_blastoise"]
     
     static let FULL_HEALTH: Int = 10
 
-//    init() {
-//        self.owner = User.currentUser
-//        
-//        self.name = "Pikachu"
-//        self.sprite = dictionary["sprite"] as! String
-//        self.health = 6
-//        
-//        let locationData = dictionary["location"] as! NSArray
-//        let lat = locationData[1] as! CLLocationDegrees
-//        let lon = locationData[0] as! CLLocationDegrees
-//        self.location = CLLocation(latitude: lat, longitude: lon)
-//        
-//        self.dictionary = dictionary
-//    }
+    init(owner: User) {
+        self.owner = User.currentUser
+        
+        self.name = "Charmander"
+        self.sprite = "4_charmander"
+        self.names = ["Charmander", "Charmeleon", "Charizard"]
+        self.sprites = ["4_charmander", "5_charmeleon", "6_charizard"]
+        self.health = 6
+        
+        self.location = owner.location ?? CLLocation(latitude: 37, longitude: 122)
+    }
     
     init(dictionary: NSDictionary) {
         if let user = dictionary.objectForKey("owner") as? NSDictionary {
@@ -96,7 +93,7 @@ class Animal: NSObject {
     func save(block: (animal: Animal?, error: NSError?) -> ()) {
         var params = serialize()
         
-        Alamofire.request(Discoverage.Router.AnimalUpdate(id, params)).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.AnimalUpdate(id!, params)).responseJSON { (_, _, data, error) in
             if error == nil {
                 self.reset(data as! NSDictionary)
                 block(animal: self, error: nil)
