@@ -36,7 +36,7 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         animals = [AnimalClaim]()
         super.viewDidLoad()
         
-        //LocationManager.sharedInstance.delegate = self
+        LocationManager.sharedInstance.delegate = self
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
         let annotationsToRemove = mapView.annotations.filter { $0 !== self.mapView.userLocation }
@@ -243,7 +243,6 @@ class BananaMapViewController: UIViewController, UITabBarDelegate, MKMapViewDele
         if item.title == (tabBar.items![0] as! UITabBarItem).title {
             let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
             let menagerieViewController = menagerieStoryboard.instantiateInitialViewController() as! UINavigationController
-            //TODO: update model here and present VC in block
             self.presentViewController(menagerieViewController, animated: true, completion: nil)
         } else if item.title == (tabBar.items![2] as! UITabBarItem).title {
             let rankingStoryboard = UIStoryboard(name: "Ranking", bundle: nil)
