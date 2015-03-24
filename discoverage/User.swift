@@ -30,11 +30,6 @@ let currentUserKey = "CurrentUser"
         self.email = dictionary["email"] as! String
         
         self.token = dictionary["token"] as? String
-      //  let locationData = dictionary["location"] as! NSDictionary
-//        let lat = locationData["lat"] as! CLLocationDegrees
-//        let lon = locationData["lon"] as! CLLocationDegrees
-//        self.location = CLLocation(latitude: lat, longitude: lon)
-        
         self.bananaCount = dictionary["bananaCount"] as! Int
         self.dictionary = dictionary
     }
@@ -43,12 +38,6 @@ let currentUserKey = "CurrentUser"
         self.id = dictionary["_id"] as! String
         self.name = dictionary["name"] as! String
         self.email = dictionary["email"] as! String
-
-        //  let locationData = dictionary["location"] as! NSDictionary
-        //        let lat = locationData["lat"] as! CLLocationDegrees
-        //        let lon = locationData["lon"] as! CLLocationDegrees
-        //        self.location = CLLocation(latitude: lat, longitude: lon)
-        
         self.bananaCount = dictionary["bananaCount"] as! Int
         self.dictionary = dictionary
     }
@@ -59,10 +48,6 @@ let currentUserKey = "CurrentUser"
         params["name"] = name
         params["bananaCount"] = bananaCount
         params["email"] = email
-        
-//        if let location = location {
-//            params["location"] = ["lat": location.coordinate.latitude, "lon": location.coordinate.longitude]
-//        }
         return params
     }
     
