@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--UserProfileViewController-->
+        <scene sceneID="fVM-s8-uoO">
+            <objects>
+                <viewController storyboardIdentifier="UserProfileViewController" title="UserProfileViewController" extendedLayoutIncludesOpaqueBars="YES" id="M8u-gk-m1B" customClass="UserProfileViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="krh-4F-Obb"/>
+                        <viewControllerLayoutGuide type="bottom" id="nh5-Q3-9pq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4qx-pi-eNT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="p3p-1p-Tu7">
+                                <rect key="frame" x="16" y="64" width="568" height="536"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mY4-mK-21R">
+                                    <size key="itemSize" width="96" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="M8u-gk-m1B" id="e6O-oj-IeU"/>
+                                    <outlet property="delegate" destination="M8u-gk-m1B" id="E3n-7t-nSI"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="p3p-1p-Tu7" secondAttribute="trailing" id="AMT-ut-gyI"/>
+                            <constraint firstItem="nh5-Q3-9pq" firstAttribute="top" secondItem="p3p-1p-Tu7" secondAttribute="bottom" id="JyC-iF-Yv6"/>
+                            <constraint firstItem="p3p-1p-Tu7" firstAttribute="leading" secondItem="4qx-pi-eNT" secondAttribute="leading" id="LBi-Ay-tgH"/>
+                            <constraint firstItem="nh5-Q3-9pq" firstAttribute="top" secondItem="p3p-1p-Tu7" secondAttribute="bottom" id="fGi-ia-BMh"/>
+                            <constraint firstItem="p3p-1p-Tu7" firstAttribute="leading" secondItem="4qx-pi-eNT" secondAttribute="leadingMargin" id="qYe-1p-U2S"/>
+                            <constraint firstItem="p3p-1p-Tu7" firstAttribute="top" secondItem="krh-4F-Obb" secondAttribute="bottom" id="yro-s6-jfX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p3p-1p-Tu7" secondAttribute="trailing" id="zQV-HH-Ehm"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AMT-ut-gyI"/>
+                                <exclude reference="LBi-Ay-tgH"/>
+                                <exclude reference="JyC-iF-Yv6"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="zQV-HH-Ehm"/>
+                                <include reference="AMT-ut-gyI"/>
+                                <include reference="LBi-Ay-tgH"/>
+                                <exclude reference="qYe-1p-U2S"/>
+                                <exclude reference="fGi-ia-BMh"/>
+                                <include reference="JyC-iF-Yv6"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="53h-s4-gzu">
+                        <barButtonItem key="leftBarButtonItem" image="icon-logout" id="jKS-lh-wBm">
+                            <color key="tintColor" red="0.1333333333" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="lLA-l9-x5g">
+                            <view key="customView" contentMode="scaleToFill" id="U7n-mT-GGL">
+                                <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7m-lx-HW0">
+                                        <rect key="frame" x="39" y="-1" width="32" height="35"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="28"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banana" translatesAutoresizingMaskIntoConstraints="NO" id="mZl-8S-WTf">
+                                        <rect key="frame" x="7" y="2" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="caa-0F-InT"/>
+                                            <constraint firstAttribute="width" constant="28" id="cwn-jp-ws3"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="V7m-lx-HW0" secondAttribute="centerY" id="Wu4-9g-dtJ"/>
+                                    <constraint firstItem="V7m-lx-HW0" firstAttribute="centerY" secondItem="mZl-8S-WTf" secondAttribute="centerY" id="fbi-fe-nNp"/>
+                                    <constraint firstAttribute="trailing" secondItem="V7m-lx-HW0" secondAttribute="trailing" id="fvk-aQ-ELk"/>
+                                    <constraint firstItem="V7m-lx-HW0" firstAttribute="leading" secondItem="mZl-8S-WTf" secondAttribute="trailing" constant="4" id="qfZ-wO-BjK"/>
+                                </constraints>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="p3p-1p-Tu7" id="XpR-i2-JAY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9gO-xG-CGX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535" y="-208"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="banana" width="32" height="32"/>
+        <image name="icon-logout" width="30" height="30"/>
+    </resources>
+</document>

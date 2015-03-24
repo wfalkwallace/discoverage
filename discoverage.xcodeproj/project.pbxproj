@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		452BA3DF1ABD568D007A7154 /* Hearts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452BA3DE1ABD568D007A7154 /* Hearts.xib */; };
 		452BA3E11ABE2601007A7154 /* HeartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BA3E01ABE2601007A7154 /* HeartsView.swift */; };
+		455B27E11AC20C9800E17105 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455B27E01AC20C9800E17105 /* UserProfile.storyboard */; };
 		45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */; };
 		45B1A3F01AABADD000E6248C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3EF1AABADD000E6248C /* RankingViewController.swift */; };
 		45B1A3F21AABC3EA00E6248C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		452BA3DE1ABD568D007A7154 /* Hearts.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Hearts.xib; sourceTree = "<group>"; };
 		452BA3E01ABE2601007A7154 /* HeartsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartsView.swift; sourceTree = "<group>"; };
+		455B27E01AC20C9800E17105 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		45B1A3EF1AABADD000E6248C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		45B1A3F11AABC3EA00E6248C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				E6F4181F1AA9739A007E4FF3 /* Login.storyboard */,
 				E658FAFC1AC0D9EE003CC3E1 /* App.storyboard */,
 				45B1A3ED1AABA86B00E6248C /* Ranking.storyboard */,
+				455B27E01AC20C9800E17105 /* UserProfile.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				E6FA65AA1AB4E73900340CF2 /* PokemonHollow.ttf in Resources */,
 				452BA3DF1ABD568D007A7154 /* Hearts.xib in Resources */,
 				BEBCED091AAFE1F00048D9E9 /* Menagerie.storyboard in Resources */,
+				455B27E11AC20C9800E17105 /* UserProfile.storyboard in Resources */,
 				E6F418201AA9739A007E4FF3 /* Login.storyboard in Resources */,
 				45B1A3EE1AABA86B00E6248C /* Ranking.storyboard in Resources */,
 			);

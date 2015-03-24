@@ -19,7 +19,12 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
         super.viewDidLoad()
 
         self.automaticallyAdjustsScrollViewInsets = false
-
+        self.tabBarController?.tabBar.hidden = true
+        
+        self.navigationItem.title = "Username Here"
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
         let nib = UINib(nibName: "SpriteCell", bundle: NSBundle.mainBundle())
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "SpriteCell")
     }
@@ -58,7 +63,7 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
     
     // Sizing and Spacing //
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 100, height: 150)
+        return CGSize(width: 90, height: 150)
     }
   
     

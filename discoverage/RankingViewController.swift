@@ -72,16 +72,16 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return users.count
     }
     
-    //TODO: wire to userprofile instead of menagerie
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let menagerieStoryboard = UIStoryboard(name: "Menagerie", bundle: nil)
-        let userProfileViewController = menagerieStoryboard.instantiateViewControllerWithIdentifier("MenagerieViewController") as! MenagerieViewController
-        let users = self.users as [User]
-        userProfileViewController.user = users[indexPath.row]
-        
-        self.navigationController?.pushViewController(userProfileViewController, animated: true)
-    }
+//    //TODO: wire to userprofile instead of menagerie
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        let menagerieStoryboard = UIStoryboard(name: "UserProfile", bundle: nil)
+//        let userProfileViewController = menagerieStoryboard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileViewController
+////        let users = self.users as [User]
+////        userProfileViewController.user = users[indexPath.row]
+//        
+//        self.navigationController?.pushViewController(userProfileViewController, animated: true)
+//    }
 
     @IBAction func didTapLogout(sender: AnyObject) {
         User.logout()
@@ -111,14 +111,19 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tableView.reloadData()
             }
         }
-        
     }
     
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let indexPath = sender as! NSIndexPath
+    override func viewDidAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let indexPath = sender!.indexPath as NSIndexPath
 //        let dest = segue.destinationViewController as! UserProfileViewController
 //        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//    }
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
+    }
 
 }

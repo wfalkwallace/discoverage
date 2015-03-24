@@ -82,6 +82,7 @@
                                             <outlet property="medalImage" destination="V5f-2T-PXx" id="64c-dy-yHj"/>
                                             <outlet property="rankLabel" destination="YVU-s1-B9R" id="8b0-6Q-3BT"/>
                                             <outlet property="usernameLabel" destination="Q5a-ih-dkC" id="cLF-aQ-9eE"/>
+                                            <segue destination="yEx-XL-xIw" kind="show" id="TJT-cZ-aZe"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankingTableViewCell" rowHeight="75" id="144-ps-CaG" customClass="RankingTableViewCell" customModule="discoverage" customModuleProvider="target">
@@ -113,6 +114,7 @@
                                         <connections>
                                             <outlet property="rankLabel" destination="utH-ki-kYP" id="gX9-ra-E2f"/>
                                             <outlet property="usernameLabel" destination="bQz-sh-99K" id="nEq-2X-cVU"/>
+                                            <segue destination="yEx-XL-xIw" kind="show" id="W4F-8c-RRd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -196,7 +198,6 @@
                     <connections>
                         <outlet property="bananaCount" destination="cmH-RR-pjT" id="7D0-oL-oZR"/>
                         <outlet property="tableView" destination="kTr-56-WBg" id="gW8-yK-DEg"/>
-                        <segue destination="vn7-k4-rG5" kind="show" identifier="gotoprofile" id="sCj-q0-Ijc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCg-aT-7ue" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -204,61 +205,67 @@
             <point key="canvasLocation" x="322" y="630"/>
         </scene>
         <!--UserProfileViewController-->
-        <scene sceneID="BQl-of-y72">
+        <scene sceneID="EPF-fw-MdX">
             <objects>
-                <viewController storyboardIdentifier="UserProfileViewController" title="UserProfileViewController" id="vn7-k4-rG5" userLabel="UserProfileViewController" customClass="UserProfileViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileViewController" title="UserProfileViewController" extendedLayoutIncludesOpaqueBars="YES" id="yEx-XL-xIw" customClass="UserProfileViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5aJ-DK-vQi"/>
-                        <viewControllerLayoutGuide type="bottom" id="JhT-GT-hdj"/>
+                        <viewControllerLayoutGuide type="top" id="Ed5-Lv-dGh"/>
+                        <viewControllerLayoutGuide type="bottom" id="UZj-rO-cWh"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eq7-8m-Iyk">
+                    <view key="view" contentMode="scaleToFill" id="fQB-E2-Gga">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Oe-Rn-QUK">
-                                <rect key="frame" x="16" y="20" width="568" height="580"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qqb-XN-jyX">
+                                <rect key="frame" x="16" y="64" width="568" height="536"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="laS-fg-JFb">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Kb-Ob-j5a">
                                     <size key="itemSize" width="96" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <label key="backgroundView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tJ6-9a-MhP">
-                                    <rect key="frame" x="0.0" y="0.0" width="568" height="580"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="vn7-k4-rG5" id="S7M-ic-oXn"/>
-                                    <outlet property="delegate" destination="vn7-k4-rG5" id="wjp-Z6-Ld0"/>
+                                    <outlet property="dataSource" destination="yEx-XL-xIw" id="Qba-lL-Pff"/>
+                                    <outlet property="delegate" destination="yEx-XL-xIw" id="20V-Bs-BZa"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="JhT-GT-hdj" firstAttribute="top" secondItem="9Oe-Rn-QUK" secondAttribute="bottom" id="0cQ-et-0Am"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9Oe-Rn-QUK" secondAttribute="trailing" id="74Q-rI-gsf"/>
-                            <constraint firstItem="9Oe-Rn-QUK" firstAttribute="top" secondItem="5aJ-DK-vQi" secondAttribute="bottom" id="HOQ-0l-4tX"/>
-                            <constraint firstItem="9Oe-Rn-QUK" firstAttribute="leading" secondItem="eq7-8m-Iyk" secondAttribute="leadingMargin" id="oHu-Tb-NS5"/>
+                            <constraint firstItem="Qqb-XN-jyX" firstAttribute="leading" secondItem="fQB-E2-Gga" secondAttribute="leading" id="5x4-nL-M8U"/>
+                            <constraint firstItem="UZj-rO-cWh" firstAttribute="top" secondItem="Qqb-XN-jyX" secondAttribute="bottom" id="DCs-wP-JPU"/>
+                            <constraint firstItem="Qqb-XN-jyX" firstAttribute="leading" secondItem="fQB-E2-Gga" secondAttribute="leadingMargin" id="K34-WX-bxC"/>
+                            <constraint firstItem="Qqb-XN-jyX" firstAttribute="top" secondItem="Ed5-Lv-dGh" secondAttribute="bottom" id="POj-XQ-kva"/>
+                            <constraint firstAttribute="trailing" secondItem="Qqb-XN-jyX" secondAttribute="trailing" id="UAo-eR-mmM"/>
+                            <constraint firstItem="UZj-rO-cWh" firstAttribute="top" secondItem="Qqb-XN-jyX" secondAttribute="bottom" id="VKg-Xp-BmI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qqb-XN-jyX" secondAttribute="trailing" id="Vj7-OF-AdO"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UAo-eR-mmM"/>
+                                <exclude reference="5x4-nL-M8U"/>
+                                <exclude reference="VKg-Xp-BmI"/>
+                            </mask>
+                        </variation>
                         <variation key="widthClass=compact">
                             <mask key="constraints">
-                                <exclude reference="74Q-rI-gsf"/>
-                                <exclude reference="oHu-Tb-NS5"/>
-                                <exclude reference="0cQ-et-0Am"/>
+                                <exclude reference="Vj7-OF-AdO"/>
+                                <include reference="UAo-eR-mmM"/>
+                                <include reference="5x4-nL-M8U"/>
+                                <exclude reference="K34-WX-bxC"/>
+                                <exclude reference="DCs-wP-JPU"/>
+                                <include reference="VKg-Xp-BmI"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="9Oe-Rn-QUK" id="j5y-zV-ZXW"/>
+                        <outlet property="collectionView" destination="Qqb-XN-jyX" id="q8O-tm-Wgy"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w6b-2y-eV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lj1-dB-80A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1065" y="636"/>
+            <point key="canvasLocation" x="1055" y="630"/>
         </scene>
     </scenes>
     <resources>
@@ -266,5 +273,8 @@
         <image name="gold_medal" width="384" height="640"/>
         <image name="icon-logout" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="W4F-8c-RRd"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
