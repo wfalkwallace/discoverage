@@ -13,7 +13,7 @@ import Alamofire
 
 let CACHE_REGION_UPDATE_INTERVAL = 60.0
 let CACHE_REGION_RADIUS = 1000.0
-let CAPTURE_RADIUS = 100.0
+let CAPTURE_RADIUS = 50.0
 
 protocol LocationManagerDelegate {
     func locationManager(locationManagerDelegate: LocationManager, didCaptureBananas bananaPicks: [BananaPick], didCaptureAnimals animals: [Animal])
