@@ -125,13 +125,5 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         navigationController?.pushViewController(dest, animated: true)
         
     }
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println(segue)
-//        let dest = segue.destinationViewController as! UserProfileViewController
-//        dest.user = users[sender!.indexPath!.row]
-//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
-    }
 
 }
