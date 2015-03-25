@@ -117,13 +117,19 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tabBarController?.tabBar.hidden = false
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let dest = storyboard?.instantiateViewControllerWithIdentifier("userProfileViewController") as! UserProfileViewController
+        dest.user = users[indexPath.row]
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        navigationController?.pushViewController(dest, animated: true)
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let indexPath = sender!.indexPath as NSIndexPath
+        println(segue)
 //        let dest = segue.destinationViewController as! UserProfileViewController
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
+//        dest.user = users[sender!.indexPath!.row]
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
     }
 
 }

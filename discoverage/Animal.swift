@@ -61,7 +61,7 @@ class Animal: NSObject {
         self.sprite = "4_charmander"
         self.names = ["Charmander", "Charmeleon", "Charizard"]
         self.sprites = ["4_charmander", "5_charmeleon", "6_charizard"]
-        self.health = 6
+        self.health = 3
         
         self.location = owner.location ?? CLLocation(latitude: 37, longitude: 122)
     }

@@ -13,6 +13,7 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var collectionView: UICollectionView!
 
+    var user: User?
     var animals: [Animal]?
     
     override func viewDidLoad() {
@@ -21,7 +22,7 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
         self.automaticallyAdjustsScrollViewInsets = false
         self.tabBarController?.tabBar.hidden = true
         
-        self.navigationItem.title = "Username Here"
+        self.navigationItem.title = user?.name
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -34,7 +35,7 @@ class UserProfileViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner":User.currentUser!.id])).responseJSON { (_, _, data, error) in
+        Alamofire.request(Discoverage.Router.AnimalsWithParams(["owner": user!.id])).responseJSON { (_, _, data, error) in
             // todo: save dict and call block
             println("JNT 0113 \(data)")
             if let data: AnyObject = data {

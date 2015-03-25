@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wvf-L9-ORa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wvf-L9-ORa">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -82,7 +82,6 @@
                                             <outlet property="medalImage" destination="V5f-2T-PXx" id="64c-dy-yHj"/>
                                             <outlet property="rankLabel" destination="YVU-s1-B9R" id="8b0-6Q-3BT"/>
                                             <outlet property="usernameLabel" destination="Q5a-ih-dkC" id="cLF-aQ-9eE"/>
-                                            <segue destination="yEx-XL-xIw" kind="show" id="TJT-cZ-aZe"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankingTableViewCell" rowHeight="75" id="144-ps-CaG" customClass="RankingTableViewCell" customModule="discoverage" customModuleProvider="target">
@@ -114,7 +113,6 @@
                                         <connections>
                                             <outlet property="rankLabel" destination="utH-ki-kYP" id="gX9-ra-E2f"/>
                                             <outlet property="usernameLabel" destination="bQz-sh-99K" id="nEq-2X-cVU"/>
-                                            <segue destination="yEx-XL-xIw" kind="show" id="W4F-8c-RRd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -207,7 +205,7 @@
         <!--UserProfileViewController-->
         <scene sceneID="EPF-fw-MdX">
             <objects>
-                <viewController storyboardIdentifier="UserProfileViewController" title="UserProfileViewController" extendedLayoutIncludesOpaqueBars="YES" id="yEx-XL-xIw" customClass="UserProfileViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userProfileViewController" title="UserProfileViewController" extendedLayoutIncludesOpaqueBars="YES" id="yEx-XL-xIw" customClass="UserProfileViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ed5-Lv-dGh"/>
                         <viewControllerLayoutGuide type="bottom" id="UZj-rO-cWh"/>
@@ -226,6 +224,9 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="536"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="yEx-XL-xIw" id="Qba-lL-Pff"/>
                                     <outlet property="delegate" destination="yEx-XL-xIw" id="20V-Bs-BZa"/>
@@ -243,17 +244,17 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="UAo-eR-mmM"/>
                                 <exclude reference="5x4-nL-M8U"/>
+                                <exclude reference="UAo-eR-mmM"/>
                                 <exclude reference="VKg-Xp-BmI"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="constraints">
-                                <exclude reference="Vj7-OF-AdO"/>
-                                <include reference="UAo-eR-mmM"/>
                                 <include reference="5x4-nL-M8U"/>
                                 <exclude reference="K34-WX-bxC"/>
+                                <include reference="UAo-eR-mmM"/>
+                                <exclude reference="Vj7-OF-AdO"/>
                                 <exclude reference="DCs-wP-JPU"/>
                                 <include reference="VKg-Xp-BmI"/>
                             </mask>
@@ -273,8 +274,5 @@
         <image name="gold_medal" width="384" height="640"/>
         <image name="icon-logout" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="W4F-8c-RRd"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
