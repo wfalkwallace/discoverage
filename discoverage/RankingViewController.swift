@@ -28,7 +28,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             if users.count > 0 {
                 let users = self.users as [User]
                 let user = users[indexPath.row]
-                cell.usernameLabel.text = user.name
+                cell.usernameLabel.text = " \(user.name) "
             }
             
             switch indexPath.row {
@@ -53,7 +53,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let users = self.users as [User]
                 let user = users[indexPath.row]
                 cell.rankLabel.text = "\(indexPath.row + 1)"
-                cell.usernameLabel.text = user.name
+                cell.usernameLabel.text = " \(user.name) "
             }
 
             return cell
