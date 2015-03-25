@@ -97,7 +97,7 @@ class Animal: NSObject {
         params["owner"] = owner?.id
         //params["name"] = name
         params["health"] = health
-        params["sprite"] = sprite
+        //params["sprite"] = sprite
         params["sprites"] = sprites
         params["names"] = names
         params["_id"] = id
