@@ -55,8 +55,8 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
        
         let location = CLLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        let spanX = 0.001
-        let spanY = 0.001
+        let spanX = 0.005
+        let spanY = 0.005
         if let distance = self.lastLocation?.distanceFromLocation(location) {
             if distance > 20 {
                 var newRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
@@ -120,11 +120,15 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
                 if entity.claimed == false && entity.animal.owner == nil {
                     let location = entity.animal.location as CLLocation
                     if let distance = self.lastLocation?.distanceFromLocation(location) {
-                        if distance < ANIMAL_VISIBILITY_RADIUS {
+                        if distance < CAPTURE_RADIUS {
+                            self.animals![index] = AnimalClaim(animal: entity.animal, claimed: true)
+                        } else if distance < ANIMAL_VISIBILITY_RADIUS {
                             let ann = MKPointAnnotation()
                             ann.setCoordinate(location.coordinate)
                             ann.title = entity.animal.sprite
                             mapView.addAnnotation(ann)
+                        } else if distance > BANANA_VISIBILITY_RADIUS {
+                            //nothing to do
                         }
                     }
                 }
@@ -148,15 +152,15 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
                 if entity.claimed == false {
                     let location = entity.btree.location as CLLocation
                     if let distance = self.lastLocation?.distanceFromLocation(location) {
-                        if distance < BANANA_VISIBILITY_RADIUS {
+                        if distance < CAPTURE_RADIUS {
+                            self.bananaTrees![index] = BananaClaim(btree: entity.btree, claimed: true)
+                        } else if distance < BANANA_VISIBILITY_RADIUS {
                             let ann = MKPointAnnotation()
                             ann.setCoordinate(location.coordinate)
                             ann.title = "Banana"
                             mapView.addAnnotation(ann)
                         } else if distance > BANANA_VISIBILITY_RADIUS {
                             //nothing to do
-                        } else if distance < CAPTURE_RADIUS {
-                            self.bananaTrees![index] = BananaClaim(btree: entity.btree, claimed: true)
                         }
                     }
                 }
@@ -180,8 +184,6 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
                     self.mapView.removeAnnotation(annotation as? MKAnnotation)
                 } else if (distance < CAPTURE_RADIUS) {
                     self.mapView.selectAnnotation(annotation as? MKAnnotation, animated: true)
-                    
-                
                 }
             }
         }
