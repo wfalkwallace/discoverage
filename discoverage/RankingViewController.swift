@@ -100,14 +100,15 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationItem.title = "Leaderboard"
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-     
+    
+        setupRefresh()
+        getLeaderboard()
+    }
+    
+    func getLeaderboard() {
         Alamofire.request(Discoverage.Router.UsersRanked()).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let dictionary = data as? [NSDictionary] {
-                var users = User.initWithArray(dictionary)
-                
-                for user in users {
-                    self.users!.append(user)
-                }
+                self.users = User.initWithArray(dictionary)
                 self.tableView.reloadData()
             }
         }
@@ -126,4 +127,10 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
 
+    func setupRefresh() {
+        self.tableView.addPullToRefreshWithActionHandler({ () -> Void in
+            self.getLeaderboard()
+        })
+    }
+    
 }
