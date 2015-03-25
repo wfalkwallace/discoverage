@@ -30,85 +30,12 @@ class SpriteCell: UICollectionViewCell {
     
     class func animateSpriteTransition(image: UIImageView, label: UILabel, sprite: String, name: String) {
         let toImage = UIImage(named: sprite)
-        UIView.transitionWithView(image,
-            duration:2,
-            options: UIViewAnimationOptions.TransitionCrossDissolve,
-            animations: {
-                image.image = toImage
-                label.text = name
-        }, completion: nil)
+        
+        UIView.transitionWithView(image, duration: 2, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: { () -> Void in
+            image.image = toImage
+        }) { (success) -> Void in
+            label.text = name
+        }
+        
     }
-    
-    //This code is gnarly, and probably not the best use of a class method
-//    class func displaySprite(image: UIImageView, label: UILabel, animal: Animal, animate: Bool) {
-//
-//        switch(animal.names.count) {
-//        case 1:
-//            label.text = animal.names[0] as! String
-//            image.image = UIImage(named: animal.sprites[0] as! String)
-//        case 2:
-//            switch(animal.health) {
-//            case 0...5:
-//                label.text = animal.names[0] as! String
-//                image.image = UIImage(named: animal.sprites[0] as! String)
-//            case 6...10:
-//                if animate {
-//                    let toImage = UIImage(named: animal.sprites[1] as! String)
-//                    UIView.transitionWithView(image,
-//                        duration:2,
-//                        options: UIViewAnimationOptions.TransitionCrossDissolve,
-//                        animations: {
-//                            image.image = toImage
-//                            label.text = animal.names[1] as! String
-//                        }, completion: nil)
-//                } else {
-//                    label.text = animal.names[1] as! String
-//                    image.image = UIImage(named: animal.sprites[1] as! String)
-//                }
-//            default:
-//                break
-//            }
-//        case 3:
-//            switch animal.health {
-//            case 0...4:
-//                label.text = animal.names[0] as! String
-//                image.image = UIImage(named: animal.sprites[0] as! String)
-//            case 5...8:
-//                if animate {
-//                    let toImage = UIImage(named: animal.sprites[1] as! String)
-//                    UIView.transitionWithView(image,
-//                        duration:2,
-//                        options: UIViewAnimationOptions.TransitionCrossDissolve,
-//                        animations: {
-//                            label.text = animal.names[1] as! String
-//                            image.image = toImage
-//                        }, completion: nil)
-//                } else {
-//                    label.text = animal.names[1] as! String
-//                    image.image = UIImage(named: animal.sprites[1] as! String)
-//                }
-//            case 9...10:
-//                if animate {
-//                    let toImage = UIImage(named: animal.sprites[2] as! String)
-//                    UIView.transitionWithView(image,
-//                        duration:2,
-//                        options: UIViewAnimationOptions.TransitionCrossDissolve,
-//                        animations: {
-//                            label.text = animal.names[2] as! String
-//                            image.image = toImage
-//                        }, completion: nil)
-//                
-//                } else {
-//                    label.text = animal.names[2] as! String
-//                    image.image = UIImage(named: animal.sprites[2] as! String)
-//                }
-//            default:
-//                break
-//            }
-//        default:
-//            label.text = animal.names[0] as! String
-//            image.image = UIImage(named: animal.sprites[0] as! String)
-//        }
-//    }
-    
 }

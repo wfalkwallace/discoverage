@@ -22,36 +22,6 @@ class Animal: NSObject {
     var sprite : String
     var dictionary: NSDictionary?
     
-    var _name: String {
-        get {
-            let index = IndexFor(self.names)
-            if index == -1 {
-                //println(_name)
-                return name
-            } else {
-                return names[index] as! String
-            }
-        }
-        set(name) {
-            self.name = name
-        }
-    }
-    var _sprite: String {
-        get {
-            let index = IndexFor(self.sprites)
-            if index == -1 {
-                println(sprite)
-                return sprite
-                
-            } else {
-                return sprites[index] as! String
-            }
-        }
-        set(sprite) {
-            self._sprite = sprite
-        }
-    }
-    
     static let FULL_HEALTH: Int = 10
 
     init(owner: User) {
@@ -71,10 +41,8 @@ class Animal: NSObject {
             self.owner = User(dictionary: user)
         }
 
-        self.name = dictionary["name"] as! String
         self.names = dictionary["names"] as! NSArray
         self.id = dictionary["_id"] as! String
-        self.sprite = dictionary["sprite"] as! String
         self.sprites = dictionary["sprites"] as! NSArray
         self.health = dictionary["health"] as! Int
         
@@ -82,8 +50,12 @@ class Animal: NSObject {
         let lat = locationData[1] as! CLLocationDegrees
         let lon = locationData[0] as! CLLocationDegrees
         self.location = CLLocation(latitude: lat, longitude: lon)
-
         self.dictionary = dictionary
+
+        //self.name = dictionary["name"] as! String
+        //self.sprite = dictionary["sprite"] as! String
+        self.name = Animal.Name(names, name: dictionary["name"] as! String, health: health)
+        self.sprite = Animal.Sprite(sprites, sprite: dictionary["sprite"] as! String, health: health)
     }
     
     func reset(dictionary: NSDictionary) {
@@ -100,8 +72,13 @@ class Animal: NSObject {
         let lat = locationData[0] as! CLLocationDegrees
         let lon = locationData[1] as! CLLocationDegrees
         self.location = CLLocation(latitude: lat, longitude: lon)
-        
         self.dictionary = dictionary
+        
+        //self.name = dictionary["name"] as! String
+        //self.sprite = dictionary["sprite"] as! String
+        self.name = Animal.Name(names, name: dictionary["name"] as! String, health: health)
+        self.sprite = Animal.Sprite(sprites, sprite: dictionary["sprite"] as! String, health: health)
+        
     }
     
     class func initWithArray(array: [NSDictionary]) -> [Animal] {
@@ -118,7 +95,7 @@ class Animal: NSObject {
         var params = [String: AnyObject]()
         params["location"] = [location.coordinate.longitude, location.coordinate.latitude]
         params["owner"] = owner?.id
-        params["name"] = name
+        //params["name"] = name
         params["health"] = health
         params["sprite"] = sprite
         params["sprites"] = sprites
@@ -158,8 +135,17 @@ class Animal: NSObject {
         }
     }
     
-
-    func IndexFor(array: NSArray) -> Int {
+    class func Name(names: NSArray, name : String, health: Int) -> String {
+        let index = IndexFor(names, health: health)
+        return (index == -1) ? name : names[index] as! String
+    }
+    
+    class func Sprite(sprites: NSArray, sprite : String, health: Int) -> String {
+        let index = IndexFor(sprites, health: health)
+        return (index == -1) ? sprite : sprites[index] as! String
+    }
+    
+    class func IndexFor(array: NSArray, health : Int) -> Int {
         //hack because the server sends this
         if array.count == 1 {
             if array[0].length == 0 {
@@ -173,20 +159,20 @@ class Animal: NSObject {
             return 0
         case 2:
             switch(health) {
-            case 0...5:
+            case 0...6:
                 return 0
-            case 6...10:
+            case 7...10:
                 return 1
             default:
                 return -1
             }
         case 3:
             switch(health) {
-            case 0...4:
+            case 0...5:
                 return 0
-            case 5...8:
+            case 6...9:
                 return 1
-            case 9...10:
+            case 10:
                 return 2
             default:
                 return -1
