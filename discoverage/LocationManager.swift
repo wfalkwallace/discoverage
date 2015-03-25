@@ -131,7 +131,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate  {
                 return BananaPick(bananaTree: bananaTree, timestamp: NSDate())
             })
             
-            Alamofire.request(Discoverage.Router.Update([], capturedBananas, capturedAnimals)).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
+            User.currentUser?.bananaCount += capturedBananas.count
+            
+            Alamofire.request(Discoverage.Router.Update([User.currentUser!], capturedBananas, capturedAnimals)).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
                 if let error = error {
                     
                 } else {
