@@ -109,6 +109,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         Alamofire.request(Discoverage.Router.UsersRanked()).responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
             if let dictionary = data as? [NSDictionary] {
                 self.users = User.initWithArray(dictionary)
+                self.tableView.pullToRefreshView.stopAnimating()
                 self.tableView.reloadData()
             }
         }
