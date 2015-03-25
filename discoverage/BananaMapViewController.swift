@@ -142,7 +142,6 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
         // 2. if bananas are < 5 meters away add them to users banana count and remove annotation
         // 3. if bananas are > 100 meters away remove the annotation
         
-        
         if let btrees = self.bananaTrees {
             for index in 0...(btrees.count-1) {
                 let entity = btrees[index]
@@ -154,6 +153,10 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
                             ann.setCoordinate(location.coordinate)
                             ann.title = "Banana"
                             mapView.addAnnotation(ann)
+                        } else if distance > BANANA_VISIBILITY_RADIUS {
+                            //nothing to do
+                        } else if distance < CAPTURE_RADIUS {
+                            self.bananaTrees![index] = BananaClaim(btree: entity.btree, claimed: true)
                         }
                     }
                 }
@@ -176,12 +179,26 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
                 if (distance > fromDistance) {
                     self.mapView.removeAnnotation(annotation as? MKAnnotation)
                 } else if (distance < CAPTURE_RADIUS) {
-                    self.mapView.removeAnnotation(annotation as? MKAnnotation)
-                    //claim(location)
+                    self.mapView.selectAnnotation(annotation as? MKAnnotation, animated: true)
+                    
+                
                 }
             }
         }
     }
+    
+   
+    
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+     
+        UIView.animateWithDuration(1.5, animations: { () -> Void in
+            let frame = view.frame
+            view.frame = CGRect(x: frame.origin.x, y: frame.origin.y , width: 64, height: 64)
+        }) { (finished) -> Void in
+            self.mapView.removeAnnotation(view.annotation)
+        }
+    }
+
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
