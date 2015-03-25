@@ -121,7 +121,9 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let dest = storyboard?.instantiateViewControllerWithIdentifier("userProfileViewController") as! UserProfileViewController
         dest.user = users[indexPath.row]
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         navigationController?.pushViewController(dest, animated: true)
+        
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
