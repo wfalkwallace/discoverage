@@ -18,6 +18,11 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        var loginTextKey = OptimizelyVariableKey.optimizelyKeyWithKey("loginText", defaultNSString: "Login")
+        var login: String = Optimizely.stringForKey(loginTextKey)
+        
+        registerButton.setTitle(login, forState: .Normal)
+        println(login)
         registerButton.layer.borderWidth = 2
         registerButton.layer.borderColor = UIColor.whiteColor().CGColor
     }

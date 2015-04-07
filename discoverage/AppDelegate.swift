@@ -15,6 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        Optimizely.enableEditor();
+        Optimizely.startOptimizelyWithAPIToken("AAM7hIkAOAtzy9areJghSACMHRizuOGW~2769020257", launchOptions: launchOptions)
+        
+        var cacheRadius:OptimizelyVariableKey = OptimizelyVariableKey.optimizelyKeyWithKey("cacheRadius", defaultNSNumber: 1000)
+        var catchRadius:OptimizelyVariableKey = OptimizelyVariableKey.optimizelyKeyWithKey("catchRadius", defaultNSNumber: 100)
+        var loginText:OptimizelyVariableKey = OptimizelyVariableKey.optimizelyKeyWithKey("loginText", defaultNSString: "Login")
+        Optimizely.preregisterVariableKey(cacheRadius)
+        Optimizely.preregisterVariableKey(catchRadius)
+        Optimizely.preregisterVariableKey(loginText)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: "userDidLogout", object: nil)
         
          var navigationBarAppearace = UINavigationBar.appearance()
@@ -30,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
