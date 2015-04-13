@@ -15,16 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        Optimizely.enableEditor();
+//        Optimizely.enableEditor();
         Optimizely.startOptimizelyWithAPIToken("AAM7hIkAOAtzy9areJghSACMHRizuOGW~2769020257", launchOptions: launchOptions)
         
         var cacheRadius:OptimizelyVariableKey = OptimizelyVariableKey.optimizelyKeyWithKey("cacheRadius", defaultNSNumber: 1000)
-        var catchRadius:OptimizelyVariableKey = OptimizelyVariableKey.optimizelyKeyWithKey("catchRadius", defaultNSNumber: 100)
+        var catchRadius:OptimizelyVariableKey = OptimizelyVariableKey.optimizelyKeyWithKey("catchRadius", defaultNSNumber: 100.5)
         var loginText:OptimizelyVariableKey = OptimizelyVariableKey.optimizelyKeyWithKey("loginText", defaultNSString: "Login")
         Optimizely.preregisterVariableKey(cacheRadius)
         Optimizely.preregisterVariableKey(catchRadius)
         Optimizely.preregisterVariableKey(loginText)
         
+        var startBlockKey = OptimizelyCodeBlocksKey("startBlock", blockNames: ["loginFirst", "registerFirst"])
+        Optimizely.preregisterBlockKey(startBlockKey)
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: "userDidLogout", object: nil)
         
          var navigationBarAppearace = UINavigationBar.appearance()
@@ -36,6 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             LocationManager.sharedInstance.startUpdatingLocation()
             let appStoryboard = UIStoryboard(name: "App", bundle: nil)
             window?.rootViewController = appStoryboard.instantiateInitialViewController() as! UITabBarController
+        } else {
+            let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+            Optimizely.codeBlocksWithKey(startBlockKey,
+                blockOne: { window?.rootViewController = loginStoryboard.instantiateViewControllerWithIdentifier("login") as! LoginViewController },
+                blockTwo: { window?.rootViewController = loginStoryboard.instantiateInitialViewController() as! RegisterViewController },
+                defaultBlock: { window?.rootViewController = loginStoryboard.instantiateInitialViewController() as! RegisterViewController }
+            )
         }
         
         return true

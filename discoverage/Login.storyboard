@@ -9,7 +9,7 @@
         <!--Register View Controller-->
         <scene sceneID="WpY-Hj-qVx">
             <objects>
-                <viewController id="Oza-vg-DQ1" customClass="RegisterViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="register" id="Oza-vg-DQ1" customClass="RegisterViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SC4-qq-cfS"/>
                         <viewControllerLayoutGuide type="bottom" id="l2m-ST-Lfu"/>
@@ -364,7 +364,7 @@
         <!--Login View Controller-->
         <scene sceneID="ahh-Hc-L05">
             <objects>
-                <viewController id="5Iq-G9-b2j" customClass="LoginViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="5Iq-G9-b2j" customClass="LoginViewController" customModule="discoverage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fzc-CB-yba"/>
                         <viewControllerLayoutGuide type="bottom" id="PGF-jc-kHG"/>

@@ -89,6 +89,8 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+//        bananaCount.optimizelyId = @"bananacount-label";
         
         bananaCount.text = String(User.currentUser?.bananaCount ?? 0)
         

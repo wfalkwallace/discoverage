@@ -13,7 +13,7 @@ import Alamofire
 
 let CACHE_REGION_UPDATE_INTERVAL = 60.0
 let CACHE_REGION_RADIUS = 1000.0
-let CAPTURE_RADIUS = 50.0
+//let CAPTURE_RADIUS = 50.0
 
 protocol LocationManagerDelegate {
     func locationManager(locationManagerDelegate: LocationManager, didCaptureBananas bananaPicks: [BananaPick], didCaptureAnimals animals: [Animal])
@@ -24,10 +24,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate  {
     var animalsInRegion = [Animal]()
     var bananaTreesInRegion = [BananaTree]()
     
+    var CAPTURE_RADIUS: NSNumber
+    
     var delegate: LocationManagerDelegate?
 
     override init () {
         self.locationManager = CLLocationManager()
+        
+        var captureRadiusKey: OptimizelyVariableKey = OptimizelyVariableKey.optimizelyKeyWithKey("catchRadius", defaultNSNumber: 100.5)
+        CAPTURE_RADIUS = Optimizely.numberForKey(captureRadiusKey)
+        
         super.init()
     }
     
@@ -119,14 +125,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate  {
             }
             
             var capturedAnimals = animalsInRegion.filter({ animal in
-                return animal.location.distanceFromLocation(currentLocation) <= CAPTURE_RADIUS
+                return animal.location.distanceFromLocation(currentLocation) <= self.CAPTURE_RADIUS
             }).map({ (animal: Animal) -> Animal in
                 animal.owner = User.currentUser
                 return animal
             })
 
             var capturedBananas = bananaTreesInRegion.filter({ bananaTree in
-                return bananaTree.location.distanceFromLocation(currentLocation) <= CAPTURE_RADIUS
+                return bananaTree.location.distanceFromLocation(currentLocation) <= self.CAPTURE_RADIUS
             }).map({ bananaTree in
                 return BananaPick(bananaTree: bananaTree, timestamp: NSDate())
             })

@@ -120,7 +120,7 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
                 if entity.claimed == false && entity.animal.owner == nil {
                     let location = entity.animal.location as CLLocation
                     if let distance = self.lastLocation?.distanceFromLocation(location) {
-                        if distance < CAPTURE_RADIUS {
+                        if distance < LocationManager.sharedInstance.CAPTURE_RADIUS {
                             self.animals![index] = AnimalClaim(animal: entity.animal, claimed: true)
                         } else if distance < ANIMAL_VISIBILITY_RADIUS {
                             let ann = MKPointAnnotation()
@@ -152,7 +152,7 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
                 if entity.claimed == false {
                     let location = entity.btree.location as CLLocation
                     if let distance = self.lastLocation?.distanceFromLocation(location) {
-                        if distance < CAPTURE_RADIUS {
+                        if distance < LocationManager.sharedInstance.CAPTURE_RADIUS {
                             self.bananaTrees![index] = BananaClaim(btree: entity.btree, claimed: true)
                         } else if distance < BANANA_VISIBILITY_RADIUS {
                             let ann = MKPointAnnotation()
@@ -182,7 +182,7 @@ class BananaMapViewController: UIViewController, MKMapViewDelegate, LocationMana
                 let fromDistance = (annotation.title == "Banana") ? BANANA_VISIBILITY_RADIUS : ANIMAL_VISIBILITY_RADIUS
                 if (distance > fromDistance) {
                     self.mapView.removeAnnotation(annotation as? MKAnnotation)
-                } else if (distance < CAPTURE_RADIUS) {
+                } else if (distance < LocationManager.sharedInstance.CAPTURE_RADIUS) {
                     self.mapView.selectAnnotation(annotation as? MKAnnotation, animated: true)
                 }
             }
